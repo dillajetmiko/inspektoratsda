@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\C_lhp;
 use App\Http\Controllers\C_temuan;
 use App\Http\Controllers\C_dashboard;
+use App\Http\Controllers\C_login;
+
 
 
 /*
@@ -21,6 +23,9 @@ use App\Http\Controllers\C_dashboard;
 Route::get('/', function () {
     return view('dashboard');
 });
+
+Route::get('/login', [C_login::class, 'getLogin']);
+Route::post('/postLogin', 'C_login@postLogin');
 
 Route::get('/dashboard', [C_dashboard::class, 'index']);
 
