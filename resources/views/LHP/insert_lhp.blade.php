@@ -31,10 +31,19 @@
  <form action="/anggota/insertData" method="post">
  <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
  Nomor LHP : <input type="text" class="form-control" name="nomor_lhp"><br>
- Tanggal : <input type="text" class="form-control" name="tanggal_lhp"><br>
+ Tanggal : <input type="date" class="form-control" name="tanggal_lhp"><br>
  Judul Pemeriksaan : <input type="text" class="form-control" name="judul_pemerikasaan"><br>
- Upload file : <input type="text" class="form-control" name="upload_file"><br>
-<input type="submit" value ="Simpan">
+ Upload file : <br> 
+ <form enctype="multipart/form-data" action="terimaNama.php" method="POST">
+    <!-- MAX_FILE_SIZE must precede the file input field -->
+    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+    <!-- Name of input element determines name in $_FILES array -->
+    <input name="userfile" type="file" />
+    <input type="submit" value="Send File" />
+</form>
+<br><br>
+<button type="button" class="btn btn-primary">Simpan</button>
+
  </form>
 
         </div>

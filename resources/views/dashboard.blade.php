@@ -34,7 +34,7 @@
 
 			</div>
 			<div class="icon">
-				<i class="ion ion-bag"></i>
+				<i class="ion ion-document-text"></i>
 			</div>
 			<a href="/lhp/insert_lhp" class="small-box-footer">Input <i class="fas fa-arrow-circle-right"></i></a>
 		</div>
@@ -48,7 +48,7 @@
 
 			</div>
 			<div class="icon">
-				<i class="ion ion-stats-bars"></i>
+				<i class="ion ion-search"></i>
 			</div>
 			<a href="/temuan/insert_temuan" class="small-box-footer">Input <i class="fas fa-arrow-circle-right"></i></a>
 		</div>

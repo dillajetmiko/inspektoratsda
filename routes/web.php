@@ -6,6 +6,7 @@ use App\Http\Controllers\C_lhp;
 use App\Http\Controllers\C_temuan;
 use App\Http\Controllers\C_dashboard;
 use App\Http\Controllers\C_login;
+use App\Http\Controllers\C_user;
 
 
 
@@ -34,4 +35,7 @@ Route::get('/lhp/insert_lhp', [C_lhp::class, 'insertLHP']);
 
 Route::get('/temuan', [C_temuan::class, 'index']);
 Route::get('/temuan/insert_temuan', [C_temuan::class, 'inserttemuan']);
+
+Route::get('/user', [C_user::class, 'index']);
+Route::get('/user/insert_user', [C_user::class, 'insertuser']);
 

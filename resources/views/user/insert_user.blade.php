@@ -30,15 +30,10 @@
     <!-- <h1>Tambah Data Temuan</h1> -->
  <form action="/anggota/insertData" method="post">
  <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
- Kode Temuan : <input type="text" class="form-control" name="kode_temuan"><br>
- Uraian Temuan : <input type="text" class="form-control" name="uraian_temuan"><br>
- Rekomendasi : <input type="text" class="form-control" name="rekomendasi"><br>
- Nama OPD : <input type="text" class="form-control" name="nama_opd"><br>
- Nama Pejabat : <input type="text" class="form-control" name="nama_pejabat"><br>
- Tanggal Temuan : <input type="date" class="form-control" name="tanggal_temuan"><br>
- Tanggal Tindak Lanjut : <input type="date" class="form-control" name="tanggal_tindak_lanjut"><br>
- Nomor LHP : <input type="text" class="form-control" name="nomor_lhp"><br>
- Kerugian : <input type="text" class="form-control" name="kerugian"><br>
+ NIP : <input type="text" class="form-control" name="kode_temuan"><br>
+ Nama : <input type="text" class="form-control" name="uraian_temuan"><br>
+ Jabatan : <input type="text" class="form-control" name="rekomendasi"><br>
+ Pangkat : <input type="text" class="form-control" name="nama_opd"><br>
  <!-- Status Anggota : <input type="tinyint" class="form-control" name="status_anggota"><br> -->
  Status :<br> 
             <label><input type="radio" name="status" value="0" checked="checked" /> Belum Ditindak Lanjut </label><br>

@@ -3,10 +3,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('asset/dist/img/user8-128x128.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">Admin</a>
         </div>
       </div>
 
@@ -17,23 +17,28 @@
                with font-awesome or any other icon font library -->
        
           <li class="nav-item">
-          <a href="/dashboard" class="nav-link active">
+          <a href="/dashboard" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Dashboard
             </p>
           </a>
           </li>
-          <li class="nav-header">DASHBOARD</li>
+          <li class="nav-item">
+            <a href="/user" class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>User</p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="/lhp" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon fas fa-file-alt"></i>
               <p>LHP</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="/temuan" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon fas fa-search"></i>
               <p>Temuan</p>
             </a>
           </li>
