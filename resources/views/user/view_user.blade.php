@@ -40,7 +40,7 @@
               <div class="card-header">
                 <!-- <h3 class="card-title">Tambah Data Anggota</h3> -->
                 <a href="/user/insert_user">
-                <button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data Temuan</button>
+                <button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data User</button>
                 </a>
               </div>
               <!-- /.card-header -->

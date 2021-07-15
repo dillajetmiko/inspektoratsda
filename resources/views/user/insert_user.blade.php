@@ -1,6 +1,6 @@
 @extends("layout.mainlayout")
- @section("page_title","Inspektorat || Tambah Data Temuan")
- <!-- @section("title","Data Temuan") -->
+ @section("page_title","Inspektorat || Tambah Data User")
+ @section("title","Data User")
 
  @section("breadcrumb")
  <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -17,7 +17,7 @@
  <!-- Default box -->
  <div class="card">    
     <div class="card-header">
-        <h3 class="card-title">Tambah Data Temuan</h3>
+        <h3 class="card-title">Tambah Data User</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -27,19 +27,14 @@
         </div>
     </div>
     <div class="card-body">
-    <!-- <h1>Tambah Data Temuan</h1> -->
+    <!-- <h1>Tambah Data User</h1> -->
  <form action="/anggota/insertData" method="post">
  <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
  NIP : <input type="text" class="form-control" name="kode_temuan"><br>
  Nama : <input type="text" class="form-control" name="uraian_temuan"><br>
+ Password : <input type="text" class="form-control" name="uraian_temuan"><br>
  Jabatan : <input type="text" class="form-control" name="rekomendasi"><br>
- Pangkat : <input type="text" class="form-control" name="nama_opd"><br>
- <!-- Status Anggota : <input type="tinyint" class="form-control" name="status_anggota"><br> -->
- Status :<br> 
-            <label><input type="radio" name="status" value="0" checked="checked" /> Belum Ditindak Lanjut </label><br>
-            <label><input type="radio" name="status" value="1" /> Belum Sesuai Rekomendasi </label><br>
-            <label><input type="radio" name="status" value="2" /> Sesuai rekomendasi </label><br><br>
- Jenis Temuan : <input type="text" class="form-control" name="nama_jenis_temuan"><br> 
+ Pangkat : <input type="text" class="form-control" name="nama_opd"><br> 
  <button type="button" class="btn btn-primary">Simpan</button>
  </form>
 

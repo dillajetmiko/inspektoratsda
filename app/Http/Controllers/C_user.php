@@ -17,16 +17,16 @@ class C_user extends Controller
         //     'anggota' => $anggota
         // );
 
-        return view('temuan/view_temuan');
+        return view('user/view_user');
     }
 
-    public function insertTemuan()
+    public function insertUser()
     {
         // $data = array(
         //     'menu' => 'data_master',
         //     'submenu' => 'bahasa'
         // );
-        return view('temuan/insert_temuan');
+        return view('user/insert_user');
         //return view('tambah_bahasa');     
     }
 }

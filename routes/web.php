@@ -34,8 +34,8 @@ Route::get('/lhp', [C_lhp::class, 'index']);
 Route::get('/lhp/insert_lhp', [C_lhp::class, 'insertLHP']);
 
 Route::get('/temuan', [C_temuan::class, 'index']);
-Route::get('/temuan/insert_temuan', [C_temuan::class, 'inserttemuan']);
+Route::get('/temuan/insert_temuan', [C_temuan::class, 'insertTemuan']);
 
 Route::get('/user', [C_user::class, 'index']);
-Route::get('/user/insert_user', [C_user::class, 'insertuser']);
+Route::get('/user/insert_user', [C_user::class, 'insertUser']);
 
