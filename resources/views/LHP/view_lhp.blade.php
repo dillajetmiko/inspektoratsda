@@ -51,6 +51,7 @@
                   <th style="text-align:center">No</th>
                   <th style="text-align:center">Tanggal</th>
                   <th style="text-align:center">Judul Pemeriksaan</th>
+                  <th style="text-align:center">Anggaran</th>
                   <th style="text-align:center">Upload File</th>
                   <th style="text-align:center">Aksi</th>
                   </tr>

@@ -57,6 +57,7 @@
                   <th style="text-align:center">Nomor LHP</th>
                   <th style="text-align:center">Kerugian</th>
                   <th style="text-align:center">Status</th>
+                  <th style="text-align:center">Hasil Telaah Tindak Lanjut</th>
                   <th style="text-align:center">Jenis Temuan</th>
                   <th style="text-align:center">Aksi</th>
                   </tr>

@@ -33,6 +33,7 @@
  Nomor LHP : <input type="text" class="form-control" name="nomor_lhp"><br>
  Tanggal : <input type="date" class="form-control" name="tanggal_lhp"><br>
  Judul Pemeriksaan : <input type="text" class="form-control" name="judul_pemerikasaan"><br>
+ Anggaran : <input type="text" class="form-control" name="anggaran"><br>
  Upload file : <br> 
  <form enctype="multipart/form-data" action="terimaNama.php" method="POST">
     <!-- MAX_FILE_SIZE must precede the file input field -->
