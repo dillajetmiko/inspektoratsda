@@ -45,7 +45,11 @@
             <label><input type="radio" name="status" value="1" /> Belum Sesuai Rekomendasi </label><br>
             <label><input type="radio" name="status" value="2" /> Sesuai rekomendasi </label><br><br>
   Hasil Telaah Tindak Lanjut: <input type="text" class="form-control" name="hasil_telaah"><br>
- Jenis Temuan : <input type="text" class="form-control" name="nama_jenis_temuan"><br> 
+  Jenis Temuan : 
+            <select class="form-control" name="id_bahasa">
+            <option value="1">internal</option>
+            <option value="2">eksternal</option>
+            </select><br>
  <button type="button" class="btn btn-primary">Simpan</button>
  </form>
 
