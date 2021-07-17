@@ -10,14 +10,14 @@ class C_temuan extends Controller
     //
     public function index()
     {
-        // $anggota = DB::table('anggota')->get();
-        // $data = array(
-        //     'menu' => 'data_master',
-        //     'submenu' => 'anggota',
-        //     'anggota' => $anggota
-        // );
+        $temuan = DB::table('temuan')->get();
+        $data = array(
+            'menu' => 'temuan',
+            'temuan' => $temuan,
+            'submenu' => ''
+        );
 
-        return view('temuan/view_temuan');
+        return view('temuan/view_temuan',$data);
     }
 
     public function insertTemuan()

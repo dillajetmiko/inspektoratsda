@@ -10,23 +10,39 @@ class C_lhp extends Controller
     //
     public function index()
     {
-        // $anggota = DB::table('anggota')->get();
-        // $data = array(
-        //     'menu' => 'data_master',
-        //     'submenu' => 'anggota',
-        //     'anggota' => $anggota
-        // );
+        $lhp = DB::table('lhp')->get();
+        $data = array(
+            'menu' => 'LHP',
+            'lhp' => $lhp,
+            'submenu' => ''
+        );
 
-        return view('LHP/view_lhp');
+        return view('LHP/view_lhp',$data);
     }
 
     public function insertLHP()
     {
-        // $data = array(
-        //     'menu' => 'data_master',
-        //     'submenu' => 'bahasa'
-        // );
-        return view('LHP/insert_lhp');
-        //return view('tambah_bahasa');     
+        $lhp = DB::table('lhp')->get();
+        $data = array(
+            'menu' => 'lhp',
+            'lhp' => $lhp,
+            'submenu' => ''
+        );
+
+        return view('LHP/insert_lhp',$data); 
     }
+
+    public function tambahLHP(Request $post)
+    {
+        DB::table('lhp')->insert([
+            'NOMOR_LHP' => $post->NOMOR_LHP,
+            'NIP' => '1',
+            'TANGGAL_LHP' => $post->TANGGAL_LHP,
+            'JUDUL_PEMERIKSAAN' => $post->JUDUL_PEMERIKSAAN,
+            'ANGGARAN' => $post->ANGGARAN,
+        ]);
+
+        return redirect('/lhp');
+    }
+    
 }

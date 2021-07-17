@@ -32,6 +32,10 @@ Route::get('/dashboard', [C_dashboard::class, 'index']);
 
 Route::get('/lhp', [C_lhp::class, 'index']);
 Route::get('/lhp/insert_lhp', [C_lhp::class, 'insertLHP']);
+Route::post('/lhp/tambah_lhp', [C_lhp::class, 'tambahLHP']);
+Route::post('/lhp/edit_lhp/{NOMOR_LHP}', [C_lhp::class, 'editLHP']);
+Route::post('/lhp/update_lhp', [C_lhp::class, 'updateLHP']);
+Route::post('/lhp/hapus/{NOMOR_LHP}', [C_lhp::class, 'hapus']);
 
 Route::get('/temuan', [C_temuan::class, 'index']);
 Route::get('/temuan/insert_temuan', [C_temuan::class, 'insertTemuan']);

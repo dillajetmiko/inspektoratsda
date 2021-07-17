@@ -10,14 +10,14 @@ class C_user extends Controller
     //
     public function index()
     {
-        // $anggota = DB::table('anggota')->get();
-        // $data = array(
-        //     'menu' => 'data_master',
-        //     'submenu' => 'anggota',
-        //     'anggota' => $anggota
-        // );
+        $user = DB::table('user')->get();
+        $data = array(
+            'menu' => 'user',
+            'user' => $user,
+            'submenu' => ''
+        );
 
-        return view('user/view_user');
+        return view('user/view_user',$data);
     }
 
     public function insertUser()

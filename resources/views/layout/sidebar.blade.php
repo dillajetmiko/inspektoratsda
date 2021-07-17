@@ -15,31 +15,56 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-       
+
           <li class="nav-item">
-          <a href="/dashboard" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
+          @if($menu == 'dashboard')
+            <a href="/dashboard" class="nav-link active">
+          @else
+            <a href="/dashboard" class="nav-link">
+          @endif
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
               Dashboard
-            </p>
-          </a>
+              </p>
+            </a>
           </li>
+
           <li class="nav-item">
+          @if($menu == 'user')
+            <a href="/user" class="nav-link active">
+          @else
             <a href="/user" class="nav-link">
+          @endif
               <i class="nav-icon fas fa-user"></i>
-              <p>User</p>
+              <p>
+              User
+              </p>
             </a>
           </li>
+
           <li class="nav-item">
+          @if($menu == 'lhp')
+            <a href="/lhp" class="nav-link active">
+          @else
             <a href="/lhp" class="nav-link">
+          @endif
               <i class="nav-icon fas fa-file-alt"></i>
-              <p>LHP</p>
+              <p>
+              LHP
+              </p>
             </a>
           </li>
+
           <li class="nav-item">
+          @if($menu == 'temuan')
+            <a href="/temuan" class="nav-link active">
+          @else
             <a href="/temuan" class="nav-link">
+          @endif
               <i class="nav-icon fas fa-search"></i>
-              <p>Temuan</p>
+              <p>
+              Temuan
+              </p>
             </a>
           </li>
           

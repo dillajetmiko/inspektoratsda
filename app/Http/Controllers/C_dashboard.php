@@ -11,12 +11,11 @@ class C_dashboard extends Controller
     public function index()
     {
         // $anggota = DB::table('anggota')->get();
-        // $data = array(
-        //     'menu' => 'data_master',
-        //     'submenu' => 'anggota',
-        //     'anggota' => $anggota
-        // );
+        $data = array(
+            'menu' => 'dashboard',
+            'submenu' => ''
+        );
 
-        return view('dashboard');
+        return view('dashboard',$data);
     }
 }

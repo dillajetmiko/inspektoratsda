@@ -1,11 +1,11 @@
 @extends("layout.mainlayout")
- @section("page_title","Inspektorat || Tambah LHP")
- @section("title","Data LHP")
+@section("page_title","Inspektorat || Tambah LHP")
+@section("title","Data LHP")
 
- @section("breadcrumb")
- <li class="breadcrumb-item"><a href="#">Home</a></li>
- <li class="breadcrumb-item active">Blank Page</li> 
- @endsection
+@section("breadcrumb")
+<li class="breadcrumb-item"><a href="#">Home</a></li>
+<li class="breadcrumb-item active">Blank Page</li> 
+@endsection
 
 @section('custom_css')  
 <!-- DataTables -->
@@ -28,33 +28,34 @@
     </div>
     <div class="card-body">
     <!-- <h1>Tambah Data Temuan</h1> -->
- <form action="/anggota/insertData" method="post">
- <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
- Nomor LHP : <input type="text" class="form-control" name="nomor_lhp"><br>
- Tanggal : <input type="date" class="form-control" name="tanggal_lhp"><br>
- Judul Pemeriksaan : <input type="text" class="form-control" name="judul_pemerikasaan"><br>
- Anggaran : <input type="text" class="form-control" name="anggaran"><br>
- Upload file : <br> 
- <form enctype="multipart/form-data" action="terimaNama.php" method="POST">
-    <!-- MAX_FILE_SIZE must precede the file input field -->
-    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
-    <!-- Name of input element determines name in $_FILES array -->
-    <input name="userfile" type="file" />
-    <input type="submit" value="Send File" />
-</form>
-<br><br>
-<button type="button" class="btn btn-primary">Simpan</button>
+      <form action="/lhp/tambah_lhp" method="post">
+        <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
+        Nomor LHP : <input type="text" class="form-control" name="NOMOR_LHP"><br>
+        Tanggal : <input type="date" class="form-control" name="TANGGAL_LHP"><br>
+        Judul Pemeriksaan : <input type="text" class="form-control" name="JUDUL_PEMERIKSAAN"><br>
+        Anggaran : <input type="text" class="form-control" name="ANGGARAN"><br>
+        Upload file : <br> 
+        <!-- <form enctype="multipart/form-data" action="terimaNama.php" method="POST">
 
- </form>
+            <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
 
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
+            <input name="userfile" type="file" />
+            <input type="submit" value="Send File" />
+        </form> -->
+        <br><br>
+        <button type="submit" class="btn btn-primary">Simpan</button>
 
-        </div>
-        <!-- /.card-footer-->
-</div>
-      <!-- /.card -->
+      </form>
+
+    </div>
+    <!-- /.card-body -->
+
+    <div class="card-footer">
+
+    </div>
+    <!-- /.card-footer-->
+  </div>
+  <!-- /.card -->
 @endsection
 
 @section('custom_script')
