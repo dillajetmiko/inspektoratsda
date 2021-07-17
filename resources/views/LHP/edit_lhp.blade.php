@@ -26,7 +26,7 @@
 	</div>
 	<div class="card-body">
 
-		<form action="/lhp/update_lhp" method="post">
+		<form action="/lhp/update_lhp" method="post">  
 			<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
 
 			</select><br>

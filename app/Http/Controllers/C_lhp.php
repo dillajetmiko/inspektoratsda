@@ -45,7 +45,7 @@ class C_lhp extends Controller
         return redirect('/lhp');
     }
 
-    public function editLHP($NOMOR_LHP)
+    public function editLHP($NOMOR_LHP) 
     {
         $lhp = DB::table('lhp')->where('NOMOR_LHP', $NOMOR_LHP)->get();
         //return view('edit_lhp',['anggota' => $anggota]);
