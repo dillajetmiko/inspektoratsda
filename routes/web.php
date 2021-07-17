@@ -7,6 +7,7 @@ use App\Http\Controllers\C_temuan;
 use App\Http\Controllers\C_dashboard;
 use App\Http\Controllers\C_login;
 use App\Http\Controllers\C_user;
+use App\Http\Controllers\C_cetak;
 
 
 
@@ -22,7 +23,13 @@ use App\Http\Controllers\C_user;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    
+    $data = array(
+        'menu' => 'dashboard',
+        'submenu' => ''
+    );
+
+    return view('dashboard', $data);
 });
 
 Route::get('/login', [C_login::class, 'getLogin']);
@@ -46,4 +53,6 @@ Route::post('/lhp/hapus/{KODE_TEMUAN}', [C_lhp::class, 'hapus']);
 
 Route::get('/user', [C_user::class, 'index']);
 Route::get('/user/insert_user', [C_user::class, 'insertUser']);
+
+Route::get('/cetak', [C_cetak::class, 'index']);
 

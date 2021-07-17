@@ -67,6 +67,19 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+          @if($menu == 'cetak')
+            <a href="/cetak" class="nav-link active">
+          @else
+            <a href="/cetak" class="nav-link">
+          @endif
+              <i class="nav-icon fas fa-search"></i>
+              <p>
+              Cetak
+              </p>
+            </a>
+          </li>
           
           
         </ul>
