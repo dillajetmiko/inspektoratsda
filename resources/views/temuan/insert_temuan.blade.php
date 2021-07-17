@@ -28,7 +28,8 @@
     </div>
     <div class="card-body">
     <!-- <h1>Tambah Data Temuan</h1> -->
- <form action="/anggota/insertData" method="post">
+      
+ <form action="/temuan/tambah_temuan" method="post">
  <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
  Kode Temuan : <input type="text" class="form-control" name="kode_temuan"><br>
  Uraian Temuan : <input type="text" class="form-control" name="uraian_temuan"><br>
@@ -39,18 +40,17 @@
  Tanggal Tindak Lanjut : <input type="date" class="form-control" name="tanggal_tindak_lanjut"><br>
  Nomor LHP : <input type="text" class="form-control" name="nomor_lhp"><br>
  Kerugian : <input type="text" class="form-control" name="kerugian"><br>
- <!-- Status Anggota : <input type="tinyint" class="form-control" name="status_anggota"><br> -->
  Status :<br> 
             <label><input type="radio" name="status" value="0" checked="checked" /> Belum Ditindak Lanjut </label><br>
             <label><input type="radio" name="status" value="1" /> Belum Sesuai Rekomendasi </label><br>
             <label><input type="radio" name="status" value="2" /> Sesuai rekomendasi </label><br><br>
   Hasil Telaah Tindak Lanjut: <input type="text" class="form-control" name="hasil_telaah"><br>
   Jenis Temuan : 
-            <select class="form-control" name="id_bahasa">
+            <select class="form-control" name="kode_jenis_temuan">
             <option value="1">internal</option>
             <option value="2">eksternal</option>
             </select><br>
- <button type="button" class="btn btn-primary">Simpan</button>
+ <button type="submit" class="btn btn-primary">Simpan</button>
  </form>
 
         </div>
