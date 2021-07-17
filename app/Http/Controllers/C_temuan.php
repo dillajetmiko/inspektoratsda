@@ -22,10 +22,11 @@ class C_temuan extends Controller
 
     public function insertTemuan()
     {
-        // $data = array(
-        //     'menu' => 'data_master',
-        //     'submenu' => 'bahasa'
-        // );
+        $data = array(
+            'menu' => 'temuan',
+            'temuan' => $temuan,
+            'submenu' => ''
+        );
         return view('temuan/insert_temuan');
         //return view('tambah_bahasa');     
     }
