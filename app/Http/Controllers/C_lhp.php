@@ -44,5 +44,36 @@ class C_lhp extends Controller
 
         return redirect('/lhp');
     }
+
+    public function editLHP($NOMOR_LHP)
+    {
+        $lhp = DB::table('lhp')->where('NOMOR_LHP', $NOMOR_LHP)->get();
+        //return view('edit_lhp',['anggota' => $anggota]);
+
+        $data = array(
+            'menu' => 'lhp',
+            'lhp' => $lhp,
+            'submenu' => ''
+           
+        );
+        return view('LHP/edit_lhp',$data);
+    }
+
+    public function updateLHP(Request $post)
+    {
+        // update tabel anggota
+        DB::table('lhp')->where('NOMOR_LHP', $post->NOMOR_LHP)->update([
+            'NOMOR_LHP' => $post->NOMOR_LHP,
+            'NIP' => '1',
+            'TANGGAL_LHP' => $post->TANGGAL_LHP,
+            'JUDUL_PEMERIKSAAN' => $post->JUDUL_PEMERIKSAAN,
+            'ANGGARAN' => $post->ANGGARAN,
+        ]);
+
+        //kembali ke halaman data anggota
+        return redirect('/lhp');
+    }
+
+
     
 }

@@ -15,7 +15,7 @@
 <!-- Default box -->
 <div class="card">
 	<div class="card-header">
-		<h3 class="card-title">Title</h3>
+		<h3 class="card-title">Edit Data LHP</h3>
 
 		<div class="card-tools">
 			<button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -26,23 +26,22 @@
 	</div>
 	<div class="card-body">
 
-		<form action="/buku/updateBuku" method="post">
+		<form action="/lhp/update_lhp" method="post">
 			<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
 
 			</select><br>
-			Nomor LHP : <input type="text" class="form-control" name="NOMOR_LHP" value="{{ $LHP[0]->NOMOR_LHP }}"><br>
-            Tanggal : <input type="date" class="form-control" name="TANGGAL_LHP" value="{{ $LHP[0]->TANGGAL_LHP }}"><br>
-            Judul Pemeriksaan : <input type="text" class="form-control" name="JUDUL_PEMERIKSAAN" value="{{ $LHP[0]->JUDUL_PEMERIKSAAN }}"><br>
-			Anggaran: <input type="text" class="form-control" name="ANGGARAN" value="{{ $LHP[0]->ANGGARAN}}"><br>
+			Nomor LHP : <input type="text" class="form-control" name="NOMOR_LHP" value="{{$lhp[0]->NOMOR_LHP}}" readonly><br>
+            Tanggal : <input type="date" class="form-control" name="TANGGAL_LHP" value="{{$lhp[0]->TANGGAL_LHP}}"><br>
+            Judul Pemeriksaan : <input type="text" class="form-control" name="JUDUL_PEMERIKSAAN" value="{{$lhp[0]->JUDUL_PEMERIKSAAN}}"><br>
+			Anggaran: <input type="text" class="form-control" name="ANGGARAN" value="{{$lhp[0]->ANGGARAN}}"><br>
 			Upload file :<br>
-
-			<input type="submit" value="Update">
+            
+        <br><br>
+        <button type="submit" class="btn btn-primary">Update</button>
 		</form>
 	</div>
 	<!-- /.card-body -->
-	<div class="card-footer">
-		Footer
-	</div>
+	
 	<!-- /.card-footer-->
 </div>
 <!-- /.card -->
