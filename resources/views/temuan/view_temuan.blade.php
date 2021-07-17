@@ -53,7 +53,8 @@
                   <th style="text-align:center">Rekomendasi</th>
                   <th style="text-align:center">Nama OPD</th>
                   <th style="text-align:center">Nama Pejabat</th>
-                  <th style="text-align:center">Tanggal</th>
+                  <th style="text-align:center">Tanggal Temuan</th>
+                  <th style="text-align:center">Tanggal Tindak Lanjut</th>
                   <th style="text-align:center">Nomor LHP</th>
                   <th style="text-align:center">Kerugian</th>
                   <th style="text-align:center">Status</th>
