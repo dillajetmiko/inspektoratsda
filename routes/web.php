@@ -46,10 +46,10 @@ Route::post('/lhp/hapus/{NOMOR_LHP}', [C_lhp::class, 'hapus']);
 
 Route::get('/temuan', [C_temuan::class, 'index']);
 Route::get('/temuan/insert_temuan', [C_temuan::class, 'insertTemuan']);
-Route::post('/lhp/tambah_temuan', [C_lhp::class, 'tambahTemuan']);
-Route::post('/lhp/edit_temuan/{KODE_TEMUAN}', [C_lhp::class, 'editTemuan']);
-Route::post('/lhp/update_temuan', [C_lhp::class, 'updateTemuan']);
-Route::post('/lhp/hapus/{KODE_TEMUAN}', [C_lhp::class, 'hapus']);
+Route::post('/temuan/tambah_temuan', [C_temuan::class, 'tambahTemuan']);
+Route::post('/temuan/edit_temuan/{KODE_TEMUAN}', [C_temuan::class, 'editTemuan']);
+Route::post('/temuan/update_temuan', [C_temuan::class, 'updateTemuan']);
+Route::post('/temuan/hapus/{KODE_TEMUAN}', [C_temuan::class, 'hapus']);
 
 Route::get('/user', [C_user::class, 'index']);
 Route::get('/user/insert_user', [C_user::class, 'insertUser']);
