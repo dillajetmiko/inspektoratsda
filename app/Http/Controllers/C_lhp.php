@@ -12,7 +12,7 @@ class C_lhp extends Controller
     {
         $lhp = DB::table('lhp')->get();
         $data = array(
-            'menu' => 'LHP',
+            'menu' => 'lhp',
             'lhp' => $lhp,
             'submenu' => ''
         );
@@ -44,5 +44,5 @@ class C_lhp extends Controller
 
         return redirect('/lhp');
     }
-    
+
 }
