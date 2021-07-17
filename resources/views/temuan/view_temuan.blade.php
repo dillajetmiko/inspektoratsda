@@ -31,8 +31,8 @@
 		<div class="card">
 			<div class="card-header">
 			<!-- <h3 class="card-title">Tambah Data Anggota</h3> -->
-			<a href="/lhp/insert_lhp">
-			<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data LHP</button>
+			<a href="/temuan/insert_temuan">
+			<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data Temuan</button>
 			</a>
 			</div>
 			<!-- /.card-header -->
@@ -72,14 +72,24 @@
 					<td>{{ $data->KODE_REKOMENDASI }}</td>
 					<td>{{ $data->URAIAN_REKOMENDASI }}</td>
 					<td>{{ $data->URAIAN_TINDAK_LANJUT }}</td>
-					<td>{{ $data->KODE_STATUS }}</td>
+				  @if ($data->KODE_STATUS == 1)
+          <td> Belum Ditindak Lanjut</td>
+          @elseif ($data->KODE_STATUS == 2)
+          <td> Belum Sesuai Rekomendasi</td>
+          @elseif ($data->KODE_STATUS == 3)
+          <td> Sesuai Rekomendasi</td>
+          @endif
 					<td>{{ $data->JENIS_PENGAWASAN }}</td>
 					<td>{{ $data->KODE_OPD }}</td>
 					<td>{{ $data->NAMA_PEJABAT }}</td>
 					<td>{{ $data->TANGGAL_TEMUAN }}</td>
 					<td>{{ $data->TANGGAL_TINDAK_LANJUT }}</td>
 					<td>{{ $data->KERUGIAN }}</td>
-					<td>{{ $data->KODE_JENIS_TEMUAN }}</td>
+				  @if ($data->KODE_JENIS_TEMUAN == 1)
+          <td> Internal</td> 
+          @elseif ($data->KODE_JENIS_TEMUAN == 2)
+          <td> Eksternal</td>
+          @endif
 					<td>{{ $data->HASIL_TELAAH }}</td>
 					<td><a href='/temuan/edit_temuan/{{ $data->KODE_TEMUAN }}'>
 					<button> Edit </button>
