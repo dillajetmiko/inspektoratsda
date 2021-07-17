@@ -30,11 +30,11 @@
 			<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
 
 			</select><br>
-			Nomor LHP : <input type="text" class="form-control" name="NOMOR_LHP" value="{{ $buku[0]->judul_buku }}"><br>
-            Tanggal : <input type="text" class="form-control" name="TANGGAL_LHP" value="{{ $buku[0]->tahun_terbit }}"><br>
-            Judul Pemeriksaan : <input type="text" class="form-control" name="JUDUL_PEMERIKSAAN" value="{{ $buku[0]->penulis }}"><br>
-			Anggaran: <input type="text" class="form-control" name="ANGGARAN" value="{{ $buku[0]->cetakan_ke }}"><br>
-			Upload file : <input type="text" class="form-control" name="harga" value="{{ $buku[0]->harga }}"><br>
+			Nomor LHP : <input type="text" class="form-control" name="NOMOR_LHP" value="{{ $LHP[0]->NOMOR_LHP }}"><br>
+            Tanggal : <input type="date" class="form-control" name="TANGGAL_LHP" value="{{ $LHP[0]->TANGGAL_LHP }}"><br>
+            Judul Pemeriksaan : <input type="text" class="form-control" name="JUDUL_PEMERIKSAAN" value="{{ $LHP[0]->JUDUL_PEMERIKSAAN }}"><br>
+			Anggaran: <input type="text" class="form-control" name="ANGGARAN" value="{{ $LHP[0]->ANGGARAN}}"><br>
+			Upload file :<br>
 
 			<input type="submit" value="Update">
 		</form>
