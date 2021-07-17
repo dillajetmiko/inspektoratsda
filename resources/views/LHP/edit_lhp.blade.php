@@ -28,52 +28,14 @@
 
 		<form action="/buku/updateBuku" method="post">
 			<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-			No ISBN  : <input type="text" class="form-control" name="noISBN" value ="{{ $buku[0]->noISBN }}" readonly><br>
-			Bahasa : 
-			<select class="form-control" name="id_bahasa">
-			@foreach ($id as $bahasa)
-			@if ($bahasa->id_bahasa === $buku[0]->id_bahasa)
-			<option value="{{ $bahasa->id_bahasa}}" selected>{{ $bahasa->nama_bahasa}}</option>
-			@else
-			<option value="{{ $bahasa->id_bahasa}}">{{ $bahasa->nama_bahasa}}</option>
-			@endif
-			@endforeach
+
 			</select><br>
-			Penerbit : 
-			<select class="form-control" name="id_penerbit">
-			@foreach ($id2 as $penerbit)
-			@if ($penerbit->id_penerbit === $buku[0]->id_penerbit)
-			<option value="{{ $penerbit->id_penerbit}}" selected>{{ $penerbit->nama_penerbit}}</option>
-			@else
-			<option value="{{ $penerbit->id_penerbit}}">{{ $penerbit->nama_penerbit}}</option>
-			@endif
-			@endforeach
-			</select><br>
-			Jenis Buku : 
-			<select class="form-control" name="id_jenis">
-			@foreach ($id3 as $jenisbuku)
-			@if ($jenisbuku->id_jenis === $buku[0]->id_jenis)
-			<option value="{{ $jenisbuku->id_jenis}}" selected>{{ $jenisbuku->nama_jenisbuku}}</option>
-			@else
-			<option value="{{ $jenisbuku->id_jenis}}">{{ $jenisbuku->nama_jenisbuku}}</option>
-			@endif
-			@endforeach
-			</select><br>
-			Judul Buku : <input type="text" class="form-control" name="judul_buku" value="{{ $buku[0]->judul_buku }}"><br>
-			Tahun Terbit : <input type="text" class="form-control" name="tahun_terbit" value="{{ $buku[0]->tahun_terbit }}"><br>
-			Penulis : <input type="text" class="form-control" name="penulis" value="{{ $buku[0]->penulis }}"><br>
-			Cetakanke : <input type="text" class="form-control" name="cetakan_ke" value="{{ $buku[0]->cetakan_ke }}"><br>
-			Harga : <input type="text" class="form-control" name="harga" value="{{ $buku[0]->harga }}"><br>
-			Jumlah Eksemplar : <input type="text" class="form-control" name="jumlah_eksemplar" value="{{ $buku[0]->jumlah_eksemplar }}"><br>
-			Kategori Buku : <br>
-				@if ($buku[0]->kategori_buku == 1)
-				<label><input type="radio" name="kategori_buku" value="1" checked="checked"/> Non Fiksi </label>
-				<label><input type="radio" name="kategori_buku" value="0" /> Fiksi </label><br>
-				@else
-				<label><input type="radio" name="kategori_buku" value="1" /> Non Fiksi </label>
-				<label><input type="radio" name="kategori_buku" value="0" checked="checked"/>Fiksi </label><br>
-				@endif
-				<br>
+			Nomor LHP : <input type="text" class="form-control" name="NOMOR_LHP" value="{{ $buku[0]->judul_buku }}"><br>
+            Tanggal : <input type="text" class="form-control" name="TANGGAL_LHP" value="{{ $buku[0]->tahun_terbit }}"><br>
+            Judul Pemeriksaan : <input type="text" class="form-control" name="JUDUL_PEMERIKSAAN" value="{{ $buku[0]->penulis }}"><br>
+			Anggaran: <input type="text" class="form-control" name="ANGGARAN" value="{{ $buku[0]->cetakan_ke }}"><br>
+			Upload file : <input type="text" class="form-control" name="harga" value="{{ $buku[0]->harga }}"><br>
+
 			<input type="submit" value="Update">
 		</form>
 	</div>
