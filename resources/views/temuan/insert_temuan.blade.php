@@ -47,7 +47,10 @@
         Uraian Rekomendasi : <input type="text" class="form-control" name="URAIAN_REKOMENDASI"><br>
         Uraian Tindak Lanjut : <input type="text" class="form-control" name="URAIAN_TINDAK_LANJUT"><br>
         Status  : <br>
-                @if ($temuan[0]->KODE_STATUS == 1) 
+                <label><input type="radio" name="status" value="0" checked="checked" /> Belum Ditindak Lanjut </label><br>
+                <label><input type="radio" name="status" value="1" /> Belum Sesuai Rekomendasi </label><br>
+                <label><input type="radio" name="status" value="2" /> Sesuai rekomendasi </label><br><br>        
+        <!-- @if ($temuan[0]->KODE_STATUS == 1) 
                 <label><input type="radio" name="KODE_STATUS" value="1" checked="checked"/> Belum Ditindak Lanjut </label><br>
                 <label><input type="radio" name="KODE_STATUS" value="2" /> Belum Sesuai Rekomendasi </label><br>
                 <label><input type="radio" name="KODE_STATUS" value="3" /> Sesuai Rekomendasi </label><br>
@@ -59,7 +62,7 @@
                 <label><input type="radio" name="KODE_STATUS" value="1" /> Belum Ditindak Lanjut </label><br>
                 <label><input type="radio" name="KODE_STATUS" value="2" /> Belum Sesuai Rekomendasi </label><br>
                 <label><input type="radio" name="KODE_STATUS" value="3" checked="checked"/> Sesuai Rekomendasi </label><br>
-                @endif
+                @endif -->
                 <br>
         Jenis Pengawasan : <input type="text" class="form-control" name="JENIS_PENGAWASAN"><br>
         Nama OPD: 
@@ -77,7 +80,10 @@
         Tanggal Tindak Lanjut : <input type="date" class="form-control" name="TANGGAL_TINDAK_LANJUT"><br>
         Kerugian: <input type="text" class="form-control" name="KERUGIAN"><br>
         Jenis Temuan : 
-        <select class="form-control" name="KODE_JENIS_TEMUAN">
+                <select class="form-control" name="kode_jenis_temuan">
+                <option value="1">internal</option>
+                <option value="2">eksternal</option>
+        <!-- <select class="form-control" name="KODE_JENIS_TEMUAN">
                 @foreach ($id3 as $JENIS_TEMUAN)
                 @if ($JENIS_TEMUAN->KODE_JENIS_TEMUAN === $temuan[0]->KODE_JENIS_TEMUAN)
                 <option value="{{ $JENIS_TEMUAN->KODE_JENIS_TEMUAN}}" selected>{{ $JENIS_TEMUAN->NAMA_JENIS_TEMUAN}}</option>
@@ -85,7 +91,7 @@
                 <option value="{{ $JENIS_TEMUAN->KODE_JENIS_TEMUAN}}">{{ $JENIS_TEMUAN->NAMA_JENIS_TEMUAN}}</option>
                 @endif
                 @endforeach
-        </select> <br>
+        </select> <br> -->
         Hasil Telaah : <input type="text" class="form-control" name="HASIL_TELAAH"><br>	
 
 <!--         
