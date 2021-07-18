@@ -74,7 +74,7 @@
           @else
             <a href="/cetak" class="nav-link">
           @endif
-              <i class="nav-icon fas fa-search"></i>
+              <i class="nav-icon fas fa-print"></i>
               <p>
               Cetak
               </p>

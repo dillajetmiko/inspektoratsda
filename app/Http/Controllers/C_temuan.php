@@ -23,13 +23,20 @@ class C_temuan extends Controller
     public function insertTemuan()
     {
         $temuan = DB::table('temuan')->get();
+        $id = DB::table('opd')->get();
+        $id2 = DB::table('lhp')->get();
+        $id3 = DB::table('jenis_temuan')->get();
+
         $data = array(
             'menu' => 'temuan',
             'temuan' => $temuan,
+            'id' => $id,
+            'id2' => $id2,
+            'id3' => $id3,
             'submenu' => ''
         );
         return view('temuan/insert_temuan',$data);
-        //return view('tambah_bahasa');     
+          
     }
 
     public function tambahTemuan(Request $post)
@@ -44,7 +51,7 @@ class C_temuan extends Controller
             'URAIAN_TINDAK_LANJUT' => $post->URAIAN_TINDAK_LANJUT,
             'KODE_STATUS' => $post->KODE_STATUS,
             'JENIS_PENGAWASAN' => $post->JENIS_PENGAWASAN,
-            'KODE_OPD' => $post->NAMA_OPD,
+            'KODE_OPD' => $post->KODE_OPD,
             'NAMA_PEJABAT' => $post->NAMA_PEJABAT,
             'TANGGAL_TEMUAN' => $post->TANGGAL_TEMUAN,
             'TANGGAL_TINDAK_LANJUT' => $post->TANGGAL_TINDAK_LANJUT,
@@ -57,27 +64,7 @@ class C_temuan extends Controller
         return redirect('/temuan');
     }
 
-    // public function editbuku($noISBN)
-    // {
-    //     $buku = DB::table('buku')->where('noISBN', $noISBN)->get();
-    //     $id = DB::table('bahasa')->get();
-    //     $id2 = DB::table('penerbit')->get();
-    //     $id3 = DB::table('jenisbuku')->get();
-    //     //return view('edit_buku',['buku' => $buku]);
-
-    //     $data = array(
-    //         'menu' => 'Buku',
-    //         'buku' => $buku,
-    //         'id' => $id,
-    //         'id2' => $id2,
-    //         'id3' => $id3,
-    //         'submenu' => '',
-    //     );
-    //     return view('buku/edit_buku',$data);
-    // }
-
-
-    public function editTemuan($KODE_TEMUAN) 
+      public function editTemuan($KODE_TEMUAN) 
     {
         $temuan = DB::table('temuan')->where('KODE_TEMUAN', $KODE_TEMUAN)->get();
         $id = DB::table('opd')->get();

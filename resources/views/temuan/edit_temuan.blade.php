@@ -29,7 +29,7 @@
 		<form action="/temuan/update_temuan" method="post">
 			<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
 			</select><br>
-			Kode Temuan : <input type="text" class="form-control" name="KODE_TEMUAN" value="{{ $temuan[0]->KODE_TEMUAN }}"><br>
+			Kode Temuan : <input type="text" class="form-control" name="KODE_TEMUAN" value="{{ $temuan[0]->KODE_TEMUAN }}" readonly><br>
 
             Nomor LHP : 
                 <select class="form-control" name="NOMOR_LHP">

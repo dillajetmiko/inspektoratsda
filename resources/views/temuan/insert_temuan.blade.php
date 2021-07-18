@@ -32,7 +32,14 @@
  <form action="/temuan/tambah_temuan" method="post">
  <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
  Kode Temuan : <input type="text" class="form-control" name="KODE_TEMUAN"><br>
- No LHP : <input type="text" class="form-control" name="NOMOR_LHP"><br>
+ 
+ No LHP : 
+            <select class="form-control" name="NOMOR_LHP">
+            @foreach ($id2 as $lhp)
+            <option value="{{ $lhp->NOMOR_LHP}}">{{ $lhp->NOMOR_LHP}}</option>
+            @endforeach
+            </select><br>
+
  Uraian Temuan : <input type="text" class="form-control" name="URAIAN_TEMUAN"><br>
  Kode Rekomendasi : <input type="text" class="form-control" name="KODE_REKOMENDASI"><br>
  Uraian Rekomendasi : <input type="text" class="form-control" name="URAIAN_REKOMENDASI"><br>
@@ -42,7 +49,14 @@
             <label><input type="radio" name="KODE_STATUS" value="2" /> Belum Sesuai Rekomendasi </label><br>
             <label><input type="radio" name="KODE_STATUS" value="3" /> Sesuai rekomendasi </label><br><br>
  Jenis Pengawasan : <input type="text" class="form-control" name="JENIS_PENGAWASAN"><br>
- Nama OPD : <input type="text" class="form-control" name="KODE_OPD"><br>
+
+ Nama OPD : 
+            <select class="form-control" name="KODE_OPD">
+            @foreach ($id as $opd)
+            <option value="{{ $opd->KODE_OPD}}">{{ $opd->NAMA_OPD}}</option>
+            @endforeach
+            </select><br>
+
  Nama Pejabat : <input type="text" class="form-control" name="NAMA_PEJABAT"><br>
  Tanggal Temuan : <input type="date" class="form-control" name="TANGGAL_TEMUAN"><br>
  Tanggal Tindak Lanjut : <input type="date" class="form-control" name="TANGGAL_TINDAK_LANJUT"><br>
