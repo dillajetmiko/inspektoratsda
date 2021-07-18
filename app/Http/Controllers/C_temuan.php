@@ -121,5 +121,11 @@ class C_temuan extends Controller
         //kembali ke halaman data anggota
         return redirect('/temuan');
     }
+    
+    public function hapus($KODE_TEMUAN)
+    {
+    	DB::table('temuan')->where('KODE_TEMUAN',$KODE_TEMUAN)->delete();
+	    return redirect('/temuan');
+    }
 
 }

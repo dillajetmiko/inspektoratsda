@@ -74,4 +74,9 @@ class C_lhp extends Controller
         return redirect('/lhp');
     }
 
+    public function hapus($NOMOR_LHP)
+    {
+    	DB::table('lhp')->where('NOMOR_LHP',$NOMOR_LHP)->delete();
+	    return redirect('/lhp');
+    }
 }
