@@ -37,6 +37,7 @@
 				Judul Pemeriksaan<br>
 				Jenis Pengawasan<br>
 				Tanggal LHP<br>
+				<br>
 			<table id="example1" class="table table-bordered table-striped">
         <thead>
           <tr>		

@@ -41,9 +41,9 @@
 				<thead>
 				<tr>
 				<th style="text-align:center">NIP</th>
-				<th style="text-align:center">NAMA</th>
-				<th style="text-align:center">JABATAN</th>
-				<th style="text-align:center">PANGKAT</th>
+				<th style="text-align:center">Nama</th>
+				<th style="text-align:center">Jabatan</th>
+				<th style="text-align:center">Pangkat</th>
 				<th style="text-align:center">Aksi</th>
 				</tr>
 				</thead>
