@@ -22,14 +22,21 @@ class C_temuan extends Controller
 
     public function insertTemuan()
     {
-        $temuan = DB::table('temuan')->get();
+        $temuan = DB::table('temuan')->where('KODE_TEMUAN', $KODE_TEMUAN)->get();
+        $id = DB::table('opd')->get();
+        $id2 = DB::table('lhp')->get();
+        $id3 = DB::table('jenis_temuan')->get();
+    
         $data = array(
             'menu' => 'temuan',
             'temuan' => $temuan,
+            'id' => $id,
+            'id2' => $id2,
+            'id3' => $id3,
             'submenu' => ''
+           
         );
         return view('temuan/insert_temuan',$data);
-        //return view('tambah_bahasa');     
     }
 
     public function tambahTemuan(Request $post)
