@@ -80,11 +80,11 @@
 					<td> Sesuai Rekomendasi</td>
 					@endif
 					<td>{{ $data->JENIS_PENGAWASAN }}</td>
-          @foreach($id as $OPD)
-          @if ($OPD->KODE_OPD === $data->KODE_OPD)
-          <td>{{$OPD->NAMA_OPD}}</td>
-          @endif
-          @endforeach 
+					@foreach($id as $OPD)
+					@if ($OPD->KODE_OPD === $data->KODE_OPD)
+					<td>{{$OPD->NAMA_OPD}}</td>
+					@endif
+					@endforeach 
 					<td>{{ $data->NAMA_PEJABAT }}</td>
 					<td>{{ $data->TANGGAL_TEMUAN }}</td>
 					<td>{{ $data->TANGGAL_TINDAK_LANJUT }}</td>
@@ -96,10 +96,10 @@
 					@endif
 					<td>{{ $data->HASIL_TELAAH }}</td>
 					<td><a href='/temuan/edit_temuan/{{ $data->KODE_TEMUAN }}'>
-					<button> Edit </button>
+					<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 					</a>
 					<a href='/temuan/hapus/{{ $data->KODE_TEMUAN }}'>
-					<button> Hapus </button> 
+					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 					</a>
 					</td> 
                      

@@ -59,10 +59,10 @@
 					<td>{{ $data->ANGGARAN }}</td>
 					<td>{{ $data->UPLOAD_FILE }}</td>
 					<td><a href='/lhp/edit_lhp/{{ $data->NOMOR_LHP }}'>
-					<button> Edit </button>
+					<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 					</a>
 					<a href='/lhp/hapus/{{ $data->NOMOR_LHP }}'>
-					<button> Hapus </button> 
+					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 					</a>
 					</td>             
 				</tr>
