@@ -11,9 +11,11 @@ class C_temuan extends Controller
     public function index()
     {
         $temuan = DB::table('temuan')->get();
+        $id = DB::table('opd')->get();
         $data = array(
             'menu' => 'temuan',
             'temuan' => $temuan,
+            'id' => $id,
             'submenu' => ''
         );
 
