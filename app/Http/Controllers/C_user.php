@@ -29,4 +29,10 @@ class C_user extends Controller
         return view('user/insert_user');
         //return view('tambah_bahasa');     
     }
+
+    public function hapus($NIP)
+    {
+    	DB::table('user')->where('NIP',$NIP)->delete();
+	    return redirect('/user');
+    }
 }

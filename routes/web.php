@@ -53,6 +53,7 @@ Route::get('/temuan/hapus/{KODE_TEMUAN}', [C_temuan::class, 'hapus']);
 
 Route::get('/user', [C_user::class, 'index']);
 Route::get('/user/insert_user', [C_user::class, 'insertUser']);
+Route::get('/user/hapus/{NIP}', [C_user::class, 'hapus']);
 
 Route::get('/cetak', [C_cetak::class, 'index']);
 

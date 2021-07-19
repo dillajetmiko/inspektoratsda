@@ -44,7 +44,7 @@
 				<th style="text-align:center">Nama</th>
 				<th style="text-align:center">Jabatan</th>
 				<th style="text-align:center">Pangkat</th>
-				<th style="text-align:center">Aksi</th>
+				<th style="text-align:center" width="15%">Aksi</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -55,10 +55,10 @@
 					<td>{{ $data->JABATAN }}</td>
 					<td>{{ $data->PANGKAT }}</td>
 					<td><a href='/user/edit_user/{{ $data->NIP }}'>
-					<button> Edit </button>
+					<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 					</a>
 					<a href='/user/hapus/{{ $data->NIP }}'>
-					<button> Hapus </button> 
+					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 					</a>
 					</td>             
 				</tr>
