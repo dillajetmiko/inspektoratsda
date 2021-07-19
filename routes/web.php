@@ -35,6 +35,9 @@ Route::get('/', function () {
 Route::get('/login', [C_login::class, 'getLogin']);
 Route::post('/postLogin', 'C_login@postLogin');
 
+Route::get('/login1', [C_login::class, 'getLogin1']);
+Route::post('/postLogin1', 'C_login@postLogin1');
+
 Route::get('/dashboard', [C_dashboard::class, 'index']);
 
 Route::get('/lhp', [C_lhp::class, 'index']);

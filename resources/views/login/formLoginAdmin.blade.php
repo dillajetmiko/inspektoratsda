@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('asset/plugins/css/fontawesome-free/css/all.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('asset/plugins/fontawesome-free/css/all.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- icheck bootstrap -->
@@ -21,7 +21,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Login</b> </a>
+    <a href="../../index2.html"><b>Log in</b> Admin</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -37,7 +37,7 @@
       <form action="{{url(action('C_login@postLogin'))}}" method="post">
       <input type = "hidden" name = "_token" value = "<?php echo csrf_token()?>">
         <div class="input-group mb-3">
-          <input type="text" name="emailusername" class="form-control" placeholder="NIP">
+          <input type="text" name="emailusername" class="form-control" placeholder="Email atau Username">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -68,21 +68,15 @@
           <!-- /.col -->
         </div>
       </form>
+
       <div class="social-auth-links text-center mb-3">
         <p>-  -</p>
-        <a href="/login" class="btn btn-block btn-primary">
-          Login Admin
+        <a href="/login1" class="btn btn-block btn-primary">
+          Login Anggota
         </a>
       </div>
       <!-- /.social-auth-links -->
 
-<!-- /.login-box -->
-
-    </div>
-    <!-- /.login-card-body -->
-  </div>
-</div>
-<!-- /.login-box -->
 
 <!-- jQuery -->
 <script src="{{ asset('asset/plugins/jquery/jquery.min.js') }}"></script>
@@ -90,6 +84,5 @@
 <script src="{{ asset('asset/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('asset/dist/js/adminlte.min.js') }}"></script>
-
 </body>
 </html>
