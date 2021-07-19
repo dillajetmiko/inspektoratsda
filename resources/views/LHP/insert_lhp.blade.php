@@ -34,7 +34,21 @@
         Tanggal : <input type="date" class="form-control" name="TANGGAL_LHP"><br>
         Judul Pemeriksaan : <input type="text" class="form-control" name="JUDUL_PEMERIKSAAN"><br>
         Anggaran : <input type="text" class="form-control" name="ANGGARAN"><br>
-        Upload file : <br> 
+        <!-- Upload file : <br>  -->
+
+        <div class="form-group">
+                    <label for="exampleInputFile">File input</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div>
+                    </div>
+                  </div>
+
         <!-- <form enctype="multipart/form-data" action="terimaNama.php" method="POST">
 
             <input type="hidden" name="MAX_FILE_SIZE" value="30000" />

@@ -28,14 +28,14 @@
     </div>
     <div class="card-body">
     <!-- <h1>Tambah Data User</h1> -->
- <form action="/anggota/insertData" method="post">
+ <form action="/user/tambah_user" method="post">
  <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
- NIP : <input type="text" class="form-control" name="kode_temuan"><br>
- Nama : <input type="text" class="form-control" name="uraian_temuan"><br>
- Password : <input type="text" class="form-control" name="uraian_temuan"><br>
- Jabatan : <input type="text" class="form-control" name="rekomendasi"><br>
- Pangkat : <input type="text" class="form-control" name="nama_opd"><br> 
- <button type="button" class="btn btn-primary">Simpan</button>
+ NIP : <input type="text" class="form-control" name="NIP"><br>
+ Nama : <input type="text" class="form-control" name="NAMA"><br>
+ Password : <input type="password" class="form-control" name="PASSWORD"><br>
+ Jabatan : <input type="text" class="form-control" name="JABATAN"><br>
+ Pangkat : <input type="text" class="form-control" name="PANGKAT"><br> 
+ <button type="submit" class="btn btn-primary">Simpan</button>
  </form>
 
         </div>
