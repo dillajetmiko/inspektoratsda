@@ -23,7 +23,7 @@ class C_login extends Controller
     public function getLogin1()
     {
         $data = ['name' => ''];
-        return view('login.formLogin',$data);
+        return view('login.formLoginAdmin',$data);
     }
 
     public function postLogin(Request $request)
