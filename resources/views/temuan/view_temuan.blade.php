@@ -52,7 +52,7 @@
             <th rowspan="2" scope="rowgroup" style="text-align:center">Kerugian</th>
             <th rowspan="2" scope="rowgroup" style="text-align:center">Jenis Temuan</th>
             <th rowspan="2" scope="rowgroup" style="text-align:center">Hasil Telaah</th>
-            <th rowspan="2" scope="rowgroup" style="text-align:center">Action</th>
+            <th rowspan="2" scope="rowgroup" style="text-align:center">Aksi</th>
           </tr>
           <tr>
             <th style="text-align:center">Kode</th>

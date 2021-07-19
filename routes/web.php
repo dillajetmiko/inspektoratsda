@@ -53,6 +53,10 @@ Route::get('/temuan/hapus/{KODE_TEMUAN}', [C_temuan::class, 'hapus']);
 
 Route::get('/user', [C_user::class, 'index']);
 Route::get('/user/insert_user', [C_user::class, 'insertUser']);
+Route::post('/user/tambah_user', [C_user::class, 'tambahUser']);
+Route::get('/user/edit_user/{NIP}', [C_user::class, 'editUser']);
+Route::post('/user/update_user', [C_user::class, 'updateUser']);
+Route::get('/user/hapus/{NIP}', [C_user::class, 'hapus']);
 
 Route::get('/cetak', [C_cetak::class, 'index']);
 

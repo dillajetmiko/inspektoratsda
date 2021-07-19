@@ -46,7 +46,7 @@
 				<th style="text-align:center">Judul Pemeriksaan</th>
 				<th style="text-align:center">Anggaran</th>
 				<th style="text-align:center">Upload File</th>
-				<th style="text-align:center">Aksi</th>
+				<th style="text-align:center" width="15%">Aksi</th>
 				</tr>
 				</thead>
 				<tbody>
