@@ -34,11 +34,22 @@ class C_lhp extends Controller
 
     public function tambahLHP(Request $post)
     {
+            // Validation
+        $post->validate([
+            'file' => 'required|mimes:png,jpg,jpeg,csv,txt,pdf|max:2048'
+        ]); 
+
+        $name = $post->file('file')->getClientOriginalName();
+
+        $path = $post->file('file')->store('public/files');  
+ 
+ 
         DB::table('lhp')->insert([
             'NOMOR_LHP' => $post->NOMOR_LHP,
             'NIP' => '1',
             'TANGGAL_LHP' => $post->TANGGAL_LHP,
             'JUDUL_PEMERIKSAAN' => $post->JUDUL_PEMERIKSAAN,
+            'UPLOAD_FILE' => $path,
             'ANGGARAN' => $post->ANGGARAN,
         ]);
 

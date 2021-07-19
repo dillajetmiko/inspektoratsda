@@ -61,8 +61,8 @@
 				<tbody>		
         @foreach($cetak as $data)
 				<tr>
-					<td>{{ $data->KODE_TEMUAN }}</td>
 					<td>{{ $data->NOMOR_LHP }}</td>
+					<td>{{ $data->KODE_TEMUAN }}</td>
 					<td>{{ $data->URAIAN_TEMUAN }}</td>
 					<td>{{ $data->KODE_REKOMENDASI }}</td>
 					<td>{{ $data->URAIAN_REKOMENDASI }}</td>

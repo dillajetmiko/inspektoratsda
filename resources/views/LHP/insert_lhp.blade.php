@@ -28,13 +28,45 @@
     </div>
     <div class="card-body">
     <!-- <h1>Tambah Data Temuan</h1> -->
-      <form action="/lhp/tambah_lhp" method="post">
+      <form action="/lhp/tambah_lhp" method="post" enctype="multipart/form-data">
         <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
         Nomor LHP : <input type="text" class="form-control" name="NOMOR_LHP"><br>
         Tanggal : <input type="date" class="form-control" name="TANGGAL_LHP"><br>
         Judul Pemeriksaan : <input type="text" class="form-control" name="JUDUL_PEMERIKSAAN"><br>
         Anggaran : <input type="text" class="form-control" name="ANGGARAN"><br>
-        Upload file : <br> 
+        Upload file : 
+        <!-- <div class="form-group">
+          <label for="exampleInputFile">File input</label>
+          <div class="input-group">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="file">
+              <label class="custom-file-label" for="file">Choose file</label>
+            </div>
+            <div class="input-group-append">
+              <span class="input-group-text" id="submit">Upload</span>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">File <span class="required">*</span></label>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+
+            <input type='file' name='file' class="form-control">
+            <!-- <span><input type="submit" name="submit" value='Submit' class='btn btn-success'></span> -->
+
+            @if ($errors->has('file'))
+              <span class="errormsg text-danger">{{ $errors->first('file') }}</span>
+            @endif
+          </div>
+        </div>
+
+        <!-- <div class="form-group">
+          <div class="col-md-6">
+            <input type="submit" name="submit" value='Submit' class='btn btn-success'>
+          </div>
+        </div> -->
+        <br> 
         <!-- <form enctype="multipart/form-data" action="terimaNama.php" method="POST">
 
             <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
