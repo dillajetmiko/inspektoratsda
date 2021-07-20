@@ -57,7 +57,15 @@
 					<td>{{ $data->TANGGAL_LHP }}</td>
 					<td>{{ $data->JUDUL_PEMERIKSAAN }}</td>
 					<td>{{ $data->ANGGARAN }}</td>
-					<td>{{ $data->UPLOAD_FILE }}</td>
+					<td>
+					@if ($data->UPLOAD_FILE == null)
+					Tidak ada file
+					@else
+					<a href="/filedownload/{{ $data->NOMOR_LHP }}" class='btn btn-ghost-info'>
+						<i class="fa fa-download"></i> Download
+					</a>
+					@endif
+					</td>
 					<td><a href='/lhp/edit_lhp/{{ $data->NOMOR_LHP }}'>
 					<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 					</a>

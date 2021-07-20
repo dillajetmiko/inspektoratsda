@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class C_lhp extends Controller
 {
@@ -20,6 +21,29 @@ class C_lhp extends Controller
         return view('LHP/view_lhp',$data);
     }
 
+    public function downloadbackup($UPLOAD_FILE)
+    {
+        $file = base64_decode($UPLOAD_FILE);
+        $path=storage_path('app/'.$file);
+        return response()->download($path);
+    }
+
+    public function download($NOMOR_LHP)
+    {
+        $lhp = DB::table('lhp')->where('NOMOR_LHP', $NOMOR_LHP)->get();
+        // dd($lhp);
+        // dd($lhp[0]);
+        // $file = base64_decode($UPLOAD_FILE);
+        $path=storage_path('app/'.$lhp[0]->UPLOAD_FILE);
+        return response()->download($path);
+    }
+
+    public function download1()
+    {
+        $path=storage_path('file.jpg');
+        return response()->download($path);
+    }
+
     public function insertLHP()
     {
         $lhp = DB::table('lhp')->get();
@@ -33,16 +57,18 @@ class C_lhp extends Controller
     }
 
     public function tambahLHP(Request $post)
-    {
-            // Validation
+    {  
+        // Validation
         $post->validate([
             'file' => 'required|mimes:png,jpg,jpeg,csv,txt,pdf|max:2048'
         ]); 
 
-        $name = $post->file('file')->getClientOriginalName();
+        if($post->file('file')) { 
+            $name = $post->file('file')->getClientOriginalName();
 
-        $path = $post->file('file')->store('public/files');  
- 
+            // $path = $post->file('file')->store('public/files');  
+            $path = $post->file('file')->storeAs('public/files',$name);  
+        }
  
         DB::table('lhp')->insert([
             'NOMOR_LHP' => $post->NOMOR_LHP,
@@ -59,7 +85,6 @@ class C_lhp extends Controller
     public function editLHP($NOMOR_LHP) 
     {
         $lhp = DB::table('lhp')->where('NOMOR_LHP', $NOMOR_LHP)->get();
-        //return view('edit_lhp',['anggota' => $anggota]);
 
         $data = array(
             'menu' => 'lhp',
@@ -72,7 +97,6 @@ class C_lhp extends Controller
 
     public function updateLHP(Request $post)
     {
-        // update tabel anggota
         DB::table('lhp')->where('NOMOR_LHP', $post->NOMOR_LHP)->update([
             'NOMOR_LHP' => $post->NOMOR_LHP,
             'NIP' => '1',
@@ -81,7 +105,6 @@ class C_lhp extends Controller
             'ANGGARAN' => $post->ANGGARAN,
         ]);
 
-        //kembali ke halaman data anggota
         return redirect('/lhp');
     }
 
