@@ -51,7 +51,7 @@
 
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">File <span class="required">*</span></label>
-          <div class="col-md-6 col-sm-6 col-xs-12">
+          <!-- <div class="col-md-6 col-sm-6 col-xs-12"> -->
 
             <input type='file' name='file' class="form-control">
             <!-- <span><input type="submit" name="submit" value='Submit' class='btn btn-success'></span> -->
@@ -60,15 +60,15 @@
               <span class="errormsg text-danger">{{ $errors->first('file') }}</span>
             @endif
           </div>
-        </div>
-
+        <!-- </div> -->
+        <!-- </div> -->
         <!-- <div class="form-group">
           <div class="col-md-6">
             <input type="submit" name="submit" value='Submit' class='btn btn-success'>
           </div>
         </div> -->
         <br> 
-
+        <button type="submit" class="btn btn-primary">Simpan</button>
         <!-- <form enctype="multipart/form-data" action="terimaNama.php" method="POST">
 
             <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
@@ -77,18 +77,19 @@
             <input type="submit" value="Send File" />
         </form> -->
         <br><br>
-        <button type="submit" class="btn btn-primary">Simpan</button>
-
+        <!-- <button type="submit" class="btn btn-primary">Simpan</button> -->
+        </div>
       </form>
 
-    </div>
+    <!-- </div> -->
     <!-- /.card-body -->
 
     <div class="card-footer">
 
     </div>
     <!-- /.card-footer-->
-  </div>
+  <!-- </div> -->
+  <!-- </div> -->
   <!-- /.card -->
 @endsection
 
