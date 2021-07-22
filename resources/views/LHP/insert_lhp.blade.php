@@ -60,25 +60,10 @@
               <span class="errormsg text-danger">{{ $errors->first('file') }}</span>
             @endif
           </div>
-        <!-- </div> -->
-        <!-- </div> -->
-        <!-- <div class="form-group">
-          <div class="col-md-6">
-            <input type="submit" name="submit" value='Submit' class='btn btn-success'>
-          </div>
-        </div> -->
-        <br> 
-        <button type="submit" class="btn btn-primary">Simpan</button>
-        <!-- <form enctype="multipart/form-data" action="terimaNama.php" method="POST">
-
-            <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
-
-            <input name="userfile" type="file" />
-            <input type="submit" value="Send File" />
-        </form> -->
-        <br><br>
-        <!-- <button type="submit" class="btn btn-primary">Simpan</button> -->
-        </div>
+            <br> 
+         <button type="submit" class="btn btn-primary">Simpan</button>
+            <br><br>
+         </div>
       </form>
 
     <!-- </div> -->
