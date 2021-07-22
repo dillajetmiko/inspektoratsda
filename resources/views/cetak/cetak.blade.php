@@ -19,7 +19,7 @@
 <!-- Default box -->
 <div class="card">    
   <div class="card-header">
-	  <h3 class="card-title"> DATA CETAK</h3>
+	  <!-- <h3 class="card-title"> DATA CETAK</h3> -->
 	  <div class="card-tools">
 		  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
 			<i class="fas fa-minus"></i></button>
@@ -35,7 +35,6 @@
 			<!-- /.card-header -->
 			<div class="card-body">
 				Judul Pemeriksaan<br>
-				Jenis Pengawasan<br>
 				Tanggal LHP<br>
 				<br>
 			<table id="example1" class="table table-bordered table-striped">
@@ -67,10 +66,20 @@
 					<td>{{ $data->KODE_REKOMENDASI }}</td>
 					<td>{{ $data->URAIAN_REKOMENDASI }}</td>
 					<td>{{ $data->URAIAN_TINDAK_LANJUT }}</td>
-					<td>{{ $data->KODE_STATUS }}</td>
+					@if ($data->KODE_STATUS == 1)
+					<td> Belum Ditindak Lanjut</td>
+					@elseif ($data->KODE_STATUS == 2)
+					<td> Belum Sesuai Rekomendasi</td>
+					@elseif ($data->KODE_STATUS == 3)
+					<td> Sesuai Rekomendasi</td>
+					@endif
 					<td>{{ $data->TANGGAL_TINDAK_LANJUT }}</td>
 					<td>{{ $data->KERUGIAN }}</td>
-					<td>{{ $data->KODE_OPD }}</td>
+					@foreach($id as $OPD)
+					@if ($OPD->KODE_OPD === $data->KODE_OPD)
+					<td>{{$OPD->NAMA_OPD}}</td>
+					@endif
+					@endforeach 
 				</tr>
 				@endforeach
 				</tbody>

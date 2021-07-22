@@ -1,11 +1,12 @@
 @extends("layout.mainlayout")
- @section("page_title","Inspektorat || Tambah Data Temuan")
- <!-- @section("title","Data Temuan") -->
+@section("page_title","Inspektorat || Tambah Data Temuan")
+@section("title","Data Temuan")
 
- @section("breadcrumb")
- <li class="breadcrumb-item"><a href="#">Home</a></li>
- <li class="breadcrumb-item active">Blank Page</li> 
- @endsection
+@section("breadcrumb")
+<li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+<li class="breadcrumb-item"><a href="/temuan">Temuan</a></li>
+<li class="breadcrumb-item active">Tambah Temuan</li> 
+@endsection
 
 @section('custom_css')  
 <!-- DataTables -->
@@ -29,55 +30,56 @@
     <div class="card-body">
     <!-- <h1>Tambah Data Temuan</h1> -->
       
- <form action="/temuan/tambah_temuan" method="post">
- <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
- Kode Temuan : <input type="text" class="form-control" name="KODE_TEMUAN"><br>
- 
- No LHP : 
+        <form action="/temuan/tambah_temuan" method="post">
+        <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
+        Kode Temuan : <input type="text" class="form-control" name="KODE_TEMUAN"><br>
+        
+        No LHP : 
             <select class="form-control" name="NOMOR_LHP">
             @foreach ($id2 as $lhp)
             <option value="{{ $lhp->NOMOR_LHP}}">{{ $lhp->NOMOR_LHP}}</option>
             @endforeach
             </select><br>
 
- Uraian Temuan : <input type="text" class="form-control" name="URAIAN_TEMUAN"><br>
- Kode Rekomendasi : <input type="text" class="form-control" name="KODE_REKOMENDASI"><br>
- Uraian Rekomendasi : <input type="text" class="form-control" name="URAIAN_REKOMENDASI"><br>
- Uraian Tindak Lanjut : <input type="text" class="form-control" name="URAIAN_TINDAK_LANJUT"><br>
- Status Tindak Lanjut :<br> 
+        Uraian Temuan : <input type="text" class="form-control" name="URAIAN_TEMUAN"><br>
+        Kode Rekomendasi : <input type="text" class="form-control" name="KODE_REKOMENDASI"><br>
+        Uraian Rekomendasi : <input type="text" class="form-control" name="URAIAN_REKOMENDASI"><br>
+        Uraian Tindak Lanjut : <input type="text" class="form-control" name="URAIAN_TINDAK_LANJUT"><br>
+        Status Tindak Lanjut :<br> 
             <label><input type="radio" name="KODE_STATUS" value="1" checked="checked" /> Belum Ditindak Lanjut </label><br>
             <label><input type="radio" name="KODE_STATUS" value="2" /> Belum Sesuai Rekomendasi </label><br>
             <label><input type="radio" name="KODE_STATUS" value="3" /> Sesuai rekomendasi </label><br><br>
- Jenis Pengawasan : <input type="text" class="form-control" name="JENIS_PENGAWASAN"><br>
+        Jenis Pengawasan : <input type="text" class="form-control" name="JENIS_PENGAWASAN"><br>
 
- Nama OPD : 
+        Nama OPD : 
             <select class="form-control" name="KODE_OPD">
             @foreach ($id as $opd)
             <option value="{{ $opd->KODE_OPD}}">{{ $opd->NAMA_OPD}}</option>
             @endforeach
             </select><br>
 
- Nama Pejabat : <input type="text" class="form-control" name="NAMA_PEJABAT"><br>
- Tanggal Temuan : <input type="date" class="form-control" name="TANGGAL_TEMUAN"><br>
- Tanggal Tindak Lanjut : <input type="date" class="form-control" name="TANGGAL_TINDAK_LANJUT"><br>
- Kerugian : <input type="text" class="form-control" name="KERUGIAN"><br>
- Jenis Temuan : 
+        Nama Pejabat : <input type="text" class="form-control" name="NAMA_PEJABAT"><br>
+        Tanggal Temuan : <input type="date" class="form-control" name="TANGGAL_TEMUAN"><br>
+        Tanggal Tindak Lanjut : <input type="date" class="form-control" name="TANGGAL_TINDAK_LANJUT"><br>
+        Kerugian : <input type="text" class="form-control" name="KERUGIAN"><br>
+        Jenis Temuan : 
             <select class="form-control" name="KODE_JENIS_TEMUAN">
-            <option value="1">internal</option>
-            <option value="2">eksternal</option>
+            <option value="1">Internal</option>
+            <option value="2">Eksternal</option>
             </select><br>
- Hasil Telaah Tindak Lanjut: <input type="text" class="form-control" name="HASIL_TELAAH"><br>
- <button type="submit" class="btn btn-primary">Simpan</button>
- </form>
+        Hasil Telaah Tindak Lanjut: <input type="text" class="form-control" name="HASIL_TELAAH"><br>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+        </form>
 
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
+    </div>
+    <!-- /.card-body -->
 
-        </div>
-        <!-- /.card-footer-->
+    <div class="card-footer">
+
+    </div>
+    <!-- /.card-footer-->
 </div>
-      <!-- /.card -->
+<!-- /.card -->
 @endsection
 
 @section('custom_script')

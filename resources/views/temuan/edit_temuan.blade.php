@@ -6,7 +6,7 @@
 
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-<li class="breadcrumb-item"><a href="/lhp">Temuan</a></li>
+<li class="breadcrumb-item"><a href="/temuan">Temuan</a></li>
 <li class="breadcrumb-item active">Update Data</li>
 @endsection
 

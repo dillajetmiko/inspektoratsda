@@ -31,43 +31,67 @@
 		<div class="card">
 			<div class="card-header">
 			<!-- <h3 class="card-title">Tambah Data Anggota</h3> -->
-			<a href="/temuan/insert_temuan">
-			<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data Temuan</button>
-			</a>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<form action="/temuan/cari" method="GET">
+							<!-- <input type="text" name="cari" placeholder="Cari Pegawai .." value="{{ old('cari') }}">
+							<input type="submit" value="CARI"> -->
+							<div class="input-group">
+								<div style="width: 50%">
+									<select class="form-control" name="cari">
+										<option value="1">Internal</option>
+										<option value="2">Eksternal</option>
+									</select>
+								</div>
+								<div class="input-group-append">
+									<span><input type="submit" class="btn btn-default" value="CARI"></span>
+								</div>
+							</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<a href="/temuan/insert_temuan">
+						<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data Temuan</button>
+						</a>
+					</div>
+				</div>
+				
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body">
 			<table id="example1" class="table table-bordered table-striped">
-        <thead>
-          <tr>		
-            <th rowspan="2" scope="rowgroup" style="text-align:center">Nomer LHP</th>
-            <th colspan="2" scope="colgroup" style="text-align:center">Temuan</th>
-            <th colspan="2" scope="colgroup" style="text-align:center">Rekomendasi</th>
-            <th colspan="2" scope="colgroup" style="text-align:center">Tindak Lanjut</th>
-            <th rowspan="2" scope="rowgroup" style="text-align:center">Jenis Pengawasan</th>
-            <th rowspan="2" scope="rowgroup" style="text-align:center">Nama OPD</th>
-            <th rowspan="2" scope="rowgroup" style="text-align:center">Nama Pejabat</th>
-            <th rowspan="2" scope="rowgroup" style="text-align:center">Tanggal Temuan</th>
-            <th rowspan="2" scope="rowgroup" style="text-align:center">Tanggal Tindak Lanjut</th>
-            <th rowspan="2" scope="rowgroup" style="text-align:center">Kerugian</th>
-            <th rowspan="2" scope="rowgroup" style="text-align:center">Jenis Temuan</th>
-            <th rowspan="2" scope="rowgroup" style="text-align:center">Hasil Telaah</th>
-            <th rowspan="2" scope="rowgroup" style="text-align:center">Aksi</th>
-          </tr>
-          <tr>
-            <th style="text-align:center">Kode</th>
-            <th style="text-align:center">Uraian</th>
-            <th style="text-align:center">Kode</th>
-            <th style="text-align:center">Uraian</th>
-            <th style="text-align:center">Uraian</th>
-            <th style="text-align:center">Status</th>
-          </tr>
-        </thead>
-				<tbody>		
-        @foreach($temuan as $data)
+				<thead>
+				<tr>		
+					<th rowspan="2" scope="rowgroup" style="text-align:center">Nomer LHP</th>
+					<th colspan="2" scope="colgroup" style="text-align:center">Temuan</th>
+					<th colspan="2" scope="colgroup" style="text-align:center">Rekomendasi</th>
+					<th colspan="2" scope="colgroup" style="text-align:center">Tindak Lanjut</th>
+					<th rowspan="2" scope="rowgroup" style="text-align:center">Jenis Pengawasan</th>
+					<th rowspan="2" scope="rowgroup" style="text-align:center">Nama OPD</th>
+					<th rowspan="2" scope="rowgroup" style="text-align:center">Nama Pejabat</th>
+					<th rowspan="2" scope="rowgroup" style="text-align:center">Tanggal Temuan</th>
+					<th rowspan="2" scope="rowgroup" style="text-align:center">Tanggal Tindak Lanjut</th>
+					<th rowspan="2" scope="rowgroup" style="text-align:center">Kerugian</th>
+					<th rowspan="2" scope="rowgroup" style="text-align:center">Jenis Temuan</th>
+					<th rowspan="2" scope="rowgroup" style="text-align:center">Hasil Telaah</th>
+					<th rowspan="2" scope="rowgroup" style="text-align:center">Aksi</th>
+				</tr>
 				<tr>
-					<td>{{ $data->KODE_TEMUAN }}</td>
+					<th style="text-align:center">Kode</th>
+					<th style="text-align:center">Uraian</th>
+					<th style="text-align:center">Kode</th>
+					<th style="text-align:center">Uraian</th>
+					<th style="text-align:center">Uraian</th>
+					<th style="text-align:center">Status</th>
+				</tr>
+				</thead>
+				<tbody>		
+				@foreach($temuan as $data)
+				<tr>
 					<td>{{ $data->NOMOR_LHP }}</td>
+					<td>{{ $data->KODE_TEMUAN }}</td>
 					<td>{{ $data->URAIAN_TEMUAN }}</td>
 					<td>{{ $data->KODE_REKOMENDASI }}</td>
 					<td>{{ $data->URAIAN_REKOMENDASI }}</td>

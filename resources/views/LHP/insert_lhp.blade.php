@@ -3,8 +3,9 @@
 @section("title","Data LHP")
 
 @section("breadcrumb")
-<li class="breadcrumb-item"><a href="#">Home</a></li>
-<li class="breadcrumb-item active">Blank Page</li> 
+<li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+<li class="breadcrumb-item"><a href="/lhp">LHP</a></li>
+<li class="breadcrumb-item active">Tambah LHP</li> 
 @endsection
 
 @section('custom_css')  
@@ -54,11 +55,10 @@
           <!-- <div class="col-md-6 col-sm-6 col-xs-12"> -->
 
             <input type='file' name='file' class="form-control">
-            <!-- <span><input type="submit" name="submit" value='Submit' class='btn btn-success'></span> -->
 
-            @if ($errors->has('file'))
+            <!-- @if ($errors->has('file'))
               <span class="errormsg text-danger">{{ $errors->first('file') }}</span>
-            @endif
+            @endif -->
           </div>
             <br> 
          <button type="submit" class="btn btn-primary">Simpan</button>
