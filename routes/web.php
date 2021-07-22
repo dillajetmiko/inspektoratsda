@@ -67,4 +67,5 @@ Route::post('/user/update_user', [C_user::class, 'updateUser']);
 Route::get('/user/hapus/{NIP}', [C_user::class, 'hapus']);
 
 Route::get('/cetak', [C_cetak::class, 'index']);
+Route::get('/cetak/cari',[C_cetak::class, 'cari']);
 

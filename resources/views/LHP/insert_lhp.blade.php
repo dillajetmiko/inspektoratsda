@@ -59,14 +59,14 @@
             <!-- @if ($errors->has('file'))
               <span class="errormsg text-danger">{{ $errors->first('file') }}</span>
             @endif -->
-          </div>
-            <br> 
-         <button type="submit" class="btn btn-primary">Simpan</button>
-            <br><br>
-         </div>
+          <!-- </div> -->
+        </div>
+        <br> 
+        <button type="submit" class="btn btn-primary">Simpan</button>
+
       </form>
 
-    <!-- </div> -->
+    </div>
     <!-- /.card-body -->
 
     <div class="card-footer">

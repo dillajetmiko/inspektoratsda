@@ -28,8 +28,7 @@ class C_temuan extends Controller
 		$cari = $request->cari;
  
     		// mengambil data dari table pegawai sesuai pencarian data
-		$temuan = DB::table('temuan')
-		->where('KODE_JENIS_TEMUAN',$cari)->get();
+		$temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$cari)->get();
         $id = DB::table('opd')->get();
 
         $data = array(
