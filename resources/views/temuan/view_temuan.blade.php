@@ -68,9 +68,9 @@
 					<th colspan="2" scope="colgroup" style="text-align:center">Temuan</th>
 					<th colspan="2" scope="colgroup" style="text-align:center">Rekomendasi</th>
 					<th colspan="2" scope="colgroup" style="text-align:center">Tindak Lanjut</th>
+					<th colspan="3" scope="colgroup" style="text-align:center">Pejabat OPD</th>
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Jenis Pengawasan</th>
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Nama OPD</th>
-					<th rowspan="2" scope="rowgroup" style="text-align:center">Nama Pejabat</th>
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Tanggal Temuan</th>
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Tanggal Tindak Lanjut</th>
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Kerugian</th>
@@ -85,6 +85,9 @@
 					<th style="text-align:center">Uraian</th>
 					<th style="text-align:center">Uraian</th>
 					<th style="text-align:center">Status</th>
+					<th style="text-align:center">Nama</th>
+					<th style="text-align:center">Jabatan</th>
+					<th style="text-align:center">NIP</th>
 				</tr>
 				</thead>
 				<tbody>		
@@ -103,13 +106,15 @@
 					@elseif ($data->KODE_STATUS == 3)
 					<td> Sesuai Rekomendasi</td>
 					@endif
+					<td>{{ $data->NAMA_PEJABAT }}</td>
+					<td>{{ $data->JABATAN_PEJABAT }}</td>
+					<td>{{ $data->NIP_PEJABAT }}</td>
 					<td>{{ $data->JENIS_PENGAWASAN }}</td>
 					@foreach($id as $OPD)
 					@if ($OPD->KODE_OPD === $data->KODE_OPD)
 					<td>{{$OPD->NAMA_OPD}}</td>
 					@endif
 					@endforeach 
-					<td>{{ $data->NAMA_PEJABAT }}</td>
 					<td>{{ $data->TANGGAL_TEMUAN }}</td>
 					<td>{{ $data->TANGGAL_TINDAK_LANJUT }}</td>
 					<td>{{ $data->KERUGIAN }}</td>
