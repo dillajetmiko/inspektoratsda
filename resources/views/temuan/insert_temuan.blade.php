@@ -59,6 +59,8 @@
             </select><br>
 
         Nama Pejabat : <input type="text" class="form-control" name="NAMA_PEJABAT"><br>
+        Jabatan : <input type="text" class="form-control" name="JABATAN_PEJABAT"><br>
+        NIP : <input type="text" class="form-control" name="NIP_PEJABAT"><br>
         Tanggal Temuan : <input type="date" class="form-control" name="TANGGAL_TEMUAN"><br>
         Tanggal Tindak Lanjut : <input type="date" class="form-control" name="TANGGAL_TINDAK_LANJUT"><br>
         Kerugian : <input type="text" class="form-control" name="KERUGIAN"><br>
