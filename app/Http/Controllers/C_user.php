@@ -35,10 +35,12 @@ class C_user extends Controller
 
     public function tambahUser(Request $post)
     {
+        $pass = md5($post->PASSWORD);
+
         DB::table('user')->insert([
             'NIP' => $post->NIP,
             'NAMA' => $post->NAMA,
-            'PASSWORD' => $post->PASSWORD,
+            'PASSWORD' => $pass,
             'JABATAN' => $post->JABATAN,
             'PANGKAT' => $post->PANGKAT
         ]);

@@ -30,63 +30,63 @@
   <div class="card-body">
 		<div class="card">
 			<div class="card-header">
-			<!-- <h3 class="card-title">Tambah Data Anggota</h3> -->
-			<a href="/lhp/insert_lhp">
-			<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data LHP</button>
-			</a>
+				<!-- <h3 class="card-title">Tambah Data Anggota</h3> -->
+				<a href="/lhp/insert_lhp">
+				<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data LHP</button>
+				</a>
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body">
-			<table id="example1" class="table table-bordered table-striped">
-				<thead>
-				<tr>
-				<th style="text-align:center">No</th>
-				<th style="text-align:center">NIP</th>
-				<th style="text-align:center">Tanggal</th>
-				<th style="text-align:center">Judul Pemeriksaan</th>
-				<th style="text-align:center">Anggaran</th>
-				<th style="text-align:center">Upload File</th>
-				<th style="text-align:center" width="15%">Aksi</th>
-				</tr>
-				</thead>
-				<tbody>
-				@foreach($lhp as $data)
-				<tr>
-					<td>{{ $data->NOMOR_LHP }}</td>
-					<td>{{ $data->NIP }}</td>
-					<td>{{ $data->TANGGAL_LHP }}</td>
-					<td>{{ $data->JUDUL_PEMERIKSAAN }}</td>
-					<td>{{ $data->ANGGARAN }}</td>
-					<td>
-					@if ($data->UPLOAD_FILE == null)
-					Tidak ada file
-					@else
-					<a href="/filedownload/{{ $data->NOMOR_LHP }}" class='btn btn-ghost-info'>
-						<i class="fa fa-download"></i> Download
-					</a>
-					@endif
-					</td>
-					<td><a href='/lhp/edit_lhp/{{ $data->NOMOR_LHP }}'>
-					<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
-					</a>
-					<a href='/lhp/hapus/{{ $data->NOMOR_LHP }}'>
-					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
-					</a>
-					</td>             
-				</tr>
-				@endforeach
-				</tbody>
-				<tfoot>
-				<!-- <tr>
-				<th>NIS_NIP</th>
-				<th>nama_anggota</th>
-				<th>tahun_masuk</th>
-				<th>kelas</th>
-				<th>username_anggota</th>
-				<th>password_anggota</th>
-				</tr> -->
-				</tfoot>
-			</table>
+				<table id="example1" class="table table-bordered table-striped">
+					<thead>
+					<tr>
+						<th style="text-align:center">No</th>
+						<th style="text-align:center">NIP</th>
+						<th style="text-align:center">Tanggal</th>
+						<th style="text-align:center">Judul Pemeriksaan</th>
+						<th style="text-align:center">Anggaran</th>
+						<th style="text-align:center">Upload File</th>
+						<th style="text-align:center" width="15%">Aksi</th>
+					</tr>
+					</thead>
+					<tbody>
+					@foreach($lhp as $data)
+					<tr>
+						<td>{{ $data->NOMOR_LHP }}</td>
+						<td>{{ $data->NIP }}</td>
+						<td>{{ $data->TANGGAL_LHP }}</td>
+						<td>{{ $data->JUDUL_PEMERIKSAAN }}</td>
+						<td>{{ $data->ANGGARAN }}</td>
+						<td>
+						@if ($data->UPLOAD_FILE == null)
+						Tidak ada file
+						@else
+						<a href="/filedownload/{{ $data->NOMOR_LHP }}" class='btn btn-ghost-info'>
+							<i class="fa fa-download"></i> Download
+						</a>
+						@endif
+						</td>
+						<td><a href='/lhp/edit_lhp/{{ $data->NOMOR_LHP }}'>
+						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
+						</a>
+						<a href='/lhp/hapus/{{ $data->NOMOR_LHP }}'>
+						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+						</a>
+						</td>             
+					</tr>
+					@endforeach
+					</tbody>
+					<tfoot>
+					<!-- <tr>
+					<th>NIS_NIP</th>
+					<th>nama_anggota</th>
+					<th>tahun_masuk</th>
+					<th>kelas</th>
+					<th>username_anggota</th>
+					<th>password_anggota</th>
+					</tr> -->
+					</tfoot>
+				</table>
 			</div>
 			<!-- /.card-body -->
 		</div>

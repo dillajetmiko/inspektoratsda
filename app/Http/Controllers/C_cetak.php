@@ -11,9 +11,12 @@ class C_cetak extends Controller
     public function index()
     {
         $cetak = DB::table('temuan')->get();
+        $id = DB::table('opd')->get();
+
         $data = array(
             'menu' => 'cetak',
             'cetak' => $cetak,
+            'id' => $id,
             'submenu' => ''
         );
 

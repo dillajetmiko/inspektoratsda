@@ -68,6 +68,8 @@ class C_lhp extends Controller
 
             // $path = $post->file('file')->store('public/files');  
             $path = $post->file('file')->storeAs('public/files',$name);  
+        }else{
+            $path = null;
         }
  
         DB::table('lhp')->insert([
