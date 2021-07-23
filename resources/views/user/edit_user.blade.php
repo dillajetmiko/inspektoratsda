@@ -32,7 +32,7 @@
 			</select><br>
 			NIP : <input type="text" class="form-control" name="NIP" value="{{$user[0]->NIP}}" readonly><br>
             Nama : <input type="text" class="form-control" name="NAMA" value="{{$user[0]->NAMA}}"><br>
-            Password : <input type="pasword" class="form-control" name="PASSWORD" value="{{$user[0]->PASSWORD}}"><br>
+            Password : <input type="password" class="form-control" name="PASSWORD"><br>
 			Jabatan: <input type="text" class="form-control" name="JABATAN" value="{{$user[0]->JABATAN}}"><br>
             Pangkat: <input type="text" class="form-control" name="PANGKAT" value="{{$user[0]->PANGKAT}}"><br>
             

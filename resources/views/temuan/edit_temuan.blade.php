@@ -10,6 +10,14 @@
 <li class="breadcrumb-item active">Update Data</li>
 @endsection
 
+@section('custom_css')  
+<!-- Select2 -->
+<link rel="stylesheet" href="{{asset ('asset/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset ('asset/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{asset ('asset/dist/css/adminlte.min.css')}}">
+@endsection
+
 @section('content')
 
 <!-- Default box -->
@@ -32,15 +40,16 @@
 			Kode Temuan : <input type="text" class="form-control" name="KODE_TEMUAN" value="{{ $temuan[0]->KODE_TEMUAN }}" readonly><br>
 
             Nomor LHP : 
-                <select class="form-control" name="NOMOR_LHP">
-                    @foreach ($id2 as $LHP)
-                    @if ($LHP->NOMOR_LHP === $temuan[0]->NOMOR_LHP)
-                    <option value="{{ $LHP->NOMOR_LHP}}" selected>{{ $LHP->NOMOR_LHP}}</option>
-                    @else
-                    <option value="{{ $LHP->NOMOR_LHP}}">{{ $LHP->NOMOR_LHP}}</option>
-                    @endif
-                    @endforeach
-                </select> <br>
+                <select class="form-control select2" name="NOMOR_LHP">
+                @foreach ($id2 as $LHP)
+                @if ($LHP->NOMOR_LHP === $temuan[0]->NOMOR_LHP)
+                <option value="{{ $LHP->NOMOR_LHP}}" selected>{{ $LHP->NOMOR_LHP}}</option>
+                @else
+                <option value="{{ $LHP->NOMOR_LHP}}">{{ $LHP->NOMOR_LHP}}</option>
+                @endif
+                @endforeach
+                </select>
+                <br>
 
             Uraian Temuan : <input type="text" class="form-control" name="URAIAN_TEMUAN" value="{{ $temuan[0]->URAIAN_TEMUAN }}"><br>
             Kode Rekomendasi : <input type="text" class="form-control" name="KODE_REKOMENDASI" value="{{ $temuan[0]->KODE_REKOMENDASI }}"><br>
@@ -69,15 +78,16 @@
             Jenis Pengawasan : <input type="text" class="form-control" name="JENIS_PENGAWASAN" value="{{ $temuan[0]->JENIS_PENGAWASAN }}"><br>      
             
 			Nama OPD: 
-                <select class="form-control" name="KODE_OPD">
-                    @foreach ($id as $OPD)
-                    @if ($OPD->KODE_OPD === $temuan[0]->KODE_OPD)
-                    <option value="{{ $OPD->KODE_OPD}}" selected>{{ $OPD->NAMA_OPD}}</option>
-                    @else
-                    <option value="{{ $OPD->KODE_OPD}}">{{ $OPD->NAMA_OPD}}</option>
-                    @endif
-                    @endforeach
-                </select> <br>
+                <select class="form-control select2" name="KODE_OPD">
+                @foreach ($id as $OPD)
+                @if ($OPD->KODE_OPD === $temuan[0]->KODE_OPD)
+                <option value="{{ $OPD->KODE_OPD}}" selected>{{ $OPD->NAMA_OPD}}</option>
+                @else
+                <option value="{{ $OPD->KODE_OPD}}">{{ $OPD->NAMA_OPD}}</option>
+                @endif
+                @endforeach
+                </select>
+                <br>
             
 			
             Tanggal Temuan : <input type="date" class="form-control" name="TANGGAL_TEMUAN" value="{{ $temuan[0]->TANGGAL_TEMUAN }}"><br>
@@ -106,4 +116,19 @@
 	<!-- /.card-footer-->
 </div>
 <!-- /.card -->
+@endsection
+
+@section('custom_script')
+<!-- Select2 -->
+<script src="{{asset ('asset/plugins/select2/js/select2.full.min.js')}}"></script>
+
+<script>
+  $(function () {
+
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+  });
+</script>
+
 @endsection

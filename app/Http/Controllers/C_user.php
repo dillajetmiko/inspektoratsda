@@ -62,14 +62,27 @@ class C_user extends Controller
 
     public function updateUser(Request $post)
     {
-        // update tabel anggota
-        DB::table('user')->where('NIP', $post->NIP)->update([
+        
+        if($post->PASSWORD){
+            $pass = md5($post->PASSWORD);
+    
+            DB::table('user')->where('NIP', $post->NIP)->update([
             'NIP' => $post->NIP,
             'NAMA' => $post->NAMA,
-            'PASSWORD' => $post->PASSWORD,
+            'PASSWORD' => $pass,
             'JABATAN' => $post->JABATAN,
             'PANGKAT' => $post->PANGKAT
-        ]);
+            ]);
+        }else{
+            DB::table('user')->where('NIP', $post->NIP)->update([
+            'NIP' => $post->NIP,
+            'NAMA' => $post->NAMA,
+            'JABATAN' => $post->JABATAN,
+            'PANGKAT' => $post->PANGKAT
+            ]);
+        }
+        
+        
 
         //kembali ke halaman data anggota
         return redirect('/user');

@@ -12,6 +12,11 @@
 <!-- DataTables -->
 <link rel="stylesheet" href="{{asset ('asset/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{asset ('asset/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<!-- Select2 -->
+<link rel="stylesheet" href="{{asset ('asset/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset ('asset/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{asset ('asset/dist/css/adminlte.min.css')}}">
 @endsection
 
 @section('content')
@@ -35,11 +40,12 @@
         Kode Temuan : <input type="text" class="form-control" name="KODE_TEMUAN"><br>
         
         No LHP : 
-            <select class="form-control" name="NOMOR_LHP">
+            <select class="form-control select2" name="NOMOR_LHP">
             @foreach ($id2 as $lhp)
             <option value="{{ $lhp->NOMOR_LHP}}">{{ $lhp->NOMOR_LHP}}</option>
             @endforeach
-            </select><br>
+            </select>
+            <br>
 
         Uraian Temuan : <input type="text" class="form-control" name="URAIAN_TEMUAN"><br>
         Kode Rekomendasi : <input type="text" class="form-control" name="KODE_REKOMENDASI"><br>
@@ -52,12 +58,12 @@
         Jenis Pengawasan : <input type="text" class="form-control" name="JENIS_PENGAWASAN"><br>
 
         Nama OPD : 
-            <select class="form-control" name="KODE_OPD">
+            <select class="form-control select2" name="KODE_OPD">
             @foreach ($id as $opd)
             <option value="{{ $opd->KODE_OPD}}">{{ $opd->NAMA_OPD}}</option>
             @endforeach
-            </select><br>
-
+            </select>
+            <br>
         Nama Pejabat : <input type="text" class="form-control" name="NAMA_PEJABAT"><br>
         Jabatan : <input type="text" class="form-control" name="JABATAN_PEJABAT"><br>
         NIP : <input type="text" class="form-control" name="NIP_PEJABAT"><br>
@@ -90,6 +96,8 @@
 <script src="{{asset ('asset/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset ('asset/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset ('asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<!-- Select2 -->
+<script src="{{asset ('asset/plugins/select2/js/select2.full.min.js')}}"></script>
 
 <script>
   $(function () {
@@ -97,6 +105,10 @@
       "responsive": true,
       "autoWidth": false,
     });
+
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
   });
 </script>
 

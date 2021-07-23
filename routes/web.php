@@ -33,6 +33,7 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [C_login::class, 'getLogin']);
+// Route::get('/postlogin', [C_login::class, 'postLogin']);
 Route::post('/postLogin', 'C_login@postLogin');
 
 Route::get('/login1', [C_login::class, 'getLogin1']);

@@ -70,7 +70,7 @@
       </form>
       <div class="social-auth-links text-center mb-3">
         <p>-  -</p>
-        <a href="/login" class="btn btn-block btn-primary">
+        <a href="/login1" class="btn btn-block btn-primary">
           Login Admin
         </a>
       </div>
