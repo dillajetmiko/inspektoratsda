@@ -52,13 +52,13 @@
 					</tr>
 					</thead>
 					<tbody>
-					@foreach($lhp as $data)
+					@foreach($pegawai as $data)
 					<tr>
 						<td>{{ $data->NIP_PEGAWAI }}</td>
 						<td>{{ $data->NAMA_PEGAWAI }}</td>
 						<td>{{ $data->TTL_PEGAWAI }}</td>
 						<td>{{ $data->ALAMAT_PEGAWAI }}</td>
-						<td>{{ $data->N0_HP }}</td>
+						<td>{{ $data->NO_HP }}</td>
                         <td>{{ $data->JABATAN_PEGAWAI }}</td>
                         <td>{{ $data->PANGKAT_PEGAWAI }}</td>
                         <td>{{ $data->UNIT_KERJA_PEGAWAI }}</td>

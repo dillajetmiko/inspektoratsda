@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\C_lhp;
 use App\Http\Controllers\C_temuan;
+use App\Http\Controllers\C_pegawai;
 use App\Http\Controllers\C_dashboard;
 use App\Http\Controllers\C_login;
 use App\Http\Controllers\C_user;
 use App\Http\Controllers\C_cetak;
+
 
 
 
