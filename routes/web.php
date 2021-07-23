@@ -67,6 +67,14 @@ Route::get('/user/edit_user/{NIP}', [C_user::class, 'editUser']);
 Route::post('/user/update_user', [C_user::class, 'updateUser']);
 Route::get('/user/hapus/{NIP}', [C_user::class, 'hapus']);
 
+Route::get('/pegawai', [C_pegawai::class, 'index']);
+Route::get('/pegawai/insert_pegawai', [C_pegawai::class, 'insertPegawai']);
+Route::post('/pegawai/tambah_pegawai', [C_pegawai::class, 'tambahPegawai']);
+Route::get('/pegawai/edit_pegawai/{NIP_PEGAWAI}', [C_pegawai::class, 'editPegawai']);
+Route::post('/pegawai/update_pegawai', [C_pegawai::class, 'updatePegawai']);
+Route::get('/pegawai/hapus/{NIP_PEGAWAI}', [C_pegawai::class, 'hapus']);
+
+
 Route::get('/cetak', [C_cetak::class, 'index']);
 Route::get('/cetak/cari',[C_cetak::class, 'cari']);
 
