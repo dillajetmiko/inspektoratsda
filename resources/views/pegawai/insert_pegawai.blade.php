@@ -35,7 +35,7 @@
         Nama : <input type="text" class="form-control" name="NAMA_PEGAWAI"><br>
         Tempat Tanggal Lahir : <input type="text" class="form-control" name="TTL_PEGAWAI"><br>
         Alamat : <input type="text" class="form-control" name="ALAMAT_PEGAWAI"><br>
-        No. HP : <input type="text" class="form-control" name="N0_HP"><br>
+        No. HP : <input type="text" class="form-control" name="NO_HP"><br>
         Jabatan : <input type="text" class="form-control" name="JABATAN_PEGAWAI"><br>
         Pangkat : <input type="text" class="form-control" name="PANGKAT_PEGAWAI"><br>
         Unit Kerja : <input type="text" class="form-control" name="UNIT_KERJA_PEGAWAI"><br>
