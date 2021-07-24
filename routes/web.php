@@ -8,6 +8,7 @@ use App\Http\Controllers\C_pegawai;
 use App\Http\Controllers\C_dashboard;
 use App\Http\Controllers\C_login;
 use App\Http\Controllers\C_user;
+use App\Http\Controllers\C_spt;
 use App\Http\Controllers\C_cetak;
 
 
@@ -75,6 +76,15 @@ Route::post('/pegawai/tambah_pegawai', [C_pegawai::class, 'tambahPegawai']);
 Route::get('/pegawai/edit_pegawai/{NIP_PEGAWAI}', [C_pegawai::class, 'editPegawai']);
 Route::post('/pegawai/update_pegawai', [C_pegawai::class, 'updatePegawai']);
 Route::get('/pegawai/hapus/{NIP_PEGAWAI}', [C_pegawai::class, 'hapus']);
+
+
+Route::get('/spt', [C_spt::class, 'index']);
+Route::get('/spt/insert_spt', [C_spt::class, 'insertSpt']);
+Route::post('/spt/tambah_spt', [C_spt::class, 'tambahSpt']);
+Route::get('/spt/edit_spt/{ID_SPT}', [C_spt::class, 'editSpt']);
+Route::post('/spt/update_spt', [C_spt::class, 'updateSpt']);
+Route::get('/spt/hapus/{ID_SPT}', [C_spt::class, 'hapus']);
+
 
 
 Route::get('/cetak', [C_cetak::class, 'index']);

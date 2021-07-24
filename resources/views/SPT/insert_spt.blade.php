@@ -36,58 +36,21 @@
     <!-- <h1>Tambah Data Temuan</h1> -->
 
 
-        <form action="/temuan/tambah_temuan" method="post">
+        <form action="/spt/tambah_spt" method="post">
         <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
         ID SPT : <input type="text" class="form-control" name="ID_SPT"><br>
-        
-        <!-- No LHP : 
-            <select class="form-control select2" name="NOMOR_LHP">
-            @foreach ($id2 as $lhp)
-            <option value="{{ $lhp->NOMOR_LHP}}">{{ $lhp->NOMOR_LHP}}</option>
-            @endforeach
-            </select>
-            <br> -->
-        
-        Nomor SPT : <input type="text" class="form-control" name="URAIAN_TEMUAN"><br>
-        Tanggal SPT : <input type="text" class="form-control" name="KODE_REKOMENDASI"><br>
-        Dasar SPT : <input type="text" class="form-control" name="URAIAN_REKOMENDASI"><br>
-        Penanggung Jawab: <input type="text" class="form-control" name="URAIAN_TINDAK_LANJUT"><br>
+        Nomor SPT : <input type="text" class="form-control" name="NOMOR_SPT"><br>
+        Tanggal SPT : <input type="date" class="form-control" name="TANGGAL_SPT"><br>
+        Dasar SPT : <input type="text" class="form-control" name="DASAR_SPT"><br>
+        ISI SPT: <input type="text" class="form-control" name="ISI_SPT"><br>
+        FILE SPT:
+        <!-- <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">File <span class="required">*</span></label>
+          <div class="col-md-6 col-sm-6 col-xs-12">
 
-        <!-- Status Tindak Lanjut :<br> 
-            <label><input type="radio" name="KODE_STATUS" value="1" checked="checked" /> Belum Ditindak Lanjut </label><br>
-            <label><input type="radio" name="KODE_STATUS" value="2" /> Belum Sesuai Rekomendasi </label><br>
-            <label><input type="radio" name="KODE_STATUS" value="3" /> Sesuai rekomendasi </label><br><br> -->
-        Pembantu Penanggung Jawab: <input type="text" class="form-control" name="JENIS_PENGAWASAN"><br>
-
-        <!-- Nama OPD : 
-            <select class="form-control select2" name="KODE_OPD">
-            @foreach ($id as $opd)
-            <option value="{{ $opd->KODE_OPD}}">{{ $opd->NAMA_OPD}}</option>
-            @endforeach
-            </select>
-            <br> -->
-
-        Pengendali Mutu : <input type="text" class="form-control" name="NAMA_PEJABAT"><br>
-        Pengendali Teknis : <input type="text" class="form-control" name="JABATAN_PEJABAT"><br>
-        Anggota 1 : <input type="text" class="form-control" name="NIP_PEJABAT"><br>
-        Anggota 2 : <input type="date" class="form-control" name="TANGGAL_TEMUAN"><br>
-        Anggota 3 : <input type="date" class="form-control" name="TANGGAL_TINDAK_LANJUT"><br>
-        Anggota 4 : <input type="text" class="form-control" name="KERUGIAN"><br>
-
-        <!-- Jenis Temuan : 
-            <select class="form-control" name="KODE_JENIS_TEMUAN">
-            <option value="1">Internal</option>
-            <option value="2">Eksternal</option>
-            </select><br> -->
-
-        Anggota 5: <input type="text" class="form-control" name="HASIL_TELAAH"><br>
-        Anggota 6: <input type="text" class="form-control" name="HASIL_TELAAH"><br>
-        Anggota 7: <input type="text" class="form-control" name="HASIL_TELAAH"><br>
-        Anggota 8: <input type="text" class="form-control" name="HASIL_TELAAH"><br>
-        Anggota 9: <input type="text" class="form-control" name="HASIL_TELAAH"><br>
-        Anggota 10: <input type="text" class="form-control" name="HASIL_TELAAH"><br>
-        ISI SPT: <input type="text" class="form-control" name="HASIL_TELAAH"><br>
-        FILE SPT: <input type="text" class="form-control" name="HASIL_TELAAH"><br>
+            <input type='file' name='file' class="form-control">
+       </div> -->
+        <br> 
 
         <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
