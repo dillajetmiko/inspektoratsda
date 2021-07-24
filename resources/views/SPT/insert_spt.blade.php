@@ -43,7 +43,7 @@
         Tanggal SPT : <input type="date" class="form-control" name="TANGGAL_SPT"><br>
         Dasar SPT : <input type="text" class="form-control" name="DASAR_SPT"><br>
         ISI SPT: <input type="text" class="form-control" name="ISI_SPT"><br>
-        FILE SPT:
+        <!-- FILE SPT: -->
         <!-- <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">File <span class="required">*</span></label>
           <div class="col-md-6 col-sm-6 col-xs-12">

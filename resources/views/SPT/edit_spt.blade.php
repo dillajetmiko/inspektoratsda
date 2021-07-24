@@ -35,7 +35,7 @@
             Tanggal SPT : <input type="date" class="form-control" name="TANGGAL_SPT" value="{{$spt[0]->TANGGAL_SPT}}"><br>
 			Dasar SPT : <input type="text" class="form-control" name="DASAR_SPT" value="{{$spt[0]->DASAR_SPT}}"><br>
             Isi SPT : <input type="text" class="form-control" name="ISI_SPT" value="{{$spt[0]->ISI_SPT}}"><br>
-			File SPT : <input type="text" class="form-control" name="FILE_SPT" value="{{$spt[0]->FILE_SPT}}"><br>
+			<!-- File SPT : <input type="text" class="form-control" name="FILE_SPT" value="{{$spt[0]->FILE_SPT}}"><br> -->
             
         <br><br>
         <button type="submit" class="btn btn-primary">Update</button>
