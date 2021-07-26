@@ -31,9 +31,9 @@
 		<div class="card">
 			<div class="card-header">
 			<!-- <h3 class="card-title">Tambah Data Anggota</h3> -->
-			<a href="/user/insert_user">
+			<!-- <a href="/user/insert_user">
 			<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data User</button>
-			</a>
+			</a> -->
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body">
@@ -51,9 +51,9 @@
 				@foreach($user as $data)
 				<tr>
 					<td>{{ $data->NIP }}</td>
-					<td>{{ $data->NAMA }}</td>
-					<td>{{ $data->JABATAN }}</td>
-					<td>{{ $data->PANGKAT }}</td>
+					<td>{{ $data->name }}</td>
+					<td>{{ $data->jabatan }}</td>
+					<td>{{ $data->pangkat }}</td>
 					<td><a href='/user/edit_user/{{ $data->NIP }}'>
 					<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 					</a>

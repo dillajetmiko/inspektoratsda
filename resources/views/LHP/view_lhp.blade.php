@@ -31,9 +31,11 @@
 		<div class="card">
 			<div class="card-header">
 				<!-- <h3 class="card-title">Tambah Data Anggota</h3> -->
+				@can('tambah-lhp')
 				<a href="/lhp/insert_lhp">
 				<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data LHP</button>
 				</a>
+				@endcan
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body">
@@ -46,7 +48,9 @@
 						<th style="text-align:center">Judul Pemeriksaan</th>
 						<th style="text-align:center">Anggaran</th>
 						<th style="text-align:center">Upload File</th>
+						@can('edit-hapus-lhp')
 						<th style="text-align:center" width="15%">Aksi</th>
+						@endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -66,13 +70,16 @@
 						</a>
 						@endif
 						</td>
-						<td><a href='/lhp/edit_lhp/{{ $data->NOMOR_LHP }}'>
+						@can('edit-hapus-lhp')
+						<td>
+						<a href='/lhp/edit_lhp/{{ $data->NOMOR_LHP }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a>
 						<a href='/lhp/hapus/{{ $data->NOMOR_LHP }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
-						</td>             
+						</td>  
+						@endcan           
 					</tr>
 					@endforeach
 					</tbody>
