@@ -13,9 +13,13 @@ class C_spt extends Controller
      public function index()
      {
          $spt = DB::table('spt')->get();
+         $penugasan = DB::table('penugasan')->get();
+         $pegawai = DB::table('pegawai')->get();
          $data = array(
              'menu' => 'spt',
              'spt' => $spt,
+             'penugasan' => $penugasan,
+             'pegawai' => $pegawai,
              'submenu' => ''
          );
  
@@ -83,7 +87,7 @@ class C_spt extends Controller
           
          ]);
  
-         return redirect('/spt');
+         return redirect('/penugasan/insert_view_penugasan/'.$post->ID_SPT);
      }
  
      public function editSpt($ID_SPT) 

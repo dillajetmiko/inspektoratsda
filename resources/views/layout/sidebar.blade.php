@@ -106,7 +106,18 @@
               </p>
             </a>
           </li>
+
+          @can('update-role')
+          <li class="nav-item">
+            <a href="/cetak" class="nav-link">
           
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+              Update Role
+              </p>
+            </a>
+          </li>
+          @endcan
           
         </ul>
       </nav>

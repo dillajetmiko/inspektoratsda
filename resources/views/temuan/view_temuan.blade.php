@@ -52,9 +52,11 @@
 						</div>
 					</div>
 					<div class="col-md-6">
+						@can('tambah-temuan')
 						<a href="/temuan/insert_temuan">
 						<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data Temuan</button>
 						</a>
+						@endcan
 					</div>
 				</div>
 				
@@ -76,7 +78,9 @@
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Kerugian</th>
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Jenis Temuan</th>
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Hasil Telaah</th>
+					@can('edit-hapus-temuan')
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Aksi</th>
+					@endcan
 				</tr>
 				<tr>
 					<th style="text-align:center">Kode</th>
@@ -124,6 +128,7 @@
 					<td> Eksternal</td>
 					@endif
 					<td>{{ $data->HASIL_TELAAH }}</td>
+					@can('edit-hapus-temuan')
 					<td><a href='/temuan/edit_temuan/{{ $data->KODE_TEMUAN }}'>
 					<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 					</a>
@@ -131,6 +136,7 @@
 					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 					</a>
 					</td> 
+					@endcan
                      
 				</tr>
 				@endforeach

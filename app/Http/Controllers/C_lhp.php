@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class C_lhp extends Controller
 {
@@ -63,12 +64,12 @@ class C_lhp extends Controller
 
     public function tambahLHP(Request $post)
     {  
-        // Validation
-        $post->validate([
-            'file' => 'required|mimes:png,jpg,jpeg,csv,txt,pdf|max:2048'
-        ]); 
-
         if($post->file('file')) { 
+            // Validation
+            $post->validate([
+                'file' => 'required|mimes:png,jpg,jpeg,csv,txt,pdf|max:2048'
+            ]); 
+
             $name = $post->file('file')->getClientOriginalName();
 
             // $path = $post->file('file')->store('public/files');  
@@ -79,8 +80,12 @@ class C_lhp extends Controller
  
         DB::table('lhp')->insert([
             'NOMOR_LHP' => $post->NOMOR_LHP,
+<<<<<<< HEAD
             'ID_SPT' => $post->ID_SPT,
             'NIP' => '1',
+=======
+            'NIP' => Auth::user()->NIP,
+>>>>>>> d8ec5cfcb39d36488cb3cae3b896e4ad756c1f9a
             'TANGGAL_LHP' => $post->TANGGAL_LHP,
             'JUDUL_PEMERIKSAAN' => $post->JUDUL_PEMERIKSAAN,
             'UPLOAD_FILE' => $path,

@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class C_user extends Controller
 {
     //
     public function index()
     {
-        $user = DB::table('user')->get();
+        $user = DB::table('users')->get();
         $data = array(
             'menu' => 'user',
             'user' => $user,
@@ -20,9 +21,17 @@ class C_user extends Controller
         return view('user/view_user',$data);
     }
 
+    public function punyaRole($namaRole)
+    {
+        if($this->role->namaRole == $namaRole){
+            return true;
+        }
+            return false;
+    }
+
     public function insertUser()
     {
-        $user = DB::table('user')->get();
+        $user = DB::table('users')->get();
         $data = array(
             'menu' => 'user',
             'user' => $user,
@@ -35,14 +44,12 @@ class C_user extends Controller
 
     public function tambahUser(Request $post)
     {
-        $pass = md5($post->PASSWORD);
-
-        DB::table('user')->insert([
+        DB::table('users')->insert([
             'NIP' => $post->NIP,
-            'NAMA' => $post->NAMA,
-            'PASSWORD' => $pass,
-            'JABATAN' => $post->JABATAN,
-            'PANGKAT' => $post->PANGKAT
+            'name' => $post->NAMA,
+            'password' => $post->PASSWORD,
+            'jabatan' => $post->JABATAN,
+            'pangkat' => $post->PANGKAT
         ]);
 
         return redirect('/user');
@@ -50,7 +57,7 @@ class C_user extends Controller
 
     public function editUser($NIP) 
     {
-        $user = DB::table('user')->where('NIP', $NIP)->get();
+        $user = DB::table('users')->where('NIP', $NIP)->get();
     
         $data = array(
             'menu' => 'user',
@@ -64,33 +71,33 @@ class C_user extends Controller
     {
         
         if($post->PASSWORD){
-            $pass = md5($post->PASSWORD);
-    
-            DB::table('user')->where('NIP', $post->NIP)->update([
+            DB::table('users')->where('NIP', $post->NIP)->update([
             'NIP' => $post->NIP,
-            'NAMA' => $post->NAMA,
-            'PASSWORD' => $pass,
-            'JABATAN' => $post->JABATAN,
-            'PANGKAT' => $post->PANGKAT
+            'name' => $post->NAMA,
+            'jabatan' => $post->JABATAN,
+            'pangkat' => $post->PANGKAT
             ]);
+            $user = User::find($post->NIP);
+
+            $user->password = $post->PASSWORD;
+
+            $user->save();
         }else{
-            DB::table('user')->where('NIP', $post->NIP)->update([
+            DB::table('users')->where('NIP', $post->NIP)->update([
             'NIP' => $post->NIP,
-            'NAMA' => $post->NAMA,
-            'JABATAN' => $post->JABATAN,
-            'PANGKAT' => $post->PANGKAT
+            'name' => $post->NAMA,
+            'jabatan' => $post->JABATAN,
+            'pangkat' => $post->PANGKAT
             ]);
         }
-        
-        
-
+              
         //kembali ke halaman data anggota
         return redirect('/user');
     }
 
     public function hapus($NIP)
     {
-    	DB::table('user')->where('NIP',$NIP)->delete();
+    	DB::table('users')->where('NIP',$NIP)->delete();
 	    return redirect('/user');
     }
 }

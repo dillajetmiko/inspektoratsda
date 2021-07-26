@@ -34,10 +34,10 @@
                 </div>
                 @endif
 
-      <form action="{{url(action('C_login@postLogin'))}}" method="post">
+      <form action="/loginSubmit" method="post">
       <input type = "hidden" name = "_token" value = "<?php echo csrf_token()?>">
         <div class="input-group mb-3">
-          <input type="text" name="emailusername" class="form-control" placeholder="NIP">
+          <input type="text" name="email" class="form-control" placeholder="email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -69,12 +69,15 @@
         </div>
       </form>
       <div class="social-auth-links text-center mb-3">
-        <p>-  -</p>
+        <!-- <p>-  -</p>
         <a href="/login1" class="btn btn-block btn-primary">
           Login Admin
-        </a>
+        </a> -->
       </div>
       <!-- /.social-auth-links -->
+      <p class="mb-0">
+        <a href="/register" class="text-center">Register a new membership</a>
+      </p>
 
 <!-- /.login-box -->
 

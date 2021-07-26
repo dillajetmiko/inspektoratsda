@@ -29,7 +29,7 @@
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Evaluasi Laporan</span>
+      <span class="brand-text font-weight-light">Evaluasi dan Pelaporan</span>
     </a>
     
     @include('layout/sidebar')
