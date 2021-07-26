@@ -6,7 +6,7 @@
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-<li class="breadcrumb-item active">PENUGASAN</li> 
+<li class="breadcrumb-item active">Penugasan</li> 
 @endsection
 
 @section('custom_css')
@@ -30,27 +30,24 @@
   <div class="card-body">
 		<div class="card">
 			<div class="card-header">
-				<!-- <h3 class="card-title">Tambah Data Anggota</h3> -->
-				<a href="/penugasan/insert_penugasan">
-				<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data Penugasan</button>
-				</a>
+				<div class="form-group">
+					<form action="/penugasan/insert_view_penugasan" method="post" enctype="multipart/form-data">
+					<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
+					ID SPT : <input type="text" class="form-control" name="ID_SPT" value="{{$spt[0]->ID_SPT}}"><br>
+					Nama Pegawai : 
+						<select class="form-control select2" name="NIP_PEGAWAI">
+						@foreach ($pegawai as $peg)
+						<option value="{{ $peg->NIP_PEGAWAI}}">{{ $peg->NAMA_PEGAWAI}}</option>
+						@endforeach
+						</select>
+						<br>
+					Penugasan : <input type="text" class="form-control" name="PENUGASAN"><br>
+		
+					<button type="submit" class="btn btn-primary">Simpan</button>
+					</form>
+				</div>
 			</div>
-
-            <form action="/penugasan/tambah_penugasan" method="post" enctype="multipart/form-data">
-            <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-            <!-- ID SPT : <input type="text" class="form-control" name="ID_SPT"><br> -->
-            Nama Pegawai : 
-                <select class="form-control select2" name="NIP_PEGAWAI">
-                @foreach ($id as $pegawai)
-                <option value="{{ $pegawai->NIP_PEGAWAI}}">{{ $opd->NAMA_PEGAWAI}}</option>
-                @endforeach
-                </select>
-                <br>
-            Penugasan : <input type="text" class="form-control" name="PENUGASAN"><br>
-            <br> 
-            <button type="submit" class="btn btn-primary">Simpan</button>
-
-            </form>
+			
 
 			<!-- /.card-header -->
 			<div class="card-body">
@@ -67,7 +64,11 @@
 					@foreach($penugasan as $data)
 					<tr>
 						<td>{{ $data->ID_SPT }}</td>
-						<td>{{ $data->NIP_PEGAWAI }}</td>
+						@foreach($pegawai as $datapeg)
+						@if ($datapeg->NIP_PEGAWAI === $data->NIP_PEGAWAI)
+						<td>{{$datapeg->NAMA_PEGAWAI}}</td>
+						@endif
+						@endforeach 
 						<td>{{ $data->PENUGASAN }}</td>
 						<td><a href='/penugasan/edit_penugasan/{{ $data->ID_SPT }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
@@ -80,14 +81,6 @@
 					@endforeach
 					</tbody>
 					<tfoot>
-					<!-- <tr>
-					<th>NIS_NIP</th>
-					<th>nama_anggota</th>
-					<th>tahun_masuk</th>
-					<th>kelas</th>
-					<th>username_anggota</th>
-					<th>password_anggota</th>
-					</tr> -->
 					</tfoot>
 				</table>
 			</div>

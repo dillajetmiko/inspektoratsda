@@ -69,12 +69,15 @@
         </div>
       </form>
       <div class="social-auth-links text-center mb-3">
-        <p>-  -</p>
+        <!-- <p>-  -</p>
         <a href="/login1" class="btn btn-block btn-primary">
           Login Admin
-        </a>
+        </a> -->
       </div>
       <!-- /.social-auth-links -->
+      <p class="mb-0">
+        <a href="/register" class="text-center">Register a new membership</a>
+      </p>
 
 <!-- /.login-box -->
 

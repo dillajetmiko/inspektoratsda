@@ -100,9 +100,11 @@ Route::get('/spt/edit_spt/{ID_SPT}', [C_spt::class, 'editSpt'])->middleware('aut
 Route::post('/spt/update_spt', [C_spt::class, 'updateSpt'])->middleware('auth');
 Route::get('/spt/hapus/{ID_SPT}', [C_spt::class, 'hapus'])->middleware('auth');
 
-Route::get('/penugasan', [C_penugasan::class, 'index'])->middleware('auth');
-Route::get('/penugasan/insert_penugasan', [C_spt::class, 'insertPenugasan'])->middleware('auth');
-Route::post('/penugasan/tambah_penugasan', [C_spt::class, 'tambahPenugasan'])->middleware('auth');
+// Route::get('/penugasan', [C_penugasan::class, 'index'])->middleware('auth');
+Route::get('/penugasan/insert_view_penugasan/{ID_SPT}', [C_penugasan::class, 'insertPenugasan'])->middleware('auth');
+Route::post('/penugasan/insert_view_penugasan', [C_penugasan::class, 'tambahPenugasan'])->middleware('auth');
+Route::get('/penugasan/edit_penugasan/{ID_SPT}', [C_penugasan::class, 'editPenugasan'])->middleware('auth');
+Route::post('/penugasan/update_penugasan', [C_penugasan::class, 'updatePenugasan'])->middleware('auth');
 
 
 

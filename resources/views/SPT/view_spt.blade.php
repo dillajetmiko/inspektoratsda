@@ -45,6 +45,7 @@
 						<th style="text-align:center">Tanggal</th>
 						<th style="text-align:center">Dasar</th>
 						<th style="text-align:center">Isi</th>
+						<th style="text-align:center">Penugasan</th>
                         <th style="text-align:center">Upload File</th>
 						<th style="text-align:center" width="15%">Aksi</th>
 					</tr>
@@ -57,6 +58,17 @@
 						<td>{{ $data->TANGGAL_SPT }}</td>
 						<td>{{ $data->DASAR_SPT }}</td>
 						<td>{{ $data->ISI_SPT }}</td>
+						<td>
+						@foreach($penugasan as $tugas)
+						@if ($tugas->ID_SPT === $data->ID_SPT)
+							@foreach($pegawai as $peg)
+							@if ($peg->NIP_PEGAWAI === $tugas->NIP_PEGAWAI)
+							{{$peg->NAMA_PEGAWAI}}<br>
+							@endif
+							@endforeach
+						@endif
+						@endforeach
+						</td>
                         <td>
 						@if ($data->FILE_SPT == null)
 						Tidak ada file
