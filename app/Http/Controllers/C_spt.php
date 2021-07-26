@@ -110,6 +110,19 @@ class C_spt extends Controller
  
          return redirect('/spt');
      }
+
+     public function cetak() 
+     {
+         $spt = DB::table('spt')->get();
+ 
+         $data = array(
+             'menu' => 'spt',
+             'spt' => $spt,
+             'submenu' => ''
+            
+         );
+         return view('SPT/cetak_spt',$data);
+     }
  
      public function hapus($ID_SPT)
      {

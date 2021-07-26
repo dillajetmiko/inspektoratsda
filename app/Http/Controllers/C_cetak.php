@@ -50,4 +50,47 @@ class C_cetak extends Controller
 		return view('cetak/cetak',$data);
  
 	}
+
+    public function export($NOMOR_LHP)
+	{
+		// menangkap data pencarian
+		$cari = $NOMOR_LHP;
+ 
+    		// mengambil data dari table pegawai sesuai pencarian data
+		$cetak = DB::table('temuan')->where('NOMOR_LHP',$cari)->get();
+        $id = DB::table('opd')->get();
+        $lhp = DB::table('lhp')->get();
+        $lhp2 = DB::table('lhp')->where('NOMOR_LHP',$cari)->get();
+
+        $data = array(
+            'menu' => 'cetak',
+            'cetak' => $cetak,
+            'id' => $id,
+            'lhp' => $lhp,
+            'lhp2' => $lhp2,
+            'submenu' => ''
+        );
+ 
+    		// mengirim data pegawai ke view index
+		return view('cetak/export',$data);
+ 
+	}
+
+    public function export1()
+    {
+        $cetak = [];
+        $temuan = DB::table('temuan')->get();
+        $lhp = DB::table('lhp')->get();
+        $lhp2 = [];
+
+        $data = array(
+            'menu' => 'cetak',
+            'cetak' => $cetak,
+            'lhp' => $lhp,
+            'lhp2' => $lhp2,
+            'submenu' => ''
+        );
+
+        return view('cetak/export',$data);
+    }
 }

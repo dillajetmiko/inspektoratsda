@@ -88,6 +88,10 @@
 				</table>
 			</div>
 			<!-- /.card-body -->
+
+			<a href="/spt/cetak_spt">
+				<button type="button" class="btn btn-info float-left" style="float: left;"><i class="fas fa-file-export"></i> Cetak </button>
+			</a>
 		</div>
 		<!-- /.card -->
   </div>

@@ -32,6 +32,13 @@
       <form action="/lhp/tambah_lhp" method="post" enctype="multipart/form-data">
         <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
         Nomor LHP : <input type="text" class="form-control" name="NOMOR_LHP"><br>
+        NOMOR SPT : 
+            <select class="form-control select2" name="ID_SPT">
+            @foreach ($id as $spt)
+            <option value="{{ $spt->ID_SPT}}">{{ $spt->NOMOR_SPT}}</option>
+            @endforeach
+            </select>
+            <br>
         Tanggal : <input type="date" class="form-control" name="TANGGAL_LHP"><br>
         Judul Pemeriksaan : <input type="text" class="form-control" name="JUDUL_PEMERIKSAAN"><br>
         Anggaran : <input type="text" class="form-control" name="ANGGARAN"><br>

@@ -85,6 +85,7 @@ Route::post('/spt/tambah_spt', [C_spt::class, 'tambahSpt']);
 Route::get('/spt/edit_spt/{ID_SPT}', [C_spt::class, 'editSpt']);
 Route::post('/spt/update_spt', [C_spt::class, 'updateSpt']);
 Route::get('/spt/hapus/{ID_SPT}', [C_spt::class, 'hapus']);
+Route::get('/spt/cetak_spt', [C_spt::class, 'cetak']);
 
 Route::get('/penugasan', [C_penugasan::class, 'index']);
 Route::get('/penugasan/insert_penugasan', [C_spt::class, 'insertPenugasan']);
@@ -92,4 +93,6 @@ Route::post('/penugasan/tambah_penugasan', [C_spt::class, 'tambahPenugasan']);
 
 Route::get('/cetak', [C_cetak::class, 'index']);
 Route::get('/cetak/cari',[C_cetak::class, 'cari']);
+// Route::get('/cetak', [C_cetak::class, 'export']);
+Route::get('/cetak/export/{NOMOR_LHP}', [C_cetak::class, 'export']);
 

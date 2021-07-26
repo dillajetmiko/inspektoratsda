@@ -12,9 +12,11 @@ class C_lhp extends Controller
     public function index()
     {
         $lhp = DB::table('lhp')->get();
+        $id = DB::table('spt')->get();
         $data = array(
             'menu' => 'lhp',
             'lhp' => $lhp,
+            'id' => $id,
             'submenu' => ''
         );
 
@@ -47,9 +49,12 @@ class C_lhp extends Controller
     public function insertLHP()
     {
         $lhp = DB::table('lhp')->get();
+        $id = DB::table('spt')->get();
+
         $data = array(
             'menu' => 'lhp',
             'lhp' => $lhp,
+            'id' => $id,
             'submenu' => ''
         );
 
@@ -74,6 +79,7 @@ class C_lhp extends Controller
  
         DB::table('lhp')->insert([
             'NOMOR_LHP' => $post->NOMOR_LHP,
+            'ID_SPT' => $post->ID_SPT,
             'NIP' => '1',
             'TANGGAL_LHP' => $post->TANGGAL_LHP,
             'JUDUL_PEMERIKSAAN' => $post->JUDUL_PEMERIKSAAN,
@@ -87,10 +93,12 @@ class C_lhp extends Controller
     public function editLHP($NOMOR_LHP) 
     {
         $lhp = DB::table('lhp')->where('NOMOR_LHP', $NOMOR_LHP)->get();
-
+        $id = DB::table('spt')->get();
+        
         $data = array(
             'menu' => 'lhp',
             'lhp' => $lhp,
+            'id' => $id,
             'submenu' => ''
            
         );
@@ -101,6 +109,7 @@ class C_lhp extends Controller
     {
         DB::table('lhp')->where('NOMOR_LHP', $post->NOMOR_LHP)->update([
             'NOMOR_LHP' => $post->NOMOR_LHP,
+            'ID_SPT' => $post->ID_SPT,
             'NIP' => '1',
             'TANGGAL_LHP' => $post->TANGGAL_LHP,
             'JUDUL_PEMERIKSAAN' => $post->JUDUL_PEMERIKSAAN,
