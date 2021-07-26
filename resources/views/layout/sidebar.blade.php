@@ -43,6 +43,32 @@
           </li>
 
           <li class="nav-item">
+          @if($menu == 'pegawai')
+            <a href="/pegawai" class="nav-link active">
+          @else
+            <a href="/pegawai" class="nav-link">
+          @endif
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+              Pegawai
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+          @if($menu == 'spt')
+            <a href="/spt" class="nav-link active">
+          @else
+            <a href="/spt" class="nav-link">
+          @endif
+              <i class="nav-icon fas fa-envelope-open-text"></i>
+              <p>
+              SPT
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
           @if($menu == 'lhp')
             <a href="/lhp" class="nav-link active">
           @else
