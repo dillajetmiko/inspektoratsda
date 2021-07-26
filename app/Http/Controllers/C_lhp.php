@@ -80,12 +80,8 @@ class C_lhp extends Controller
  
         DB::table('lhp')->insert([
             'NOMOR_LHP' => $post->NOMOR_LHP,
-<<<<<<< HEAD
             'ID_SPT' => $post->ID_SPT,
-            'NIP' => '1',
-=======
             'NIP' => Auth::user()->NIP,
->>>>>>> d8ec5cfcb39d36488cb3cae3b896e4ad756c1f9a
             'TANGGAL_LHP' => $post->TANGGAL_LHP,
             'JUDUL_PEMERIKSAAN' => $post->JUDUL_PEMERIKSAAN,
             'UPLOAD_FILE' => $path,
