@@ -136,6 +136,13 @@
 			<!-- /.card-body -->
 		</div>
 		<!-- /.card -->
+
+		@foreach ($lhp2 as $export)
+		<a href="/cetak/export/{{ $export->NOMOR_LHP }}">
+				<button type="button" class="btn btn-info float-left" style="float: left;"><i class="fas fa-file-export"></i> Export </button>
+				</a>
+		@endforeach	
+
   </div>
   <!-- /.card-body -->
   <div class="card-footer">

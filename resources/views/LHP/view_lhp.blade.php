@@ -43,6 +43,7 @@
 					<thead>
 					<tr>
 						<th style="text-align:center">No</th>
+						<th style="text-align:center">Nomor SPT</th> 
 						<th style="text-align:center">NIP</th>
 						<th style="text-align:center">Tanggal</th>
 						<th style="text-align:center">Judul Pemeriksaan</th>
@@ -57,6 +58,11 @@
 					@foreach($lhp as $data)
 					<tr>
 						<td>{{ $data->NOMOR_LHP }}</td>
+						@foreach($id as $SPT)
+						@if ($SPT->ID_SPT === $data->ID_SPT)
+						<td>{{$SPT->NOMOR_SPT}}</td>
+						@endif
+						@endforeach 
 						<td>{{ $data->NIP }}</td>
 						<td>{{ $data->TANGGAL_LHP }}</td>
 						<td>{{ $data->JUDUL_PEMERIKSAAN }}</td>

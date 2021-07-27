@@ -65,6 +65,7 @@ Route::get('/lhp/hapus/{NOMOR_LHP}', [C_lhp::class, 'hapus'])->middleware('auth'
 // Route::get('/filedownload', [C_lhp::class, 'download1'])->name('file.download');
 // Route::get('/filedownload/{UPLOAD_FILE}', [C_lhp::class, 'download'])->name('file.download');
 
+
 Route::get('/filedownload/{NOMOR_LHP}', [C_lhp::class, 'download'])->name('file.download')->middleware('auth');
 Route::get('/download/{UPLOAD_FILE}', [C_lhp::class, 'download'])->name('file.download')->middleware('auth');
 
@@ -85,6 +86,7 @@ Route::get('/user/hapus/{NIP}', [C_user::class, 'hapus'])->middleware('auth');
 
 Route::get('/cetak', [C_cetak::class, 'index'])->middleware('auth');
 Route::get('/cetak/cari',[C_cetak::class, 'cari'])->middleware('auth');
+Route::get('/cetak/export/{NOMOR_LHP}', [C_cetak::class, 'export'])->middleware('auth');
 
 Route::get('/pegawai', [C_pegawai::class, 'index'])->middleware('auth');
 Route::get('/pegawai/insert_pegawai', [C_pegawai::class, 'insertPegawai'])->middleware('auth');
@@ -99,10 +101,14 @@ Route::post('/spt/tambah_spt', [C_spt::class, 'tambahSpt'])->middleware('auth');
 Route::get('/spt/edit_spt/{ID_SPT}', [C_spt::class, 'editSpt'])->middleware('auth');
 Route::post('/spt/update_spt', [C_spt::class, 'updateSpt'])->middleware('auth');
 Route::get('/spt/hapus/{ID_SPT}', [C_spt::class, 'hapus'])->middleware('auth');
+Route::get('/spt/cetak_spt', [C_spt::class, 'cetak'])->middleware('auth');
 
-Route::get('/penugasan', [C_penugasan::class, 'index'])->middleware('auth');
-Route::get('/penugasan/insert_penugasan', [C_spt::class, 'insertPenugasan'])->middleware('auth');
-Route::post('/penugasan/tambah_penugasan', [C_spt::class, 'tambahPenugasan'])->middleware('auth');
+// Route::get('/penugasan', [C_penugasan::class, 'index'])->middleware('auth');
+Route::get('/penugasan/insert_view_penugasan/{ID_SPT}', [C_penugasan::class, 'insertPenugasan'])->middleware('auth');
+Route::post('/penugasan/insert_view_penugasan', [C_penugasan::class, 'tambahPenugasan'])->middleware('auth');
+Route::get('/penugasan/edit_penugasan/{ID_SPT}', [C_penugasan::class, 'editPenugasan'])->middleware('auth');
+Route::post('/penugasan/update_penugasan', [C_penugasan::class, 'updatePenugasan'])->middleware('auth');
+
 
 
 
