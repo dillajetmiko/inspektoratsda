@@ -33,7 +33,7 @@
 			ID SPT : <input type="text" class="form-control" name="ID_SPT" value="{{$spt[0]->ID_SPT}}" readonly><br>
             Nomor SPT : <input type="text" class="form-control" name="NOMOR_SPT" value="{{$spt[0]->NOMOR_SPT}}"><br>
             Tanggal SPT : <input type="date" class="form-control" name="TANGGAL_SPT" value="{{$spt[0]->TANGGAL_SPT}}"><br>
-			Dasar SPT : <input type="text" class="form-control" name="DASAR_SPT" value="{{$spt[0]->DASAR_SPT}}"><br>
+			<!-- Dasar SPT : <input type="text" class="form-control" name="DASAR_SPT" value="{{$spt[0]->DASAR_SPT}}"><br> -->
             Isi SPT : <textarea type="text" class="form-control" name="ISI_SPT" value="{{$spt[0]->ISI_SPT}}"></textarea><br>
 			File SPT :
             <div class="form-group">

@@ -41,7 +41,7 @@
         ID SPT : <input type="text" class="form-control" name="ID_SPT"><br>
         Nomor SPT : <input type="text" class="form-control" name="NOMOR_SPT"><br>
         Tanggal SPT : <input type="date" class="form-control" name="TANGGAL_SPT"><br>
-        Dasar SPT : <input type="text" class="form-control" name="DASAR_SPT"><br>
+        <!-- Dasar SPT : <input type="text" class="form-control" name="DASAR_SPT"><br> -->
         ISI SPT: <input type="text" class="form-control" name="ISI_SPT"><br>
         FILE SPT:
         <div class="form-group">

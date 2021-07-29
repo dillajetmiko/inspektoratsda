@@ -56,7 +56,7 @@ class C_temuan extends Controller
         }elseif($tahun == 0){
             $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->where('KODE_OPD',$kode_opd)->get();
         }else{
-            $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$cari)->where('KODE_OPD',$kode_opd)->whereYear('TANGGAL_TEMUAN', $tahun)->get();
+            $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->where('KODE_OPD',$kode_opd)->whereYear('TANGGAL_TEMUAN', $tahun)->get();
         }
 
         $id = DB::table('opd')->get();

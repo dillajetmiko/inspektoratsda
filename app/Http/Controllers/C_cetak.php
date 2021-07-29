@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\Exports\TemuanExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class C_cetak extends Controller
 {
     //
@@ -92,5 +95,10 @@ class C_cetak extends Controller
         );
 
         return view('cetak/export',$data);
+    }
+
+    public function exportExcel($NOMOR_LHP) 
+    {
+        return Excel::download(new TemuanExport($NOMOR_LHP), 'temuan.xlsx');
     }
 }
