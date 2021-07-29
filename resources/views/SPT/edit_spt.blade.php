@@ -26,19 +26,22 @@
 	</div>
 	<div class="card-body">
 
-		<form action="/spt/update_spt" method="post">  
+		<form action="/spt/update_spt" method="post" enctype="multipart/form-data">  
 			<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
 
 			</select><br>
 			ID SPT : <input type="text" class="form-control" name="ID_SPT" value="{{$spt[0]->ID_SPT}}" readonly><br>
             Nomor SPT : <input type="text" class="form-control" name="NOMOR_SPT" value="{{$spt[0]->NOMOR_SPT}}"><br>
             Tanggal SPT : <input type="date" class="form-control" name="TANGGAL_SPT" value="{{$spt[0]->TANGGAL_SPT}}"><br>
-			Dasar SPT : <input type="text" class="form-control" name="DASAR_SPT" value="{{$spt[0]->DASAR_SPT}}"><br>
-            Isi SPT : <input type="text" class="form-control" name="ISI_SPT" value="{{$spt[0]->ISI_SPT}}"><br>
-			<!-- File SPT : <input type="text" class="form-control" name="FILE_SPT" value="{{$spt[0]->FILE_SPT}}"><br> -->
-            
-        <br><br>
-        <button type="submit" class="btn btn-primary">Update</button>
+			<!-- Dasar SPT : <input type="text" class="form-control" name="DASAR_SPT" value="{{$spt[0]->DASAR_SPT}}"><br> -->
+            Isi SPT : <textarea type="text" class="form-control" name="ISI_SPT" value="{{$spt[0]->ISI_SPT}}"></textarea><br>
+			File SPT :
+            <div class="form-group">
+				<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">File <span class="required">*</span></label>
+					<input type='file' name='file' class="form-control">
+			</div>
+			<br> 
+			<button type="submit" class="btn btn-primary">Update</button>
 		</form>
 	</div>
 	<!-- /.card-body -->

@@ -12,6 +12,7 @@ use App\Http\Controllers\C_spt;
 use App\Http\Controllers\C_penugasan;
 use App\Http\Controllers\C_cetak;
 use App\Http\Controllers\C_register;
+use App\Http\Controllers\C_dasar;
 
 
 
@@ -86,7 +87,8 @@ Route::get('/user/hapus/{NIP}', [C_user::class, 'hapus'])->middleware('auth');
 
 Route::get('/cetak', [C_cetak::class, 'index'])->middleware('auth');
 Route::get('/cetak/cari',[C_cetak::class, 'cari'])->middleware('auth');
-Route::get('/cetak/export/{NOMOR_LHP}', [C_cetak::class, 'export'])->middleware('auth');
+// Route::get('/cetak/export/{NOMOR_LHP}', [C_cetak::class, 'export'])->middleware('auth');
+Route::get('/cetak/export/{NOMOR_LHP}', [C_cetak::class, 'exportExcel'])->middleware('auth');
 
 Route::get('/pegawai', [C_pegawai::class, 'index'])->middleware('auth');
 Route::get('/pegawai/insert_pegawai', [C_pegawai::class, 'insertPegawai'])->middleware('auth');
@@ -102,12 +104,28 @@ Route::get('/spt/edit_spt/{ID_SPT}', [C_spt::class, 'editSpt'])->middleware('aut
 Route::post('/spt/update_spt', [C_spt::class, 'updateSpt'])->middleware('auth');
 Route::get('/spt/hapus/{ID_SPT}', [C_spt::class, 'hapus'])->middleware('auth');
 Route::get('/spt/cetak_spt', [C_spt::class, 'cetak'])->middleware('auth');
+Route::get('/spt/download/{ID_SPT}', [C_spt::class, 'download'])->name('file.download')->middleware('auth');
+Route::get('/spt/generate-docx/{ID_SPT}', [C_spt::class, 'generateDocx']);
 
 // Route::get('/penugasan', [C_penugasan::class, 'index'])->middleware('auth');
 Route::get('/penugasan/insert_view_penugasan/{ID_SPT}', [C_penugasan::class, 'insertPenugasan'])->middleware('auth');
 Route::post('/penugasan/insert_view_penugasan', [C_penugasan::class, 'tambahPenugasan'])->middleware('auth');
 Route::get('/penugasan/edit_penugasan/{ID_SPT}', [C_penugasan::class, 'editPenugasan'])->middleware('auth');
 Route::post('/penugasan/update_penugasan', [C_penugasan::class, 'updatePenugasan'])->middleware('auth');
+Route::get('/penugasan/hapus/{ID_SPT}&{NIP_PEGAWAI}', [C_penugasan::class, 'hapus'])->middleware('auth');
+
+Route::get('/validasi', [C_user::class, 'validasi'])->middleware('auth');
+// Route::get('/user/insert_user', [C_user::class, 'insertUser'])->middleware('auth');
+// Route::post('/user/tambah_user', [C_user::class, 'tambahUser'])->middleware('auth');
+Route::get('/validasi/edit_validasi/{NIP}', [C_user::class, 'editValidasi'])->middleware('auth');
+Route::post('/validasi/update_validasi', [C_user::class, 'updateValidasi'])->middleware('auth');
+// Route::get('/user/hapus/{NIP}', [C_user::class, 'hapus'])->middleware('auth');
+
+Route::get('/dasar/insert_view_dasar/{ID_SPT}', [C_dasar::class, 'insertDasar'])->middleware('auth');
+Route::post('/dasar/insert_view_dasar', [C_dasar::class, 'tambahDasar'])->middleware('auth');
+Route::get('/dasar/edit_dasar/{ID_SPT}', [C_dasar::class, 'editdasar'])->middleware('auth');
+Route::post('/dasar/update_dasar', [C_dasar::class, 'updatedasar'])->middleware('auth');
+Route::get('/dasar/hapus/{ID_SPT}&{NIP_PEGAWAI}', [C_dasar::class, 'hapus'])->middleware('auth');
 
 
 

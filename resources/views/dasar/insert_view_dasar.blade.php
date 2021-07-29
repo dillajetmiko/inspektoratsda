@@ -1,12 +1,13 @@
 @extends("layout.mainlayout")
 
-@section("page_title","SPT")
+@section("page_title","Dasar")
 
-@section("title","SPT")
+@section("title","Dasar")
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-<li class="breadcrumb-item active">SPT</li> 
+<li class="breadcrumb-item"><a href="/spt">SPT</a></li>
+<li class="breadcrumb-item active">Dasar</li> 
 @endsection
 
 @section('custom_css')
@@ -19,7 +20,7 @@
 <!-- Default box -->
 <div class="card">    
   <div class="card-header">
-	  <h3 class="card-title"> DATA SPT</h3>
+	  <h3 class="card-title"> DATA DASAR</h3>
 	  <div class="card-tools">
 		  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
 			<i class="fas fa-minus"></i></button>
@@ -30,86 +31,53 @@
   <div class="card-body">
 		<div class="card">
 			<div class="card-header">
-				<!-- <h3 class="card-title">Tambah Data Anggota</h3> -->
-				<a href="/spt/insert_spt">
-				<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data SPT</button>
-				</a>
+				<div class="form-group">
+					<form action="/dasar/insert_view_dasar" method="post" enctype="multipart/form-data">
+					<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
+					ID SPT : <input type="text" class="form-control" name="ID_SPT" value="{{$spt[0]->ID_SPT}}" readonly><br>
+					Uraian Dasar : <textarea type="text" class="form-control" name="uraian_dasar"></textarea><br>
+		
+					<button type="submit" class="btn btn-primary">Simpan</button>
+					<a href='/penugasan/insert_view_penugasan/{{$spt[0]->ID_SPT}}'>
+					<button type="button" class="btn btn-info">Selesai</button>
+					</a>
+					</form>
+				</div>
 			</div>
+			
+
 			<!-- /.card-header -->
 			<div class="card-body">
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 					<tr>
-						<th style="text-align:center">ID_SPT</th>
-						<th style="text-align:center">Nomor</th>
-						<th style="text-align:center">Tanggal</th>
-						<!-- <th style="text-align:center">Dasar</th> -->
-						<th style="text-align:center">Isi</th>
-						<th style="text-align:center">Penugasan</th>
-                        <th style="text-align:center">Upload File</th>
+						<th style="text-align:center">ID SPT</th>
+						<th style="text-align:center">Uraian Dasar</th>
 						<th style="text-align:center" width="15%">Aksi</th>
 					</tr>
 					</thead>
 					<tbody>
-					@foreach($spt as $data)
+					@foreach($dasar as $data)
 					<tr>
 						<td>{{ $data->ID_SPT }}</td>
-						<td>{{ $data->NOMOR_SPT }}</td>
-						<td>{{ $data->TANGGAL_SPT }}</td>
-						<!-- <td>{{ $data->DASAR_SPT }}</td> -->
-						<td>{{ $data->ISI_SPT }}</td>
+						<td>{{ $data->uraian_dasar }}</td>
+						
 						<td>
-						@foreach($penugasan as $tugas)
-						@if ($tugas->ID_SPT === $data->ID_SPT)
-							@foreach($pegawai as $peg)
-							@if ($peg->NIP_PEGAWAI === $tugas->NIP_PEGAWAI)
-							{{$peg->NAMA_PEGAWAI}}<br>
-							@endif
-							@endforeach
-						@endif
-						@endforeach
-						<a href='/penugasan/insert_view_penugasan/{{ $data->ID_SPT }}'>
-                        lihat penugasan
-                        </a>
-						</td>
-                        <td>
-						@if ($data->FILE_SPT == null)
-						Tidak ada file
-						@else
-						<a href="spt/download/{{ $data->ID_SPT }}" class='btn btn-ghost-info'>
-							<i class="fa fa-download"></i> Download
-						</a>
-						@endif
-						<td><a href='/spt/edit_spt/{{ $data->ID_SPT }}'>
+						<!-- <a href='/penugasan/edit_penugasan/{{ $data->ID_SPT }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
-						</a>
-						<a href='/spt/hapus/{{ $data->ID_SPT }}'>
+						</a> -->
+						<a href='/dasar/hapus/{{ $data->ID_SPT}}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
-						</a>
-						<a href='/spt/generate-docx/{{ $data->ID_SPT }}'>
-						<button type="button" class="btn btn-secondary"><i class="fas fa-print"></i> Cetak</button>
 						</a>
 						</td>             
 					</tr>
 					@endforeach
 					</tbody>
 					<tfoot>
-					<!-- <tr>
-					<th>NIS_NIP</th>
-					<th>nama_anggota</th>
-					<th>tahun_masuk</th>
-					<th>kelas</th>
-					<th>username_anggota</th>
-					<th>password_anggota</th>
-					</tr> -->
 					</tfoot>
 				</table>
 			</div>
 			<!-- /.card-body -->
-
-			<!-- <a href="/spt/cetak_spt">
-				<button type="button" class="btn btn-info float-left" style="float: left;"><i class="fas fa-file-export"></i> Cetak </button>
-			</a> -->
 		</div>
 		<!-- /.card -->
   </div>

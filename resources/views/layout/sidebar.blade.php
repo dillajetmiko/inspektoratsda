@@ -109,7 +109,7 @@
 
           @can('update-role')
           <li class="nav-item">
-            <a href="/cetak" class="nav-link">
+            <a href="/validasi" class="nav-link">
           
               <i class="nav-icon fas fa-book"></i>
               <p>

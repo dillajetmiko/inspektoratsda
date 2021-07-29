@@ -4,18 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class C_temuan extends Controller
 {
     //
     public function index()
     {
+        $years=[];
+        $year = date("Y");
+
+        foreach (range($year, 2000) as $number) {
+            array_push($years, $number);
+        }
         $temuan = DB::table('temuan')->get();
         $id = DB::table('opd')->get();
         $data = array(
             'menu' => 'temuan',
             'temuan' => $temuan,
             'id' => $id,
+            'years' => $years,
             'submenu' => ''
         );
 
@@ -24,17 +32,40 @@ class C_temuan extends Controller
 
     public function cari(Request $request)
 	{
-		// menangkap data pencarian
-		$cari = $request->cari;
- 
-    		// mengambil data dari table pegawai sesuai pencarian data
-		$temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$cari)->get();
+		$years=[];
+        $year = date("Y");
+
+        foreach (range($year, 2000) as $number) {
+            array_push($years, $number);
+        }
+        // menangkap data pencarian
+		$jenis = $request->cari;
+        $kode_opd = $request->KODE_OPD;
+        $tahun = $request->year;
+
+        if ($kode_opd == 0 && $tahun == 0){
+            $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->get();
+        }elseif($jenis == 0 && $tahun == 0){
+            $temuan = DB::table('temuan')->where('KODE_OPD',$kode_opd)->get();
+        }elseif($jenis == 0 && $kode_opd == 0){
+            $temuan = DB::table('temuan')->whereYear('TANGGAL_TEMUAN', $tahun)->get();
+        }elseif($jenis == 0){
+            $temuan = DB::table('temuan')->where('KODE_OPD',$kode_opd)->whereYear('TANGGAL_TEMUAN', $tahun)->get();
+        }elseif($kode_opd == 0){
+            $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->whereYear('TANGGAL_TEMUAN', $tahun)->get();
+        }elseif($tahun == 0){
+            $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->where('KODE_OPD',$kode_opd)->get();
+        }else{
+            $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->where('KODE_OPD',$kode_opd)->whereYear('TANGGAL_TEMUAN', $tahun)->get();
+        }
+
         $id = DB::table('opd')->get();
 
         $data = array(
             'menu' => 'temuan',
             'temuan' => $temuan,
             'id' => $id,
+            'years' => $years,
             'submenu' => ''
         );
  
@@ -66,7 +97,7 @@ class C_temuan extends Controller
     {
         DB::table('temuan')->insert([
             'KODE_TEMUAN' => $post->KODE_TEMUAN,
-            'NIP' => '1',
+            'NIP' => Auth::user()->NIP,
             'NOMOR_LHP' => $post->NOMOR_LHP,
             'URAIAN_TEMUAN' => $post->URAIAN_TEMUAN,
             'KODE_REKOMENDASI' => $post->KODE_REKOMENDASI,
@@ -113,7 +144,6 @@ class C_temuan extends Controller
         // update tabel anggota
         DB::table('temuan')->where('KODE_TEMUAN', $post->KODE_TEMUAN)->update([
             'KODE_TEMUAN' => $post->KODE_TEMUAN,
-            'NIP' => '1',
             'NOMOR_LHP' => $post->NOMOR_LHP,
             'URAIAN_TEMUAN' => $post->URAIAN_TEMUAN,
             'KODE_REKOMENDASI' => $post->KODE_REKOMENDASI,

@@ -6,6 +6,7 @@
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
+<li class="breadcrumb-item"><a href="/spt">SPT</a></li>
 <li class="breadcrumb-item active">Penugasan</li> 
 @endsection
 
@@ -33,7 +34,7 @@
 				<div class="form-group">
 					<form action="/penugasan/insert_view_penugasan" method="post" enctype="multipart/form-data">
 					<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-					ID SPT : <input type="text" class="form-control" name="ID_SPT" value="{{$spt[0]->ID_SPT}}"><br>
+					ID SPT : <input type="text" class="form-control" name="ID_SPT" value="{{$spt[0]->ID_SPT}}" readonly><br>
 					Nama Pegawai : 
 						<select class="form-control select2" name="NIP_PEGAWAI">
 						@foreach ($pegawai as $peg)
@@ -41,9 +42,18 @@
 						@endforeach
 						</select>
 						<br>
-					Penugasan : <input type="text" class="form-control" name="PENUGASAN"><br>
+					Penugasan : 
+						<select class="form-control select2" name="ID_TUGAS">
+						@foreach ($tugas as $tug)
+						<option value="{{ $tug->ID_TUGAS}}">{{ $tug->NAMA_TUGAS}}</option>
+						@endforeach
+						</select>
+						</select><br>
 		
 					<button type="submit" class="btn btn-primary">Simpan</button>
+					<a href='/spt'>
+					<button type="button" class="btn btn-info">Selesai</button>
+					</a>
 					</form>
 				</div>
 			</div>
@@ -64,16 +74,25 @@
 					@foreach($penugasan as $data)
 					<tr>
 						<td>{{ $data->ID_SPT }}</td>
+						<td>
 						@foreach($pegawai as $datapeg)
 						@if ($datapeg->NIP_PEGAWAI === $data->NIP_PEGAWAI)
-						<td>{{$datapeg->NAMA_PEGAWAI}}</td>
+						{{$datapeg->NAMA_PEGAWAI}}
+						@endif
+						@endforeach
+						</td> 
+						<td>
+						@foreach($tugas as $datatug)
+						@if ($datatug->ID_TUGAS === $data->ID_TUGAS)
+						{{$datatug->NAMA_TUGAS}}
 						@endif
 						@endforeach 
-						<td>{{ $data->PENUGASAN }}</td>
-						<td><a href='/penugasan/edit_penugasan/{{ $data->ID_SPT }}'>
+						</td>
+						<td>
+						<!-- <a href='/penugasan/edit_penugasan/{{ $data->ID_SPT }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
-						</a>
-						<a href='/penugasan/hapus/{{ $data->ID_SPT }}'>
+						</a> -->
+						<a href='/penugasan/hapus/{{ $data->ID_SPT }}&{{ $data->NIP_PEGAWAI}}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
 						</td>             

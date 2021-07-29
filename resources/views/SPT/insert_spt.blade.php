@@ -36,20 +36,18 @@
     <!-- <h1>Tambah Data Temuan</h1> -->
 
 
-        <form action="/spt/tambah_spt" method="post">
+        <form action="/spt/tambah_spt" method="post" enctype="multipart/form-data">
         <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
         ID SPT : <input type="text" class="form-control" name="ID_SPT"><br>
         Nomor SPT : <input type="text" class="form-control" name="NOMOR_SPT"><br>
         Tanggal SPT : <input type="date" class="form-control" name="TANGGAL_SPT"><br>
-        Dasar SPT : <input type="text" class="form-control" name="DASAR_SPT"><br>
+        <!-- Dasar SPT : <input type="text" class="form-control" name="DASAR_SPT"><br> -->
         ISI SPT: <input type="text" class="form-control" name="ISI_SPT"><br>
-        <!-- FILE SPT: -->
-        <!-- <div class="form-group">
+        FILE SPT:
+        <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">File <span class="required">*</span></label>
-          <div class="col-md-6 col-sm-6 col-xs-12">
-
             <input type='file' name='file' class="form-control">
-       </div> -->
+       </div>
         <br> 
 
         <button type="submit" class="btn btn-primary">Simpan</button>
