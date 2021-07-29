@@ -48,6 +48,7 @@
 							<div class="input-group">
 								<div style="width: 50%">
 									<select class="form-control select2" name="cari">
+									<option>-Pilih Judul-</option>
 									@foreach ($lhp as $no)
 									<option value="{{ $no->NOMOR_LHP}}">{{ $no->JUDUL_PEMERIKSAAN	}}</option>
 									@endforeach

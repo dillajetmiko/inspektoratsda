@@ -68,12 +68,15 @@
 							@endforeach
 						@endif
 						@endforeach
+						<a href='/penugasan/insert_view_penugasan/{{ $data->ID_SPT }}'>
+                        lihat penugasan
+                        </a>
 						</td>
                         <td>
 						@if ($data->FILE_SPT == null)
 						Tidak ada file
 						@else
-						<a href="/filedownload/{{ $data->ID_SPT }}" class='btn btn-ghost-info'>
+						<a href="spt/download/{{ $data->ID_SPT }}" class='btn btn-ghost-info'>
 							<i class="fa fa-download"></i> Download
 						</a>
 						@endif
@@ -101,9 +104,9 @@
 			</div>
 			<!-- /.card-body -->
 
-			<a href="/spt/cetak_spt">
+			<!-- <a href="/spt/cetak_spt">
 				<button type="button" class="btn btn-info float-left" style="float: left;"><i class="fas fa-file-export"></i> Cetak </button>
-			</a>
+			</a> -->
 		</div>
 		<!-- /.card -->
   </div>

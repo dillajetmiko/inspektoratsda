@@ -13,12 +13,14 @@ class C_penugasan extends Controller
         $spt = DB::table('spt')->where('ID_SPT', $ID_SPT)->get();
         $penugasan = DB::table('penugasan')->where('ID_SPT', $ID_SPT)->get();
         $pegawai = DB::table('pegawai')->get();
+        $tugas = DB::table('tugas')->get();
 
         $data = array(
             'menu' => 'spt',
             'spt' => $spt,
             'penugasan' => $penugasan,
             'pegawai' => $pegawai,
+            'tugas' => $tugas,
             'submenu' => ''
            
         );
@@ -29,8 +31,8 @@ class C_penugasan extends Controller
     {
         DB::table('penugasan')->insert([
             'ID_SPT' => $post->ID_SPT,
+            'ID_TUGAS' => $post->ID_TUGAS,        
             'NIP_PEGAWAI' => $post->NIP_PEGAWAI,
-            'PENUGASAN' => $post->PENUGASAN,        
         ]);
 
         return redirect('/penugasan/insert_view_penugasan/'.$post->ID_SPT);
@@ -63,6 +65,15 @@ class C_penugasan extends Controller
 
         //kembali ke halaman data detailpeminjaman
         return redirect('/lihatdetailpeminjaman/'.$post->id_peminjaman);
+    }
+
+    public function hapus($ID_SPT,$NIP_PEGAWAI)
+    {
+        // menghapus data detail_peminjaman berdasarkan id yang dipilih
+        DB::table('penugasan')->where('ID_SPT',$ID_SPT)->where('NIP_PEGAWAI',$NIP_PEGAWAI)->delete();
+            
+        // alihkan halaman ke halaman detail_peminjaman
+        return redirect('/penugasan/insert_view_penugasan/'.$ID_SPT);
     }
 
 }

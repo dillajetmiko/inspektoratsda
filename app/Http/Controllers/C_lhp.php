@@ -108,14 +108,35 @@ class C_lhp extends Controller
 
     public function updateLHP(Request $post)
     {
-        DB::table('lhp')->where('NOMOR_LHP', $post->NOMOR_LHP)->update([
-            'NOMOR_LHP' => $post->NOMOR_LHP,
-            'ID_SPT' => $post->ID_SPT,
-            'NIP' => '1',
-            'TANGGAL_LHP' => $post->TANGGAL_LHP,
-            'JUDUL_PEMERIKSAAN' => $post->JUDUL_PEMERIKSAAN,
-            'ANGGARAN' => $post->ANGGARAN,
-        ]);
+        if($post->file('file')) { 
+            // Validation
+            $post->validate([
+                'file' => 'required|mimes:png,jpg,jpeg,csv,txt,pdf|max:2048'
+            ]); 
+
+            $name = $post->file('file')->getClientOriginalName();
+
+            // $path = $post->file('file')->store('public/files');  
+            $path = $post->file('file')->storeAs('public/files',$name); 
+            
+            DB::table('lhp')->where('NOMOR_LHP', $post->NOMOR_LHP)->update([
+                'NOMOR_LHP' => $post->NOMOR_LHP,
+                'ID_SPT' => $post->ID_SPT,
+                'TANGGAL_LHP' => $post->TANGGAL_LHP,
+                'JUDUL_PEMERIKSAAN' => $post->JUDUL_PEMERIKSAAN,
+                'UPLOAD_FILE' => $path,
+                'ANGGARAN' => $post->ANGGARAN,
+            ]);
+        }else{
+            DB::table('lhp')->where('NOMOR_LHP', $post->NOMOR_LHP)->update([
+                'NOMOR_LHP' => $post->NOMOR_LHP,
+                'ID_SPT' => $post->ID_SPT,
+                'TANGGAL_LHP' => $post->TANGGAL_LHP,
+                'JUDUL_PEMERIKSAAN' => $post->JUDUL_PEMERIKSAAN,
+                'ANGGARAN' => $post->ANGGARAN,
+            ]);
+        }
+        
 
         return redirect('/lhp');
     }

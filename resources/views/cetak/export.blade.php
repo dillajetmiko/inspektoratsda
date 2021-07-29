@@ -58,11 +58,13 @@
 						@endif
 						<td>{{ $data->TANGGAL_TINDAK_LANJUT }}</td>
 						<td>{{ $data->KERUGIAN }}</td>
+						<td>
 						@foreach($id as $OPD)
 						@if ($OPD->KODE_OPD === $data->KODE_OPD)
-						<td>{{$OPD->NAMA_OPD}}</td>
+						{{$OPD->NAMA_OPD}}
 						@endif
 						@endforeach 
+						</td>
 					</tr>
 
                

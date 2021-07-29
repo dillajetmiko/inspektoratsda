@@ -58,11 +58,13 @@
 					@foreach($lhp as $data)
 					<tr>
 						<td>{{ $data->NOMOR_LHP }}</td>
+						<td>
 						@foreach($id as $SPT)
 						@if ($SPT->ID_SPT === $data->ID_SPT)
-						<td>{{$SPT->NOMOR_SPT}}</td>
+						{{$SPT->NOMOR_SPT}}
 						@endif
 						@endforeach 
+						</td>
 						<td>{{ $data->NIP }}</td>
 						<td>{{ $data->TANGGAL_LHP }}</td>
 						<td>{{ $data->JUDUL_PEMERIKSAAN }}</td>

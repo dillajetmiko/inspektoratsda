@@ -46,7 +46,8 @@ class C_register extends Controller
             // Authentication passed...
             return redirect()->to('/');
         } else {
-          return $credentials;
+            $data = ['name' => 'login tidak berhasil'];
+            return view('login.formLogin',$data);
         }
     }
 

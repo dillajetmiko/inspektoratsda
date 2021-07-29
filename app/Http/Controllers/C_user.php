@@ -21,14 +21,6 @@ class C_user extends Controller
         return view('user/view_user',$data);
     }
 
-    public function punyaRole($namaRole)
-    {
-        if($this->role->namaRole == $namaRole){
-            return true;
-        }
-            return false;
-    }
-
     public function insertUser()
     {
         $user = DB::table('users')->get();
@@ -99,5 +91,64 @@ class C_user extends Controller
     {
     	DB::table('users')->where('NIP',$NIP)->delete();
 	    return redirect('/user');
+    }
+
+    public function validasi()
+    {
+        $user = DB::table('users')->get();
+        $role = DB::table('role')->get();
+
+        $data = array(
+            'menu' => 'validasi',
+            'user' => $user,
+            'role' => $role,
+            'submenu' => ''
+        );
+
+        return view('validasi/view_validasi',$data);
+    }
+
+    public function editValidasi($NIP) 
+    {
+        $user = DB::table('users')->where('NIP', $NIP)->get();
+        $role = DB::table('role')->get();
+    
+        $data = array(
+            'menu' => 'validasi',
+            'user' => $user,
+            'role' => $role,
+            'submenu' => ''          
+        );
+        return view('validasi/edit_validasi',$data);
+    }
+
+    public function updateValidasi(Request $post)
+    {
+        
+        if($post->PASSWORD){
+            DB::table('users')->where('NIP', $post->NIP)->update([
+            'NIP' => $post->NIP,
+            'name' => $post->NAMA,
+            'jabatan' => $post->JABATAN,
+            'pangkat' => $post->PANGKAT,
+            'id_role' => $post->id_role,
+            ]);
+            $user = User::find($post->NIP);
+
+            $user->password = $post->PASSWORD;
+
+            $user->save();
+        }else{
+            DB::table('users')->where('NIP', $post->NIP)->update([
+            'NIP' => $post->NIP,
+            'name' => $post->NAMA,
+            'jabatan' => $post->JABATAN,
+            'pangkat' => $post->PANGKAT,
+            'id_role' => $post->id_role,
+            ]);
+        }
+              
+        //kembali ke halaman data anggota
+        return redirect('/validasi');
     }
 }

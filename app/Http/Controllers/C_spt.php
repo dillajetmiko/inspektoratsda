@@ -63,27 +63,27 @@ class C_spt extends Controller
  
      public function tambahSpt(Request $post)
      {  
-         // Validation
-        //  $post->validate([
-        //      'file' => 'required|mimes:png,jpg,jpeg,csv,txt,pdf|max:2048'
-        //  ]); 
- 
-        //  if($post->file('file')) { 
-        //      $name = $post->file('file')->getClientOriginalName();
- 
-             // $path = $post->file('file')->store('public/files');  
-        //      $path = $post->file('file')->storeAs('public/files',$name);  
-        //  }else{
-        //      $path = null;
-        //  }
+        if($post->file('file')) { 
+            // Validation
+            $post->validate([
+                'file' => 'required|mimes:png,jpg,jpeg,csv,txt,pdf|max:2048'
+            ]); 
+
+            $name = $post->file('file')->getClientOriginalName();
+
+            // $path = $post->file('file')->store('public/files');  
+            $path = $post->file('file')->storeAs('public/files',$name);  
+        }else{
+            $path = null;
+        }
   
          DB::table('spt')->insert([
              'ID_SPT' => $post->ID_SPT,
              'NOMOR_SPT' => $post->NOMOR_SPT,
              'TANGGAL_SPT' => $post->TANGGAL_SPT,
              'DASAR_SPT' => $post->DASAR_SPT,
-             'ISI_SPT' => $post->ISI_SPT
-            //  'FILE_SPT' => $path
+             'ISI_SPT' => $post->ISI_SPT,
+             'FILE_SPT' => $path
           
          ]);
  
@@ -105,12 +105,32 @@ class C_spt extends Controller
  
      public function updateSPt(Request $post)
      {
-         DB::table('spt')->where('ID_SPT', $post->ID_SPT)->update([
-             'NOMOR_SPT' => $post->NOMOR_SPT,
-             'TANGGAL_SPT' => $post->TANGGAL_SPT,
-             'DASAR_SPT' => $post->DASAR_SPT,
-             'ISI_SPT' => $post->ISI_SPT         
-         ]);
+        if($post->file('file')) { 
+            // Validation
+            $post->validate([
+                'file' => 'required|mimes:png,jpg,jpeg,csv,txt,pdf|max:2048'
+            ]); 
+
+            $name = $post->file('file')->getClientOriginalName();
+
+            // $path = $post->file('file')->store('public/files');  
+            $path = $post->file('file')->storeAs('public/files',$name); 
+            
+            DB::table('spt')->where('ID_SPT', $post->ID_SPT)->update([
+                'NOMOR_SPT' => $post->NOMOR_SPT,
+                'TANGGAL_SPT' => $post->TANGGAL_SPT,
+                'DASAR_SPT' => $post->DASAR_SPT,
+                'ISI_SPT' => $post->ISI_SPT,         
+                'FILE_SPT' => $path         
+            ]);
+        }else{
+            DB::table('spt')->where('ID_SPT', $post->ID_SPT)->update([
+                'NOMOR_SPT' => $post->NOMOR_SPT,
+                'TANGGAL_SPT' => $post->TANGGAL_SPT,
+                'DASAR_SPT' => $post->DASAR_SPT,
+                'ISI_SPT' => $post->ISI_SPT         
+            ]);
+        } 
  
          return redirect('/spt');
      }
@@ -130,6 +150,7 @@ class C_spt extends Controller
  
      public function hapus($ID_SPT)
      {
+         DB::table('penugasan')->where('ID_SPT',$ID_SPT)->delete();
          DB::table('spt')->where('ID_SPT',$ID_SPT)->delete();
          return redirect('/spt');
      }

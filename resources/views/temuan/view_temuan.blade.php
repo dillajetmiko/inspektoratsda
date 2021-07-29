@@ -32,16 +32,33 @@
 			<div class="card-header">
 			<!-- <h3 class="card-title">Tambah Data Anggota</h3> -->
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-9">
 						<div class="form-group">
 							<form action="/temuan/cari" method="GET">
 							<!-- <input type="text" name="cari" placeholder="Cari Pegawai .." value="{{ old('cari') }}">
 							<input type="submit" value="CARI"> -->
 							<div class="input-group">
-								<div style="width: 50%">
+								<div style="width: 20%">
 									<select class="form-control" name="cari">
+										<option value="0">-Pilih Jenis-</option>
 										<option value="1">Internal</option>
 										<option value="2">Eksternal</option>
+									</select>
+								</div>
+								<div style="width: 42%">
+									<select class="form-control select2" name="KODE_OPD">
+										<option value="0">-Pilih OPD-</option>
+										@foreach ($id as $opd)
+										<option value="{{ $opd->KODE_OPD}}">{{ $opd->NAMA_OPD}}</option>
+										@endforeach
+									</select>
+								</div>
+								<div style="width: 20%">
+									<select class="form-control select2" name="year">
+										<option value="0">-Pilih Tahun-</option>
+										@foreach ($years as $year)
+										<option value="{{ $year }}">{{ $year }}</option>
+										@endforeach
 									</select>
 								</div>
 								<div class="input-group-append">
@@ -51,7 +68,7 @@
 							</form>
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-3">
 						@can('tambah-temuan')
 						<a href="/temuan/insert_temuan">
 						<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data Temuan</button>
@@ -114,11 +131,13 @@
 					<td>{{ $data->JABATAN_PEJABAT }}</td>
 					<td>{{ $data->NIP_PEJABAT }}</td>
 					<td>{{ $data->JENIS_PENGAWASAN }}</td>
+					<td>
 					@foreach($id as $OPD)
 					@if ($OPD->KODE_OPD === $data->KODE_OPD)
-					<td>{{$OPD->NAMA_OPD}}</td>
+					{{$OPD->NAMA_OPD}}
 					@endif
 					@endforeach 
+					</td>
 					<td>{{ $data->TANGGAL_TEMUAN }}</td>
 					<td>{{ $data->TANGGAL_TINDAK_LANJUT }}</td>
 					<td>{{ $data->KERUGIAN }}</td>
