@@ -19,6 +19,21 @@
 			<h2>Evaluasi dan Pelaporan</h2>
 			<!-- <h4>(Inventory)</h4> -->
 				<div class="data-tables datatable-dark">
+
+				<table>
+				@foreach ($lhp2 as $datalhp)
+				<tr>
+					<th>Judul Pemeriksaan</th>
+					<td>: {{ $datalhp->JUDUL_PEMERIKSAAN	}}</td>
+				</tr>
+				<tr>
+					<th>Tanggal LHP</th>
+					<td>: {{ $datalhp->TANGGAL_LHP	}}</td>
+				</tr>
+				@endforeach
+				</table>
+
+			</br>
 					
                 <table id="example1" class="table table-bordered table-striped">
 					<thead>

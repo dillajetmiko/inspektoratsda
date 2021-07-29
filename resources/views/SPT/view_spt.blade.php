@@ -82,8 +82,8 @@
 						</a>
 						<a href='/spt/hapus/{{ $data->ID_SPT }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
-						</a>
-						</td>             
+						</a>						
+						</td>				             
 					</tr>
 					@endforeach
 					</tbody>
