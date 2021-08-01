@@ -112,7 +112,7 @@ Route::get('/penugasan/insert_view_penugasan/{ID_SPT}', [C_penugasan::class, 'in
 Route::post('/penugasan/insert_view_penugasan', [C_penugasan::class, 'tambahPenugasan'])->middleware('auth');
 Route::get('/penugasan/edit_penugasan/{ID_SPT}', [C_penugasan::class, 'editPenugasan'])->middleware('auth');
 Route::post('/penugasan/update_penugasan', [C_penugasan::class, 'updatePenugasan'])->middleware('auth');
-Route::get('/penugasan/hapus/{ID_SPT}&{NIP_PEGAWAI}', [C_penugasan::class, 'hapus'])->middleware('auth');
+Route::get('/penugasan/hapus/{id}&{id_spt}', [C_penugasan::class, 'hapus'])->middleware('auth');
 
 Route::get('/validasi', [C_user::class, 'validasi'])->middleware('auth');
 // Route::get('/user/insert_user', [C_user::class, 'insertUser'])->middleware('auth');
@@ -125,7 +125,7 @@ Route::get('/dasar/insert_view_dasar/{ID_SPT}', [C_dasar::class, 'insertDasar'])
 Route::post('/dasar/insert_view_dasar', [C_dasar::class, 'tambahDasar'])->middleware('auth');
 Route::get('/dasar/edit_dasar/{ID_SPT}', [C_dasar::class, 'editdasar'])->middleware('auth');
 Route::post('/dasar/update_dasar', [C_dasar::class, 'updatedasar'])->middleware('auth');
-Route::get('/dasar/hapus/{ID_SPT}&{NIP_PEGAWAI}', [C_dasar::class, 'hapus'])->middleware('auth');
+Route::get('/dasar/hapus/{id}&{id_spt}', [C_dasar::class, 'hapus'])->middleware('auth');
 
 
 

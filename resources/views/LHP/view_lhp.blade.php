@@ -60,7 +60,7 @@
 						<td>{{ $data->NOMOR_LHP }}</td>
 						<td>
 						@foreach($id as $SPT)
-						@if ($SPT->ID_SPT === $data->ID_SPT)
+						@if ($SPT->id === $data->ID_SPT)
 						{{$SPT->NOMOR_SPT}}
 						@endif
 						@endforeach 

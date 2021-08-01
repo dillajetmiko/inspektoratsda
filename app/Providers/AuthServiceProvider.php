@@ -54,8 +54,32 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->id_role, [ADMIN,SUPERADMIN]);
         });
 
+        Gate::define('edit-hapus-pegawai', function (User $user) {
+            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
+        });
+
+        Gate::define('tambah-pegawai', function (User $user) {
+            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
+        });
+
+        Gate::define('edit-hapus-spt', function (User $user) {
+            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
+        });
+
+        Gate::define('tambah-spt', function (User $user) {
+            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
+        });
+
+        Gate::define('edit-hapus-user', function (User $user) {
+            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
+        });
+
         Gate::define('update-role', function (User $user) {
             return in_array($user->id_role, [SUPERADMIN]);
+        });
+
+        Gate::define('show-menu', function (User $user) {
+            return ($user->id_role > 0);
         });
 
         //

@@ -34,11 +34,11 @@
 				<div class="form-group">
 					<form action="/dasar/insert_view_dasar" method="post" enctype="multipart/form-data">
 					<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-					ID SPT : <input type="text" class="form-control" name="ID_SPT" value="{{$spt[0]->ID_SPT}}" readonly><br>
+					ID SPT : <input type="text" class="form-control" name="ID_SPT" value="{{$spt[0]->id}}" readonly><br>
 					Uraian Dasar : <textarea type="text" class="form-control" name="uraian_dasar"></textarea><br>
 		
 					<button type="submit" class="btn btn-primary">Simpan</button>
-					<a href='/penugasan/insert_view_penugasan/{{$spt[0]->ID_SPT}}'>
+					<a href='/penugasan/insert_view_penugasan/{{$spt[0]->id}}'>
 					<button type="button" class="btn btn-info">Selesai</button>
 					</a>
 					</form>
@@ -51,7 +51,6 @@
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 					<tr>
-						<th style="text-align:center">ID SPT</th>
 						<th style="text-align:center">Uraian Dasar</th>
 						<th style="text-align:center" width="15%">Aksi</th>
 					</tr>
@@ -59,14 +58,13 @@
 					<tbody>
 					@foreach($dasar as $data)
 					<tr>
-						<td>{{ $data->ID_SPT }}</td>
 						<td>{{ $data->uraian_dasar }}</td>
 						
 						<td>
-						<!-- <a href='/penugasan/edit_penugasan/{{ $data->ID_SPT }}'>
+						<!-- <a href='/penugasan/edit_penugasan/{{ $data->id }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a> -->
-						<a href='/dasar/hapus/{{ $data->ID_SPT}}'>
+						<a href='/dasar/hapus/{{ $data->id }}&{{ $data->id_spt }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
 						</td>             

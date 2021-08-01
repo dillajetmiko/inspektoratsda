@@ -29,6 +29,7 @@
             </a>
           </li>
 
+          @can('show-menu')
           <li class="nav-item">
           @if($menu == 'user')
             <a href="/user" class="nav-link active">
@@ -118,6 +119,8 @@
             </a>
           </li>
           @endcan
+
+        @endcan
           
         </ul>
       </nav>

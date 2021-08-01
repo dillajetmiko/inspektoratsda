@@ -44,7 +44,9 @@
 				<th style="text-align:center">Nama</th>
 				<th style="text-align:center">Jabatan</th>
 				<th style="text-align:center">Pangkat</th>
+				@can('edit-hapus-user')
 				<th style="text-align:center" width="15%">Aksi</th>
+				@endcan
 				</tr>
 				</thead>
 				<tbody>
@@ -54,13 +56,16 @@
 					<td>{{ $data->name }}</td>
 					<td>{{ $data->jabatan }}</td>
 					<td>{{ $data->pangkat }}</td>
-					<td><a href='/user/edit_user/{{ $data->NIP }}'>
+					@can('edit-hapus-user')
+					<td>
+					<a href='/user/edit_user/{{ $data->NIP }}'>
 					<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 					</a>
 					<a href='/user/hapus/{{ $data->NIP }}'>
 					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 					</a>
 					</td>             
+					@endcan
 				</tr>
 				@endforeach
 				</tbody>

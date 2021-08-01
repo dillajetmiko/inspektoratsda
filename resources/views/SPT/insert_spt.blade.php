@@ -38,10 +38,17 @@
 
         <form action="/spt/tambah_spt" method="post" enctype="multipart/form-data">
         <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-        ID SPT : <input type="text" class="form-control" name="ID_SPT"><br>
+        <!-- ID SPT : <input type="text" class="form-control" name="ID_SPT"><br> -->
         Nomor SPT : <input type="text" class="form-control" name="NOMOR_SPT"><br>
         Tanggal SPT : <input type="date" class="form-control" name="TANGGAL_SPT"><br>
         <!-- Dasar SPT : <input type="text" class="form-control" name="DASAR_SPT"><br> -->
+        Jenis Pengawasan : 
+            <select class="form-control select2" name="ID_PENGAWASAN">
+            @foreach ($jenis_pengawasan as $jenis)
+            <option value="{{ $jenis->ID_PENGAWASAN}}">{{ $jenis->NAMA_PENGAWASAN}}</option>
+            @endforeach
+            </select>
+            <br>
         ISI SPT: <input type="text" class="form-control" name="ISI_SPT"><br>
         FILE SPT:
         <div class="form-group">
