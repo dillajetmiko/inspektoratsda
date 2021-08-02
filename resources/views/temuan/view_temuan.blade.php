@@ -130,6 +130,7 @@
 					<td>{{ $data->NAMA_PEJABAT }}</td>
 					<td>{{ $data->JABATAN_PEJABAT }}</td>
 					<td>{{ $data->NIP_PEJABAT }}</td>
+<<<<<<< HEAD
 					
 
 					<td>
@@ -148,6 +149,8 @@
 					</td>
 
 					<!-- </td> -->
+=======
+>>>>>>> fff892c49c31ad968fa68af41d105ede5deb74a0
 					<td>{{ $data->TANGGAL_TEMUAN }}</td>
 					<td>{{ $data->TANGGAL_TINDAK_LANJUT }}</td>
 					<td>{{ $data->KERUGIAN }}</td>
@@ -161,9 +164,10 @@
 					<td><a href='/temuan/edit_temuan/{{ $data->KODE_TEMUAN }}'>
 					<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 					</a>
-					<a href='/temuan/hapus/{{ $data->KODE_TEMUAN }}'>
+					<!-- <a href='/temuan/hapus/{{ $data->KODE_TEMUAN }}'>
 					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
-					</a>
+					</a> -->
+					<button onclick="confirmDelete({{ $data->KODE_TEMUAN }})" class="btn btn-danger btn-sm"> Hapus</button>
 					</td> 
 					@endcan
                      
@@ -193,6 +197,25 @@
   <!-- /.card-footer-->
 </div>
 <!-- /.card -->
+<div class="modal fade" id="deleteTemuan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Hapus Data</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Apakah anda yakin ingin mengahpus data ini?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+		<a id="deleteLink">
+		<button type="button" class="btn btn-danger">Hapus</button>
+						</a>
+	</div>
+    </div>
+  </div>
+</div>
 @endsection
 
 
@@ -210,5 +233,15 @@
 	  "autoWidth": false,
 	});
   });
+</script>
+
+@section('scripts')
+<script>
+	function confirmDelete(id)
+	{
+		var link = document.getElementById('deleteLink')
+		link.href="/temuan/hapus/" + id
+		$('#deleteTemuan').modal('show')}
+
 </script>
 @endsection

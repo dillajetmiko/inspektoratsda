@@ -35,7 +35,7 @@
         NOMOR SPT : 
             <select class="form-control select2" name="ID_SPT">
             @foreach ($id as $spt)
-            <option value="{{ $spt->ID_SPT}}">{{ $spt->NOMOR_SPT}}</option>
+            <option value="{{ $spt->id}}">{{ $spt->NOMOR_SPT}}</option>
             @endforeach
             </select>
             <br>

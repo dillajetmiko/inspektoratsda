@@ -37,7 +37,7 @@
       <form action="/loginSubmit" method="post">
       <input type = "hidden" name = "_token" value = "<?php echo csrf_token()?>">
         <div class="input-group mb-3">
-          <input type="text" name="email" class="form-control" placeholder="email">
+          <input type="text" name="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>

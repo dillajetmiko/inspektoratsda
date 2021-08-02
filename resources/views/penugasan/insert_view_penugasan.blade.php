@@ -14,6 +14,11 @@
 <!-- DataTables -->
 <link rel="stylesheet" href="{{asset ('asset/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{asset ('asset/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<!-- Select2 -->
+<link rel="stylesheet" href="{{asset ('asset/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset ('asset/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{asset ('asset/dist/css/adminlte.min.css')}}">
 @endsection
 
 @section('content')
@@ -34,7 +39,7 @@
 				<div class="form-group">
 					<form action="/penugasan/insert_view_penugasan" method="post" enctype="multipart/form-data">
 					<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-					ID SPT : <input type="text" class="form-control" name="ID_SPT" value="{{$spt[0]->ID_SPT}}" readonly><br>
+					ID SPT : <input type="text" class="form-control" name="ID_SPT" value="{{$spt[0]->id}}" readonly><br>
 					Nama Pegawai : 
 						<select class="form-control select2" name="NIP_PEGAWAI">
 						@foreach ($pegawai as $peg)
@@ -64,7 +69,7 @@
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 					<tr>
-						<th style="text-align:center">ID SPT</th>
+						<!-- <th style="text-align:center">ID SPT</th> -->
 						<th style="text-align:center">Nama Pegawai</th>
 						<th style="text-align:center">Penugasan</th>
 						<th style="text-align:center" width="15%">Aksi</th>
@@ -73,7 +78,7 @@
 					<tbody>
 					@foreach($penugasan as $data)
 					<tr>
-						<td>{{ $data->ID_SPT }}</td>
+						<!-- <td>{{ $data->id }}</td> -->
 						<td>
 						@foreach($pegawai as $datapeg)
 						@if ($datapeg->NIP_PEGAWAI === $data->NIP_PEGAWAI)
@@ -89,10 +94,10 @@
 						@endforeach 
 						</td>
 						<td>
-						<!-- <a href='/penugasan/edit_penugasan/{{ $data->ID_SPT }}'>
+						<!-- <a href='/penugasan/edit_penugasan/{{ $data->id }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a> -->
-						<a href='/penugasan/hapus/{{ $data->ID_SPT }}&{{ $data->NIP_PEGAWAI}}'>
+						<a href='/penugasan/hapus/{{ $data->id }}&{{ $data->id_spt}}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
 						</td>             
@@ -123,6 +128,8 @@
 <script src="{{asset ('asset/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset ('asset/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset ('asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<!-- Select2 -->
+<script src="{{asset ('asset/plugins/select2/js/select2.full.min.js')}}"></script>
 
 <script>
   $(function () {
@@ -130,6 +137,10 @@
 	  "responsive": true,
 	  "autoWidth": false,
 	});
+	
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
   });
 </script>
 @endsection

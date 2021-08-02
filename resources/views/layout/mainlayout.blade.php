@@ -93,5 +93,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('asset/dist/js/demo.js') }}"></script>
 @yield('custom_script')
+
+@yield('scripts')
 </body>
 </html>

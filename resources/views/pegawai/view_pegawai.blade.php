@@ -30,10 +30,11 @@
   <div class="card-body">
 		<div class="card">
 			<div class="card-header">
-				<!-- <h3 class="card-title">Tambah Data Anggota</h3> -->
+				@can('tambah-pegawai')
 				<a href="/pegawai/insert_pegawai">
 				<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data Pegawai</button>
 				</a>
+				@endcan
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body">
@@ -48,7 +49,9 @@
 						<th style="text-align:center">Jabatan</th>
                         <th style="text-align:center">Pangkat</th>
                         <th style="text-align:center">Unit Kerja</th>
+						@can('edit-hapus-pegawai')
 						<th style="text-align:center" width="15%">Aksi</th>
+						@endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -62,13 +65,13 @@
                         <td>{{ $data->JABATAN_PEGAWAI }}</td>
                         <td>{{ $data->PANGKAT_PEGAWAI }}</td>
                         <td>{{ $data->UNIT_KERJA_PEGAWAI }}</td>
+						@can('edit-hapus-pegawai')
 						<td><a href='/pegawai/edit_pegawai/{{ $data->NIP_PEGAWAI }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a>
-						<a href='/pegawai/hapus/{{ $data->NIP_PEGAWAI }}'>
-						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
-						</a>
-						</td>             
+						<button onclick="confirmDelete({{ $data->NIP_PEGAWAI }})" class="btn btn-danger btn-sm"> Hapus</button>
+						</td>  
+						@endcan           
 					</tr>
 					@endforeach
 					</tbody>
@@ -95,6 +98,27 @@
   <!-- /.card-footer-->
 </div>
 <!-- /.card -->
+
+<div class="modal fade" id="deletePegawai" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Hapus Data</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Apakah anda yakin ingin mengahpus data ini?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+		<a id="deleteLink">
+		<button type="button" class="btn btn-danger">Hapus</button>
+		</a>
+	</div>
+    </div>
+  </div>
+</div>
+
 @endsection
 
 
@@ -112,5 +136,17 @@
 	  "autoWidth": false,
 	});
   });
+</script>
+@endsection
+
+@section('scripts')
+<script>
+	function confirmDelete(id)
+	{
+		var link = document.getElementById('deleteLink')
+		link.href="/pegawai/hapus/" + id
+		$('#deletePegawai').modal('show')}
+
+
 </script>
 @endsection

@@ -73,7 +73,7 @@ class C_lhp extends Controller
             $name = $post->file('file')->getClientOriginalName();
 
             // $path = $post->file('file')->store('public/files');  
-            $path = $post->file('file')->storeAs('public/files',$name);  
+            $path = $post->file('file')->storeAs('public/files',$post->NOMOR_LHP.$name);  
         }else{
             $path = null;
         }
@@ -117,7 +117,7 @@ class C_lhp extends Controller
             $name = $post->file('file')->getClientOriginalName();
 
             // $path = $post->file('file')->store('public/files');  
-            $path = $post->file('file')->storeAs('public/files',$name); 
+            $path = $post->file('file')->storeAs('public/files',$post->NOMOR_LHP.$name); 
             
             DB::table('lhp')->where('NOMOR_LHP', $post->NOMOR_LHP)->update([
                 'NOMOR_LHP' => $post->NOMOR_LHP,

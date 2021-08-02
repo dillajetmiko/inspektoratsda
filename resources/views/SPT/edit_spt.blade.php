@@ -10,6 +10,14 @@
 <li class="breadcrumb-item active">Update Data</li>
 @endsection
 
+@section('custom_css')  
+<!-- Select2 -->
+<link rel="stylesheet" href="{{asset ('asset/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset ('asset/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{asset ('asset/dist/css/adminlte.min.css')}}">
+@endsection
+
 @section('content')
 
 <!-- Default box -->
@@ -30,11 +38,23 @@
 			<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
 
 			</select><br>
-			ID SPT : <input type="text" class="form-control" name="ID_SPT" value="{{$spt[0]->ID_SPT}}" readonly><br>
+			ID SPT : <input type="text" class="form-control" name="ID_SPT" value="{{$spt[0]->id}}" readonly><br>
             Nomor SPT : <input type="text" class="form-control" name="NOMOR_SPT" value="{{$spt[0]->NOMOR_SPT}}"><br>
             Tanggal SPT : <input type="date" class="form-control" name="TANGGAL_SPT" value="{{$spt[0]->TANGGAL_SPT}}"><br>
+			Jenis Pengawasan: 
+                <select class="form-control select2" name="KODE_OPD">
+                @foreach ($jenis_pengawasan as $jenis)
+                @if ($jenis->ID_PENGAWASAN === $spt[0]->ID_PENGAWASAN)
+                <option value="{{ $jenis->ID_PENGAWASAN}}" selected>{{ $jenis->NAMA_PENGAWASAN}}</option>
+                @else
+                <option value="{{ $jenis->ID_PENGAWASAN}}">{{ $jenis->NAMA_PENGAWASAN}}</option>
+                @endif
+                @endforeach
+                </select>
+                <br>
 			<!-- Dasar SPT : <input type="text" class="form-control" name="DASAR_SPT" value="{{$spt[0]->DASAR_SPT}}"><br> -->
-            Isi SPT : <textarea type="text" class="form-control" name="ISI_SPT" value="{{$spt[0]->ISI_SPT}}"></textarea><br>
+			<!-- ISI SPT : <input type="text" class="form-control" name="ISI_SPT" value="{{$spt[0]->ISI_SPT}}"><br> -->
+            Isi SPT : <textarea type="text" class="form-control" name="ISI_SPT">{{$spt[0]->ISI_SPT}}</textarea><br>
 			File SPT :
             <div class="form-group">
 				<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">File <span class="required">*</span></label>
@@ -49,4 +69,19 @@
 	<!-- /.card-footer-->
 </div>
 <!-- /.card -->
+@endsection
+
+@section('custom_script')
+<!-- Select2 -->
+<script src="{{asset ('asset/plugins/select2/js/select2.full.min.js')}}"></script>
+
+<script>
+  $(function () {
+
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+  });
+</script>
+
 @endsection

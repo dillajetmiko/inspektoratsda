@@ -10,8 +10,8 @@ class C_dasar extends Controller
 {
     public function insertDasar($ID_SPT) 
     {
-        $spt = DB::table('spt')->where('ID_SPT', $ID_SPT)->get();
-        $dasar = DB::table('dasar')->where('ID_SPT', $ID_SPT)->get();
+        $spt = DB::table('spt')->where('id', $ID_SPT)->get();
+        $dasar = DB::table('dasar')->where('id_spt', $ID_SPT)->get();
 
         $data = array(
             'menu' => 'spt',
@@ -26,11 +26,20 @@ class C_dasar extends Controller
     public function tambahDasar(Request $post)
     {
         DB::table('dasar')->insert([
-            'ID_SPT' => $post->ID_SPT,
+            'id_spt' => $post->ID_SPT,
             'uraian_dasar' => $post->uraian_dasar, 
         ]);
 
         return redirect('/dasar/insert_view_dasar/'.$post->ID_SPT);
+    }
+
+    public function hapus($id,$id_spt)
+    {
+        // menghapus data detail_peminjaman berdasarkan id yang dipilih
+        DB::table('dasar')->where('id',$id)->delete();
+            
+        // alihkan halaman ke halaman detail_peminjaman
+        return redirect('/dasar/insert_view_dasar/'.$id_spt);
     }
 
 }
