@@ -78,6 +78,24 @@ class C_pegawai extends Controller
         return redirect('/pegawai');
     }
 
+//     public function hapus($NIP_PEGAWAI)
+// {
+//   $pegawai = pegawai::findOrFail($NIP_PEGAWAI);
+//   //Storage::disk('local')->delete('public/blogs/'.$blog->image);
+//   Storage::disk('local')->delete();
+//   $pegawai->delete();
+//     // DB::table('pegawai')->where('NIP_PEGAWAI',$NIP_PEGAWAI)->delete();
+	
+//   if($NIP_PEGAWAI){
+//      //redirect dengan pesan sukses
+//      return redirect('/pegawai')->with(['success' => 'Data Berhasil Dihapus!']);
+//   }else{
+//     //redirect dengan pesan error
+//     return redirect('/pegawai')->with(['error' => 'Data Gagal Dihapus!']);
+//   }
+// }
+
+
     public function hapus($NIP_PEGAWAI)
     {
     	DB::table('pegawai')->where('NIP_PEGAWAI',$NIP_PEGAWAI)->delete();

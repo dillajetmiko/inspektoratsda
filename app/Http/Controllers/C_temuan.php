@@ -172,6 +172,7 @@ class C_temuan extends Controller
     {
     	DB::table('temuan')->where('KODE_TEMUAN',$KODE_TEMUAN)->delete();
 	    return redirect('/temuan');
-    }
 
+        
+    }
 }
