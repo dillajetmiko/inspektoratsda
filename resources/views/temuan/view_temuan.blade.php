@@ -88,7 +88,7 @@
 					<th colspan="2" scope="colgroup" style="text-align:center">Rekomendasi</th>
 					<th colspan="2" scope="colgroup" style="text-align:center">Tindak Lanjut</th>
 					<th colspan="3" scope="colgroup" style="text-align:center">Pejabat OPD</th>
-					<th rowspan="2" scope="rowgroup" style="text-align:center">Jenis Pengawasan</th>
+					<!-- <th rowspan="2" scope="rowgroup" style="text-align:center">Jenis Pengawasan</th> -->
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Nama OPD</th>
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Tanggal Temuan</th>
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Tanggal Tindak Lanjut</th>
@@ -130,14 +130,24 @@
 					<td>{{ $data->NAMA_PEJABAT }}</td>
 					<td>{{ $data->JABATAN_PEJABAT }}</td>
 					<td>{{ $data->NIP_PEJABAT }}</td>
-					<td>{{ $data->JENIS_PENGAWASAN }}</td>
+					
+
 					<td>
-					@foreach($id as $OPD)
-					@if ($OPD->KODE_OPD === $data->KODE_OPD)
-					{{$OPD->NAMA_OPD}}
-					@endif
-					@endforeach 
+						@foreach($punya_opd as $OPD)
+						@if ($OPD->KODE_TEMUAN === $data->KODE_TEMUAN)
+								@foreach($id as $opd)
+								@if ($opd->KODE_OPD === $OPD->KODE_OPD)
+								{{$opd->NAMA_OPD}}<br>
+								@endif
+								@endforeach
+						@endif
+						@endforeach
+						<a href='/punya_opd/insert_view_punya_opd/{{ $data->KODE_TEMUAN }}'>
+                        lihat OPD
+                        </a>
 					</td>
+
+					<!-- </td> -->
 					<td>{{ $data->TANGGAL_TEMUAN }}</td>
 					<td>{{ $data->TANGGAL_TINDAK_LANJUT }}</td>
 					<td>{{ $data->KERUGIAN }}</td>

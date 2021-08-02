@@ -29,6 +29,7 @@ class TemuanExport implements FromView
         $cetak = DB::table('temuan')->where('NOMOR_LHP',$this->lhp)->get();
         $id = DB::table('opd')->get();
         $lhp = DB::table('lhp')->get();
+        $punya_opd = DB::table('punya_opd')->get();
         $lhp2 = DB::table('lhp')->where('NOMOR_LHP',$this->lhp)->get();
 
         $data = array(
@@ -37,6 +38,7 @@ class TemuanExport implements FromView
             'id' => $id,
             'lhp' => $lhp,
             'lhp2' => $lhp2,
+            'punya_opd' => $punya_opd,
             'submenu' => ''
         );
 

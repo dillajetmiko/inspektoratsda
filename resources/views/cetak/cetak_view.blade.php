@@ -61,11 +61,17 @@ th, td {
 						@endif
 						<td>{{ $data->TANGGAL_TINDAK_LANJUT }}</td>
 						<td>{{ $data->KERUGIAN }}</td>
-						@foreach($id as $OPD)
-						@if ($OPD->KODE_OPD === $data->KODE_OPD)
-						<td>{{$OPD->NAMA_OPD}}</td>
+						<td>
+						@foreach($punya_opd as $OPD)
+						@if ($OPD->KODE_TEMUAN === $data->KODE_TEMUAN)
+								@foreach($id as $opd)
+								@if ($opd->KODE_OPD === $OPD->KODE_OPD)
+								{{$opd->NAMA_OPD}}<br>
+								@endif
+								@endforeach
 						@endif
-						@endforeach 
+						@endforeach
+					</td>
 					</tr>
 					@endforeach
 				</tbody>

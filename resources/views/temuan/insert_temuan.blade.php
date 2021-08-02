@@ -55,15 +55,15 @@
             <label><input type="radio" name="KODE_STATUS" value="1" checked="checked" /> Belum Ditindak Lanjut </label><br>
             <label><input type="radio" name="KODE_STATUS" value="2" /> Belum Sesuai Rekomendasi </label><br>
             <label><input type="radio" name="KODE_STATUS" value="3" /> Sesuai rekomendasi </label><br><br>
-        Jenis Pengawasan : <input type="text" class="form-control" name="JENIS_PENGAWASAN"><br>
+        <!-- Jenis Pengawasan : <input type="text" class="form-control" name="JENIS_PENGAWASAN"><br> -->
 
-        Nama OPD : 
+        <!-- Nama OPD : 
             <select class="form-control select2" name="KODE_OPD">
             @foreach ($id as $opd)
             <option value="{{ $opd->KODE_OPD}}">{{ $opd->NAMA_OPD}}</option>
             @endforeach
             </select>
-            <br>
+            <br> -->
         Nama Pejabat : <input type="text" class="form-control" name="NAMA_PEJABAT"><br>
         Jabatan : <input type="text" class="form-control" name="JABATAN_PEJABAT"><br>
         NIP : <input type="text" class="form-control" name="NIP_PEJABAT"><br>
