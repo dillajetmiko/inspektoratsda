@@ -64,7 +64,7 @@
 					<!-- <a href='/user/hapus/{{ $data->NIP }}'>
 					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 					</a> -->
-					<button onclick="confirmDelete({{ $data->NIP }})" class="btn btn-danger btn-sm"> Hapus</button>
+					<button onclick="confirmDelete({{ $data->NIP }})" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 					</td>             
 					@endcan
 				</tr>
