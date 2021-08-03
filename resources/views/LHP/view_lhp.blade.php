@@ -42,10 +42,11 @@
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 					<tr>
-						<th style="text-align:center">No</th>
+						<th style="text-align:center">No Laporan</th>
 						<th style="text-align:center">Nomor SPT</th> 
-						<th style="text-align:center">NIP</th>
-						<th style="text-align:center">Tanggal</th>
+						<th style="text-align:center">PKPT</th> 
+						<th style="text-align:center">NIP Admin</th>
+						<th style="text-align:center">Tanggal Laporan</th>
 						<th style="text-align:center">Judul Pemeriksaan</th>
 						<th style="text-align:center">Anggaran</th>
 						<th style="text-align:center">Upload File</th>
@@ -58,13 +59,14 @@
 					@foreach($lhp as $data)
 					<tr>
 						<td>{{ $data->NOMOR_LHP }}</td>
-						<td>
+						
 						@foreach($id as $SPT)
 						@if ($SPT->id === $data->ID_SPT)
-						{{$SPT->NOMOR_SPT}}
+						<td>{{$SPT->NOMOR_SPT}}</td>
+						<td>{{$SPT->PKPT}}</td>
 						@endif
 						@endforeach 
-						</td>
+						
 						<td>{{ $data->NIP }}</td>
 						<td>{{ $data->TANGGAL_LHP }}</td>
 						<td>{{ $data->JUDUL_PEMERIKSAAN }}</td>
@@ -113,22 +115,25 @@
 </div>
 <!-- /.card -->
 
-<div class="modal fade" id="deleteLHP" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<!-- Modal -->
+<div class="modal fade" id="deleteLHP" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Hapus Data</h5>
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
-        Apakah anda yakin ingin mengahpus data ini?
+		Apakah anda yakin ingin mengahpus data ini?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-		<a id="deleteLink">
+        <a id="deleteLink">
 		<button type="button" class="btn btn-danger">Hapus</button>
-						</a>
-	</div>
+		</a>
+      </div>
     </div>
   </div>
 </div>

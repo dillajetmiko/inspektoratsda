@@ -13,6 +13,11 @@
 <!-- DataTables -->
 <link rel="stylesheet" href="{{asset ('asset/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{asset ('asset/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<!-- Select2 -->
+<link rel="stylesheet" href="{{asset ('asset/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset ('asset/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{asset ('asset/dist/css/adminlte.min.css')}}">
 @endsection
 
 @section('content')
@@ -129,8 +134,7 @@
 					@endif
 					<td>{{ $data->NAMA_PEJABAT }}</td>
 					<td>{{ $data->JABATAN_PEJABAT }}</td>
-					<td>{{ $data->NIP_PEJABAT }}</td>
-					
+					<td>{{ $data->NIP_PEJABAT }}</td>	
 
 					<td>
 						@foreach($punya_opd as $OPD)
@@ -147,7 +151,6 @@
                         </a>
 					</td>
 
-					<!-- </td> -->
 					<td>{{ $data->TANGGAL_TEMUAN }}</td>
 					<td>{{ $data->TANGGAL_TINDAK_LANJUT }}</td>
 					<td>{{ $data->KERUGIAN }}</td>
@@ -164,6 +167,7 @@
 					<a href='/temuan/hapus/{{ $data->KODE_TEMUAN }}'>
 					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 					</a>
+					<!-- <button onclick="confirmDelete({{ $data->KODE_TEMUAN }})" class="btn btn-danger btn-sm"> Hapus</button> -->
 					</td> 
 					@endcan
                      
@@ -193,6 +197,27 @@
   <!-- /.card-footer-->
 </div>
 <!-- /.card -->
+
+<div class="modal fade" id="deleteTemuan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Hapus Data</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Apakah anda yakin ingin mengahpus data ini?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+		<a id="deleteLink">
+		<button type="button" class="btn btn-danger">Hapus</button>
+		</a>
+	</div>
+    </div>
+  </div>
+</div>
+
 @endsection
 
 @section('custom_script')
@@ -201,6 +226,8 @@
 <script src="{{asset ('asset/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset ('asset/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset ('asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<!-- Select2 -->
+<script src="{{asset ('asset/plugins/select2/js/select2.full.min.js')}}"></script>
 
 <script>
   $(function () {
@@ -208,6 +235,24 @@
 	  "responsive": true,
 	  "autoWidth": false,
 	});
+
+	//Initialize Select2 Elements
+    $('.select2').select2()
+
   });
+</script>
+
+@endsection
+
+@section('scripts')
+<script>
+	function confirmDelete(id)
+	{
+		var link = document.getElementById('deleteLink')
+		link.href="/temuan/hapus/" + id
+		$('#deleteTemuan').modal('show')
+	}
+
+
 </script>
 @endsection

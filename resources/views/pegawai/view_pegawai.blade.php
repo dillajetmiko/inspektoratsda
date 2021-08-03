@@ -109,6 +109,29 @@
   <!-- /.card-footer-->
 </div>
 <!-- /.card -->
+
+<div class="modal fade" id="deletePegawai" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Hapus Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+      </div>
+      <div class="modal-body">
+        Apakah anda yakin ingin mengahpus data ini?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+		<a id="deleteLink">
+		<button type="button" class="btn btn-danger">Hapus</button>
+		</a>
+	</div>
+    </div>
+  </div>
+</div>
+
 @endsection
 
 
@@ -127,4 +150,20 @@
 	});
   });
 </script>
+<<<<<<< HEAD
+=======
+@endsection
+
+@section('scripts')
+<script>
+	function confirmDelete(id)
+	{
+		var link = document.getElementById('deleteLink')
+		link.href="/pegawai/hapus/" + id
+		$('#deletePegawai').modal('show')
+	}
+
+
+</script>
+>>>>>>> d42c51b8963a30bee4e110cd93f35cc938358138
 @endsection

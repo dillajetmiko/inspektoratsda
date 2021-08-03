@@ -74,7 +74,9 @@
             
             Nama Pejabat :<input type="text" class="form-control" name="NAMA_PEJABAT" value="{{ $temuan[0]->NAMA_PEJABAT}}"><br> 
             Jabatan Pejabat :<input type="text" class="form-control" name="JABATAN_PEJABAT" value="{{ $temuan[0]->JABATAN_PEJABAT}}"><br> 
-            NIP Pejabat :<input type="text" class="form-control" name="NIP_PEJABAT" value="{{ $temuan[0]->NIP_PEJABAT}}"><br>           		
+            NIP Pejabat :<input type="text" class="form-control" name="NIP_PEJABAT" value="{{ $temuan[0]->NIP_PEJABAT}}"><br> 
+            
+          		
             Tanggal Temuan : <input type="date" class="form-control" name="TANGGAL_TEMUAN" value="{{ $temuan[0]->TANGGAL_TEMUAN }}"><br>
             Tanggal Tindak Lanjut : <input type="date" class="form-control" name="TANGGAL_TINDAK_LANJUT" value="{{ $temuan[0]->TANGGAL_TINDAK_LANJUT }}"><br>
         	Kerugian: <input type="text" class="form-control" name="KERUGIAN" value="{{ $temuan[0]->KERUGIAN}}"><br>

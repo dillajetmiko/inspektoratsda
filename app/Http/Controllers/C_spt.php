@@ -55,11 +55,13 @@ class C_spt extends Controller
      public function insertSpt()
      {
          $spt = DB::table('spt')->get();
+         $kepada = DB::table('isi_default')->where('id', 1)->get();
          $jenis_pengawasan = DB::table('jenis_pengawasan')->get();
 
          $data = array(
              'menu' => 'spt',
              'spt' => $spt,
+             'kepada' => $kepada,
              'jenis_pengawasan' => $jenis_pengawasan,
              'submenu' => ''
          );
@@ -91,6 +93,10 @@ class C_spt extends Controller
              'DASAR_SPT' => $post->DASAR_SPT,
              'ISI_SPT' => $post->ISI_SPT,
              'ID_PENGAWASAN' => $post->ID_PENGAWASAN,
+             'isi_kepada' => $post->kepada,
+             'isi_jangka_waktu' => $post->isi_jangka_waktu,
+             'tgl_mulai' => $post->tgl_mulai,
+             'tgl_selesai' => $post->tgl_selesai,
              'FILE_SPT' => $path
           
          ]);
@@ -132,7 +138,11 @@ class C_spt extends Controller
                 'PKPT' => substr($post->TANGGAL_SPT,0,4),
                 'DASAR_SPT' => $post->DASAR_SPT,
                 'ISI_SPT' => $post->ISI_SPT,         
-                'ID_PENGAWASAN' => $post->ID_PENGAWASAN,         
+                'ID_PENGAWASAN' => $post->ID_PENGAWASAN,   
+                'isi_kepada' => $post->kepada,      
+                'isi_jangka_waktu' => $post->isi_jangka_waktu,      
+                'tgl_mulai' => $post->tgl_mulai,      
+                'tgl_selesai' => $post->tgl_selesai,      
                 'FILE_SPT' => $path         
             ]);
         }else{
@@ -142,7 +152,11 @@ class C_spt extends Controller
                 'PKPT' => substr($post->TANGGAL_SPT,0,4),
                 'DASAR_SPT' => $post->DASAR_SPT,
                 'ISI_SPT' => $post->ISI_SPT,     
-                'ID_PENGAWASAN' => $post->ID_PENGAWASAN         
+                'ID_PENGAWASAN' => $post->ID_PENGAWASAN,
+                'isi_kepada' => $post->kepada,    
+                'isi_jangka_waktu' => $post->isi_jangka_waktu,    
+                'tgl_mulai' => $post->tgl_mulai,    
+                'tgl_selesai' => $post->tgl_selesai,    
             ]);
         } 
  
@@ -164,11 +178,9 @@ class C_spt extends Controller
  
      public function hapus($ID_SPT)
      {
-
-         DB::table('penugasan')->where('ID_SPT',$ID_SPT)->delete();
-         DB::table('dasar')->where('ID_SPT',$ID_SPT)->delete();
-         DB::table('spt')->where('ID_SPT',$ID_SPT)->delete();
-
+         DB::table('penugasan')->where('id',$ID_SPT)->delete();
+         DB::table('dasar')->where('id',$ID_SPT)->delete();
+         DB::table('spt')->where('id',$ID_SPT)->delete();
          return redirect('/spt');
      }
 
@@ -183,7 +195,7 @@ class C_spt extends Controller
          $penugasan = DB::table('penugasan')
                         ->leftJoin('tugas', 'tugas.ID_TUGAS', '=', 'penugasan.ID_TUGAS')
                         ->leftJoin('pegawai', 'pegawai.NIP_PEGAWAI', '=', 'penugasan.NIP_PEGAWAI')
-                        ->orderBy('urutan', 'desc')
+                        ->orderBy('urutan', 'asc')
                         ->where('penugasan.id_spt',$ID_SPT)->get();
  
          // $spt[0]->NOMOR_SPT
@@ -198,6 +210,8 @@ class C_spt extends Controller
          $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(storage_path('Template_SPT.docx'));
  
          $templateProcessor->setValue('isiSPT', $spt[0]->ISI_SPT);
+         $templateProcessor->setValue('isi_jangka_waktu', $spt[0]->isi_jangka_waktu);
+         $templateProcessor->setValue('isi_kepada', $spt[0]->isi_kepada);
          
          $replacements = array(
              array('nama' => 'Batman', 'customer_address' => 'Gotham City'),
@@ -306,7 +320,7 @@ class C_spt extends Controller
 
         // $templateProcessor->setValue('nomorSurat', $spt[0]->NOMOR_SPT);
         // $templateProcessor->setValue('dasar', $spt[0]->DASAR_SPT);
-        $templateProcessor->setValue('isiSPT', $spt[0]->ISI_SPT);
+        $templateProcessor->setValue('isi_jangka_waktu', $spt[0]->ISI_SPT);
         
         $replacements = array(
             array('nama' => 'Batman', 'customer_address' => 'Gotham City'),

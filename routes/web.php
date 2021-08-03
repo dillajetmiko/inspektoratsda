@@ -15,6 +15,8 @@ use App\Http\Controllers\C_register;
 use App\Http\Controllers\C_dasar;
 use App\Http\Controllers\C_punyaopd;
 use App\Http\Controllers\C_riwayat;
+use App\Http\Controllers\C_penugasanspt;
+
 
 
 
@@ -135,11 +137,17 @@ Route::get('/punya_opd/edit_punya_opd/{KODE_TEMUAN}', [C_punyaopd::class, 'editO
 Route::post('/punya_opd/update_punya_opd', [C_punyaopd::class, 'updatOPD'])->middleware('auth');
 Route::get('/punya_opd/hapus/{KODE_TEMUAN}&{KODE_OPD}', [C_punyaopd::class, 'hapus'])->middleware('auth');
 
+
 Route::get('/riwayat/insert_view_riwayat/{NIP_PEGAWAI}', [C_riwayat::class, 'insertRiwayat'])->middleware('auth');
 Route::post('/riwayat/insert_view_riwayat', [C_riwayat::class, 'tambahRiwayat'])->middleware('auth');
 Route::get('/riwayat/edit_riwayat/{NIP_PEGAWAI}', [C_riwayat::class, 'editRiwayat'])->middleware('auth');
 Route::post('/riwayat/update_riwayat', [C_riwayat::class, 'updateRiwayat'])->middleware('auth');
 Route::get('/riwayat/hapus/{id}&{NIP_PEGAWAI}', [C_riwayat::class, 'hapus'])->middleware('auth');
 
+Route::get('/penugasan_spt', [C_penugasanspt::class, 'index'])->middleware('auth');
+Route::get('/penugasan_spt/cari',[C_penugasanspt::class, 'cari'])->middleware('auth');
 
 
+
+
+ 
