@@ -13,6 +13,7 @@ use App\Http\Controllers\C_penugasan;
 use App\Http\Controllers\C_cetak;
 use App\Http\Controllers\C_register;
 use App\Http\Controllers\C_dasar;
+use App\Http\Controllers\C_punyaopd;
 
 
 
@@ -126,6 +127,13 @@ Route::post('/dasar/insert_view_dasar', [C_dasar::class, 'tambahDasar'])->middle
 Route::get('/dasar/edit_dasar/{ID_SPT}', [C_dasar::class, 'editdasar'])->middleware('auth');
 Route::post('/dasar/update_dasar', [C_dasar::class, 'updatedasar'])->middleware('auth');
 Route::get('/dasar/hapus/{id}&{id_spt}', [C_dasar::class, 'hapus'])->middleware('auth');
+
+Route::get('/punya_opd/insert_view_punya_opd/{KODE_TEMUAN}', [C_punyaopd::class, 'insertOPD'])->middleware('auth');
+Route::post('/punya_opd/insert_view_punya_opd', [C_punyaopd::class, 'tambahOPD'])->middleware('auth');
+Route::get('/punya_opd/edit_punya_opd/{KODE_TEMUAN}', [C_punyaopd::class, 'editOPD'])->middleware('auth');
+Route::post('/punya_opd/update_punya_opd', [C_punyaopd::class, 'updatOPD'])->middleware('auth');
+Route::get('/punya_opd/hapus/{KODE_TEMUAN}&{KODE_OPD}', [C_punyaopd::class, 'hapus'])->middleware('auth');
+
 
 
 

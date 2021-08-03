@@ -94,9 +94,10 @@
 						<a href='/spt/edit_spt/{{ $data->id }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a>
-						<a href='/spt/hapus/{{ $data->id }}'>
+						<!-- <a href='/spt/hapus/{{ $data->id }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
-						</a>
+						</a> -->
+						<button onclick="confirmDelete({{ $data->id }})" class="btn btn-danger btn-sm"> Hapus</button>
 						@endcan
 						</a>
 						<a href='/spt/generate-docx/{{ $data->id }}'>
@@ -133,6 +134,27 @@
   <!-- /.card-footer-->
 </div>
 <!-- /.card -->
+<div class="modal fade" id="deleteSPT" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Hapus Data</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+      </div>
+      <div class="modal-body">
+        Apakah anda yakin ingin mengahpus data ini?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+		<a id="deleteLink">
+		<button type="button" class="btn btn-danger">Hapus</button>
+						</a>
+	</div>
+    </div>
+  </div>
+</div>
 @endsection
 
 
@@ -150,5 +172,15 @@
 	  "autoWidth": false,
 	});
   });
+</script>
+
+@section('scripts')
+<script>
+	function confirmDelete(id)
+	{
+		var link = document.getElementById('deleteLink')
+		link.href="/spt/hapus/" + id
+		$('#deleteSPT').modal('show')}
+
 </script>
 @endsection

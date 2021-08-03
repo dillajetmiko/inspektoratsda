@@ -34,10 +34,10 @@
 			Nomor SPT: 
                 <select class="form-control select2" name="ID_SPT">
                 @foreach ($id as $SPT)
-                @if ($SPT->ID_SPT === $lhp[0]->ID_SPT)
-                <option value="{{ $SPT->ID_SPT}}" selected>{{ $SPT->NOMOR_SPT}}</option>
+                @if ($SPT->id === $lhp[0]->ID_SPT)
+                <option value="{{ $SPT->id}}" selected>{{ $SPT->NOMOR_SPT}}</option>
                 @else
-                <option value="{{ $SPT->ID_SPT}}">{{ $SPT->NOMOR_SPT}}</option>
+                <option value="{{ $SPT->id}}">{{ $SPT->NOMOR_SPT}}</option>
                 @endif
                 @endforeach
                 </select>

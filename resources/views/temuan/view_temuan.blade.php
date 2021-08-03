@@ -1,25 +1,30 @@
 @extends("layout.mainlayout")
 
-@section("page_title","TEMUAN")
+@section("page_title","Pegawai")
 
-@section("title","TEMUAN")
+@section("title","Pegawai")
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-<li class="breadcrumb-item active">Temuan</li> 
+<li class="breadcrumb-item active">PEGAWAI</li> 
 @endsection
 
 @section('custom_css')
 <!-- DataTables -->
 <link rel="stylesheet" href="{{asset ('asset/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{asset ('asset/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<!-- Select2 -->
+<link rel="stylesheet" href="{{asset ('asset/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset ('asset/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{asset ('asset/dist/css/adminlte.min.css')}}">
 @endsection
 
 @section('content')
 <!-- Default box -->
 <div class="card">    
   <div class="card-header">
-	  <h3 class="card-title"> DATA TEMUAN</h3>
+	  <h3 class="card-title"> DATA PEGAWAI</h3>
 	  <div class="card-tools">
 		  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
 			<i class="fas fa-minus"></i></button>
@@ -129,15 +134,23 @@
 					@endif
 					<td>{{ $data->NAMA_PEJABAT }}</td>
 					<td>{{ $data->JABATAN_PEJABAT }}</td>
-					<td>{{ $data->NIP_PEJABAT }}</td>
-					<!-- <td>{{ $data->JENIS_PENGAWASAN }}</td> -->
+					<td>{{ $data->NIP_PEJABAT }}</td>	
+
 					<td>
-					@foreach($id as $OPD)
-					@if ($OPD->KODE_OPD === $data->KODE_OPD)
-					{{$OPD->NAMA_OPD}}
-					@endif
-					@endforeach 
+						@foreach($punya_opd as $OPD)
+						@if ($OPD->KODE_TEMUAN === $data->KODE_TEMUAN)
+								@foreach($id as $opd)
+								@if ($opd->KODE_OPD === $OPD->KODE_OPD)
+								{{$opd->NAMA_OPD}}<br>
+								@endif
+								@endforeach
+						@endif
+						@endforeach
+						<a href='/punya_opd/insert_view_punya_opd/{{ $data->KODE_TEMUAN }}'>
+                        lihat OPD
+                        </a>
 					</td>
+
 					<td>{{ $data->TANGGAL_TEMUAN }}</td>
 					<td>{{ $data->TANGGAL_TINDAK_LANJUT }}</td>
 					<td>{{ $data->KERUGIAN }}</td>
@@ -151,9 +164,7 @@
 					<td><a href='/temuan/edit_temuan/{{ $data->KODE_TEMUAN }}'>
 					<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 					</a>
-					<a href='/temuan/hapus/{{ $data->KODE_TEMUAN }}'>
-					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
-					</a>
+					<button onclick="confirmDelete({{ $data->KODE_TEMUAN }})" class="btn btn-danger btn-sm"> Hapus</button>
 					</td> 
 					@endcan
                      
@@ -183,6 +194,27 @@
   <!-- /.card-footer-->
 </div>
 <!-- /.card -->
+
+<div class="modal fade" id="deleteTemuan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Hapus Data</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Apakah anda yakin ingin mengahpus data ini?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+		<a id="deleteLink">
+		<button type="button" class="btn btn-danger">Hapus</button>
+		</a>
+	</div>
+    </div>
+  </div>
+</div>
+
 @endsection
 
 
@@ -192,6 +224,8 @@
 <script src="{{asset ('asset/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset ('asset/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset ('asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<!-- Select2 -->
+<script src="{{asset ('asset/plugins/select2/js/select2.full.min.js')}}"></script>
 
 <script>
   $(function () {
@@ -199,6 +233,23 @@
 	  "responsive": true,
 	  "autoWidth": false,
 	});
+
+	//Initialize Select2 Elements
+    $('.select2').select2()
+
   });
+</script>
+@endsection
+
+@section('scripts')
+<script>
+	function confirmDelete(id)
+	{
+		var link = document.getElementById('deleteLink')
+		link.href="/temuan/hapus/" + id
+		$('#deleteTemuan').modal('show')
+	}
+
+
 </script>
 @endsection

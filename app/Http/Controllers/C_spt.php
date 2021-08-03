@@ -170,6 +170,7 @@ class C_spt extends Controller
      public function hapus($ID_SPT)
      {
          DB::table('penugasan')->where('id',$ID_SPT)->delete();
+         DB::table('dasar')->where('id',$ID_SPT)->delete();
          DB::table('spt')->where('id',$ID_SPT)->delete();
          return redirect('/spt');
      }
