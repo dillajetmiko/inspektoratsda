@@ -42,10 +42,10 @@
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 					<tr>
-						<th style="text-align:center">No</th>
+						<th style="text-align:center">No Laporan</th>
 						<th style="text-align:center">Nomor SPT</th> 
-						<th style="text-align:center">NIP</th>
-						<th style="text-align:center">Tanggal</th>
+						<th style="text-align:center">NIP Admin</th>
+						<th style="text-align:center">Tanggal Laporan</th>
 						<th style="text-align:center">Judul Pemeriksaan</th>
 						<th style="text-align:center">Anggaran</th>
 						<th style="text-align:center">Upload File</th>

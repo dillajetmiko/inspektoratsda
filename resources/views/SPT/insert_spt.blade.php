@@ -49,7 +49,9 @@
             @endforeach
             </select>
             <br>
-        ISI SPT: <input type="text" class="form-control" name="ISI_SPT"><br>
+        ISI SPT: <textarea type="text" class="form-control" name="ISI_SPT"></textarea><br>
+
+        <textarea type="text" class="form-control" name="kepada">{{$kepada[0]->isi_kepada}}</textarea><br>
         FILE SPT:
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">File <span class="required">*</span></label>

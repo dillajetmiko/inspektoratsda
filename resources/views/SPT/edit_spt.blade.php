@@ -55,6 +55,8 @@
 			<!-- Dasar SPT : <input type="text" class="form-control" name="DASAR_SPT" value="{{$spt[0]->DASAR_SPT}}"><br> -->
 			<!-- ISI SPT : <input type="text" class="form-control" name="ISI_SPT" value="{{$spt[0]->ISI_SPT}}"><br> -->
             Isi SPT : <textarea type="text" class="form-control" name="ISI_SPT">{{$spt[0]->ISI_SPT}}</textarea><br>
+
+			<textarea type="text" class="form-control" name="kepada">{{$spt[0]->isi_kepada}}</textarea><br>
 			File SPT :
             <div class="form-group">
 				<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">File <span class="required">*</span></label>
