@@ -27,6 +27,23 @@
 			<i class="fas fa-times"></i></button>
 	  </div>
   </div>
+
+  
+@if(session()->has('success'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+{{ session()->get('success') }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif 
+
+@if(session()->has('failed'))
+<div class="alert alert-info" role="alert">
+{{ session()->get('failed') }}
+</div>
+@endif 
+
   <div class="card-body">
 		<div class="card">
 			<div class="card-header">
@@ -69,7 +86,8 @@
 						<td><a href='/pegawai/edit_pegawai/{{ $data->NIP_PEGAWAI }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a>
-						<button onclick="confirmDelete({{ $data->NIP_PEGAWAI }})" class="btn btn-danger btn-sm"> Hapus</button>
+						<button onclick="confirmDelete({{ $data->NIP_PEGAWAI }})" class="btn btn-danger">
+						<i class="fas fa-trash"></i> Hapus</button>
 						</td>  
 						@endcan           
 					</tr>

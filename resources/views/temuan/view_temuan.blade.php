@@ -195,6 +195,7 @@
 </div>
 <!-- /.card -->
 
+ 
 <div class="modal fade" id="deleteTemuan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -214,8 +215,8 @@
     </div>
   </div>
 </div>
-
 @endsection
+
 
 
 @section('custom_script')
@@ -223,7 +224,8 @@
 <script src="{{asset ('asset/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset ('asset/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset ('asset/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset ('asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src
+="{{asset ('asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
 <!-- Select2 -->
 <script src="{{asset ('asset/plugins/select2/js/select2.full.min.js')}}"></script>
 
