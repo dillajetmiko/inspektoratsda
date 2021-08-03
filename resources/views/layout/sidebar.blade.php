@@ -70,6 +70,19 @@
           </li>
 
           <li class="nav-item">
+          @if($menu == 'penugasanspt')
+            <a href="/penugasan_spt" class="nav-link active">
+          @else
+            <a href="/penugasan_spt" class="nav-link">
+          @endif
+              <i class="nav-icon fas fa-envelope-open-text"></i>
+              <p>
+              Penugasan SPT
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
           @if($menu == 'lhp')
             <a href="/lhp" class="nav-link active">
           @else

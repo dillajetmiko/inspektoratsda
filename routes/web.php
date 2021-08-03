@@ -14,6 +14,7 @@ use App\Http\Controllers\C_cetak;
 use App\Http\Controllers\C_register;
 use App\Http\Controllers\C_dasar;
 use App\Http\Controllers\C_punyaopd;
+use App\Http\Controllers\C_penugasanspt;
 
 
 
@@ -133,6 +134,9 @@ Route::post('/punya_opd/insert_view_punya_opd', [C_punyaopd::class, 'tambahOPD']
 Route::get('/punya_opd/edit_punya_opd/{KODE_TEMUAN}', [C_punyaopd::class, 'editOPD'])->middleware('auth');
 Route::post('/punya_opd/update_punya_opd', [C_punyaopd::class, 'updatOPD'])->middleware('auth');
 Route::get('/punya_opd/hapus/{KODE_TEMUAN}&{KODE_OPD}', [C_punyaopd::class, 'hapus'])->middleware('auth');
+
+Route::get('/penugasan_spt', [C_penugasanspt::class, 'index'])->middleware('auth');
+Route::get('/penugasan_spt/cari',[C_penugasanspt::class, 'cari'])->middleware('auth');
 
 
 
