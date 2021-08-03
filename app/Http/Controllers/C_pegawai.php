@@ -87,7 +87,7 @@ class C_pegawai extends Controller
 
     public function hapus($NIK_PEGAWAI)
     {
-        $delete=DB::table('pegawai')->where('NIP_PEGAWAI',$NIP_PEGAWAI)->delete();
+        $delete=DB::table('pegawai')->where('NIK_PEGAWAI',$NIK_PEGAWAI)->delete();
     	if ($delete)
         {
             session()->flash('success', 'Data berhasil dihapus');

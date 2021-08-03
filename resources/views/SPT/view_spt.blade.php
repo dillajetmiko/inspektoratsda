@@ -105,7 +105,7 @@
 						<!-- <a href='/spt/hapus/{{ $data->id }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a> -->
-						<button onclick="confirmDelete({{ $data->id }})" class="btn btn-danger btn-sm"> Hapus</button>
+						<button onclick="confirmDelete({{ $data->id }})" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						@endcan
 						</a>
 						<a href='/spt/generate-docx/{{ $data->id }}'>

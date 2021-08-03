@@ -88,7 +88,7 @@
 						<!-- <a href='/lhp/hapus/{{ $data->NOMOR_LHP }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a> -->
-						<button onclick="confirmDelete({{ $data->NOMOR_LHP }})" class="btn btn-danger btn-sm"> Hapus</button>
+						<button onclick="confirmDelete({{ $data->NOMOR_LHP }})" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</td>  
 						@endcan           
 					</tr>
