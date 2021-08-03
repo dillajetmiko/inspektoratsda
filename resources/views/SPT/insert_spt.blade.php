@@ -49,7 +49,11 @@
             @endforeach
             </select>
             <br>
-        ISI SPT: <textarea type="text" class="form-control" name="ISI_SPT"></textarea><br>
+        Tanggal Mulai: <input type="date" class="form-control" name="tgl_mulai"><br>
+        Tanggal Selesai : <input type="date" class="form-control" name="tgl_selesai"><br>
+        ISI SPT: 
+        <textarea type="text" class="form-control" name="ISI_SPT">melaksanakan</textarea><br>
+        <textarea type="text" class="form-control" name="isi_jangka_waktu">Jangka waktu</textarea><br>
 
         <textarea type="text" class="form-control" name="kepada">{{$kepada[0]->isi_kepada}}</textarea><br>
         FILE SPT:

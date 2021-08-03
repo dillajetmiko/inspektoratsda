@@ -94,6 +94,9 @@ class C_spt extends Controller
              'ISI_SPT' => $post->ISI_SPT,
              'ID_PENGAWASAN' => $post->ID_PENGAWASAN,
              'isi_kepada' => $post->kepada,
+             'isi_jangka_waktu' => $post->isi_jangka_waktu,
+             'tgl_mulai' => $post->tgl_mulai,
+             'tgl_selesai' => $post->tgl_selesai,
              'FILE_SPT' => $path
           
          ]);
@@ -137,6 +140,9 @@ class C_spt extends Controller
                 'ISI_SPT' => $post->ISI_SPT,         
                 'ID_PENGAWASAN' => $post->ID_PENGAWASAN,   
                 'isi_kepada' => $post->kepada,      
+                'isi_jangka_waktu' => $post->isi_jangka_waktu,      
+                'tgl_mulai' => $post->tgl_mulai,      
+                'tgl_selesai' => $post->tgl_selesai,      
                 'FILE_SPT' => $path         
             ]);
         }else{
@@ -148,6 +154,9 @@ class C_spt extends Controller
                 'ISI_SPT' => $post->ISI_SPT,     
                 'ID_PENGAWASAN' => $post->ID_PENGAWASAN,
                 'isi_kepada' => $post->kepada,    
+                'isi_jangka_waktu' => $post->isi_jangka_waktu,    
+                'tgl_mulai' => $post->tgl_mulai,    
+                'tgl_selesai' => $post->tgl_selesai,    
             ]);
         } 
  
@@ -201,6 +210,7 @@ class C_spt extends Controller
          $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor(storage_path('Template_SPT.docx'));
  
          $templateProcessor->setValue('isiSPT', $spt[0]->ISI_SPT);
+         $templateProcessor->setValue('isi_jangka_waktu', $spt[0]->isi_jangka_waktu);
          $templateProcessor->setValue('isi_kepada', $spt[0]->isi_kepada);
          
          $replacements = array(
@@ -310,7 +320,7 @@ class C_spt extends Controller
 
         // $templateProcessor->setValue('nomorSurat', $spt[0]->NOMOR_SPT);
         // $templateProcessor->setValue('dasar', $spt[0]->DASAR_SPT);
-        $templateProcessor->setValue('isiSPT', $spt[0]->ISI_SPT);
+        $templateProcessor->setValue('isi_jangka_waktu', $spt[0]->ISI_SPT);
         
         $replacements = array(
             array('nama' => 'Batman', 'customer_address' => 'Gotham City'),

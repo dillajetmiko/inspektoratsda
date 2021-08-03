@@ -54,7 +54,11 @@
                 <br>
 			<!-- Dasar SPT : <input type="text" class="form-control" name="DASAR_SPT" value="{{$spt[0]->DASAR_SPT}}"><br> -->
 			<!-- ISI SPT : <input type="text" class="form-control" name="ISI_SPT" value="{{$spt[0]->ISI_SPT}}"><br> -->
-            Isi SPT : <textarea type="text" class="form-control" name="ISI_SPT">{{$spt[0]->ISI_SPT}}</textarea><br>
+			Tanggal Mulai : <input type="date" class="form-control" name="tgl_mulai" value="{{$spt[0]->tgl_mulai}}"><br>
+			Tanggal Selesai : <input type="date" class="form-control" name="tgl_selesai" value="{{$spt[0]->tgl_selesai}}"><br>
+            Isi SPT : 
+			<textarea type="text" class="form-control" name="ISI_SPT">{{$spt[0]->ISI_SPT}}</textarea><br>
+            <textarea type="text" class="form-control" name="isi_jangka_waktu">{{$spt[0]->isi_jangka_waktu}}</textarea><br>
 
 			<textarea type="text" class="form-control" name="kepada">{{$spt[0]->isi_kepada}}</textarea><br>
 			File SPT :

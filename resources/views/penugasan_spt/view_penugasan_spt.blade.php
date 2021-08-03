@@ -35,35 +35,52 @@
   <div class="card-body">
 		<div class="card">
 			<div class="card-header">
-				@can('tambah-spt')
-				<a href="/spt/insert_spt">
-				<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data SPT</button>
-				</a>
-				@endcan
+			<div class="row">
+					<div class="col-md-9">
+						<div class="form-group">
+							<form action="/penugasan_spt/cari" method="GET">
+							<!-- <input type="text" name="cari" placeholder="Cari Pegawai .." value="{{ old('cari') }}">
+							<input type="submit" value="CARI"> -->
+							<div class="input-group">
+								<div style="width: 45%">
+									<select class="form-control select2" name="nip">
+										<option value="0">-Pilih Nama-</option>
+										@foreach ($pegawai as $peg)
+										<option value="{{ $peg->NIP_PEGAWAI}}">{{ $peg->NAMA_PEGAWAI}}</option>
+										@endforeach
+									</select>
+								</div>
+								<div style="width: 30%">
+									<input type="date" class="form-control" name="tanggal"><br>
+								</div>
+								<div class="input-group-append">
+									<span><input type="submit" class="btn btn-default" value="CARI"></span>
+								</div>
+							</div>
+							</form>
+						</div>
+					</div>
+				</div>
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body">
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 					<tr>
-						<th style="text-align:center">ID SPT</th>
 						<th style="text-align:center">Nomor</th>
-						<th style="text-align:center">Tanggal</th>
-						<!-- <th style="text-align:center">Dasar</th> -->
+						<th style="text-align:center">Tanggal mulai</th>
+						<th style="text-align:center">Tanggal selesai</th>
 						<th style="text-align:center">Jenis Pengawasan</th>
 						<th style="text-align:center">Isi</th>
 						<th style="text-align:center">Penugasan</th>
-                        <th style="text-align:center">Upload File</th>
-						<th style="text-align:center" width="15%">Aksi</th>
 					</tr>
 					</thead>
 					<tbody>
 					@foreach($spt as $data)
 					<tr>
-						<td>{{ $data->id }}</td>
 						<td>{{ $data->NOMOR_SPT }}</td>
-						<td>{{ $data->TANGGAL_SPT }}</td>
-						<!-- <td>{{ $data->DASAR_SPT }}</td> -->
+						<td>{{ $data->tgl_mulai }}</td>
+						<td>{{ $data->tgl_selesai }}</td>
 						<td>
 						@foreach($jenis_pengawasan as $jenis)
 						@if ($jenis->ID_PENGAWASAN === $data->ID_PENGAWASAN)
@@ -71,10 +88,7 @@
 						@endif
 						@endforeach
 						</td>
-						<td>
-							{{ $data->ISI_SPT }}<br>
-							{{ $data->isi_jangka_waktu }}
-						</td>
+						<td>{{ $data->ISI_SPT }}</td>
 						<td>
 						@foreach($penugasan as $tugas)
 						@if ($tugas->id_spt === $data->id)
@@ -88,30 +102,7 @@
 						<a href='/penugasan/insert_view_penugasan/{{ $data->id }}'>
                         lihat penugasan
                         </a>
-						</td>
-                        <td>
-						@if ($data->FILE_SPT == null)
-						Tidak ada file
-						@else
-						<a href="spt/download/{{ $data->id }}" class='btn btn-ghost-info'>
-							<i class="fa fa-download"></i> Download
-						</a>
-						@endif
-						<td>
-						@can('edit-hapus-spt')
-						<a href='/spt/edit_spt/{{ $data->id }}'>
-						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
-						</a>
-						<!-- <a href='/spt/hapus/{{ $data->id }}'>
-						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
-						</a> -->
-						<button onclick="confirmDelete({{ $data->id }})" class="btn btn-danger btn-sm"> Hapus</button>
-						@endcan
-						</a>
-						<a href='/spt/generate-docx/{{ $data->id }}'>
-						<button type="button" class="btn btn-secondary"><i class="fas fa-print"></i> Cetak</button>
-						</a>
-						</td>             
+						</td>          
 					</tr>
 					@endforeach
 					</tbody>

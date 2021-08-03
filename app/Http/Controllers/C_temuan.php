@@ -107,7 +107,6 @@ class C_temuan extends Controller
             'URAIAN_REKOMENDASI' => $post->URAIAN_REKOMENDASI,
             'URAIAN_TINDAK_LANJUT' => $post->URAIAN_TINDAK_LANJUT,
             'KODE_STATUS' => $post->KODE_STATUS,
-            // 'KODE_OPD' => $post->KODE_OPD,
             'NAMA_PEJABAT' => $post->NAMA_PEJABAT,
             'JABATAN_PEJABAT' => $post->JABATAN_PEJABAT,
             'NIP_PEJABAT' => $post->NIP_PEJABAT,
@@ -155,8 +154,7 @@ class C_temuan extends Controller
             'KODE_STATUS' => $post->KODE_STATUS,
             'NAMA_PEJABAT' => $post->NAMA_PEJABAT,
             'JABATAN_PEJABAT' => $post->JABATAN_PEJABAT,
-            'NIP_PEJABAT' => $post->NIP_PEJABAT,
-            // 'KODE_OPD' => $post->KODE_OPD,            
+            'NIP_PEJABAT' => $post->NIP_PEJABAT,      
             'JABATAN_PEJABAT' => $post->JABATAN_PEJABAT,
             'NIP_PEJABAT' => $post->NIP_PEJABAT,
             'TANGGAL_TEMUAN' => $post->TANGGAL_TEMUAN,
@@ -176,4 +174,10 @@ class C_temuan extends Controller
         DB::table('temuan')->where('KODE_TEMUAN',$KODE_TEMUAN)->delete();
     	return redirect('/temuan');
     }
+<<<<<<< HEAD
+       
 }
+ 
+=======
+}
+>>>>>>> d42c51b8963a30bee4e110cd93f35cc938358138

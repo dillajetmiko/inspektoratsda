@@ -44,6 +44,7 @@
 					<tr>
 						<th style="text-align:center">No Laporan</th>
 						<th style="text-align:center">Nomor SPT</th> 
+						<th style="text-align:center">PKPT</th> 
 						<th style="text-align:center">NIP Admin</th>
 						<th style="text-align:center">Tanggal Laporan</th>
 						<th style="text-align:center">Judul Pemeriksaan</th>
@@ -58,13 +59,14 @@
 					@foreach($lhp as $data)
 					<tr>
 						<td>{{ $data->NOMOR_LHP }}</td>
-						<td>
+						
 						@foreach($id as $SPT)
 						@if ($SPT->id === $data->ID_SPT)
-						{{$SPT->NOMOR_SPT}}
+						<td>{{$SPT->NOMOR_SPT}}</td>
+						<td>{{$SPT->PKPT}}</td>
 						@endif
 						@endforeach 
-						</td>
+						
 						<td>{{ $data->NIP }}</td>
 						<td>{{ $data->TANGGAL_LHP }}</td>
 						<td>{{ $data->JUDUL_PEMERIKSAAN }}</td>

@@ -164,7 +164,10 @@
 					<td><a href='/temuan/edit_temuan/{{ $data->KODE_TEMUAN }}'>
 					<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 					</a>
-					<button onclick="confirmDelete({{ $data->KODE_TEMUAN }})" class="btn btn-danger btn-sm"> Hapus</button>
+					<a href='/temuan/hapus/{{ $data->KODE_TEMUAN }}'>
+					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+					</a>
+					<!-- <button onclick="confirmDelete({{ $data->KODE_TEMUAN }})" class="btn btn-danger btn-sm"> Hapus</button> -->
 					</td> 
 					@endcan
                      
@@ -217,8 +220,6 @@
 </div>
 @endsection
 
-
-
 @section('custom_script')
 <!-- DataTables -->
 <script src="{{asset ('asset/plugins/datatables/jquery.dataTables.min.js')}}"></script>
@@ -241,6 +242,7 @@
 
   });
 </script>
+
 @endsection
 
 @section('scripts')
