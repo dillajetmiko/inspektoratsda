@@ -37,21 +37,25 @@ class C_pegawai extends Controller
     {  
         DB::table('pegawai')->insert([
             'NIP_PEGAWAI' => $post->NIP_PEGAWAI,
+            'NIK_PEGAWAI' => $post->NIK_PEGAWAI,
             'NAMA_PEGAWAI' => $post->NAMA_PEGAWAI,
-            'TTL_PEGAWAI' => $post->TTL_PEGAWAI,
             'ALAMAT_PEGAWAI' => $post->ALAMAT_PEGAWAI,
+            'TTL_PEGAWAI' => $post->TTL_PEGAWAI,
+            'NO_KARTU_PEGAWAI' => $post->NO_KARTU_PEGAWAI,
+            'NO_KARTU_SUAMI_ISTRI' => $post->NO_KARTU_SUAMI_ISTRI,
+            'NO_TASPEN' => $post->NO_TASPEN,
             'NO_HP' => $post->NO_HP,
-            'JABATAN_PEGAWAI' => $post->JABATAN_PEGAWAI,
-            'PANGKAT_PEGAWAI' => $post->PANGKAT_PEGAWAI,
+            'KELUARGA' => $post->KELUARGA,
             'UNIT_KERJA_PEGAWAI' => $post->UNIT_KERJA_PEGAWAI,
         ]);
 
-        return redirect('/pegawai');
+        // return redirect('/pegawai');
+        return redirect('/riwayat/insert_view_riwayat/'.$post->NIK_PEGAWAI);
     }
 
-    public function editPegawai($NIP_PEGAWAI) 
+    public function editPegawai($NIK_PEGAWAI) 
     {
-        $pegawai = DB::table('pegawai')->where('NIP_PEGAWAI', $NIP_PEGAWAI)->get();
+        $pegawai = DB::table('pegawai')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
 
         $data = array(
             'menu' => 'pegawai',
@@ -64,41 +68,26 @@ class C_pegawai extends Controller
 
     public function updatePegawai(Request $post)
     {
-        DB::table('pegawai')->where('NIP_PEGAWAI', $post->NIP_PEGAWAI)->update([
-            'NIP_PEGAWAI' => $post->NIP_PEGAWAI,
+        DB::table('pegawai')->where('NIK_PEGAWAI', $post->NIK_PEGAWAI)->update([     
+            'NIK_PEGAWAI' => $post->NIK_PEGAWAI,
             'NAMA_PEGAWAI' => $post->NAMA_PEGAWAI,
-            'TTL_PEGAWAI' => $post->TTL_PEGAWAI,
             'ALAMAT_PEGAWAI' => $post->ALAMAT_PEGAWAI,
+            'TTL_PEGAWAI' => $post->TTL_PEGAWAI,
+            'NIP_PEGAWAI' => $post->NIP_PEGAWAI,
+            'NO_KARTU_PEGAWAI' => $post->NO_KARTU_PEGAWAI,
+            'NO_KARTU_SUAMI_ISTRI' => $post->NO_KARTU_SUAMI_ISTRI,
+            'NO_TASPEN' => $post->NO_TASPEN,
             'NO_HP' => $post->NO_HP,
-            'JABATAN_PEGAWAI' => $post->JABATAN_PEGAWAI,
-            'PANGKAT_PEGAWAI' => $post->PANGKAT_PEGAWAI,
+            'KELUARGA' => $post->KELUARGA,
             'UNIT_KERJA_PEGAWAI' => $post->UNIT_KERJA_PEGAWAI,
         ]);
 
         return redirect('/pegawai');
     }
 
-//     public function hapus($NIP_PEGAWAI)
-// {
-//   $pegawai = pegawai::findOrFail($NIP_PEGAWAI);
-//   //Storage::disk('local')->delete('public/blogs/'.$blog->image);
-//   Storage::disk('local')->delete();
-//   $pegawai->delete();
-//     // DB::table('pegawai')->where('NIP_PEGAWAI',$NIP_PEGAWAI)->delete();
-	
-//   if($NIP_PEGAWAI){
-//      //redirect dengan pesan sukses
-//      return redirect('/pegawai')->with(['success' => 'Data Berhasil Dihapus!']);
-//   }else{
-//     //redirect dengan pesan error
-//     return redirect('/pegawai')->with(['error' => 'Data Gagal Dihapus!']);
-//   }
-// }
-
-
-    public function hapus($NIP_PEGAWAI)
+    public function hapus($NIK_PEGAWAI)
     {
-    	DB::table('pegawai')->where('NIP_PEGAWAI',$NIP_PEGAWAI)->delete();
+    	DB::table('pegawai')->where('NIK_PEGAWAI',$NIK_PEGAWAI)->delete();
 	    return redirect('/pegawai');
     }
 }

@@ -30,13 +30,16 @@
 			<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
 
 			</select><br>
-			NIP Pegawai : <input type="text" class="form-control" name="NIP_PEGAWAI" value="{{$pegawai[0]->NIP_PEGAWAI}}" readonly><br>
-            Nama Pegawai : <input type="text" class="form-control" name="NAMA_PEGAWAI" value="{{$pegawai[0]->NAMA_PEGAWAI}}"><br>
-            Tempat, Tanggal Lahir : <input type="text" class="form-control" name="TTL_PEGAWAI" value="{{$pegawai[0]->TTL_PEGAWAI}}"><br>
+			NIK Pegawai : <input type="text" class="form-control" name="NIK_PEGAWAI" value="{{$pegawai[0]->NIK_PEGAWAI}}" readonly><br>
+			Nama Pegawai : <input type="text" class="form-control" name="NAMA_PEGAWAI" value="{{$pegawai[0]->NAMA_PEGAWAI}}"><br>
 			Alamat : <input type="text" class="form-control" name="ALAMAT_PEGAWAI" value="{{$pegawai[0]->ALAMAT_PEGAWAI}}"><br>
-            Nomor Telepon : <input type="text" class="form-control" name="NO_HP" value="{{$pegawai[0]->NO_HP}}"><br>
-			Jabatan : <input type="text" class="form-control" name="JABATAN_PEGAWAI" value="{{$pegawai[0]->JABATAN_PEGAWAI}}"><br>
-            Pangkat : <input type="text" class="form-control" name="PANGKAT_PEGAWAI" value="{{$pegawai[0]->PANGKAT_PEGAWAI}}"><br>
+			Tempat, Tanggal Lahir : <input type="text" class="form-control" name="TTL_PEGAWAI" value="{{$pegawai[0]->TTL_PEGAWAI}}"><br>
+			NIP Pegawai : <input type="text" class="form-control" name="NIP_PEGAWAI" value="{{$pegawai[0]->NIP_PEGAWAI}}"><br>
+			No. Kartu Pegawai : <input type="text" class="form-control" name="NO_KARTU_PEGAWAI" value="{{$pegawai[0]->NO_KARTU_PEGAWAI}}"><br>
+			No. Kartu Suami/istri : <input type="text" class="form-control" name="NO_KARTU_SUAMI_ISTRI" value="{{$pegawai[0]->NO_KARTU_SUAMI_ISTRI}}"><br>
+            Nomor Taspen : <input type="text" class="form-control" name="NO_TASPEN" value="{{$pegawai[0]->NO_TASPEN}}"><br>
+            Nomor Telepon : <input type="text" class="form-control" name="NO_HP" value="{{$pegawai[0]->NO_HP}}"><br>	
+            Keluarga : <input type="text" class="form-control" name="KELUARGA" value="{{$pegawai[0]->KELUARGA}}"><br>
             Unit Kerja : <input type="text" class="form-control" name="UNIT_KERJA_PEGAWAI" value="{{$pegawai[0]->UNIT_KERJA_PEGAWAI}}"><br>
 
             

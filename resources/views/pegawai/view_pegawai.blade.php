@@ -30,48 +30,59 @@
   <div class="card-body">
 		<div class="card">
 			<div class="card-header">
-				@can('tambah-pegawai')
+				<!-- <h3 class="card-title">Tambah Data Anggota</h3> -->
 				<a href="/pegawai/insert_pegawai">
 				<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data Pegawai</button>
 				</a>
-				@endcan
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body">
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 					<tr>
-						<th style="text-align:center">NIP</th>
+						<th style="text-align:center">NIK</th>
 						<th style="text-align:center">Nama</th>
-						<th style="text-align:center">Tempat Tanggal Lahir</th>
 						<th style="text-align:center">Alamat</th>
+						<th style="text-align:center">Tempat Tanggal Lahir</th>
+						<th style="text-align:center">NIP</th>
+						<th style="text-align:center">No. kartu Pegawai</th>
+						<th style="text-align:center">No. kartu Suami/Istri</th>
+						<th style="text-align:center">No. Taspen</th>
 						<th style="text-align:center">No. HP</th>
-						<th style="text-align:center">Jabatan</th>
-                        <th style="text-align:center">Pangkat</th>
+						<th style="text-align:center">Keluarga</th>
                         <th style="text-align:center">Unit Kerja</th>
-						@can('edit-hapus-pegawai')
+                        <th style="text-align:center">Riwayat</th>
 						<th style="text-align:center" width="15%">Aksi</th>
-						@endcan
 					</tr>
 					</thead>
 					<tbody>
 					@foreach($pegawai as $data)
 					<tr>
-						<td>{{ $data->NIP_PEGAWAI }}</td>
+						<td>{{ $data->NIK_PEGAWAI }}</td>
 						<td>{{ $data->NAMA_PEGAWAI }}</td>
-						<td>{{ $data->TTL_PEGAWAI }}</td>
 						<td>{{ $data->ALAMAT_PEGAWAI }}</td>
+						<td>{{ $data->TTL_PEGAWAI }}</td>
+						<td>{{ $data->NIP_PEGAWAI }}</td>
+						<td>{{ $data->NO_KARTU_PEGAWAI }}</td>
+						<td>{{ $data->NO_KARTU_SUAMI_ISTRI }}</td>
+						<td>{{ $data->NO_TASPEN }}</td>
 						<td>{{ $data->NO_HP }}</td>
-                        <td>{{ $data->JABATAN_PEGAWAI }}</td>
-                        <td>{{ $data->PANGKAT_PEGAWAI }}</td>
+                        <td>{{ $data->KELUARGA }}</td>
                         <td>{{ $data->UNIT_KERJA_PEGAWAI }}</td>
-						@can('edit-hapus-pegawai')
-						<td><a href='/pegawai/edit_pegawai/{{ $data->NIP_PEGAWAI }}'>
+                        
+						<td>
+						<a href='/riwayat/insert_view_riwayat/{{ $data->NIK_PEGAWAI }}'>
+                        Lihat Riwayat
+                        </a>
+						</td>
+
+						<td><a href='/pegawai/edit_pegawai/{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a>
-						<button onclick="confirmDelete({{ $data->NIP_PEGAWAI }})" class="btn btn-danger btn-sm"> Hapus</button>
-						</td>  
-						@endcan           
+						<a href='/pegawai/hapus/{{ $data->NIK_PEGAWAI }}'>
+						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+						</a>
+						</td>             
 					</tr>
 					@endforeach
 					</tbody>
@@ -98,27 +109,6 @@
   <!-- /.card-footer-->
 </div>
 <!-- /.card -->
-
-<div class="modal fade" id="deletePegawai" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Hapus Data</h5>
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Apakah anda yakin ingin mengahpus data ini?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-		<a id="deleteLink">
-		<button type="button" class="btn btn-danger">Hapus</button>
-		</a>
-	</div>
-    </div>
-  </div>
-</div>
-
 @endsection
 
 
@@ -136,17 +126,5 @@
 	  "autoWidth": false,
 	});
   });
-</script>
-@endsection
-
-@section('scripts')
-<script>
-	function confirmDelete(id)
-	{
-		var link = document.getElementById('deleteLink')
-		link.href="/pegawai/hapus/" + id
-		$('#deletePegawai').modal('show')}
-
-
 </script>
 @endsection

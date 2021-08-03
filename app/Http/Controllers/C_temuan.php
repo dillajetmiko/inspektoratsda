@@ -108,11 +108,7 @@ class C_temuan extends Controller
             'URAIAN_TINDAK_LANJUT' => $post->URAIAN_TINDAK_LANJUT,
             'KODE_STATUS' => $post->KODE_STATUS,
             // 'JENIS_PENGAWASAN' => $post->JENIS_PENGAWASAN,
-<<<<<<< HEAD
             // 'KODE_OPD' => $post->KODE_OPD,
-=======
-            'KODE_OPD' => $post->KODE_OPD,
->>>>>>> fff892c49c31ad968fa68af41d105ede5deb74a0
             'NAMA_PEJABAT' => $post->NAMA_PEJABAT,
             'JABATAN_PEJABAT' => $post->JABATAN_PEJABAT,
             'NIP_PEJABAT' => $post->NIP_PEJABAT,
@@ -162,11 +158,7 @@ class C_temuan extends Controller
             'JABATAN_PEJABAT' => $post->JABATAN_PEJABAT,
             'NIP_PEJABAT' => $post->NIP_PEJABAT,
             // 'JENIS_PENGAWASAN' => $post->JENIS_PENGAWASAN,
-<<<<<<< HEAD
             // 'KODE_OPD' => $post->KODE_OPD,            
-=======
-            'KODE_OPD' => $post->KODE_OPD,            
->>>>>>> fff892c49c31ad968fa68af41d105ede5deb74a0
             'JABATAN_PEJABAT' => $post->JABATAN_PEJABAT,
             'NIP_PEJABAT' => $post->NIP_PEJABAT,
             'TANGGAL_TEMUAN' => $post->TANGGAL_TEMUAN,
@@ -182,16 +174,10 @@ class C_temuan extends Controller
     
     public function hapus($KODE_TEMUAN)
     {
-<<<<<<< HEAD
     	DB::table('punya_opd')->where('KODE_TEMUAN',$KODE_TEMUAN)->delete();
         DB::table('temuan')->where('KODE_TEMUAN',$KODE_TEMUAN)->delete();
     	return redirect('/temuan');
     }
-=======
-    	DB::table('temuan')->where('KODE_TEMUAN',$KODE_TEMUAN)->delete();
-	    return redirect('/temuan');
->>>>>>> fff892c49c31ad968fa68af41d105ede5deb74a0
-
-        
-    }
+       
 }
+ 

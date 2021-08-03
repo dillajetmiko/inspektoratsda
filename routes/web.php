@@ -14,6 +14,7 @@ use App\Http\Controllers\C_cetak;
 use App\Http\Controllers\C_register;
 use App\Http\Controllers\C_dasar;
 use App\Http\Controllers\C_punyaopd;
+use App\Http\Controllers\C_riwayat;
 
 
 
@@ -94,9 +95,9 @@ Route::get('/cetak/export/{NOMOR_LHP}', [C_cetak::class, 'exportExcel'])->middle
 Route::get('/pegawai', [C_pegawai::class, 'index'])->middleware('auth');
 Route::get('/pegawai/insert_pegawai', [C_pegawai::class, 'insertPegawai'])->middleware('auth');
 Route::post('/pegawai/tambah_pegawai', [C_pegawai::class, 'tambahPegawai'])->middleware('auth');
-Route::get('/pegawai/edit_pegawai/{NIP_PEGAWAI}', [C_pegawai::class, 'editPegawai'])->middleware('auth');
+Route::get('/pegawai/edit_pegawai/{NIK_PEGAWAI}', [C_pegawai::class, 'editPegawai'])->middleware('auth');
 Route::post('/pegawai/update_pegawai', [C_pegawai::class, 'updatePegawai'])->middleware('auth');
-Route::get('/pegawai/hapus/{NIP_PEGAWAI}', [C_pegawai::class, 'hapus'])->middleware('auth');
+Route::get('/pegawai/hapus/{NIK_PEGAWAI}', [C_pegawai::class, 'hapus'])->middleware('auth');
 
 Route::get('/spt', [C_spt::class, 'index'])->middleware('auth');
 Route::get('/spt/insert_spt', [C_spt::class, 'insertSpt'])->middleware('auth');
@@ -134,7 +135,11 @@ Route::get('/punya_opd/edit_punya_opd/{KODE_TEMUAN}', [C_punyaopd::class, 'editO
 Route::post('/punya_opd/update_punya_opd', [C_punyaopd::class, 'updatOPD'])->middleware('auth');
 Route::get('/punya_opd/hapus/{KODE_TEMUAN}&{KODE_OPD}', [C_punyaopd::class, 'hapus'])->middleware('auth');
 
-
+Route::get('/riwayat/insert_view_riwayat/{NIP_PEGAWAI}', [C_riwayat::class, 'insertRiwayat'])->middleware('auth');
+Route::post('/riwayat/insert_view_riwayat', [C_riwayat::class, 'tambahRiwayat'])->middleware('auth');
+Route::get('/riwayat/edit_riwayat/{NIP_PEGAWAI}', [C_riwayat::class, 'editRiwayat'])->middleware('auth');
+Route::post('/riwayat/update_riwayat', [C_riwayat::class, 'updateRiwayat'])->middleware('auth');
+Route::get('/riwayat/hapus/{id}&{NIP_PEGAWAI}', [C_riwayat::class, 'hapus'])->middleware('auth');
 
 
 

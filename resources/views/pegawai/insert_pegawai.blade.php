@@ -31,13 +31,16 @@
     <!-- <h1>Tambah Data Temuan</h1> -->
       <form action="/pegawai/tambah_pegawai" method="post" enctype="multipart/form-data">
         <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-        NIP : <input type="text" class="form-control" name="NIP_PEGAWAI"><br>
+        NIK : <input type="text" class="form-control" name="NIK_PEGAWAI"><br>
         Nama : <input type="text" class="form-control" name="NAMA_PEGAWAI"><br>
-        Tempat Tanggal Lahir : <input type="text" class="form-control" name="TTL_PEGAWAI"><br>
         Alamat : <input type="text" class="form-control" name="ALAMAT_PEGAWAI"><br>
+        Tempat Tanggal Lahir : <input type="text" class="form-control" name="TTL_PEGAWAI"><br>
+        NIP : <input type="text" class="form-control" name="NIP_PEGAWAI"><br>
+        No. kartu Pegawai : <input type="text" class="form-control" name="NO_KARTU_PEGAWAI"><br>
+        No. kartu Suami/Istri : <input type="text" class="form-control" name="NO_KARTU_SUAMI_ISTRI"><br>
+        No. Taspen : <input type="text" class="form-control" name="NO_TASPEN"><br>
         No. HP : <input type="text" class="form-control" name="NO_HP"><br>
-        Jabatan : <input type="text" class="form-control" name="JABATAN_PEGAWAI"><br>
-        Pangkat : <input type="text" class="form-control" name="PANGKAT_PEGAWAI"><br>
+        Keluarga : <input type="text" class="form-control" name="KELUARGA"><br>
         Unit Kerja : <input type="text" class="form-control" name="UNIT_KERJA_PEGAWAI"><br>
         <br> 
         <button type="submit" class="btn btn-primary">Simpan</button>
