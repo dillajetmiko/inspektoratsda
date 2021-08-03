@@ -1,12 +1,12 @@
 @extends("layout.mainlayout")
 
-@section("page_title","Pegawai")
+@section("page_title","TEMUAN")
 
-@section("title","Pegawai")
+@section("title","TEMUAN")
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-<li class="breadcrumb-item active">PEGAWAI</li> 
+<li class="breadcrumb-item active">Temuan</li> 
 @endsection
 
 @section('custom_css')
@@ -24,7 +24,7 @@
 <!-- Default box -->
 <div class="card">    
   <div class="card-header">
-	  <h3 class="card-title"> DATA PEGAWAI</h3>
+	  <h3 class="card-title"> DATA TEMUAN</h3>
 	  <div class="card-tools">
 		  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
 			<i class="fas fa-minus"></i></button>
