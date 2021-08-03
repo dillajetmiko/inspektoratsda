@@ -50,13 +50,13 @@ class C_penugasanspt extends Controller
 
         // $spt = DB::table('penugasan')
         //                 ->leftJoin('spt', 'spt.id', '=', 'penugasan.id_spt')
-        //                 ->where('penugasan.NIP_PEGAWAI',$nip)
+        //                 ->where('penugasan.NIK_PEGAWAI',$nip)
         //                 ->whereYear('tgl_mulai', $tahun)
         //                 ->whereMonth('tgl_mulai', $bulan)
         //                 ->get();
         $spt = DB::table('penugasan')
                         ->leftJoin('spt', 'spt.id', '=', 'penugasan.id_spt')
-                        ->where('penugasan.NIP_PEGAWAI',$nip)
+                        ->where('penugasan.NIK_PEGAWAI',$nip)
                         ->where('tgl_mulai', '<=', $tanggal)
                         ->where('tgl_selesai', '>=', $tanggal)
                         ->get();

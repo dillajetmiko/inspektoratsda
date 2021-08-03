@@ -32,7 +32,7 @@ class C_penugasan extends Controller
         DB::table('penugasan')->insert([
             'id_spt' => $post->ID_SPT,
             'ID_TUGAS' => $post->ID_TUGAS,        
-            'NIP_PEGAWAI' => $post->NIP_PEGAWAI,
+            'NIK_PEGAWAI' => $post->NIK_PEGAWAI,
         ]);
 
         return redirect('/penugasan/insert_view_penugasan/'.$post->ID_SPT);

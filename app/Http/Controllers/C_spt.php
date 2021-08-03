@@ -194,7 +194,7 @@ class C_spt extends Controller
 
          $penugasan = DB::table('penugasan')
                         ->leftJoin('tugas', 'tugas.ID_TUGAS', '=', 'penugasan.ID_TUGAS')
-                        ->leftJoin('pegawai', 'pegawai.NIP_PEGAWAI', '=', 'penugasan.NIP_PEGAWAI')
+                        ->leftJoin('pegawai', 'pegawai.NIK_PEGAWAI', '=', 'penugasan.NIK_PEGAWAI')
                         ->orderBy('urutan', 'asc')
                         ->where('penugasan.id_spt',$ID_SPT)->get();
  
@@ -252,7 +252,7 @@ class C_spt extends Controller
              $row1['kepada']='';
              // var_dump($row1);
             //  foreach($pegawai as $peg){
-            //      if($peg->NIP_PEGAWAI === $value1->NIP_PEGAWAI){
+            //      if($peg->NIK_PEGAWAI === $value1->NIK_PEGAWAI){
             //          $row1['nama']=$peg->NAMA_PEGAWAI;
             //          // var_dump($row1);
             //      }
@@ -362,7 +362,7 @@ class C_spt extends Controller
             $row1['kepada']='';
             // var_dump($row1);
             foreach($pegawai as $peg){
-                if($peg->NIP_PEGAWAI === $value1->NIP_PEGAWAI){
+                if($peg->NIK_PEGAWAI === $value1->NIK_PEGAWAI){
                     $row1['nama']=$peg->NAMA_PEGAWAI;
                     // var_dump($row1);
                 }
@@ -465,7 +465,7 @@ class C_spt extends Controller
             $row1['kepada']='';
             // var_dump($row1);
             foreach($pegawai as $peg){
-                if($peg->NIP_PEGAWAI === $value1->NIP_PEGAWAI){
+                if($peg->NIK_PEGAWAI === $value1->NIK_PEGAWAI){
                     $row1['nama']=$peg->NAMA_PEGAWAI;
                     // var_dump($row1);
                 }

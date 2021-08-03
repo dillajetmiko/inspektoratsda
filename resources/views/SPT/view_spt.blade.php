@@ -79,7 +79,7 @@
 						@foreach($penugasan as $tugas)
 						@if ($tugas->id_spt === $data->id)
 							@foreach($pegawai as $peg)
-							@if ($peg->NIP_PEGAWAI === $tugas->NIP_PEGAWAI)
+							@if ($peg->NIK_PEGAWAI === $tugas->NIK_PEGAWAI)
 							{{$peg->NAMA_PEGAWAI}}<br>
 							@endif
 							@endforeach

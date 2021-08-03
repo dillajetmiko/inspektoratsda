@@ -92,7 +92,7 @@
                         Lihat Riwayat
                         </a>
 						</td>
-
+						@can('edit-hapus-pegawai')
 						<td><a href='/pegawai/edit_pegawai/{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a>

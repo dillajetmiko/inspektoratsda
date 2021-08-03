@@ -41,9 +41,9 @@
 					<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
 					ID SPT : <input type="text" class="form-control" name="ID_SPT" value="{{$spt[0]->id}}" readonly><br>
 					Nama Pegawai : 
-						<select class="form-control select2" name="NIP_PEGAWAI">
+						<select class="form-control select2" name="NIK_PEGAWAI">
 						@foreach ($pegawai as $peg)
-						<option value="{{ $peg->NIP_PEGAWAI}}">{{ $peg->NAMA_PEGAWAI}}</option>
+						<option value="{{ $peg->NIK_PEGAWAI}}">{{ $peg->NAMA_PEGAWAI}}</option>
 						@endforeach
 						</select>
 						<br>
@@ -81,7 +81,7 @@
 						<!-- <td>{{ $data->id }}</td> -->
 						<td>
 						@foreach($pegawai as $datapeg)
-						@if ($datapeg->NIP_PEGAWAI === $data->NIP_PEGAWAI)
+						@if ($datapeg->NIK_PEGAWAI === $data->NIK_PEGAWAI)
 						{{$datapeg->NAMA_PEGAWAI}}
 						@endif
 						@endforeach
