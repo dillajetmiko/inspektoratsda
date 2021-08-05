@@ -45,12 +45,11 @@ class C_pegawai extends Controller
             'NO_KARTU_SUAMI_ISTRI' => $post->NO_KARTU_SUAMI_ISTRI,
             'NO_TASPEN' => $post->NO_TASPEN,
             'NO_HP' => $post->NO_HP,
-            'KELUARGA' => $post->KELUARGA,
             'UNIT_KERJA_PEGAWAI' => $post->UNIT_KERJA_PEGAWAI,
         ]);
 
         // return redirect('/pegawai');
-        return redirect('/riwayat/insert_view_riwayat/'.$post->NIK_PEGAWAI);
+        return redirect('/keluarga/insert_view_keluarga/'.$post->NIK_PEGAWAI);
     }
 
     public function editPegawai($NIK_PEGAWAI) 
@@ -78,7 +77,6 @@ class C_pegawai extends Controller
             'NO_KARTU_SUAMI_ISTRI' => $post->NO_KARTU_SUAMI_ISTRI,
             'NO_TASPEN' => $post->NO_TASPEN,
             'NO_HP' => $post->NO_HP,
-            'KELUARGA' => $post->KELUARGA,
             'UNIT_KERJA_PEGAWAI' => $post->UNIT_KERJA_PEGAWAI,
         ]);
 

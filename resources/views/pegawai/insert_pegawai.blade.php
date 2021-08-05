@@ -40,7 +40,6 @@
         No. kartu Suami/Istri : <input type="text" class="form-control" name="NO_KARTU_SUAMI_ISTRI"><br>
         No. Taspen : <input type="text" class="form-control" name="NO_TASPEN"><br>
         No. HP : <input type="text" class="form-control" name="NO_HP"><br>
-        Keluarga : <input type="text" class="form-control" name="KELUARGA"><br>
         Unit Kerja : <input type="text" class="form-control" name="UNIT_KERJA_PEGAWAI"><br>
         <br> 
         <button type="submit" class="btn btn-primary">Simpan</button>
