@@ -17,6 +17,10 @@ use App\Http\Controllers\C_punyaopd;
 use App\Http\Controllers\C_riwayat;
 use App\Http\Controllers\C_penugasanspt;
 use App\Http\Controllers\C_keluarga;
+use App\Http\Controllers\C_pangkat;
+use App\Http\Controllers\C_diklat;
+use App\Http\Controllers\C_kenaikangaji;
+
 
 
 
@@ -155,7 +159,27 @@ Route::get('/keluarga/hapus/{NIK_PEGAWAI}', [C_keluarga::class, 'hapus'])->middl
 Route::get('/penugasan_spt', [C_penugasanspt::class, 'index'])->middleware('auth');
 Route::get('/penugasan_spt/cari',[C_penugasanspt::class, 'cari'])->middleware('auth');
 
+Route::get('/pangkat/insert_view_pangkat/{NIK_PEGAWAI}', [C_pangkat::class, 'insertPangkat'])->middleware('auth');
+Route::post('/pangkat/insert_view_pangkat', [C_pangkat::class, 'tambahPangkat'])->middleware('auth');
+Route::get('/pangkat/edit_pangkat/{NIK_PEGAWAI}', [C_pangkat::class, 'editPangkat'])->middleware('auth');
+Route::post('/pangkat/update_pangkat', [C_pangkat::class, 'updatePangkat'])->middleware('auth');
+Route::get('/pangkat/hapus/{ID_PANGKAT}&{NIK_PEGAWAI}', [C_pangkat::class, 'hapus'])->middleware('auth');
 
+Route::get('/diklat/insert_view_diklat/{NIK_PEGAWAI}', [C_diklat::class, 'insertDiklat'])->middleware('auth');
+Route::post('/diklat/insert_view_diklat', [C_diklat::class, 'tambahDiklat'])->middleware('auth');
+Route::get('/diklat/edit_diklat/{NIK_PEGAWAI}', [C_diklat::class, 'editDiklat'])->middleware('auth');
+Route::post('/diklat/update_diklat', [C_diklat::class, 'updateDiklat'])->middleware('auth');
+Route::get('/diklat/hapus/{ID_DIKLAT}&{NIK_PEGAWAI}', [C_diklat::class, 'hapus'])->middleware('auth');
 
+Route::get('/diklat/insert_view_diklat/{NIK_PEGAWAI}', [C_diklat::class, 'insertDiklat'])->middleware('auth');
+Route::post('/diklat/insert_view_diklat', [C_diklat::class, 'tambahDiklat'])->middleware('auth');
+Route::get('/diklat/edit_diklat/{NIK_PEGAWAI}', [C_diklat::class, 'editDiklat'])->middleware('auth');
+Route::post('/diklat/update_diklat', [C_diklat::class, 'updateDiklat'])->middleware('auth');
+Route::get('/diklat/hapus/{ID_DIKLAT}&{NIK_PEGAWAI}', [C_diklat::class, 'hapus'])->middleware('auth');
 
- 
+Route::get('/kenaikan_gaji/insert_view_kenaikan_gaji/{NIK_PEGAWAI}', [C_kenaikangaji::class, 'insertKenaikanGaji'])->middleware('auth');
+Route::post('/kenaikan_gaji/insert_view_kenaikan_gaji', [C_kenaikangaji::class, 'tambahKenaikanGaji'])->middleware('auth');
+Route::get('/kenaikan_gaji/edit_kenaikan_gaji/{NIK_PEGAWAI}', [C_kenaikangaji::class, 'editKenaikanGaji'])->middleware('auth');
+Route::post('/kenaikan_gaji/update_kenaikan_gaji', [C_kenaikangaji::class, 'updateKenaikanGaji'])->middleware('auth');
+Route::get('/kenaikan_gaji/hapus/{ID_KENAIKAN_GAJI}&{NIK_PEGAWAI}', [C_kenaikangaji::class, 'hapus'])->middleware('auth');
+
