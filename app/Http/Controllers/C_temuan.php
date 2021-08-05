@@ -20,11 +20,13 @@ class C_temuan extends Controller
         $temuan = DB::table('temuan')->get();
         $id = DB::table('opd')->get();
         $punya_opd = DB::table('punya_opd')->get();
+        $rekomendasi = DB::table('rekomendasi')->get();
         $data = array(
             'menu' => 'temuan',
             'temuan' => $temuan,
             'id' => $id,
             'punya_opd' => $punya_opd,
+            'rekomendasi' => $rekomendasi,
             'years' => $years,
             'submenu' => ''
         );
@@ -44,6 +46,10 @@ class C_temuan extends Controller
 		$jenis = $request->cari;
         $kode_opd = $request->KODE_OPD;
         $tahun = $request->year;
+
+        // $temuan = DB::table('punya_opd')
+        //                     ->leftJoin('temuan', 'temuan.KODE_TEMUAN', '=', 'punya_opd.KODE_TEMUAN')
+        //                     ->where('punya_opd.KODE_OPD',$kode_opd);
 
         if ($kode_opd == 0 && $tahun == 0){
             $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->get();
@@ -100,26 +106,17 @@ class C_temuan extends Controller
     {
         DB::table('temuan')->insert([
             'KODE_TEMUAN' => $post->KODE_TEMUAN,
-            'NIP' => Auth::user()->NIP,
+            // 'NIP' => Auth::user()->NIP,
             'NOMOR_LHP' => $post->NOMOR_LHP,
             'URAIAN_TEMUAN' => $post->URAIAN_TEMUAN,
-            'KODE_REKOMENDASI' => $post->KODE_REKOMENDASI,
-            'URAIAN_REKOMENDASI' => $post->URAIAN_REKOMENDASI,
-            'URAIAN_TINDAK_LANJUT' => $post->URAIAN_TINDAK_LANJUT,
-            'KODE_STATUS' => $post->KODE_STATUS,
-            'NAMA_PEJABAT' => $post->NAMA_PEJABAT,
-            'JABATAN_PEJABAT' => $post->JABATAN_PEJABAT,
-            'NIP_PEJABAT' => $post->NIP_PEJABAT,
             'TANGGAL_TEMUAN' => $post->TANGGAL_TEMUAN,
-            'TANGGAL_TINDAK_LANJUT' => $post->TANGGAL_TINDAK_LANJUT,
             'KERUGIAN' => $post->KERUGIAN,
             'KODE_JENIS_TEMUAN' => $post->KODE_JENIS_TEMUAN,
-            'HASIL_TELAAH' => $post->HASIL_TELAAH
            
         ]);
 
         // return redirect('/temuan');
-        return redirect('/punya_opd/insert_view_punya_opd/'.$post->KODE_TEMUAN);
+        return redirect('/rekomendasi/insert_view_rekomendasi/'.$post->KODE_TEMUAN);
     }
 
       public function editTemuan($KODE_TEMUAN) 
@@ -148,20 +145,9 @@ class C_temuan extends Controller
             'KODE_TEMUAN' => $post->KODE_TEMUAN,
             'NOMOR_LHP' => $post->NOMOR_LHP,
             'URAIAN_TEMUAN' => $post->URAIAN_TEMUAN,
-            'KODE_REKOMENDASI' => $post->KODE_REKOMENDASI,
-            'URAIAN_REKOMENDASI' => $post->URAIAN_REKOMENDASI,
-            'URAIAN_TINDAK_LANJUT' => $post->URAIAN_TINDAK_LANJUT,
-            'KODE_STATUS' => $post->KODE_STATUS,
-            'NAMA_PEJABAT' => $post->NAMA_PEJABAT,
-            'JABATAN_PEJABAT' => $post->JABATAN_PEJABAT,
-            'NIP_PEJABAT' => $post->NIP_PEJABAT,      
-            'JABATAN_PEJABAT' => $post->JABATAN_PEJABAT,
-            'NIP_PEJABAT' => $post->NIP_PEJABAT,
             'TANGGAL_TEMUAN' => $post->TANGGAL_TEMUAN,
-            'TANGGAL_TINDAK_LANJUT' => $post->TANGGAL_TINDAK_LANJUT,
             'KERUGIAN' => $post->KERUGIAN,
             'KODE_JENIS_TEMUAN' => $post->KODE_JENIS_TEMUAN,
-            'HASIL_TELAAH' => $post->HASIL_TELAAH
         ]);
 
         //kembali ke halaman data anggota

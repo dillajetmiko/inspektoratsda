@@ -34,7 +34,7 @@
 				<div class="form-group">
 					<form action="/punya_opd/insert_view_punya_opd" method="post" enctype="multipart/form-data">
 					<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-					Kode Temuan : <input type="text" class="form-control" name="KODE_TEMUAN" value="{{$temuan[0]->KODE_TEMUAN}}" readonly><br>
+					Kode Rekomendasi : <input type="text" class="form-control" name="KODE_REKOMENDASI" value="{{$rekomendasi[0]->KODE_REKOMENDASI}}" readonly><br>
 					Nama OPD : 
 						<select class="form-control select2" name="KODE_OPD">
 						@foreach ($opd as $o)
@@ -42,6 +42,9 @@
 						@endforeach
 						</select>
 						<br>
+					Nama Pejabat : <input type="text" class="form-control" name="NAMA_PEJABAT"><br>
+					Jabatan : <input type="text" class="form-control" name="JABATAN_PEJABAT"><br>
+					NIP : <input type="text" class="form-control" name="NIP_PEJABAT"><br>
 					
 		
 					<button type="submit" class="btn btn-primary">Simpan</button>
@@ -58,29 +61,34 @@
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 					<tr>
-						<th style="text-align:center">Kode Temuan </th>
+						<th style="text-align:center">Kode Rekomendasi</th>
 						<th style="text-align:center">Nama OPD</th>
-						<!-- <th style="text-align:center">Penugasan</th> -->
+						<th style="text-align:center">Nama Pejabat</th>
+						<th style="text-align:center">Nama Jabatan</th>
+						<th style="text-align:center">NIP</th>
 						<th style="text-align:center" width="15%">Aksi</th>
 					</tr>
 					</thead>
 					<tbody>
 					@foreach($punya_opd as $data)
 					<tr>
-						<td>{{ $data->KODE_TEMUAN }}</td>
+						<td>{{ $data->KODE_REKOMENDASI }}</td>
 						<td>
-						@foreach($opd as $op)
-						@if ($op->KODE_OPD === $data->KODE_OPD)
-						{{$op->NAMA_OPD}}
-						@endif
-						@endforeach
+							@foreach($opd as $op)
+							@if ($op->KODE_OPD === $data->KODE_OPD)
+							{{$op->NAMA_OPD}}
+							@endif
+							@endforeach
 						</td> 
-					
+						
+						<td>{{ $data->NAMA_PEJABAT }}</td>
+						<td>{{ $data->JABATAN_PEJABAT }}</td>
+						<td>{{ $data->NIP_PEJABAT }}</td>
 						<td>
-						<!-- <a href='/punya_opd/edit_punya_opd/{{ $data->KODE_TEMUAN }}'>
+						<!-- <a href='/punya_opd/edit_punya_opd/{{ $data->KODE_REKOMENDASI }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a> -->
-						<a href='/punya_opd/hapus/{{ $data->KODE_TEMUAN }}&{{ $data->KODE_OPD}}'>
+						<a href='/punya_opd/hapus/{{ $data->KODE_REKOMENDASI }}&{{ $data->KODE_OPD}}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
 						</td>             

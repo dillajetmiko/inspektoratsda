@@ -11,7 +11,7 @@ class C_dashboard extends Controller
     //
     public function index()
     {
-        $nama = Auth::user()->name;
+        $nama = Auth::user()->NIP;
         // $anggota = DB::table('anggota')->get();
         $data = array(
             'menu' => 'dashboard',

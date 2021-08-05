@@ -31,10 +31,11 @@
  <form action="/user/tambah_user" method="post">
  <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
  NIP : <input type="text" class="form-control" name="NIP"><br>
- Nama : <input type="text" class="form-control" name="NAMA"><br>
- Password : <input type="password" class="form-control" name="PASSWORD"><br>
- Jabatan : <input type="text" class="form-control" name="JABATAN"><br>
- Pangkat : <input type="text" class="form-control" name="PANGKAT"><br> 
+ Nama : <input type="text" class="form-control" name="name"><br>
+ Email : <input type="text" class="form-control" name="email"><br>
+ Password : <input type="password" class="form-control" name="password"><br>
+ <!-- Jabatan : <input type="text" class="form-control" name="jabatan"><br>
+ Pangkat : <input type="text" class="form-control" name="pangkat"><br>  -->
  <button type="submit" class="btn btn-primary">Simpan</button>
  </form>
 

@@ -155,26 +155,15 @@
 
 <script>
   $(function () {
-	$("#example1").DataTable({
-	  "responsive": true,
-	  "autoWidth": false,
-	});
-	
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+
     //Initialize Select2 Elements
     $('.select2').select2()
 
   });
 </script>
 
-<!-- @section('scripts')
-<script>
-	function confirmDelete(id)
-	{
-		var link = document.getElementById('deleteLink')
-		link.href="/penugasan/hapus/" + id & id_spt
-		$('#deletePenugasan').modal('show')
-	}
-
-
-</script> -->
 @endsection

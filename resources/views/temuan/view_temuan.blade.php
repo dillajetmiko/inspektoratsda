@@ -90,30 +90,17 @@
 				<tr>		
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Nomer LHP</th>
 					<th colspan="2" scope="colgroup" style="text-align:center">Temuan</th>
-					<th colspan="2" scope="colgroup" style="text-align:center">Rekomendasi</th>
-					<th colspan="2" scope="colgroup" style="text-align:center">Tindak Lanjut</th>
-					<th colspan="3" scope="colgroup" style="text-align:center">Pejabat OPD</th>
-					<!-- <th rowspan="2" scope="rowgroup" style="text-align:center">Jenis Pengawasan</th> -->
-					<th rowspan="2" scope="rowgroup" style="text-align:center">Nama OPD</th>
+					<th rowspan="2" scope="rowgroup" style="text-align:center">Rekomendasi</th>
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Tanggal Temuan</th>
-					<th rowspan="2" scope="rowgroup" style="text-align:center">Tanggal Tindak Lanjut</th>
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Kerugian</th>
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Jenis Temuan</th>
-					<th rowspan="2" scope="rowgroup" style="text-align:center">Hasil Telaah</th>
 					@can('edit-hapus-temuan')
-					<th rowspan="2" scope="rowgroup" style="text-align:center">Aksi</th>
+					<th rowspan="2" scope="rowgroup" style="text-align:center" width="15%">Aksi</th>
 					@endcan
 				</tr>
 				<tr>
 					<th style="text-align:center">Kode</th>
 					<th style="text-align:center">Uraian</th>
-					<th style="text-align:center">Kode</th>
-					<th style="text-align:center">Uraian</th>
-					<th style="text-align:center">Uraian</th>
-					<th style="text-align:center">Status</th>
-					<th style="text-align:center">Nama</th>
-					<th style="text-align:center">Jabatan</th>
-					<th style="text-align:center">NIP</th>
 				</tr>
 				</thead>
 				<tbody>		
@@ -121,45 +108,24 @@
 				<tr>
 					<td>{{ $data->NOMOR_LHP }}</td>
 					<td>{{ $data->KODE_TEMUAN }}</td>
-					<td>{{ $data->URAIAN_TEMUAN }}</td>
-					<td>{{ $data->KODE_REKOMENDASI }}</td>
-					<td>{{ $data->URAIAN_REKOMENDASI }}</td>
-					<td>{{ $data->URAIAN_TINDAK_LANJUT }}</td>
-					@if ($data->KODE_STATUS == 1)
-					<td> Belum Ditindak Lanjut</td>
-					@elseif ($data->KODE_STATUS == 2)
-					<td> Belum Sesuai Rekomendasi</td>
-					@elseif ($data->KODE_STATUS == 3)
-					<td> Sesuai Rekomendasi</td>
-					@endif
-					<td>{{ $data->NAMA_PEJABAT }}</td>
-					<td>{{ $data->JABATAN_PEJABAT }}</td>
-					<td>{{ $data->NIP_PEJABAT }}</td>	
-
+					<td>{{ $data->URAIAN_TEMUAN }}</td>	
 					<td>
-						@foreach($punya_opd as $OPD)
-						@if ($OPD->KODE_TEMUAN === $data->KODE_TEMUAN)
-								@foreach($id as $opd)
-								@if ($opd->KODE_OPD === $OPD->KODE_OPD)
-								{{$opd->NAMA_OPD}}<br>
-								@endif
-								@endforeach
+						@foreach($rekomendasi as $rekom)
+						@if ($rekom->ID_TEMUAN === $data->KODE_TEMUAN)
+								{{$rekom->URAIAN_REKOMENDASI}}<br>
 						@endif
 						@endforeach
-						<a href='/punya_opd/insert_view_punya_opd/{{ $data->KODE_TEMUAN }}'>
-                        lihat OPD
+						<a href='/rekomendasi/insert_view_rekomendasi/{{ $data->KODE_TEMUAN }}'>
+                        lihat rekomendasi
                         </a>
-					</td>
-
+					</td>	
 					<td>{{ $data->TANGGAL_TEMUAN }}</td>
-					<td>{{ $data->TANGGAL_TINDAK_LANJUT }}</td>
 					<td>{{ $data->KERUGIAN }}</td>
 					@if ($data->KODE_JENIS_TEMUAN == 1)
 					<td> Internal</td> 
 					@elseif ($data->KODE_JENIS_TEMUAN == 2)
 					<td> Eksternal</td>
 					@endif
-					<td>{{ $data->HASIL_TELAAH }}</td>
 					@can('edit-hapus-temuan')
 					<td><a href='/temuan/edit_temuan/{{ $data->KODE_TEMUAN }}'>
 					<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
@@ -225,8 +191,7 @@
 <script src="{{asset ('asset/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset ('asset/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset ('asset/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-<script src
-="{{asset ('asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{asset ('asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
 <!-- Select2 -->
 <script src="{{asset ('asset/plugins/select2/js/select2.full.min.js')}}"></script>
 

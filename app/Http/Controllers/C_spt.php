@@ -80,7 +80,7 @@ class C_spt extends Controller
             $name = $post->file('file')->getClientOriginalName();
 
             // $path = $post->file('file')->store('public/files');  
-            $path = $post->file('file')->storeAs('public/files',$name);  
+            $path = $post->file('file')->storeAs('public/files',$post->NOMOR_SPT.$name);  
         }else{
             $path = null;
         }
@@ -130,7 +130,7 @@ class C_spt extends Controller
             $name = $post->file('file')->getClientOriginalName();
 
             // $path = $post->file('file')->store('public/files');  
-            $path = $post->file('file')->storeAs('public/files',$name); 
+            $path = $post->file('file')->storeAs('public/files',$post->NOMOR_SPT.$name); 
             
             DB::table('spt')->where('id', $post->ID_SPT)->update([
                 'NOMOR_SPT' => $post->NOMOR_SPT,

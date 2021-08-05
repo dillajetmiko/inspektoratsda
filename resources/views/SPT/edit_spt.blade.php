@@ -42,7 +42,7 @@
             Nomor SPT : <input type="text" class="form-control" name="NOMOR_SPT" value="{{$spt[0]->NOMOR_SPT}}"><br>
             Tanggal SPT : <input type="date" class="form-control" name="TANGGAL_SPT" value="{{$spt[0]->TANGGAL_SPT}}"><br>
 			Jenis Pengawasan: 
-                <select class="form-control select2" name="KODE_OPD">
+                <select class="form-control select2" name="ID_PENGAWASAN">
                 @foreach ($jenis_pengawasan as $jenis)
                 @if ($jenis->ID_PENGAWASAN === $spt[0]->ID_PENGAWASAN)
                 <option value="{{ $jenis->ID_PENGAWASAN}}" selected>{{ $jenis->NAMA_PENGAWASAN}}</option>
