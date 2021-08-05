@@ -67,7 +67,11 @@
 						<th style="text-align:center">No. Taspen</th>
 						<th style="text-align:center">No. HP</th>
                         <th style="text-align:center">Unit Kerja</th>
-                        <th style="text-align:center">Riwayat</th>
+                        <th style="text-align:center">Pangkat</th>
+                        <th style="text-align:center">Jabatan</th>
+                        <th style="text-align:center">Pendidikan</th>
+                        <th style="text-align:center">Diklat</th>
+                        <th style="text-align:center">Kenaikan Gaji</th>
 						<th style="text-align:center" width="15%">Aksi</th>
 					</tr>
 					</thead>
@@ -86,10 +90,35 @@
                         <td>{{ $data->UNIT_KERJA_PEGAWAI }}</td>
                         
 						<td>
-						<a href='/riwayat/insert_view_riwayat/{{ $data->NIK_PEGAWAI }}'>
-                        Lihat Riwayat
+						<a href='/pangkat/insert_view_pangkat/{{ $data->NIK_PEGAWAI }}'>
+                        Lihat Detail
                         </a>
 						</td>
+
+						<td>
+						<a href='/jabatan/insert_view_jabatan/{{ $data->NIK_PEGAWAI }}'>
+                        Lihat Detail
+                        </a>
+						</td>
+
+						<td>
+						<a href='/pendidikan/insert_view_pendidikan/{{ $data->NIK_PEGAWAI }}'>
+                        Lihat Detail
+                        </a>
+						</td>
+
+						<td>
+						<a href='/diklat/insert_view_diklat/{{ $data->NIK_PEGAWAI }}'>
+                        Lihat Detail
+                        </a>
+						</td>
+
+						<td>
+						<a href='/kenaikan_gaji/insert_view_kenaikan_gaji/{{ $data->NIK_PEGAWAI }}'>
+                        Lihat Detail
+                        </a>
+						</td>
+
 						@can('edit-hapus-pegawai')
 						<td><a href='/pegawai/edit_pegawai/{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>

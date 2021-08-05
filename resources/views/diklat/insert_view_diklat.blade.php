@@ -38,7 +38,18 @@
                     Nama Pegawai : <input type="text" class="form-control" name="NAMA_PEGAWAI" value="{{$pegawai[0]->NAMA_PEGAWAI}}" readonly><br>
                     Tanggal Diklat : <input type="date" class="form-control" name="TANGGAL_DIKLAT"><br>
                     Nama Diklat : <input type="text" class="form-control" name="NAMA_DIKLAT"><br>
-                    Upload Sertifikat : <input type="text" class="form-control" name="UPLOAD_SERTIFIKAT_DIKLAT"><br>
+                    Upload Sertifikat : 
+                    <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> File <span class="required">*</span></label>
+                    <!-- <div class="col-md-6 col-sm-6 col-xs-12"> -->
+
+                        <input type='file' name='file' class="form-control">
+
+                        <!-- @if ($errors->has('file'))
+                        <span class="errormsg text-danger">{{ $errors->first('file') }}</span>
+                        @endif -->
+                    <!-- </div> -->
+                    </div>
 					
                     <button type="submit" class="btn btn-primary">Simpan</button>
 					<a href='/kenaikan_gaji/insert_view_kenaikan_gaji/{{$pegawai[0]->NIK_PEGAWAI}}'>
@@ -65,12 +76,16 @@
 					<tr>
 						<td>{{ $data->TANGGAL_DIKLAT }}</td>
 						<td>{{ $data->NAMA_DIKLAT }}</td>
-						<td>{{ $data->UPLOAD_SERTIFIKAT_DIKLAT }}</td>
-						
+                        <td>
+						@if ($data->UPLOAD_SERTIFIKAT_DIKLAT == null)
+						Tidak ada file
+						@else
+						<a href="/diklat/download/{{ $data->ID_DIKLAT }}" class='btn btn-ghost-info'>
+							<i class="fa fa-download"></i> Download
+						</a>
+						@endif
+						</td>
 						<td>
-						<!-- <a href='/penugasan/edit_penugasan/{{ $data->id }}'>
-						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
-						</a> -->
 						<a href='/diklat/hapus/{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>

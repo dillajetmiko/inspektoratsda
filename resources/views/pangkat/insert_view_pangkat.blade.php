@@ -63,11 +63,7 @@
 					<tr>
 						<td>{{ $data->TMT_PANGKAT }}</td>
 						<td>{{ $data->NAMA_PANGKAT }}</td>
-						
 						<td>
-						<!-- <a href='/penugasan/edit_penugasan/{{ $data->id }}'>
-						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
-						</a> -->
 						<a href='/pangkat/hapus/{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
