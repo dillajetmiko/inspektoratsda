@@ -1,13 +1,13 @@
 @extends("layout.mainlayout")
 
-@section("page_title","Keluarga")
+@section("page_title","Jabatan")
 
-@section("title","Keluarga")
+@section("title","Jabatan")
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-<li class="breadcrumb-item"><a href="/pegawai">PEGAWAI</a></li>
-<li class="breadcrumb-item active">Keluarga</li> 
+<li class="breadcrumb-item"><a href="/pegawai">JABATAN</a></li>
+<li class="breadcrumb-item active">Jabatan</li> 
 @endsection
 
 @section('custom_css')
@@ -25,7 +25,7 @@
 <!-- Default box -->
 <div class="card">    
   <div class="card-header">
-	  <h3 class="card-title"> DATA KELUARGA</h3>
+	  <h3 class="card-title"> DATA JABATAN PEGAWAI</h3>
 	  <div class="card-tools">
 		  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
 			<i class="fas fa-minus"></i></button>
@@ -37,21 +37,15 @@
 		<div class="card">
 			<div class="card-header">
 				<div class="form-group">
-					<form action="/keluarga/insert_view_keluarga" method="post" enctype="multipart/form-data">
+					<form action="/jabatan/insert_view_jabatan" method="post" enctype="multipart/form-data">
 					<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
 					NIK Pegawai : <input type="text" class="form-control" name="NIK_PEGAWAI" value="{{$pegawai[0]->NIK_PEGAWAI}}" readonly><br>
 					Nama Pegawai : <input type="text" class="form-control" name="NAMA_PEGAWAI" value="{{$pegawai[0]->NAMA_PEGAWAI}}" readonly><br>
-					Nama Anggota Keluarga : <input type="text" class="form-control" name="NAMA_KELUARGA"><br>
-                    Status Keluarga    : 
-						<select class="form-control select2" name="ID_STATUS_KELUARGA">
-						@foreach ($status as $sta)
-						<option value="{{ $sta->ID_STATUS_KELUARGA}}">{{ $sta->NAMA_STATUS_KELUARGA}}</option>
-						@endforeach
-						</select>
-						</select><br>
-		
+					TMT Jabatan : <input type="date" class="form-control" name="TMT_JABATAN"><br>
+					Nama Jabatan : <input type="text" class="form-control" name="NAMA_JABATAN"><br>
+
 					<button type="submit" class="btn btn-primary">Simpan</button>
-					<a href='/pendidikan/insert_view_pendidikan/{{$pegawai[0]->NIK_PEGAWAI}}'>
+					<a href='/pangkat/'>
 					<button type="button" class="btn btn-info">Selesai</button>
 					</a>
 					</form>
@@ -65,25 +59,19 @@
 					<thead>
 					<tr>
 						<!-- <th style="text-align:center">ID SPT</th> -->
-						<th style="text-align:center">Nama Anggota Keluarga</th>
-						<th style="text-align:center">Status Keluarga</th>
+						<th style="text-align:center">TMT Jabatan</th>
+						<th style="text-align:center">Nama Jabatan</th>
 						<th style="text-align:center" width="15%">Aksi</th>
 					</tr>
 					</thead>
 					<tbody>
-					@foreach($keluarga as $data)
+					@foreach($jabatan as $data)
 					<tr>
-					<td>{{ $data->NAMA_KELUARGA }}</td>
-
+					<td>{{ $data->TMT_JABATAN }}</td>
+					<td>{{ $data->NAMA_JABATAN }}</td>
+					<tr>
 						<td>
-						@foreach($status as $datasta)
-						@if ($datasta->ID_STATUS_KELUARGA === $data->ID_STATUS_KELUARGA)
-						{{$datasta->NAMA_STATUS_KELUARGA}}
-						@endif
-						@endforeach
-						</td> 
-						<td>
-						<a href='/keluarga/hapus/{{ $data->ID_KELUARGA }}&&{{ $data->NIK_PEGAWAI }}'>
+						<a href='/jabatan/hapus/{{ $data->TMT_JABATAN }}&&{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
 						</td>             

@@ -17,6 +17,8 @@ use App\Http\Controllers\C_punyaopd;
 use App\Http\Controllers\C_riwayat;
 use App\Http\Controllers\C_penugasanspt;
 use App\Http\Controllers\C_keluarga;
+use App\Http\Controllers\C_pendidikan;
+use App\Http\Controllers\C_jabatan;
 
 
 
@@ -151,6 +153,18 @@ Route::post('/keluarga/insert_view_keluarga', [C_keluarga::class, 'tambahKeluarg
 Route::get('/keluarga/edit_keluarga/{NIK_PEGAWAI}', [C_keluarga::class, 'editKeluarga'])->middleware('auth');
 Route::post('/keluarga/update_keluarga', [C_keluarga::class, 'updateKeluarga'])->middleware('auth');
 Route::get('/keluarga/hapus/{NIK_PEGAWAI}', [C_keluarga::class, 'hapus'])->middleware('auth');
+
+Route::get('/pendidikan/insert_view_pendidikan/{NIK_PEGAWAI}', [C_pendidikan::class, 'insertPendidikan'])->middleware('auth');
+Route::post('/pendidikan/insert_view_pendidikan', [C_pendidikan::class, 'tambahPendidikan'])->middleware('auth');
+Route::get('/pendidikan/edit_pendidikan/{NIK_PEGAWAI}', [C_pendidikan::class, 'editPendidikan'])->middleware('auth');
+Route::post('/pendidikan/update_pendidikan', [C_pendidikan::class, 'updatePendidikan'])->middleware('auth');
+Route::get('/pendidikan/hapus/{NIK_PEGAWAI}', [C_pendidikan::class, 'hapus'])->middleware('auth');
+
+Route::get('/jabatan/insert_view_jabatan/{NIK_PEGAWAI}', [C_jabatan::class, 'insertJabatan'])->middleware('auth');
+Route::post('/jabatan/insert_view_jabatan', [C_jabatan::class, 'tambahJabatan'])->middleware('auth');
+Route::get('/jabatan/edit_jabatan/{NIK_PEGAWAI}', [C_jabatan::class, 'editJabatan'])->middleware('auth');
+Route::post('/jabatan/update_jabatan', [C_jabatan::class, 'updateJabatan'])->middleware('auth');
+Route::get('/jabatan/hapus/{NIK_PEGAWAI}', [C_jabatan::class, 'hapus'])->middleware('auth');
 
 Route::get('/penugasan_spt', [C_penugasanspt::class, 'index'])->middleware('auth');
 Route::get('/penugasan_spt/cari',[C_penugasanspt::class, 'cari'])->middleware('auth');
