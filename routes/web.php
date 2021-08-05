@@ -16,6 +16,8 @@ use App\Http\Controllers\C_dasar;
 use App\Http\Controllers\C_punyaopd;
 use App\Http\Controllers\C_riwayat;
 use App\Http\Controllers\C_penugasanspt;
+use App\Http\Controllers\C_keluarga;
+
 
 
 
@@ -143,6 +145,12 @@ Route::post('/riwayat/insert_view_riwayat', [C_riwayat::class, 'tambahRiwayat'])
 Route::get('/riwayat/edit_riwayat/{NIP_PEGAWAI}', [C_riwayat::class, 'editRiwayat'])->middleware('auth');
 Route::post('/riwayat/update_riwayat', [C_riwayat::class, 'updateRiwayat'])->middleware('auth');
 Route::get('/riwayat/hapus/{id}&{NIP_PEGAWAI}', [C_riwayat::class, 'hapus'])->middleware('auth');
+
+Route::get('/keluarga/insert_view_keluarga/{NIK_PEGAWAI}', [C_keluarga::class, 'insertKeluarga'])->middleware('auth');
+Route::post('/keluarga/insert_view_keluarga', [C_keluarga::class, 'tambahKeluarga'])->middleware('auth');
+Route::get('/keluarga/edit_keluarga/{NIK_PEGAWAI}', [C_keluarga::class, 'editKeluarga'])->middleware('auth');
+Route::post('/keluarga/update_keluarga', [C_keluarga::class, 'updateKeluarga'])->middleware('auth');
+Route::get('/keluarga/hapus/{NIK_PEGAWAI}', [C_keluarga::class, 'hapus'])->middleware('auth');
 
 Route::get('/penugasan_spt', [C_penugasanspt::class, 'index'])->middleware('auth');
 Route::get('/penugasan_spt/cari',[C_penugasanspt::class, 'cari'])->middleware('auth');

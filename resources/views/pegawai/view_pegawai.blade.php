@@ -66,7 +66,6 @@
 						<th style="text-align:center">No. kartu Suami/Istri</th>
 						<th style="text-align:center">No. Taspen</th>
 						<th style="text-align:center">No. HP</th>
-						<th style="text-align:center">Keluarga</th>
                         <th style="text-align:center">Unit Kerja</th>
                         <th style="text-align:center">Riwayat</th>
 						<th style="text-align:center" width="15%">Aksi</th>
@@ -84,7 +83,6 @@
 						<td>{{ $data->NO_KARTU_SUAMI_ISTRI }}</td>
 						<td>{{ $data->NO_TASPEN }}</td>
 						<td>{{ $data->NO_HP }}</td>
-                        <td>{{ $data->KELUARGA }}</td>
                         <td>{{ $data->UNIT_KERJA_PEGAWAI }}</td>
                         
 						<td>
