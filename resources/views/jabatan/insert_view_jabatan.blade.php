@@ -70,7 +70,7 @@
 					<td>{{ $data->TMT_JABATAN }}</td>
 					<td>{{ $data->NAMA_JABATAN }}</td>
 					<td>
-					<a href='/jabatan/hapus/{{ $data->TMT_JABATAN }}&&{{ $data->NIK_PEGAWAI }}'>
+					<a href='/jabatan/hapus/{{ $data->ID_JABATAN }}&{{ $data->NIK_PEGAWAI }}'>
 					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 					</a>
 					</td>             

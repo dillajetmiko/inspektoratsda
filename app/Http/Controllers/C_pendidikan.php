@@ -38,13 +38,13 @@ class C_pendidikan extends Controller
     
         
     
-        public function hapus($TAHUN_PENDIDIKAN,$NIK_PEGAWAI)
+        public function hapus($ID_PENDIDIKAN, $NIK_PEGAWAI)
         {
             // menghapus data detail_peminjaman berdasarkan id yang dipilih
-            DB::table('pendidikan')->where('TAHUN_PENDIDIKAN',$NIK_PEGAWAI)->delete();
+            DB::table('pendidikan')->where('ID_PENDIDIKAN',$ID_PENDIDIKAN)->delete();
                 
             // alihkan halaman ke halaman detail_peminjaman
-            return redirect('/pendidikan/insert_view_pendidikan/'.$TAHUN_PENDIDIKAN);
+            return redirect('/pendidikan/insert_view_pendidikan/'.$NIK_PEGAWAI);
         }
     
     }

@@ -41,10 +41,10 @@ class C_kenaikangaji extends Controller
         return redirect('/kenaikan_gaji/insert_view_kenaikan_gaji/'.$post->NIK_PEGAWAI);
     }
 
-    public function hapus($NIK_PEGAWAI)
+    public function hapus($ID_KENAIKAN_GAJI,$NIK_PEGAWAI)
     {
         // menghapus data detail_peminjaman berdasarkan id yang dipilih
-        DB::table('kenaikan_gaji')->where('NIK_PEGAWAI',$NIK_PEGAWAI)->delete();
+        DB::table('kenaikan_gaji')->where('ID_KENAIKAN_GAJI',$ID_KENAIKAN_GAJI)->delete();
             
         // alihkan halaman ke halaman detail_peminjaman
         return redirect('/kenaikan_gaji/insert_view_kenaikan_gaji/'.$NIK_PEGAWAI);

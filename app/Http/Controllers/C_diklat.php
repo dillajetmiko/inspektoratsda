@@ -62,10 +62,10 @@ class C_diklat extends Controller
         return response()->download($path);
     }
 
-    public function hapus($NIK_PEGAWAI)
+    public function hapus($ID_DIKLAT, $NIK_PEGAWAI)
     {
         // menghapus data detail_peminjaman berdasarkan id yang dipilih
-        DB::table('diklat')->where('NIK_PEGAWAI',$NIK_PEGAWAI)->delete();
+        DB::table('diklat')->where('ID_DIKLAT',$ID_DIKLAT)->delete();
             
         // alihkan halaman ke halaman detail_peminjaman
         return redirect('/diklat/insert_view_diklat/'.$NIK_PEGAWAI);

@@ -67,7 +67,8 @@
 						<th style="text-align:center">No. Taspen</th>
 						<th style="text-align:center">No. HP</th>
                         <th style="text-align:center">Unit Kerja</th>
-                        <th style="text-align:center">Pangkat</th>
+                        <th style="text-align:center">Keluarga</th>
+						<th style="text-align:center">Pangkat</th>
                         <th style="text-align:center">Jabatan</th>
                         <th style="text-align:center">Pendidikan</th>
                         <th style="text-align:center">Diklat</th>
@@ -89,6 +90,12 @@
 						<td>{{ $data->NO_HP }}</td>
                         <td>{{ $data->UNIT_KERJA_PEGAWAI }}</td>
                         
+						<td>
+						<a href='/keluarga/insert_view_keluarga/{{ $data->NIK_PEGAWAI }}'>
+                        Lihat Detail
+                        </a>
+						</td>
+
 						<td>
 						<a href='/pangkat/insert_view_pangkat/{{ $data->NIK_PEGAWAI }}'>
                         Lihat Detail

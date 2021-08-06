@@ -86,7 +86,7 @@
 						@endif
 						</td>
 						<td>
-						<a href='/diklat/hapus/{{ $data->NIK_PEGAWAI }}'>
+						<a href='/diklat/hapus/{{ $data->ID_DIKLAT }}&{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
 						</td>             
