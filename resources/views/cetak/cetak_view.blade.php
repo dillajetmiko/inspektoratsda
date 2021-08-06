@@ -20,13 +20,16 @@ th, td {
 					<th colspan="2" scope="colgroup" style="font-weight: bold">Tanggal LHP</th>
 					<td>: {{ $datalhp->TANGGAL_LHP	}}</td>
 				</tr>
+				<tr>
+					<th colspan="2" scope="colgroup" style="font-weight: bold">Nomor LHP</th>
+					<td>: {{ $datalhp->NOMOR_LHP }}</td>
+				</tr>
 				@endforeach
 				</table>
 
 <table id="example1" class="table table-bordered table-striped">
 				<thead style="background-color: lightgrey; color: blue;">
 				<tr>		
-                    <th rowspan="2" scope="rowgroup" style="font-weight: bold; text-align:center; width: 12px">Nomer LHP</th>
                     <th colspan="2" scope="colgroup" style="font-weight: bold; text-align:center">Temuan</th>
                     <th colspan="2" scope="colgroup" style="font-weight: bold; text-align:center">Rekomendasi</th>
                     <th colspan="2" scope="colgroup" style="font-weight: bold; text-align:center">Tindak Lanjut</th>
@@ -46,7 +49,6 @@ th, td {
 				<tbody>		
 				@foreach($cetak as $data)
 					<tr>
-						<td>{{ $data->NOMOR_LHP }}</td>
 						<td>{{ $data->KODE_TEMUAN }}</td>
 						<td>{{ $data->URAIAN_TEMUAN }}</td>
 						<td>{{ $data->KODE_REKOMENDASI }}</td>

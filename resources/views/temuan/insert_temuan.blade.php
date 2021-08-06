@@ -48,34 +48,13 @@
             <br>
 
         Uraian Temuan : <input type="text" class="form-control" name="URAIAN_TEMUAN"><br>
-        Kode Rekomendasi : <input type="text" class="form-control" name="KODE_REKOMENDASI"><br>
-        Uraian Rekomendasi : <input type="text" class="form-control" name="URAIAN_REKOMENDASI"><br>
-        Uraian Tindak Lanjut : <input type="text" class="form-control" name="URAIAN_TINDAK_LANJUT"><br>
-        Status Tindak Lanjut :<br> 
-            <label><input type="radio" name="KODE_STATUS" value="1" checked="checked" /> Belum Ditindak Lanjut </label><br>
-            <label><input type="radio" name="KODE_STATUS" value="2" /> Belum Sesuai Rekomendasi </label><br>
-            <label><input type="radio" name="KODE_STATUS" value="3" /> Sesuai rekomendasi </label><br><br>
-        <!-- Jenis Pengawasan : <input type="text" class="form-control" name="JENIS_PENGAWASAN"><br> -->
-
-        <!-- Nama OPD : 
-            <select class="form-control select2" name="KODE_OPD">
-            @foreach ($id as $opd)
-            <option value="{{ $opd->KODE_OPD}}">{{ $opd->NAMA_OPD}}</option>
-            @endforeach
-            </select>
-            <br> -->
-        Nama Pejabat : <input type="text" class="form-control" name="NAMA_PEJABAT"><br>
-        Jabatan : <input type="text" class="form-control" name="JABATAN_PEJABAT"><br>
-        NIP : <input type="text" class="form-control" name="NIP_PEJABAT"><br>
         Tanggal Temuan : <input type="date" class="form-control" name="TANGGAL_TEMUAN"><br>
-        Tanggal Tindak Lanjut : <input type="date" class="form-control" name="TANGGAL_TINDAK_LANJUT"><br>
         Kerugian : <input type="text" class="form-control" name="KERUGIAN"><br>
         Jenis Temuan : 
             <select class="form-control" name="KODE_JENIS_TEMUAN">
             <option value="1">Internal</option>
             <option value="2">Eksternal</option>
             </select><br>
-        Hasil Telaah Tindak Lanjut: <input type="text" class="form-control" name="HASIL_TELAAH"><br>
         <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
 

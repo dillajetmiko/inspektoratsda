@@ -9,15 +9,15 @@ use Illuminate\Support\Facades\Storage;
 class C_punyaopd extends Controller
 {
     //
-    public function insertOPD($KODE_TEMUAN) 
+    public function insertOPD($KODE_REKOMENDASI) 
     {
-        $temuan = DB::table('temuan')->where('KODE_TEMUAN', $KODE_TEMUAN)->get();
-        $punya_opd = DB::table('punya_opd')->where('KODE_TEMUAN', $KODE_TEMUAN)->get();
+        $rekomendasi = DB::table('rekomendasi')->where('KODE_REKOMENDASI', $KODE_REKOMENDASI)->get();
+        $punya_opd = DB::table('punya_opd')->where('KODE_REKOMENDASI', $KODE_REKOMENDASI)->get();
         $opd = DB::table('opd')->get();
 
         $data = array(
             'menu' => 'temuan',
-            'temuan' => $temuan,
+            'rekomendasi' => $rekomendasi,
             'punya_opd' => $punya_opd,
             'opd' => $opd,
             'submenu' => ''
@@ -29,11 +29,14 @@ class C_punyaopd extends Controller
     public function tambahOPD(Request $post)
     {
         DB::table('punya_opd')->insert([
-            'KODE_TEMUAN' => $post->KODE_TEMUAN,
+            'KODE_REKOMENDASI' => $post->KODE_REKOMENDASI,
             'KODE_OPD' => $post->KODE_OPD, 
+            'NAMA_PEJABAT' => $post->NAMA_PEJABAT,
+            'JABATAN_PEJABAT' => $post->JABATAN_PEJABAT,
+            'NIP_PEJABAT' => $post->NIP_PEJABAT,
         ]);
 
-        return redirect('/punya_opd/insert_view_punya_opd/'.$post->KODE_TEMUAN);
+        return redirect('/punya_opd/insert_view_punya_opd/'.$post->KODE_REKOMENDASI);
     }
 
     public function hapus($KODE_TEMUAN,$KODE_OPD)

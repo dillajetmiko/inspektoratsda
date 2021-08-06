@@ -75,9 +75,9 @@
         </a> -->
       </div>
       <!-- /.social-auth-links -->
-      <p class="mb-0">
+      <!-- <p class="mb-0">
         <a href="/register" class="text-center">Register a new membership</a>
-      </p>
+      </p> -->
 
 <!-- /.login-box -->
 

@@ -31,9 +31,11 @@
 		<div class="card">
 			<div class="card-header">
 			<!-- <h3 class="card-title">Tambah Data Anggota</h3> -->
-			<!-- <a href="/user/insert_user">
+			@can('tambah-user')
+			<a href="/user/insert_user">
 			<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data User</button>
-			</a> -->
+			</a>
+			@endcan
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body">
@@ -42,8 +44,10 @@
 				<tr>
 				<th style="text-align:center">NIP</th>
 				<th style="text-align:center">Nama</th>
+				<th style="text-align:center">Email</th>
 				<th style="text-align:center">Jabatan</th>
 				<th style="text-align:center">Pangkat</th>
+				<th style="text-align:center">Role</th>
 				@can('edit-hapus-user')
 				<th style="text-align:center" width="15%">Aksi</th>
 				@endcan
@@ -54,8 +58,16 @@
 				<tr>
 					<td>{{ $data->NIP }}</td>
 					<td>{{ $data->name }}</td>
+					<td>{{ $data->email }}</td>
 					<td>{{ $data->jabatan }}</td>
 					<td>{{ $data->pangkat }}</td>
+					<td>
+					@foreach($role as $datarole)
+					@if ($datarole->id_role === $data->id_role)
+					{{$datarole->nama_role}}
+					@endif
+					@endforeach 
+					</td>
 					@can('edit-hapus-user')
 					<td>
 					<a href='/user/edit_user/{{ $data->NIP }}'>

@@ -16,6 +16,7 @@ use App\Http\Controllers\C_dasar;
 use App\Http\Controllers\C_punyaopd;
 use App\Http\Controllers\C_riwayat;
 use App\Http\Controllers\C_penugasanspt;
+use App\Http\Controllers\C_rekomendasi;
 use App\Http\Controllers\C_keluarga;
 use App\Http\Controllers\C_pangkat;
 use App\Http\Controllers\C_diklat;
@@ -55,8 +56,8 @@ Route::post('/loginSubmit', [C_register::class, 'authenticate']);
 // Route::post('/postLogin', 'C_login@postLogin');
 
 
-Route::post('/register', [C_register::class, 'store']);
-Route::get('/register', [C_register::class, 'create']);
+// Route::post('/register', [C_register::class, 'store']);
+// Route::get('/register', [C_register::class, 'create']);
 
 Route::get('/logout',function(){
     Auth::logout();
@@ -138,11 +139,11 @@ Route::get('/dasar/edit_dasar/{ID_SPT}', [C_dasar::class, 'editdasar'])->middlew
 Route::post('/dasar/update_dasar', [C_dasar::class, 'updatedasar'])->middleware('auth');
 Route::get('/dasar/hapus/{id}&{id_spt}', [C_dasar::class, 'hapus'])->middleware('auth');
 
-Route::get('/punya_opd/insert_view_punya_opd/{KODE_TEMUAN}', [C_punyaopd::class, 'insertOPD'])->middleware('auth');
+Route::get('/punya_opd/insert_view_punya_opd/{KODE_REKOMENDASI}', [C_punyaopd::class, 'insertOPD'])->middleware('auth');
 Route::post('/punya_opd/insert_view_punya_opd', [C_punyaopd::class, 'tambahOPD'])->middleware('auth');
-Route::get('/punya_opd/edit_punya_opd/{KODE_TEMUAN}', [C_punyaopd::class, 'editOPD'])->middleware('auth');
+Route::get('/punya_opd/edit_punya_opd/{KODE_REKOMENDASI}', [C_punyaopd::class, 'editOPD'])->middleware('auth');
 Route::post('/punya_opd/update_punya_opd', [C_punyaopd::class, 'updatOPD'])->middleware('auth');
-Route::get('/punya_opd/hapus/{KODE_TEMUAN}&{KODE_OPD}', [C_punyaopd::class, 'hapus'])->middleware('auth');
+Route::get('/punya_opd/hapus/{KODE_REKOMENDASI}&{KODE_OPD}', [C_punyaopd::class, 'hapus'])->middleware('auth');
 
 
 Route::get('/riwayat/insert_view_riwayat/{NIP_PEGAWAI}', [C_riwayat::class, 'insertRiwayat'])->middleware('auth');
@@ -171,6 +172,13 @@ Route::get('/jabatan/hapus/{ID_JABATAN}&{NIK_PEGAWAI}', [C_jabatan::class, 'hapu
 
 Route::get('/penugasan_spt', [C_penugasanspt::class, 'index'])->middleware('auth');
 Route::get('/penugasan_spt/cari',[C_penugasanspt::class, 'cari'])->middleware('auth');
+Route::get('/penugasan_spt/export', [C_penugasanspt::class, 'export'])->middleware('auth');
+
+Route::get('/rekomendasi/insert_view_rekomendasi/{KODE_TEMUAN}', [C_rekomendasi::class, 'insertRekomendasi'])->middleware('auth');
+Route::post('/rekomendasi/insert_view_rekomendasi', [C_rekomendasi::class, 'tambahRekomendasi'])->middleware('auth');
+Route::get('/rekomendasi/edit_rekomendasi/{KODE_TEMUAN}', [C_rekomendasi::class, 'editRekomendasi'])->middleware('auth');
+Route::post('/rekomendasi/update_rekomendasi', [C_rekomendasi::class, 'updateRekomendasi'])->middleware('auth');
+Route::get('/rekomendasi/hapus/{id}&{KODE_TEMUAN}', [C_rekomendasi::class, 'hapus'])->middleware('auth');
 
 Route::get('/pangkat/insert_view_pangkat/{NIK_PEGAWAI}', [C_pangkat::class, 'insertPangkat'])->middleware('auth');
 Route::post('/pangkat/insert_view_pangkat', [C_pangkat::class, 'tambahPangkat'])->middleware('auth');

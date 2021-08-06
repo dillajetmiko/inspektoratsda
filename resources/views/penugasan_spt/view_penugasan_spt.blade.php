@@ -43,7 +43,7 @@
 							<input type="submit" value="CARI"> -->
 							<div class="input-group">
 								<div style="width: 45%">
-									<select class="form-control select2" name="nip">
+									<select class="form-control select2" name="nik">
 										<option value="0">-Pilih Nama-</option>
 										@foreach ($pegawai as $peg)
 										<option value="{{ $peg->NIK_PEGAWAI}}">{{ $peg->NAMA_PEGAWAI}}</option>
@@ -71,8 +71,8 @@
 						<th style="text-align:center">Tanggal mulai</th>
 						<th style="text-align:center">Tanggal selesai</th>
 						<th style="text-align:center">Jenis Pengawasan</th>
-						<th style="text-align:center">Isi</th>
-						<th style="text-align:center">Penugasan</th>
+						<th style="text-align:center">Uraian Penugasan</th>
+						<th style="text-align:center">Tim Pelaksana</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -120,11 +120,30 @@
 			</div>
 			<!-- /.card-body -->
 
-			<!-- <a href="/spt/cetak_spt">
-				<button type="button" class="btn btn-info float-left" style="float: left;"><i class="fas fa-file-export"></i> Cetak </button>
-			</a> -->
 		</div>
 		<!-- /.card -->
+		
+		<form action="/penugasan_spt/export" method="GET">
+		<!-- <input type="text" name="cari" placeholder="Cari Pegawai .." value="{{ old('cari') }}">
+		<input type="submit" value="CARI"> -->
+		<div class="input-group">
+			<div style="width: 45%">
+				<select class="form-control select2" name="nik">
+					<option value="0">-Pilih Nama-</option>
+					@foreach ($pegawai as $peg)
+					<option value="{{ $peg->NIK_PEGAWAI}}">{{ $peg->NAMA_PEGAWAI}}</option>
+					@endforeach
+				</select>
+			</div>
+			<div style="width: 30%">
+				<input type="date" class="form-control" name="tanggal"><br>
+			</div>
+			<div class="input-group-append">
+				<span><input type="submit" class="btn btn-default" value="CARI"></span>
+			</div>
+		</div>
+		</form>
+
   </div>
   <!-- /.card-body -->
   <div class="card-footer">

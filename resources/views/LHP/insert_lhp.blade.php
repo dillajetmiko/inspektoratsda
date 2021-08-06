@@ -39,7 +39,7 @@
             @endforeach
             </select>
             <br>
-        Tanggal : <input type="date" class="form-control" name="TANGGAL_LHP"><br>
+        Tanggal LHP : <input type="date" class="form-control" name="TANGGAL_LHP"><br>
         Judul Pemeriksaan : <input type="text" class="form-control" name="JUDUL_PEMERIKSAAN"><br>
         Anggaran : <input type="text" class="form-control" name="ANGGARAN"><br>
 

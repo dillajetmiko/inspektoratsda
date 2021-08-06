@@ -30,13 +30,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('edit-lhp', function (User $user) {
-            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
-        });
-
-        Gate::define('hapus-lhp', function (User $user) {
-            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
-        });
 
         Gate::define('edit-hapus-lhp', function (User $user) {
             return in_array($user->id_role, [ADMIN,SUPERADMIN]);
@@ -74,6 +67,10 @@ class AuthServiceProvider extends ServiceProvider
             return in_array($user->id_role, [ADMIN,SUPERADMIN]);
         });
 
+        Gate::define('tambah-user', function (User $user) {
+            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
+        });
+
         Gate::define('update-role', function (User $user) {
             return in_array($user->id_role, [SUPERADMIN]);
         });
@@ -82,6 +79,5 @@ class AuthServiceProvider extends ServiceProvider
             return ($user->id_role > 0);
         });
 
-        //
     }
 }

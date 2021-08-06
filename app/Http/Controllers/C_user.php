@@ -12,9 +12,12 @@ class C_user extends Controller
     public function index()
     {
         $user = DB::table('users')->get();
+        $role = DB::table('role')->get();
+
         $data = array(
             'menu' => 'user',
             'user' => $user,
+            'role' => $role,
             'submenu' => ''
         );
 
@@ -24,9 +27,12 @@ class C_user extends Controller
     public function insertUser()
     {
         $user = DB::table('users')->get();
+        $role = DB::table('role')->get();
+
         $data = array(
             'menu' => 'user',
             'user' => $user,
+            'role' => $role,
             'submenu' => ''
         );
 
@@ -36,13 +42,7 @@ class C_user extends Controller
 
     public function tambahUser(Request $post)
     {
-        DB::table('users')->insert([
-            'NIP' => $post->NIP,
-            'name' => $post->NAMA,
-            'password' => $post->PASSWORD,
-            'jabatan' => $post->JABATAN,
-            'pangkat' => $post->PANGKAT
-        ]);
+        $user = User::create(request(['NIP','name','email','password']));
 
         return redirect('/user');
     }
@@ -50,10 +50,12 @@ class C_user extends Controller
     public function editUser($NIP) 
     {
         $user = DB::table('users')->where('NIP', $NIP)->get();
+        $role = DB::table('role')->get();
     
         $data = array(
             'menu' => 'user',
             'user' => $user,
+            'role' => $role,
             'submenu' => ''          
         );
         return view('user/edit_user',$data);
@@ -67,7 +69,8 @@ class C_user extends Controller
             'NIP' => $post->NIP,
             'name' => $post->NAMA,
             'jabatan' => $post->JABATAN,
-            'pangkat' => $post->PANGKAT
+            'pangkat' => $post->PANGKAT,
+            'id_role' => $post->id_role,
             ]);
             $user = User::find($post->NIP);
 
@@ -79,7 +82,8 @@ class C_user extends Controller
             'NIP' => $post->NIP,
             'name' => $post->NAMA,
             'jabatan' => $post->JABATAN,
-            'pangkat' => $post->PANGKAT
+            'pangkat' => $post->PANGKAT,
+            'id_role' => $post->id_role,
             ]);
         }
               
