@@ -1,3 +1,4 @@
+<head>
 <style>
 table {
   border-collapse: collapse;
@@ -9,7 +10,12 @@ th, td {
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
+table, th, td {
+  border: 1px solid black;
+}
 </style>
+</head>
+<body>
 <table>
 				@foreach ($lhp2 as $datalhp)
 				<tr>
@@ -30,40 +36,41 @@ th, td {
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 					<tr>		
-						<th colspan="2" scope="colgroup" style="text-align:center">Temuan</th>
-					<th colspan="2" scope="colgroup" style="text-align:center">Rekomendasi</th>
-						<th rowspan="2" scope="rowgroup" style="text-align:center">Kerugian</th>
+						<th colspan="2" scope="colgroup" style="text-align:center; border: 1px solid black">Temuan</th>
+						<th colspan="2" scope="colgroup" style="text-align:center; border: 1px solid black">Rekomendasi</th>
+						<th rowspan="2" scope="rowgroup" style="text-align:center; border: 1px solid black">Kerugian</th>
 					</tr>
 					<tr>
-						<th style="text-align:center">Kode</th>
-						<th style="text-align:center; width: 25px">Uraian</th>
-						<th style="text-align:center">Kode</th>
-						<th style="text-align:center; width: 25px">Uraian</th>
+						<th style="text-align:center; border: 1px solid black">Kode</th>
+						<th style="text-align:center; border: 1px solid black; width: 25px">Uraian</th>
+						<th style="text-align:center; border: 1px solid black">Kode</th>
+						<th style="text-align:center; border: 1px solid black; width: 25px">Uraian</th>
 					</tr>
 					</thead>
 					<tbody>		
 					@foreach($cetak as $data)
 					<tr>
-						<td>{{ $data->ID_KATEGORI }}</td>
-						<td>{{ $data->URAIAN_TEMUAN }}</td>
-						<td>
+						<td style="border: 1px solid black;">{{ $data->ID_KATEGORI }}</td>
+						<td style="border: 1px solid black;">{{ $data->URAIAN_TEMUAN }}</td>
+						<td style="border: 1px solid black;">
 							@foreach($rekomendasi as $rekom)
 							@if ($rekom->ID_TEMUAN === $data->id)
 									{{$rekom->KODE_REKOMENDASI}}<br>
 							@endif
 							@endforeach
 						</td>
-						<td>
+						<td style="border: 1px solid black;">
 							@foreach($rekomendasi as $rekom)
 							@if ($rekom->ID_TEMUAN === $data->id)
 									{{$rekom->URAIAN_REKOMENDASI}}<br>
 							@endif
 							@endforeach
 						</td>	
-						<td>{{ $data->KERUGIAN }}</td>
+						<td style="border: 1px solid black;">{{ $data->KERUGIAN }}</td>
 					</tr>
 					@endforeach
 					</tbody>
 					<tfoot>
 					</tfoot>
 				</table>
+</body>

@@ -6,7 +6,7 @@
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-<li class="breadcrumb-item active">SPT</li> 
+<li class="breadcrumb-item active">Penugasan SPT</li> 
 @endsection
 
 @section('custom_css')

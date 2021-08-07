@@ -75,9 +75,7 @@
                         <th style="text-align:center">Pendidikan</th>
                         <th style="text-align:center">Diklat</th>
                         <th style="text-align:center">Kenaikan Gaji</th>
-						@can('edit-hapus-pegawai')
 						<th style="text-align:center" width="15%">Aksi</th>
-						@endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -130,14 +128,15 @@
                         </a>
 						</td>
 
+						<td>
 						@can('edit-hapus-pegawai')
-						<td><a href='/pegawai/edit_pegawai/{{ $data->NIK_PEGAWAI }}'>
+						<a href='/pegawai/edit_pegawai/{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a>
 						<button onclick="confirmDelete({{ $data->NIK_PEGAWAI }})" class="btn btn-danger">
 						<i class="fas fa-trash"></i> Hapus</button>
-						 
 						@endcan           
+						 
 						<!-- <a href='/pegawai/hapus/{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a> -->

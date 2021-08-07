@@ -25,6 +25,7 @@
 @section('content')
 <!-- Small boxes (Stat box) -->
 @can('show-menu')
+@can('show-lhp')
 <div class="container">
 	<div class="col-lg-4 col-6">
 		<!-- small box -->
@@ -55,6 +56,7 @@
 	</div>
 	<!-- ./col -->
 </div>
+@endcan
 @else
 anda belum punya role
 @endcan

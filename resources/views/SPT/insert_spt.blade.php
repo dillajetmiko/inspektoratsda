@@ -4,8 +4,8 @@
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-<li class="breadcrumb-item"><a href="/temuan">Temuan</a></li>
-<li class="breadcrumb-item active">Tambah Temuan</li> 
+<li class="breadcrumb-item"><a href="/spt">SPT</a></li>
+<li class="breadcrumb-item active">Tambah SPT</li> 
 @endsection
 
 @section('custom_css')  
