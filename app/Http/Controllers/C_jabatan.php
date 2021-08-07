@@ -37,13 +37,13 @@ class C_jabatan extends Controller
     
         
     
-        public function hapus($TMT_JABATAN,$NIK_PEGAWAI)
+        public function hapus($ID_JABATAN, $NIK_PEGAWAI)
         {
             // menghapus data detail_peminjaman berdasarkan id yang dipilih
-            DB::table('jabatan')->where('TMT_JABATAN',$NIK_PEGAWAI)->delete();
+            DB::table('jabatan')->where('ID_JABATAN',$ID_JABATAN)->delete();
                 
             // alihkan halaman ke halaman detail_peminjaman
-            return redirect('/jabatan/insert_view_jabatan/'.$TMT_JABATAN);
+            return redirect('/jabatan/insert_view_jabatan/'.$NIK_PEGAWAI);
         }
     
     }

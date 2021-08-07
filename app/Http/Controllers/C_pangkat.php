@@ -36,10 +36,10 @@ class C_pangkat extends Controller
         return redirect('/pangkat/insert_view_pangkat/'.$post->NIK_PEGAWAI);
     }
 
-    public function hapus($NIK_PEGAWAI)
+    public function hapus($ID_PANGKAT, $NIK_PEGAWAI)
     {
         // menghapus data detail_peminjaman berdasarkan id yang dipilih
-        DB::table('pangkat')->where('NIK_PEGAWAI',$NIK_PEGAWAI)->delete();
+        DB::table('pangkat')->where('ID_PANGKAT',$ID_PANGKAT)->delete();
             
         // alihkan halaman ke halaman detail_peminjaman
         return redirect('/pangkat/insert_view_pangkat/'.$NIK_PEGAWAI);

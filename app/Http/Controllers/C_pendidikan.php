@@ -38,7 +38,7 @@ class C_pendidikan extends Controller
     
         
     
-        public function hapus($ID_PENDIDIKAN,$NIK_PEGAWAI)
+        public function hapus($ID_PENDIDIKAN, $NIK_PEGAWAI)
         {
             // menghapus data detail_peminjaman berdasarkan id yang dipilih
             DB::table('pendidikan')->where('ID_PENDIDIKAN',$ID_PENDIDIKAN)->delete();

@@ -167,7 +167,7 @@ Route::get('/jabatan/insert_view_jabatan/{NIK_PEGAWAI}', [C_jabatan::class, 'ins
 Route::post('/jabatan/insert_view_jabatan', [C_jabatan::class, 'tambahJabatan'])->middleware('auth');
 Route::get('/jabatan/edit_jabatan/{NIK_PEGAWAI}', [C_jabatan::class, 'editJabatan'])->middleware('auth');
 Route::post('/jabatan/update_jabatan', [C_jabatan::class, 'updateJabatan'])->middleware('auth');
-Route::get('/jabatan/hapus/{NIK_PEGAWAI}', [C_jabatan::class, 'hapus'])->middleware('auth');
+Route::get('/jabatan/hapus/{ID_JABATAN}&{NIK_PEGAWAI}', [C_jabatan::class, 'hapus'])->middleware('auth');
 
 Route::get('/penugasan_spt', [C_penugasanspt::class, 'index'])->middleware('auth');
 Route::get('/penugasan_spt/cari',[C_penugasanspt::class, 'cari'])->middleware('auth');
@@ -205,4 +205,3 @@ Route::post('/kenaikan_gaji/insert_view_kenaikan_gaji', [C_kenaikangaji::class, 
 Route::get('/kenaikan_gaji/edit_kenaikan_gaji/{NIK_PEGAWAI}', [C_kenaikangaji::class, 'editKenaikanGaji'])->middleware('auth');
 Route::post('/kenaikan_gaji/update_kenaikan_gaji', [C_kenaikangaji::class, 'updateKenaikanGaji'])->middleware('auth');
 Route::get('/kenaikan_gaji/hapus/{ID_KENAIKAN_GAJI}&{NIK_PEGAWAI}', [C_kenaikangaji::class, 'hapus'])->middleware('auth');
-

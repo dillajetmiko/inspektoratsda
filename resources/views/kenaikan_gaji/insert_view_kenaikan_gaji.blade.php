@@ -92,7 +92,7 @@
 					<td>{{ $data->MASA_KERJA }}</td>
 										
 					<td>
-					<a href='/kenaikan_gaji/hapus/{{ $data->ID_KENAIKAN_GAJI }}&&{{ $data->NIK_PEGAWAI }}'>
+					<a href='/kenaikan_gaji/hapus/{{ $data->ID_KENAIKAN_GAJI }}&{{ $data->NIK_PEGAWAI }}'>
 					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 					</a>
 					</td>             
