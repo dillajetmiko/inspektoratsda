@@ -37,7 +37,7 @@
       
         <form action="/temuan/tambah_temuan" method="post">
         <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-        Kode Temuan : <input type="text" class="form-control" name="KODE_TEMUAN"><br>
+        Kode Temuan : <input type="text" class="form-control" name="ID_KATEGORI"><br>
         
         No LHP : 
             <select class="form-control select2" name="NOMOR_LHP">
@@ -48,7 +48,6 @@
             <br>
 
         Uraian Temuan : <input type="text" class="form-control" name="URAIAN_TEMUAN"><br>
-        Tanggal Temuan : <input type="date" class="form-control" name="TANGGAL_TEMUAN"><br>
         Kerugian : <input type="text" class="form-control" name="KERUGIAN"><br>
         Jenis Temuan : 
             <select class="form-control" name="KODE_JENIS_TEMUAN">

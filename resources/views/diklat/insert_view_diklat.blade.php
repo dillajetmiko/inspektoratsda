@@ -38,6 +38,7 @@
                     Nama Pegawai : <input type="text" class="form-control" name="NAMA_PEGAWAI" value="{{$pegawai[0]->NAMA_PEGAWAI}}" readonly><br>
                     Tanggal Diklat : <input type="date" class="form-control" name="TANGGAL_DIKLAT"><br>
                     Nama Diklat : <input type="text" class="form-control" name="NAMA_DIKLAT"><br>
+					Penyelenggara Diklat : <input type="text" class="form-control" name="PENYELENGGARA_DIKLAT"><br>
                     Upload Sertifikat : 
                     <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> File <span class="required">*</span></label>
@@ -67,6 +68,7 @@
 					<tr>
 						<th style="text-align:center">Tanggal Diklat</th>
 						<th style="text-align:center">Nama Diklat</th>
+						<th style="text-align:center">Penyelenggara Diklat</th>
 						<th style="text-align:center">Upload Sertifikat</th>
 						<th style="text-align:center" width="15%">Aksi</th>
 					</tr>
@@ -76,6 +78,7 @@
 					<tr>
 						<td>{{ $data->TANGGAL_DIKLAT }}</td>
 						<td>{{ $data->NAMA_DIKLAT }}</td>
+						<td>{{ $data->PENYELENGGARA_DIKLAT }}</td>
                         <td>
 						@if ($data->UPLOAD_SERTIFIKAT_DIKLAT == null)
 						Tidak ada file

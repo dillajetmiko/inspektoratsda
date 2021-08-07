@@ -69,6 +69,7 @@
 						<th style="text-align:center">No. Taspen</th>
 						<th style="text-align:center">No. HP</th>
                         <th style="text-align:center">Unit Kerja</th>
+                        <th style="text-align:center">Keluarga</th>
                         <th style="text-align:center">Pangkat</th>
                         <th style="text-align:center">Jabatan</th>
                         <th style="text-align:center">Pendidikan</th>
@@ -93,6 +94,12 @@
 						<td>{{ $data->NO_HP }}</td>
                         <td>{{ $data->UNIT_KERJA_PEGAWAI }}</td>
                         
+						<td>
+						<a href='/keluarga/insert_view_keluarga/{{ $data->NIK_PEGAWAI }}'>
+                        Lihat Detail
+                        </a>
+						</td>
+
 						<td>
 						<a href='/pangkat/insert_view_pangkat/{{ $data->NIK_PEGAWAI }}'>
                         Lihat Detail
@@ -129,11 +136,16 @@
 						</a>
 						<button onclick="confirmDelete({{ $data->NIK_PEGAWAI }})" class="btn btn-danger">
 						<i class="fas fa-trash"></i> Hapus</button>
-						</td>  
+						 
 						@endcan           
 						<!-- <a href='/pegawai/hapus/{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a> -->
+						</a>
+						<a href='/pegawai/generate-docx/{{ $data->NIK_PEGAWAI }}'>
+						<button type="button" class="btn btn-secondary"><i class="fas fa-print"></i> Cetak</button>
+						</a>
+						</td> 
 						</td>             
 					</tr>
 					@endforeach

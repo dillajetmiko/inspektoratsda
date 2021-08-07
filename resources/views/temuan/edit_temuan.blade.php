@@ -36,8 +36,9 @@
 
 		<form action="/temuan/update_temuan" method="post">
 			<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-			</select><br>
-			Kode Temuan : <input type="text" class="form-control" name="KODE_TEMUAN" value="{{ $temuan[0]->KODE_TEMUAN }}" readonly><br>
+
+			id : <input type="text" class="form-control" name="id" value="{{ $temuan[0]->id }}" readonly><br>
+			Kode Temuan : <input type="text" class="form-control" name="ID_KATEGORI" value="{{ $temuan[0]->ID_KATEGORI }}"><br>
 
             Nomor LHP : 
                 <select class="form-control select2" name="NOMOR_LHP">
@@ -52,7 +53,6 @@
                 <br>
 
             Uraian Temuan : <input type="text" class="form-control" name="URAIAN_TEMUAN" value="{{ $temuan[0]->URAIAN_TEMUAN }}"><br>
-            Tanggal Temuan : <input type="date" class="form-control" name="TANGGAL_TEMUAN" value="{{ $temuan[0]->TANGGAL_TEMUAN }}"><br>
         	Kerugian: <input type="text" class="form-control" name="KERUGIAN" value="{{ $temuan[0]->KERUGIAN}}"><br>
 
             Jenis Temuan : 

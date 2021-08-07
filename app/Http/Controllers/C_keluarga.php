@@ -42,10 +42,10 @@ class C_keluarga extends Controller
         public function hapus($ID_KELUARGA,$NIK_PEGAWAI)
         {
             // menghapus data detail_peminjaman berdasarkan id yang dipilih
-            DB::table('keluarga')->where('ID_KELUARGA',$NIK_PEGAWAI)->delete();
+            DB::table('keluarga')->where('ID_KELUARGA',$ID_KELUARGA)->delete();
                 
             // alihkan halaman ke halaman detail_peminjaman
-            return redirect('/keluarga/insert_view_keluarga/'.$ID_KELUARGA);
+            return redirect('/keluarga/insert_view_keluarga/'.$NIK_PEGAWAI);
         }
     
     }

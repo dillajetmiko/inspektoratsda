@@ -139,7 +139,7 @@
 				<input type="date" class="form-control" name="tanggal"><br>
 			</div>
 			<div class="input-group-append">
-				<span><input type="submit" class="btn btn-default" value="CARI"></span>
+				<span><input type="submit" class="btn btn-default" value="EXPORT"></span>
 			</div>
 		</div>
 		</form>

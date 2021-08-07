@@ -34,7 +34,7 @@
 				<div class="form-group">
 					<form action="/punya_opd/insert_view_punya_opd" method="post" enctype="multipart/form-data">
 					<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-					Kode Rekomendasi : <input type="text" class="form-control" name="KODE_REKOMENDASI" value="{{$rekomendasi[0]->KODE_REKOMENDASI}}" readonly><br>
+					id Rekomendasi : <input type="text" class="form-control" name="ID_REKOMENDASI" value="{{$rekomendasi[0]->id}}" readonly><br>
 					Nama OPD : 
 						<select class="form-control select2" name="KODE_OPD">
 						@foreach ($opd as $o)
@@ -61,7 +61,7 @@
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 					<tr>
-						<th style="text-align:center">Kode Rekomendasi</th>
+						<th style="text-align:center">id Rekomendasi</th>
 						<th style="text-align:center">Nama OPD</th>
 						<th style="text-align:center">Nama Pejabat</th>
 						<th style="text-align:center">Nama Jabatan</th>
@@ -72,7 +72,7 @@
 					<tbody>
 					@foreach($punya_opd as $data)
 					<tr>
-						<td>{{ $data->KODE_REKOMENDASI }}</td>
+						<td>{{ $data->ID_REKOMENDASI }}</td>
 						<td>
 							@foreach($opd as $op)
 							@if ($op->KODE_OPD === $data->KODE_OPD)
@@ -85,10 +85,10 @@
 						<td>{{ $data->JABATAN_PEJABAT }}</td>
 						<td>{{ $data->NIP_PEJABAT }}</td>
 						<td>
-						<!-- <a href='/punya_opd/edit_punya_opd/{{ $data->KODE_REKOMENDASI }}'>
+						<!-- <a href='/punya_opd/edit_punya_opd/{{ $data->ID_REKOMENDASI }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a> -->
-						<a href='/punya_opd/hapus/{{ $data->KODE_REKOMENDASI }}&{{ $data->KODE_OPD}}'>
+						<a href='/punya_opd/hapus/{{ $data->ID_REKOMENDASI }}&{{ $data->KODE_OPD}}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
 						</td>             

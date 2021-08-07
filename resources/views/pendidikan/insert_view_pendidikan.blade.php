@@ -74,7 +74,7 @@
 					<td>{{ $data->INSTANSI_PENDIDIKAN }}</td>
 
 						<td>
-						<a href='/pendidikan/hapus/{{ $data->TAHUN_PENDIDIKAN }}&&{{ $data->NIK_PEGAWAI }}'>
+						<a href='/pendidikan/hapus/{{ $data->ID_PENDIDIKAN }}&{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
 						</td>             

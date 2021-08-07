@@ -8,17 +8,21 @@ use Illuminate\Support\Facades\Storage;
 
 class C_rekomendasi extends Controller
 {
-    public function insertRekomendasi($KODE_TEMUAN) 
+    public function insertRekomendasi($ID_TEMUAN) 
     {
-        $temuan = DB::table('temuan')->where('KODE_TEMUAN', $KODE_TEMUAN)->get();
-        $rekomendasi = DB::table('rekomendasi')->where('ID_TEMUAN', $KODE_TEMUAN)->get();
+        $temuan = DB::table('temuan')->where('id', $ID_TEMUAN)->get();
+        $rekomendasi = DB::table('rekomendasi')->where('ID_TEMUAN', $ID_TEMUAN)->get();
+        $punya_opd = DB::table('punya_opd')->get();
         $status = DB::table('status')->get();
+        $opd = DB::table('opd')->get();
 
         $data = array(
             'menu' => 'temuan',
             'temuan' => $temuan,
             'rekomendasi' => $rekomendasi,
             'status' => $status,
+            'punya_opd' => $punya_opd,
+            'opd' => $opd,
             'submenu' => ''
            
         );
@@ -40,41 +44,44 @@ class C_rekomendasi extends Controller
         return redirect('/rekomendasi/insert_view_rekomendasi/'.$post->ID_TEMUAN);
     }
 
-    public function editDetailpeminjaman($id_peminjaman,$kode_buku)
+    public function editrekomendasi($id)
     {
-        $detailpeminjaman = DB::table('detail_peminjaman')->where('id_peminjaman', $id_peminjaman)->where('kode_buku',$kode_buku)->get();
-        //return view('edit_detailpeminjaman',['detailpeminjaman' => $detailpeminjaman]);
-
+        $rekomendasi = DB::table('rekomendasi')->where('id', $id)->get();
+        $status = DB::table('status')->get();
         $data = array(
-            'menu' => 'Peminjaman',
-            'detailpeminjaman' => $detailpeminjaman,
-            'submenu' => '',
+            'menu' => 'temuan',
+            'rekomendasi' => $rekomendasi,
+            'status' => $status,
+            'submenu' => ''
+           
         );
-        return view('detailpeminjaman/edit_detailpeminjaman',$data);
+        return view('rekomendasi/edit_rekomendasi',$data);
     }
 
-    public function updateDetailpeminjaman(Request $post)
+    public function updateRekomendasi(Request $post)
     {
-        // update tabel detailpeminjaman
-        DB::table('detail_peminjaman')->where('id_peminjaman', $post->id_peminjaman)->where('kode_buku',$post->kode_buku)->update([
-            'status_peminjaman' => $post->status_peminjaman,
-            'denda_perbuku' => $post->denda_perbuku,
-            'tanggal_haruskembali' => $post->tanggal_haruskembali,
-            'tanggal_kembali' => $post->tanggal_kembali,
-            'perpanjangan' => $post->perpanjangan,
-            'status_verifikasi' => $post->status_verifikasi,
+        // update tabel Rekomendasi
+        DB::table('rekomendasi')->where('id', $post->id)->update([
+            'ID_TEMUAN' => $post->ID_TEMUAN,
+            'ID_STATUS' => $post->ID_STATUS,
+            'KODE_REKOMENDASI' => $post->KODE_REKOMENDASI,
+            'URAIAN_REKOMENDASI' => $post->URAIAN_REKOMENDASI,
+            'URAIAN_TINDAK_LANJUT' => $post->URAIAN_TINDAK_LANJUT,
+            'TANGGAL_TINDAK_LANJUT' => $post->TANGGAL_TINDAK_LANJUT,        
+            'HASIL_TELAAH_TINDAK_LANJUT' => $post->HASIL_TELAAH_TINDAK_LANJUT,
         ]);
 
         //kembali ke halaman data detailpeminjaman
-        return redirect('/lihatdetailpeminjaman/'.$post->id_peminjaman);
+        return redirect('/rekomendasi/insert_view_rekomendasi/'.$post->ID_TEMUAN);
     }
 
-    public function hapus($id,$id_spt)
+    public function hapus($id,$ID_TEMUAN)
     {
         // menghapus data detail_peminjaman berdasarkan id yang dipilih
-        DB::table('penugasan')->where('id',$id)->delete();
+        DB::table('punya_opd')->where('ID_REKOMENDASI',$id)->delete();
+        DB::table('rekomendasi')->where('id',$id)->delete();
             
         // alihkan halaman ke halaman detail_peminjaman
-        return redirect('/penugasan/insert_view_penugasan/'.$id_spt);
+        return redirect('/rekomendasi/insert_view_rekomendasi/'.$ID_TEMUAN);
     }
 }

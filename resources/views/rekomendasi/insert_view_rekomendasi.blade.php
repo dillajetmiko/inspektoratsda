@@ -39,7 +39,7 @@
 				<div class="form-group">
 					<form action="/rekomendasi/insert_view_rekomendasi" method="post" enctype="multipart/form-data">
 					<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-					Kode Temuan : <input type="text" class="form-control" name="ID_TEMUAN" value="{{$temuan[0]->KODE_TEMUAN}}" readonly><br>
+					id Temuan : <input type="text" class="form-control" name="ID_TEMUAN" value="{{$temuan[0]->id}}" readonly><br>
 					Kode Rekomendasi : <input type="text" class="form-control" name="KODE_REKOMENDASI"><br>
 					Uraian Rekomendasi : <input type="text" class="form-control" name="URAIAN_REKOMENDASI"><br>
 					Uraian Tindak Lanjut : <input type="text" class="form-control" name="URAIAN_TINDAK_LANJUT"><br>
@@ -65,6 +65,7 @@
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 					<tr>
+						<th style="text-align:center">id</th>
 						<th style="text-align:center">Kode Rekomendasi</th>
 						<th style="text-align:center">Uraian Rekomendasi</th>
 						<th style="text-align:center">Uraian Tindak Lanjut</th>
@@ -78,6 +79,7 @@
 					<tbody>
 					@foreach($rekomendasi as $data)
 					<tr>
+						<td>{{ $data->id }}</td>
 						<td>{{ $data->KODE_REKOMENDASI }}</td>
 						<td>{{ $data->URAIAN_REKOMENDASI }}</td>
 						<td>{{ $data->URAIAN_TINDAK_LANJUT }}</td>
@@ -91,15 +93,24 @@
 						<td>{{ $data->TANGGAL_TINDAK_LANJUT }}</td>
 						<td>{{ $data->HASIL_TELAAH_TINDAK_LANJUT }}</td>
 						<td>
-						<a href='/punya_opd/insert_view_punya_opd/{{ $data->KODE_REKOMENDASI }}'>
+						@foreach($punya_opd as $po)
+						@if ($po->ID_REKOMENDASI === $data->id)
+								@foreach($opd as $o)
+								@if ($o->KODE_OPD === $po->KODE_OPD)
+								{{$o->NAMA_OPD}}<br>
+								@endif
+								@endforeach
+						@endif
+						@endforeach
+						<a href='/punya_opd/insert_view_punya_opd/{{ $data->id }}'>
                         lihat opd
                         </a>
 						</td> 
 						<td>
-						<a href='/rekomendasi/edit_rekomendasi/{{ $data->KODE_REKOMENDASI }}'>
+						<a href='/rekomendasi/edit_rekomendasi/{{ $data->id }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a>
-						<a href='/rekomendasi/hapus/{{ $data->KODE_REKOMENDASI }}&{{ $data->ID_TEMUAN}}'>
+						<a href='/rekomendasi/hapus/{{ $data->id }}&{{ $data->ID_TEMUAN}}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
 						</td> 

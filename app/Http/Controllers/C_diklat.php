@@ -44,7 +44,7 @@ class C_diklat extends Controller
             'NIK_PEGAWAI' => $post->NIK_PEGAWAI,
             'TANGGAL_DIKLAT' => $post->TANGGAL_DIKLAT, 
             'NAMA_DIKLAT' => $post->NAMA_DIKLAT, 
-            'NAMA_DIKLAT' => $post->NAMA_DIKLAT, 
+            'PENYELENGGARA_DIKLAT' => $post->PENYELENGGARA_DIKLAT, 
             'UPLOAD_SERTIFIKAT_DIKLAT' => $path, 
             
         ]);

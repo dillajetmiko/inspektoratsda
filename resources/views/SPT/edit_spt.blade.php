@@ -37,7 +37,6 @@
 		<form action="/spt/update_spt" method="post" enctype="multipart/form-data">  
 			<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
 
-			</select><br>
 			ID SPT : <input type="text" class="form-control" name="ID_SPT" value="{{$spt[0]->id}}" readonly><br>
             Nomor SPT : <input type="text" class="form-control" name="NOMOR_SPT" value="{{$spt[0]->NOMOR_SPT}}"><br>
             Tanggal SPT : <input type="date" class="form-control" name="TANGGAL_SPT" value="{{$spt[0]->TANGGAL_SPT}}"><br>

@@ -104,24 +104,23 @@ class C_temuan extends Controller
 
     public function tambahTemuan(Request $post)
     {
-        DB::table('temuan')->insert([
-            'KODE_TEMUAN' => $post->KODE_TEMUAN,
+        $id = DB::table('temuan')->insertGetId([
+            'ID_KATEGORI' => $post->ID_KATEGORI,
             // 'NIP' => Auth::user()->NIP,
             'NOMOR_LHP' => $post->NOMOR_LHP,
             'URAIAN_TEMUAN' => $post->URAIAN_TEMUAN,
-            'TANGGAL_TEMUAN' => $post->TANGGAL_TEMUAN,
             'KERUGIAN' => $post->KERUGIAN,
             'KODE_JENIS_TEMUAN' => $post->KODE_JENIS_TEMUAN,
            
         ]);
 
         // return redirect('/temuan');
-        return redirect('/rekomendasi/insert_view_rekomendasi/'.$post->KODE_TEMUAN);
+        return redirect('/rekomendasi/insert_view_rekomendasi/'.$id);
     }
 
-      public function editTemuan($KODE_TEMUAN) 
+      public function editTemuan($id) 
     {
-        $temuan = DB::table('temuan')->where('KODE_TEMUAN', $KODE_TEMUAN)->get();
+        $temuan = DB::table('temuan')->where('id', $id)->get();
         $id = DB::table('opd')->get();
         $id2 = DB::table('lhp')->get();
         $id3 = DB::table('jenis_temuan')->get();
@@ -141,11 +140,10 @@ class C_temuan extends Controller
     public function updateTemuan(Request $post)
     {
         // update tabel anggota
-        DB::table('temuan')->where('KODE_TEMUAN', $post->KODE_TEMUAN)->update([
-            'KODE_TEMUAN' => $post->KODE_TEMUAN,
+        DB::table('temuan')->where('id', $post->id)->update([
+            'ID_KATEGORI' => $post->ID_KATEGORI,
             'NOMOR_LHP' => $post->NOMOR_LHP,
             'URAIAN_TEMUAN' => $post->URAIAN_TEMUAN,
-            'TANGGAL_TEMUAN' => $post->TANGGAL_TEMUAN,
             'KERUGIAN' => $post->KERUGIAN,
             'KODE_JENIS_TEMUAN' => $post->KODE_JENIS_TEMUAN,
         ]);
@@ -154,10 +152,12 @@ class C_temuan extends Controller
         return redirect('/temuan');
     }
     
-    public function hapus($KODE_TEMUAN)
+    public function hapus($id)
     {
-    	DB::table('punya_opd')->where('KODE_TEMUAN',$KODE_TEMUAN)->delete();
-        DB::table('temuan')->where('KODE_TEMUAN',$KODE_TEMUAN)->delete();
+    	DB::table('punya_opd')->leftJoin('rekomendasi', 'rekomendasi.id', '=', 'punya_opd.ID_REKOMENDASI')
+        ->where('rekomendasi.ID_TEMUAN',$id)->delete();
+        DB::table('rekomendasi')->where('ID_TEMUAN',$id)->delete();
+        DB::table('temuan')->where('id',$id)->delete();
     	return redirect('/temuan');
     }
 }

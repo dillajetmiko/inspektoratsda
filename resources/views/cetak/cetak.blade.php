@@ -81,10 +81,12 @@
 					<tr>		
 						<th rowspan="2" scope="rowgroup" style="text-align:center">Nomer LHP</th>
 						<th colspan="2" scope="colgroup" style="text-align:center">Temuan</th>
-						<th rowspan="2" scope="rowgroup" style="text-align:center">Rekomendasi</th>
+					<th colspan="2" scope="colgroup" style="text-align:center">Rekomendasi</th>
 						<th rowspan="2" scope="rowgroup" style="text-align:center">Kerugian</th>
 					</tr>
 					<tr>
+						<th style="text-align:center">Kode</th>
+						<th style="text-align:center">Uraian</th>
 						<th style="text-align:center">Kode</th>
 						<th style="text-align:center">Uraian</th>
 					</tr>
@@ -93,22 +95,27 @@
 					@foreach($cetak as $data)
 					<tr>
 						<td>{{ $data->NOMOR_LHP }}</td>
-						<td>{{ $data->KODE_TEMUAN }}</td>
+						<td>{{ $data->ID_KATEGORI }}</td>
 						<td>{{ $data->URAIAN_TEMUAN }}</td>
-						<td>isi<br>isi</td>
+						<td>
+							@foreach($rekomendasi as $rekom)
+							@if ($rekom->ID_TEMUAN === $data->id)
+									{{$rekom->KODE_REKOMENDASI}}<br>
+							@endif
+							@endforeach
+						</td>
+						<td>
+							@foreach($rekomendasi as $rekom)
+							@if ($rekom->ID_TEMUAN === $data->id)
+									{{$rekom->URAIAN_REKOMENDASI}}<br>
+							@endif
+							@endforeach
+						</td>	
 						<td>{{ $data->KERUGIAN }}</td>
 					</tr>
 					@endforeach
 					</tbody>
 					<tfoot>
-					<!-- <tr>
-					<th>NIS_NIP</th>
-					<th>nama_anggota</th>
-					<th>tahun_masuk</th>
-					<th>kelas</th>
-					<th>username_anggota</th>
-					<th>password_anggota</th>
-					</tr> -->
 					</tfoot>
 				</table>
 			</div>

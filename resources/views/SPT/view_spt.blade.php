@@ -51,8 +51,8 @@
 						<th style="text-align:center">Tanggal</th>
 						<!-- <th style="text-align:center">Dasar</th> -->
 						<th style="text-align:center">Jenis Pengawasan</th>
-						<th style="text-align:center">Isi</th>
-						<th style="text-align:center">Penugasan</th>
+						<th style="text-align:center">Uraian Penugasan</th>
+						<th style="text-align:center">Tim Pelaksana</th>
                         <th style="text-align:center">Upload File</th>
 						<th style="text-align:center" width="15%">Aksi</th>
 					</tr>

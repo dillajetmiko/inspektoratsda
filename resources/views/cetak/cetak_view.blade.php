@@ -27,64 +27,43 @@ th, td {
 				@endforeach
 				</table>
 
-<table id="example1" class="table table-bordered table-striped">
-				<thead style="background-color: lightgrey; color: blue;">
-				<tr>		
-                    <th colspan="2" scope="colgroup" style="font-weight: bold; text-align:center">Temuan</th>
-                    <th colspan="2" scope="colgroup" style="font-weight: bold; text-align:center">Rekomendasi</th>
-                    <th colspan="2" scope="colgroup" style="font-weight: bold; text-align:center">Tindak Lanjut</th>
-                    <th rowspan="2" scope="rowgroup" style="font-weight: bold; text-align:center; width: 20px">Tanggal Tindak Lanjut</th>
-                    <th rowspan="2" scope="rowgroup" style="font-weight: bold; text-align:center; width: 15px">Kerugian</th>
-                    <th rowspan="2" scope="rowgroup" style="font-weight: bold; text-align:center; width: 25px">Nama OPD</th>
-                </tr>
-                <tr>
-                    <th style="font-weight: bold; text-align:center">Kode</th>
-                    <th style="font-weight: bold; text-align:center; width: 25px">Uraian</th>
-                    <th style="font-weight: bold; text-align:center">Kode</th>
-                    <th style="font-weight: bold; text-align:center; width: 25px">Uraian</th>
-                    <th style="font-weight: bold; text-align:center; width: 25px">Uraian</th>
-                    <th style="font-weight: bold; text-align:center; width: 15px">Status</th>
-                </tr>
-				</thead>
-				<tbody>		
-				@foreach($cetak as $data)
+				<table id="example1" class="table table-bordered table-striped">
+					<thead>
+					<tr>		
+						<th colspan="2" scope="colgroup" style="text-align:center">Temuan</th>
+					<th colspan="2" scope="colgroup" style="text-align:center">Rekomendasi</th>
+						<th rowspan="2" scope="rowgroup" style="text-align:center">Kerugian</th>
+					</tr>
 					<tr>
-						<td>{{ $data->KODE_TEMUAN }}</td>
+						<th style="text-align:center">Kode</th>
+						<th style="text-align:center; width: 25px">Uraian</th>
+						<th style="text-align:center">Kode</th>
+						<th style="text-align:center; width: 25px">Uraian</th>
+					</tr>
+					</thead>
+					<tbody>		
+					@foreach($cetak as $data)
+					<tr>
+						<td>{{ $data->ID_KATEGORI }}</td>
 						<td>{{ $data->URAIAN_TEMUAN }}</td>
-						<td>{{ $data->KODE_REKOMENDASI }}</td>
-						<td>{{ $data->URAIAN_REKOMENDASI }}</td>
-						<td>{{ $data->URAIAN_TINDAK_LANJUT }}</td>
-						@if ($data->KODE_STATUS == 1)
-						<td> Belum Ditindak Lanjut</td>
-						@elseif ($data->KODE_STATUS == 2)
-						<td> Belum Sesuai Rekomendasi</td>
-						@elseif ($data->KODE_STATUS == 3)
-						<td> Sesuai Rekomendasi</td>
-						@endif
-						<td>{{ $data->TANGGAL_TINDAK_LANJUT }}</td>
-						<td>{{ $data->KERUGIAN }}</td>
 						<td>
-						@foreach($punya_opd as $OPD)
-						@if ($OPD->KODE_TEMUAN === $data->KODE_TEMUAN)
-								@foreach($id as $opd)
-								@if ($opd->KODE_OPD === $OPD->KODE_OPD)
-								{{$opd->NAMA_OPD}}<br>
-								@endif
-								@endforeach
-						@endif
-						@endforeach
-					</td>
+							@foreach($rekomendasi as $rekom)
+							@if ($rekom->ID_TEMUAN === $data->id)
+									{{$rekom->KODE_REKOMENDASI}}<br>
+							@endif
+							@endforeach
+						</td>
+						<td>
+							@foreach($rekomendasi as $rekom)
+							@if ($rekom->ID_TEMUAN === $data->id)
+									{{$rekom->URAIAN_REKOMENDASI}}<br>
+							@endif
+							@endforeach
+						</td>	
+						<td>{{ $data->KERUGIAN }}</td>
 					</tr>
 					@endforeach
-				</tbody>
-				<tfoot>
-				<!-- <tr>
-				<th>NIS_NIP</th>
-				<th>nama_anggota</th>
-				<th>tahun_masuk</th>
-				<th>kelas</th>
-				<th>username_anggota</th>
-				<th>password_anggota</th>
-				</tr> -->
-				</tfoot>
-			</table>
+					</tbody>
+					<tfoot>
+					</tfoot>
+				</table>
