@@ -85,6 +85,12 @@ class C_pegawai extends Controller
 
     public function hapus($NIK_PEGAWAI)
     {
+        DB::table('keluarga')->where('NIK_PEGAWAI',$NIK_PEGAWAI)->delete();
+        DB::table('kenaikan_gaji')->where('NIK_PEGAWAI',$NIK_PEGAWAI)->delete();
+        DB::table('pangkat')->where('NIK_PEGAWAI',$NIK_PEGAWAI)->delete();
+        DB::table('jabatan')->where('NIK_PEGAWAI',$NIK_PEGAWAI)->delete();
+        DB::table('pendidikan')->where('NIK_PEGAWAI',$NIK_PEGAWAI)->delete();
+        DB::table('diklat')->where('NIK_PEGAWAI',$NIK_PEGAWAI)->delete();
         $delete=DB::table('pegawai')->where('NIK_PEGAWAI',$NIK_PEGAWAI)->delete();
     	if ($delete)
         {
@@ -192,54 +198,56 @@ class C_pegawai extends Controller
         
 
          $j =0;
-         $rows1 = [];
+         $rows2 = [];
        
-         foreach($pangkat as $value1){
+         foreach($pangkat as $value2){
              
              $j = $j+1;
-             $row1=(array) $value1;
-             $row1['j']=$j;
-        array_push($rows1, $row1);
+             $row2=(array) $value2;
+             $row2['j']=$j;
+        array_push($rows2, $row2);
          }
+        //  var_dump($rows2);
+        //  return;
 
          $k =0;
-         $rows1 = [];
-         foreach($jabatan as $value1){
+         $rows3 = [];
+         foreach($jabatan as $value3){
              
             $k = $k+1;
-            $row1=(array) $value1;
-            $row1['k']=$k;
-       array_push($rows1, $row1);
+            $row3=(array) $value3;
+            $row3['k']=$k;
+       array_push($rows3, $row3);
         }
       
-        $i =0;
-         $rows1 = [];
-         foreach($pendidikan as $value1){
+        $l =0;
+         $rows4 = [];
+         foreach($pendidikan as $value4){
              
-            $i = $i+1;
-            $row1=(array) $value1;
-            $row1['i']=$i;
-       array_push($rows1, $row1);
+            $l = $l+1;
+            $row4=(array) $value4;
+            $row4['l']=$l;
+       array_push($rows4, $row4);
         }
 
-        $i =0;
-         $rows1 = [];
-         foreach($diklat as $value1){
+        $m =0;
+         $rows5 = [];
+         foreach($diklat as $value5){
              
-            $i = $i+1;
-            $row1=(array) $value1;
-            $row1['i']=$i;
-       array_push($rows1, $row1);
+            $m = $m+1;
+            $row5=(array) $value5;
+            $row5['m']=$m;
+       array_push($rows5, $row5);
         }
        
-        $i =0;
-         $rows1 = [];
-         foreach($kenaikan_gaji as $value1){
+        $n =0;
+         $rows6 = [];
+         foreach($kenaikan_gaji as $value6){
              
-            $i = $i+1;
-            $row1=(array) $value1;
-            $row1['i']=$i;
-       array_push($rows1, $row1);
+            $n = $n+1;
+            $row6=(array) $value6;
+            $row6['n']=$n;
+       array_push($rows6, $row6);
         }
          
         //  $rows1[0]['kepada']='Kepada :';
@@ -258,11 +266,11 @@ class C_pegawai extends Controller
 
         //  $templateProcessor->cloneRowAndSetValues('dasar', $rows);
          $templateProcessor->cloneRowAndSetValues('NAMA_KELUARGA', $rows1);
-         $templateProcessor->cloneRowAndSetValues('NAMA_JABATAN', $rows1);
-         $templateProcessor->cloneRowAndSetValues('NAMA_PANGKAT', $rows1);
-         $templateProcessor->cloneRowAndSetValues('TAHUN_PENDIDIKAN', $rows1);
-         $templateProcessor->cloneRowAndSetValues('NAMA_DIKLAT', $rows1);
-         $templateProcessor->cloneRowAndSetValues('TMT_KENAIKAN_GAJI', $rows1);
+         $templateProcessor->cloneRowAndSetValues('j', $rows2);
+         $templateProcessor->cloneRowAndSetValues('k', $rows3);
+         $templateProcessor->cloneRowAndSetValues('l', $rows4);
+         $templateProcessor->cloneRowAndSetValues('m', $rows5);
+         $templateProcessor->cloneRowAndSetValues('n', $rows6);
 
 
 
