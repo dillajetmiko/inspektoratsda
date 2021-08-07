@@ -108,6 +108,9 @@ Route::post('/pegawai/tambah_pegawai', [C_pegawai::class, 'tambahPegawai'])->mid
 Route::get('/pegawai/edit_pegawai/{NIK_PEGAWAI}', [C_pegawai::class, 'editPegawai'])->middleware('auth');
 Route::post('/pegawai/update_pegawai', [C_pegawai::class, 'updatePegawai'])->middleware('auth');
 Route::get('/pegawai/hapus/{NIK_PEGAWAI}', [C_pegawai::class, 'hapus'])->middleware('auth');
+Route::get('/pegawai/cetak_pegawai', [C_pegawai::class, 'cetak'])->middleware('auth');
+Route::get('/pegawai/download/{NIK_PEGAWAI}', [C_pegawai::class, 'download'])->name('file.download')->middleware('auth');
+Route::get('/pegawai/generate-docx/{NIK_PEGAWAI}', [C_pegawai::class, 'generateDocx']);
 
 Route::get('/spt', [C_spt::class, 'index'])->middleware('auth');
 Route::get('/spt/insert_spt', [C_spt::class, 'insertSpt'])->middleware('auth');
