@@ -48,7 +48,7 @@
 					<tr>
 						<th style="text-align:center">ID SPT</th>
 						<th style="text-align:center">Nomor</th>
-						<th style="text-align:center">Tanggal</th>
+						<th style="text-align:center">Tanggal SPT</th>
 						<!-- <th style="text-align:center">Dasar</th> -->
 						<th style="text-align:center">Jenis Pengawasan</th>
 						<th style="text-align:center">Uraian Penugasan</th>

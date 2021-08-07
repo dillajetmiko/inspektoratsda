@@ -35,23 +35,15 @@
 			Email : <input type="text" class="form-control" name="EMAIL" value="{{$user[0]->email}}"><br>
             Password : <input type="password" class="form-control" name="PASSWORD" placeholder="isi jika merubah password"><br>
 			Role :<br>
-				@if ($user[0]->id_role == 1) 
-                <label><input type="radio" name="id_role" value="1" checked="checked"/> Admin </label><br>
-                <label><input type="radio" name="id_role" value="2" /> User </label><br>
-                <label><input type="radio" name="id_role" value="3" /> Super Admin </label><br>
-                @elseif ($user[0]->id_role == 2)
-                <label><input type="radio" name="id_role" value="1" /> Admin </label><br>
-                <label><input type="radio" name="id_role" value="2" checked="checked"/> User </label><br>
-                <label><input type="radio" name="id_role" value="3" /> Super Admin </label><br>
-                @elseif ($user[0]->id_role == 3)
-                <label><input type="radio" name="id_role" value="1" /> Admin </label><br>
-                <label><input type="radio" name="id_role" value="2" /> User </label><br>
-                <label><input type="radio" name="id_role" value="3" checked="checked"/> Super Admin </label><br>
-				@else
-				<label><input type="radio" name="id_role" value="1" /> Admin </label><br>
-                <label><input type="radio" name="id_role" value="2" /> User </label><br>
-                <label><input type="radio" name="id_role" value="3" /> Super Admin </label><br>
+				<select class="form-control select2" name="id_role">
+                @foreach ($role as $ro)
+                @if ($ro->id_role === $user[0]->id_role)
+                <option value="{{ $ro->id_role}}" selected>{{ $ro->nama_role}}</option>
+                @else
+                <option value="{{ $ro->id_role}}">{{ $ro->nama_role}}</option>
                 @endif
+                @endforeach
+                </select>
                 <br>
 			Jabatan: <input type="text" class="form-control" name="JABATAN" value="{{$user[0]->jabatan}}"><br>
             Pangkat: <input type="text" class="form-control" name="PANGKAT" value="{{$user[0]->pangkat}}"><br>

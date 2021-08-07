@@ -6,9 +6,11 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use Illuminate\Support\Facades\Gate;
 use App\Models\User;
 
-define("ADMIN", 1);
+define("SUPERADMIN", 1);
 define("USER", 2);
-define("SUPERADMIN", 3);
+define("ADMIN_EVLAP", 3);
+define("ADMIN_PERENCANAAN", 4);
+define("ADMIN_ADUM", 5);
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -30,45 +32,68 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-
         Gate::define('edit-hapus-lhp', function (User $user) {
-            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
+            return in_array($user->id_role, [ADMIN_EVLAP,SUPERADMIN]);
         });
 
         Gate::define('tambah-lhp', function (User $user) {
-            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
+            return in_array($user->id_role, [ADMIN_EVLAP,SUPERADMIN]);
+        });
+
+        Gate::define('show-lhp', function (User $user) {
+            return in_array($user->id_role, [ADMIN_EVLAP,SUPERADMIN,USER]);
         });
 
         Gate::define('edit-hapus-temuan', function (User $user) {
-            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
+            return in_array($user->id_role, [ADMIN_EVLAP,SUPERADMIN]);
         });
 
         Gate::define('tambah-temuan', function (User $user) {
-            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
+            return in_array($user->id_role, [ADMIN_EVLAP,SUPERADMIN]);
+        });
+
+        Gate::define('show-temuan', function (User $user) {
+            return in_array($user->id_role, [ADMIN_EVLAP,SUPERADMIN,USER]);
+        });
+
+        Gate::define('show-cetak', function (User $user) {
+            return in_array($user->id_role, [ADMIN_EVLAP,SUPERADMIN,USER]);
         });
 
         Gate::define('edit-hapus-pegawai', function (User $user) {
-            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
+            return in_array($user->id_role, [ADMIN_ADUM,SUPERADMIN]);
         });
 
         Gate::define('tambah-pegawai', function (User $user) {
-            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
+            return in_array($user->id_role, [ADMIN_ADUM,SUPERADMIN]);
+        });
+
+        Gate::define('show-pegawai', function (User $user) {
+            return in_array($user->id_role, [ADMIN_ADUM,SUPERADMIN,USER]);
         });
 
         Gate::define('edit-hapus-spt', function (User $user) {
-            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
+            return in_array($user->id_role, [ADMIN_PERENCANAAN,SUPERADMIN]);
         });
 
         Gate::define('tambah-spt', function (User $user) {
-            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
+            return in_array($user->id_role, [ADMIN_PERENCANAAN,SUPERADMIN]);
+        });
+
+        Gate::define('show-spt', function (User $user) {
+            return in_array($user->id_role, [ADMIN_PERENCANAAN,SUPERADMIN,USER]);
         });
 
         Gate::define('edit-hapus-user', function (User $user) {
-            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
+            return in_array($user->id_role, [SUPERADMIN]);
         });
 
         Gate::define('tambah-user', function (User $user) {
-            return in_array($user->id_role, [ADMIN,SUPERADMIN]);
+            return in_array($user->id_role, [SUPERADMIN]);
+        });
+
+        Gate::define('show-user', function (User $user) {
+            return in_array($user->id_role, [SUPERADMIN,USER]);
         });
 
         Gate::define('update-role', function (User $user) {

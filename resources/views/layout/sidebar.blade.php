@@ -29,7 +29,8 @@
             </a>
           </li>
 
-          @can('show-menu')
+        @can('show-menu')
+          @can('show-user')
           <li class="nav-item">
           @if($menu == 'user')
             <a href="/user" class="nav-link active">
@@ -42,7 +43,9 @@
               </p>
             </a>
           </li>
+          @endcan
 
+          @can('show-pegawai')
           <li class="nav-item">
           @if($menu == 'pegawai')
             <a href="/pegawai" class="nav-link active">
@@ -55,7 +58,9 @@
               </p>
             </a>
           </li>
+          @endcan
 
+          @can('show-spt')
           <li class="nav-item">
           @if($menu == 'spt')
             <a href="/spt" class="nav-link active">
@@ -81,7 +86,9 @@
               </p>
             </a>
           </li>
+          @endcan
 
+          @can('show-lhp')
           <li class="nav-item">
           @if($menu == 'lhp')
             <a href="/lhp" class="nav-link active">
@@ -94,7 +101,9 @@
               </p>
             </a>
           </li>
+          @endcan
 
+          @can('show-temuan')
           <li class="nav-item">
           @if($menu == 'temuan')
             <a href="/temuan" class="nav-link active">
@@ -107,7 +116,9 @@
               </p>
             </a>
           </li>
+          @endcan
 
+          @can('show-cetak')
           <li class="nav-item">
           @if($menu == 'cetak')
             <a href="/cetak" class="nav-link active">
@@ -120,8 +131,9 @@
               </p>
             </a>
           </li>
+          @endcan
 
-          @can('update-role')
+          <!-- @can('update-role')
           <li class="nav-item">
             <a href="/validasi" class="nav-link">
           
@@ -131,7 +143,7 @@
               </p>
             </a>
           </li>
-          @endcan
+          @endcan -->
 
         @endcan
           

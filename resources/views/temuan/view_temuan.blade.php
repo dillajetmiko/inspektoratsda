@@ -118,11 +118,15 @@
 						@endforeach
 					</td>
 					<td>
-						@foreach($rekomendasi as $rekom)
-						@if ($rekom->ID_TEMUAN === $data->id)
-								{{$rekom->URAIAN_REKOMENDASI}}<br>
-						@endif
-						@endforeach
+						<table>
+							@foreach($rekomendasi as $rekom)
+							@if ($rekom->ID_TEMUAN === $data->id)
+							<tr>
+								<td>{{$rekom->URAIAN_REKOMENDASI}}</td>
+							</tr>
+							@endif
+							@endforeach
+						</table>
 						<a href='/rekomendasi/insert_view_rekomendasi/{{ $data->id }}'>
                         lihat rekomendasi
                         </a>
