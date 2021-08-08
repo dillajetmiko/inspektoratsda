@@ -68,6 +68,7 @@ class C_user extends Controller
             DB::table('users')->where('NIP', $post->NIP)->update([
             'NIP' => $post->NIP,
             'name' => $post->NAMA,
+            'email' => $post->EMAIL,
             'jabatan' => $post->JABATAN,
             'pangkat' => $post->PANGKAT,
             'id_role' => $post->id_role,
@@ -81,6 +82,7 @@ class C_user extends Controller
             DB::table('users')->where('NIP', $post->NIP)->update([
             'NIP' => $post->NIP,
             'name' => $post->NAMA,
+            'email' => $post->EMAIL,
             'jabatan' => $post->JABATAN,
             'pangkat' => $post->PANGKAT,
             'id_role' => $post->id_role,

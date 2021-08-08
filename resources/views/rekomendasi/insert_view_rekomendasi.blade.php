@@ -41,14 +41,14 @@
 					<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
 					id Temuan : <input type="text" class="form-control" name="ID_TEMUAN" value="{{$temuan[0]->id}}" readonly><br>
 					Kode Rekomendasi : <input type="text" class="form-control" name="KODE_REKOMENDASI"><br>
-					Uraian Rekomendasi : <input type="text" class="form-control" name="URAIAN_REKOMENDASI"><br>
-					Uraian Tindak Lanjut : <input type="text" class="form-control" name="URAIAN_TINDAK_LANJUT"><br>
+					Uraian Rekomendasi : <textarea type="text" class="form-control" name="URAIAN_REKOMENDASI"></textarea><br>
+					Uraian Tindak Lanjut : <textarea type="text" class="form-control" name="URAIAN_TINDAK_LANJUT"></textarea><br>
 					Status Tindak Lanjut :<br> 
 						<label><input type="radio" name="ID_STATUS" value="1" checked="checked" /> Belum Ditindak Lanjut </label><br>
 						<label><input type="radio" name="ID_STATUS" value="2" /> Belum Sesuai Rekomendasi </label><br>
 						<label><input type="radio" name="ID_STATUS" value="3" /> Sesuai rekomendasi </label><br><br>
 					Tanggal Tindak Lanjut : <input type="date" class="form-control" name="TANGGAL_TINDAK_LANJUT"><br>
-					Hasil Telaah Tindak Lanjut: <input type="text" class="form-control" name="HASIL_TELAAH_TINDAK_LANJUT"><br>
+					Hasil Telaah Tindak Lanjut: <textarea type="text" class="form-control" name="HASIL_TELAAH_TINDAK_LANJUT"></textarea><br>
 
 		
 					<button type="submit" class="btn btn-primary">Simpan</button>

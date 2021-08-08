@@ -47,7 +47,7 @@
             </select>
             <br>
 
-        Uraian Temuan : <input type="text" class="form-control" name="URAIAN_TEMUAN"><br>
+        Uraian Temuan : <textarea type="text" class="form-control" name="URAIAN_TEMUAN"></textarea><br>
         Kerugian : <input type="text" class="form-control" name="KERUGIAN"><br>
         Jenis Temuan : 
             <select class="form-control" name="KODE_JENIS_TEMUAN">

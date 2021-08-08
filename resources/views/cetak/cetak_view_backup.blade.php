@@ -38,38 +38,35 @@ table, th, td {
 					<tr>		
 						<th colspan="2" scope="colgroup" style="text-align:center; border: 1px solid black">Temuan</th>
 						<th colspan="2" scope="colgroup" style="text-align:center; border: 1px solid black">Rekomendasi</th>
-						<th colspan="3" scope="colgroup" style="text-align:center; border: 1px solid black">Tindak Lanjut</th>
 						<th rowspan="2" scope="rowgroup" style="text-align:center; border: 1px solid black">Kerugian</th>
 					</tr>
 					<tr>
 						<th style="text-align:center; border: 1px solid black">Kode</th>
 						<th style="text-align:center; border: 1px solid black; width: 25px">Uraian</th>
 						<th style="text-align:center; border: 1px solid black">Kode</th>
-						<th style="text-align:center; border: 1px solid black; width: 60px">Uraian</th>
-						<th style="text-align:center; border: 1px solid black; width: 11px">Tanggal</th>
-						<th style="text-align:center; border: 1px solid black; width: 40px">Uraian</th>
-						<th style="text-align:center; border: 1px solid black; width: 15px">status</th>
+						<th style="text-align:center; border: 1px solid black; width: 25px">Uraian</th>
 					</tr>
 					</thead>
 					<tbody>		
 					@foreach($cetak as $data)
 					<tr>
-						<td style="border: 1px solid black;">{{ $data->ID_KATEGORI }}<br></td>
-						<td style="border: 1px solid black;">{{ $data->URAIAN_TEMUAN }}<br></td>
-						<td style="border: 1px solid black;">{{$data->KODE_REKOMENDASI}}<br></td>
-						<td style="border: 1px solid black;">{{$data->URAIAN_REKOMENDASI}}<br></td>	
-						<td style="border: 1px solid black;">{{$data->TANGGAL_TINDAK_LANJUT}}<br></td>	
-						<td style="border: 1px solid black;">{{$data->URAIAN_TINDAK_LANJUT}}<br></td>	
+						<td style="border: 1px solid black;">{{ $data->ID_KATEGORI }}</td>
+						<td style="border: 1px solid black;">{{ $data->URAIAN_TEMUAN }}</td>
 						<td style="border: 1px solid black;">
-						@if ($data->ID_STATUS == 1)
-						Belum Ditindak Lanjut<br>
-						@elseif ($data->ID_STATUS == 2)
-						Belum Sesuai Rekomendasi<br>
-						@elseif ($data->ID_STATUS == 3)
-						Sesuai Rekomendasi<br>
-						@endif
+							@foreach($rekomendasi as $rekom)
+							@if ($rekom->ID_TEMUAN === $data->id)
+									{{$rekom->KODE_REKOMENDASI}}<br>
+							@endif
+							@endforeach
 						</td>
-						<td style="border: 1px solid black;">{{ $data->KERUGIAN }}<br></td>
+						<td style="border: 1px solid black;">
+							@foreach($rekomendasi as $rekom)
+							@if ($rekom->ID_TEMUAN === $data->id)
+									{{$rekom->URAIAN_REKOMENDASI}}<br>
+							@endif
+							@endforeach
+						</td>	
+						<td style="border: 1px solid black;">{{ $data->KERUGIAN }}</td>
 					</tr>
 					@endforeach
 					</tbody>

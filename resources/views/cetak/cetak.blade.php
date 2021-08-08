@@ -81,14 +81,13 @@
 					<tr>		
 						<th rowspan="2" scope="rowgroup" style="text-align:center">Nomer LHP</th>
 						<th colspan="2" scope="colgroup" style="text-align:center">Temuan</th>
-					<th colspan="2" scope="colgroup" style="text-align:center">Rekomendasi</th>
+						<th colspan="1" scope="colgroup" style="text-align:center">Rekomendasi</th>
 						<th rowspan="2" scope="rowgroup" style="text-align:center">Kerugian</th>
 					</tr>
 					<tr>
 						<th style="text-align:center">Kode</th>
 						<th style="text-align:center">Uraian</th>
-						<th style="text-align:center">Kode</th>
-						<th style="text-align:center">Uraian</th>
+						<th style="text-align:center">Kode/Uraian</th>
 					</tr>
 					</thead>
 					<tbody>		
@@ -98,19 +97,17 @@
 						<td>{{ $data->ID_KATEGORI }}</td>
 						<td>{{ $data->URAIAN_TEMUAN }}</td>
 						<td>
-							@foreach($rekomendasi as $rekom)
-							@if ($rekom->ID_TEMUAN === $data->id)
-									{{$rekom->KODE_REKOMENDASI}}<br>
-							@endif
-							@endforeach
+							<table>
+								@foreach($rekomendasi as $rekom)
+								@if ($rekom->ID_TEMUAN === $data->id)
+								<tr>
+									<td>{{$rekom->KODE_REKOMENDASI}}<br></td>
+									<td>{{$rekom->URAIAN_REKOMENDASI}}</td>
+								</tr>
+								@endif
+								@endforeach
+							</table>
 						</td>
-						<td>
-							@foreach($rekomendasi as $rekom)
-							@if ($rekom->ID_TEMUAN === $data->id)
-									{{$rekom->URAIAN_REKOMENDASI}}<br>
-							@endif
-							@endforeach
-						</td>	
 						<td>{{ $data->KERUGIAN }}</td>
 					</tr>
 					@endforeach

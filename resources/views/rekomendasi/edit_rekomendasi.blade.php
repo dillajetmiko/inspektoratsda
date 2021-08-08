@@ -40,8 +40,8 @@
             id Temuan : <input type="text" class="form-control" name="ID_TEMUAN" value="{{$rekomendasi[0]->ID_TEMUAN}}" readonly><br>
             id Rekomendasi : <input type="text" class="form-control" name="id" value="{{$rekomendasi[0]->id}}" readonly><br>
             Kode Rekomedasi : <input type="text" class="form-control" name="KODE_REKOMENDASI" value="{{ $rekomendasi[0]->KODE_REKOMENDASI }}"><br>
-            Uraian Rekomendasi : <input type="text" class="form-control" name="URAIAN_REKOMENDASI" value="{{ $rekomendasi[0]->URAIAN_REKOMENDASI }}"><br>
-            Uraian Tindak Lanjut : <input type="text" class="form-control" name="URAIAN_TINDAK_LANJUT" value="{{ $rekomendasi[0]->URAIAN_TINDAK_LANJUT }}"><br>
+            Uraian Rekomendasi : <textarea type="text" class="form-control" name="URAIAN_REKOMENDASI">{{ $rekomendasi[0]->URAIAN_REKOMENDASI }}</textarea><br>
+            Uraian Tindak Lanjut :  <textarea type="text" class="form-control" name="URAIAN_TINDAK_LANJUT">{{ $rekomendasi[0]->URAIAN_TINDAK_LANJUT }}</textarea><br>
             Status Tindak Lanjut :<br>
                 @if ($rekomendasi[0]->ID_STATUS == 1) 
                 <label><input type="radio" name="ID_STATUS" value="1" checked="checked"/> Belum Ditindak Lanjut </label><br>
@@ -59,7 +59,7 @@
                 <br>
 
             Tanggal Tindak Lanjut : <input type="date" class="form-control" name="TANGGAL_TINDAK_LANJUT" value="{{ $rekomendasi[0]->TANGGAL_TINDAK_LANJUT }}"><br>
-            Hasil Telaah Tindak Lanjut: <input type="text" class="form-control" name="HASIL_TELAAH_TINDAK_LANJUT" value="{{ $rekomendasi[0]->HASIL_TELAAH_TINDAK_LANJUT }}"><br>
+            Hasil Telaah Tindak Lanjut: <textarea type="text" class="form-control" name="HASIL_TELAAH_TINDAK_LANJUT">{{ $rekomendasi[0]->HASIL_TELAAH_TINDAK_LANJUT }}</textarea><br>
 
             <button type="submit" class="btn btn-primary">Update</button>
 			</form>

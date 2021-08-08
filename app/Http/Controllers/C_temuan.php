@@ -20,7 +20,7 @@ class C_temuan extends Controller
         $temuan = DB::table('temuan')->get();
         $id = DB::table('opd')->get();
         $punya_opd = DB::table('punya_opd')->get();
-        $rekomendasi = DB::table('rekomendasi')->get();
+        $rekomendasi = DB::table('rekomendasi')->leftJoin('status','status.KODE_STATUS','=','rekomendasi.ID_STATUS')->get();
         $data = array(
             'menu' => 'temuan',
             'temuan' => $temuan,
@@ -51,29 +51,32 @@ class C_temuan extends Controller
         //                     ->leftJoin('temuan', 'temuan.KODE_TEMUAN', '=', 'punya_opd.KODE_TEMUAN')
         //                     ->where('punya_opd.KODE_OPD',$kode_opd);
 
-        if ($kode_opd == 0 && $tahun == 0){
-            $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->get();
-        }elseif($jenis == 0 && $tahun == 0){
-            $temuan = DB::table('temuan')->where('KODE_OPD',$kode_opd)->get();
-        }elseif($jenis == 0 && $kode_opd == 0){
-            $temuan = DB::table('temuan')->whereYear('TANGGAL_TEMUAN', $tahun)->get();
-        }elseif($jenis == 0){
-            $temuan = DB::table('temuan')->where('KODE_OPD',$kode_opd)->whereYear('TANGGAL_TEMUAN', $tahun)->get();
-        }elseif($kode_opd == 0){
-            $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->whereYear('TANGGAL_TEMUAN', $tahun)->get();
-        }elseif($tahun == 0){
-            $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->where('KODE_OPD',$kode_opd)->get();
-        }else{
-            $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->where('KODE_OPD',$kode_opd)->whereYear('TANGGAL_TEMUAN', $tahun)->get();
-        }
+        $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->get();
+        // if ($kode_opd == 0 && $tahun == 0){
+        //     $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->get();
+        // }elseif($jenis == 0 && $tahun == 0){
+        //     $temuan = DB::table('temuan')->where('KODE_OPD',$kode_opd)->get();
+        // }elseif($jenis == 0 && $kode_opd == 0){
+        //     $temuan = DB::table('temuan')->whereYear('TANGGAL_TEMUAN', $tahun)->get();
+        // }elseif($jenis == 0){
+        //     $temuan = DB::table('temuan')->where('KODE_OPD',$kode_opd)->whereYear('TANGGAL_TEMUAN', $tahun)->get();
+        // }elseif($kode_opd == 0){
+        //     $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->whereYear('TANGGAL_TEMUAN', $tahun)->get();
+        // }elseif($tahun == 0){
+        //     $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->where('KODE_OPD',$kode_opd)->get();
+        // }else{
+        //     $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->where('KODE_OPD',$kode_opd)->whereYear('TANGGAL_TEMUAN', $tahun)->get();
+        // }
 
         $id = DB::table('opd')->get();
+        $rekomendasi = DB::table('rekomendasi')->get();
 
         $data = array(
             'menu' => 'temuan',
             'temuan' => $temuan,
             'id' => $id,
-            'punya_opd' => $punya_opd,
+            // 'punya_opd' => $punya_opd,
+            'rekomendasi' => $rekomendasi,
             'years' => $years,
             'submenu' => ''
         );

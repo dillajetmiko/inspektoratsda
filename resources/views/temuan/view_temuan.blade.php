@@ -50,7 +50,7 @@
 										<option value="2">Eksternal</option>
 									</select>
 								</div>
-								<div style="width: 42%">
+								<!-- <div style="width: 42%">
 									<select class="form-control select2" name="KODE_OPD">
 										<option value="0">-Pilih OPD-</option>
 										@foreach ($id as $opd)
@@ -65,7 +65,7 @@
 										<option value="{{ $year }}">{{ $year }}</option>
 										@endforeach
 									</select>
-								</div>
+								</div> -->
 								<div class="input-group-append">
 									<span><input type="submit" class="btn btn-default" value="CARI"></span>
 								</div>
@@ -88,9 +88,11 @@
 			<table id="example1" class="table table-bordered table-striped">
 				<thead>
 				<tr>		
+					<th rowspan="2" scope="rowgroup" style="text-align:center">id</th>
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Nomer LHP</th>
 					<th colspan="2" scope="colgroup" style="text-align:center">Temuan</th>
-					<th colspan="2" scope="colgroup" style="text-align:center">Rekomendasi</th>
+					<th colspan="1" scope="colgroup" style="text-align:center">Rekomendasi</th>
+					<th colspan="1" scope="colgroup" style="text-align:center">Tindak Lanjut</th>
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Kerugian</th>
 					<th rowspan="2" scope="rowgroup" style="text-align:center">Jenis Temuan</th>
 					@can('edit-hapus-temuan')
@@ -100,36 +102,44 @@
 				<tr>
 					<th style="text-align:center">Kode</th>
 					<th style="text-align:center">Uraian</th>
-					<th style="text-align:center">Kode</th>
-					<th style="text-align:center">Uraian</th>
+					<th style="text-align:center">Kode/Uraian</th>
+					<th style="text-align:center">Tanggal/Uraian/Status</th>
 				</tr>
 				</thead>
 				<tbody>		
 				@foreach($temuan as $data)
 				<tr>
+					<td>{{ $data->id }}</td>
 					<td>{{ $data->NOMOR_LHP }}</td>
 					<td>{{ $data->ID_KATEGORI }}</td>
 					<td>{{ $data->URAIAN_TEMUAN }}</td>	
-					<td>
-						@foreach($rekomendasi as $rekom)
-						@if ($rekom->ID_TEMUAN === $data->id)
-								{{$rekom->KODE_REKOMENDASI}}<br>
-						@endif
-						@endforeach
-					</td>
 					<td>
 						<table>
 							@foreach($rekomendasi as $rekom)
 							@if ($rekom->ID_TEMUAN === $data->id)
 							<tr>
+								<td>{{$rekom->KODE_REKOMENDASI}}<br></td>
 								<td>{{$rekom->URAIAN_REKOMENDASI}}</td>
 							</tr>
 							@endif
 							@endforeach
 						</table>
 						<a href='/rekomendasi/insert_view_rekomendasi/{{ $data->id }}'>
-                        lihat rekomendasi
+                        Lihat Detail
                         </a>
+					</td>
+					<td>
+						<table>
+							@foreach($rekomendasi as $rekom)
+							@if ($rekom->ID_TEMUAN === $data->id)
+							<tr>
+								<td>{{$rekom->TANGGAL_TINDAK_LANJUT}}</td>
+								<td>{{$rekom->URAIAN_TINDAK_LANJUT}}<br></td>
+								<td>{{$rekom->STATUS}}<br></td>
+							</tr>
+							@endif
+							@endforeach
+						</table>
 					</td>	
 					<td>{{ $data->KERUGIAN }}</td>
 					@if ($data->KODE_JENIS_TEMUAN == 1)
