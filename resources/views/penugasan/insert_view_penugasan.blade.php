@@ -2,7 +2,7 @@
 
 @section("page_title","Penugasan")
 
-@section("title","Penugasan")
+@section("title","PENUGASAN")
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
