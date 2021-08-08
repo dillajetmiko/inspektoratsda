@@ -1,13 +1,13 @@
 @extends("layout.mainlayout")
 
-@section("page_title","PENDIDIKAN PEGAWAI")
+@section("page_title","Pendidikan")
 
-@section("title","PENDIDIKAN PEGAWAI")
+@section("title","Data Pendidikan")
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-<li class="breadcrumb-item"><a href="/pegawai">PEGAWAI</a></li>
-<li class="breadcrumb-item active">PENDIDIKAN PEGAWAI</li> 
+<li class="breadcrumb-item"><a href="/pegawai">Pegawai</a></li>
+<li class="breadcrumb-item active">Pendidikan</li> 
 @endsection
 
 @section('custom_css')
@@ -25,7 +25,7 @@
 <!-- Default box -->
 <div class="card">    
   <div class="card-header">
-	  <h3 class="card-title"> DATA PENDIDIKAN PEGAWAI</h3>
+	  <h3 class="card-title"> Tambah Pendidikan</h3>
 	  <div class="card-tools">
 		  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
 			<i class="fas fa-minus"></i></button>
@@ -35,6 +35,7 @@
   </div>
   <div class="card-body">
 		<div class="card">
+		@can('edit-hapus-pegawai')
 			<div class="card-header">
 				<div class="form-group">
 					<form action="/pendidikan/insert_view_pendidikan" method="post" enctype="multipart/form-data">
@@ -52,7 +53,7 @@
 					</form>
 				</div>
 			</div>
-			
+			@endcan	
 
 			<!-- /.card-header -->
 			<div class="card-body">
@@ -63,7 +64,9 @@
 						<th style="text-align:center">Tahun Pendidikan</th>
 						<th style="text-align:center">Strata Pendidikan</th>
 						<th style="text-align:center">Instansi Pendidikan</th>
+						@can('edit-hapus-pegawai')
 						<th style="text-align:center" width="15%">Aksi</th>
+						@endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -72,12 +75,13 @@
 					<td>{{ $data->TAHUN_PENDIDIKAN }}</td>
 					<td>{{ $data->STRATA_PENDIDIKAN }}</td>
 					<td>{{ $data->INSTANSI_PENDIDIKAN }}</td>
-
-						<td>
-						<a href='/pendidikan/hapus/{{ $data->ID_PENDIDIKAN }}&{{ $data->NIK_PEGAWAI }}'>
-						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
-						</a>
-						</td>             
+					@can('edit-hapus-pegawai')
+					<td>
+					<a href='/pendidikan/hapus/{{ $data->ID_PENDIDIKAN }}&{{ $data->NIK_PEGAWAI }}'>
+					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+					</a>
+					</td>  
+					@endcan           
 					</tr>
 					@endforeach
 					</tbody>

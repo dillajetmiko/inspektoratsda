@@ -2,11 +2,11 @@
 
 @section("page_title","Rekomendasi")
 
-@section("title","Rekomendasi")
+@section("title","REKOMENDASI")
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-<li class="breadcrumb-item"><a href="/spt">SPT</a></li>
+<li class="breadcrumb-item"><a href="/temuan">Temuan</a></li>
 <li class="breadcrumb-item active">Rekomendasi</li> 
 @endsection
 
@@ -35,6 +35,7 @@
   </div>
   <div class="card-body">
 		<div class="card">
+		@can('edit-hapus-rekomendasi')
 			<div class="card-header">
 				<div class="form-group">
 					<form action="/rekomendasi/insert_view_rekomendasi" method="post" enctype="multipart/form-data">
@@ -58,7 +59,7 @@
 					</form>
 				</div>
 			</div>
-			
+			@endcan
 
 			<!-- /.card-header -->
 			<div class="card-body">
@@ -73,7 +74,9 @@
 						<th style="text-align:center">Tanggal Tindak Lanjut</th>
 						<th style="text-align:center">Hasil Telaah Tindak Lanjut</th>
 						<th style="text-align:center">OPD</th>
+						@can('edit-hapus-rekomendasi')
 						<th style="text-align:center" width="15%">Aksi</th>
+						@endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -106,6 +109,7 @@
                         lihat opd
                         </a>
 						</td> 
+						@can('edit-hapus-rekomendasi')
 						<td>
 						<a href='/rekomendasi/edit_rekomendasi/{{ $data->id }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
@@ -114,7 +118,7 @@
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
 						</td> 
-            
+						@endcan
 					</tr>
 					@endforeach
 

@@ -4,7 +4,7 @@
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-<li class="breadcrumb-item"><a href="/lhp">Pegawai</a></li>
+<li class="breadcrumb-item"><a href="/pegawai">Pegawai</a></li>
 <li class="breadcrumb-item active">Tambah Pegawai</li> 
 @endsection
 
@@ -39,7 +39,7 @@
         No. kartu Pegawai : <input type="text" class="form-control" name="NO_KARTU_PEGAWAI"><br>
         No. kartu Suami/Istri : <input type="text" class="form-control" name="NO_KARTU_SUAMI_ISTRI"><br>
         No. Taspen : <input type="text" class="form-control" name="NO_TASPEN"><br>
-        No. HP : <input type="text" class="form-control" name="NO_HP"><br>
+        No. Telepon : <input type="text" class="form-control" name="NO_HP"><br>
         Unit Kerja : <input type="text" class="form-control" name="UNIT_KERJA_PEGAWAI"><br>
         <br> 
         <button type="submit" class="btn btn-primary">Simpan</button>
