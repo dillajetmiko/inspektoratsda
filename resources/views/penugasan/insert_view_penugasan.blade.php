@@ -35,6 +35,7 @@
   </div>
   <div class="card-body">
 		<div class="card">
+		@can('edit-hapus-spt')
 			<div class="card-header">
 				<div class="form-group">
 					<form action="/penugasan/insert_view_penugasan" method="post" enctype="multipart/form-data">
@@ -62,7 +63,7 @@
 					</form>
 				</div>
 			</div>
-			
+			@endcan
 
 			<!-- /.card-header -->
 			<div class="card-body">
@@ -72,7 +73,9 @@
 						<!-- <th style="text-align:center">ID SPT</th> -->
 						<th style="text-align:center">Nama Pegawai</th>
 						<th style="text-align:center">Penugasan</th>
+						@can('edit-hapus-spt')
 						<th style="text-align:center" width="15%">Aksi</th>
+						@endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -93,6 +96,7 @@
 						@endif
 						@endforeach 
 						</td>
+						@can('edit-hapus-spt')
 						<td>
 						<!-- <a href='/penugasan/edit_penugasan/{{ $data->id }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
@@ -102,7 +106,7 @@
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
 						</td> 
-            
+						@endcan
 					</tr>
 					@endforeach
 					</tbody>

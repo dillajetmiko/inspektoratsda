@@ -2,11 +2,11 @@
 
 @section("page_title","Pegawai")
 
-@section("title","Pegawai")
+@section("title","PEGAWAI")
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-<li class="breadcrumb-item active">PEGAWAI</li> 
+<li class="breadcrumb-item active">Pegawai</li> 
 @endsection
 
 @section('custom_css')

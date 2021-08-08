@@ -2,11 +2,11 @@
 
 @section("page_title","Keluarga")
 
-@section("title","Keluarga")
+@section("title","Data Keluarga")
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-<li class="breadcrumb-item"><a href="/pegawai">PEGAWAI</a></li>
+<li class="breadcrumb-item"><a href="/pegawai">Pegawai</a></li>
 <li class="breadcrumb-item active">Keluarga</li> 
 @endsection
 
@@ -25,7 +25,7 @@
 <!-- Default box -->
 <div class="card">    
   <div class="card-header">
-	  <h3 class="card-title"> DATA KELUARGA</h3>
+	  <h3 class="card-title"> Tambah Keluarga</h3>
 	  <div class="card-tools">
 		  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
 			<i class="fas fa-minus"></i></button>
@@ -35,6 +35,7 @@
   </div>
   <div class="card-body">
 		<div class="card">
+		@can('edit-hapus-pegawai')
 			<div class="card-header">
 				<div class="form-group">
 					<form action="/keluarga/insert_view_keluarga" method="post" enctype="multipart/form-data">
@@ -57,7 +58,7 @@
 					</form>
 				</div>
 			</div>
-			
+			@endcan
 
 			<!-- /.card-header -->
 			<div class="card-body">
@@ -67,7 +68,9 @@
 						<!-- <th style="text-align:center">ID SPT</th> -->
 						<th style="text-align:center">Nama Anggota Keluarga</th>
 						<th style="text-align:center">Status Keluarga</th>
+						@can('edit-hapus-pegawai')
 						<th style="text-align:center" width="15%">Aksi</th>
+						@endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -81,12 +84,14 @@
 						{{$datasta->NAMA_STATUS_KELUARGA}}
 						@endif
 						@endforeach
-						</td> 
+						</td>
+						@can('edit-hapus-pegawai') 
 						<td>
 						<a href='/keluarga/hapus/{{ $data->ID_KELUARGA }}&{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
-						</td>             
+						</td>
+						@endcan             
 					</tr>
 					@endforeach
 					</tbody>

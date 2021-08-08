@@ -2,7 +2,7 @@
 
 @section("page_title","Pangkat")
 
-@section("title","Pangkat")
+@section("title","Data Pangkat")
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
@@ -20,7 +20,7 @@
 <!-- Default box -->
 <div class="card">    
   <div class="card-header">
-	  <h3 class="card-title"> DATA PANGKAT</h3>
+	  <h3 class="card-title"> Tambah Pangkat</h3>
 	  <div class="card-tools">
 		  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
 			<i class="fas fa-minus"></i></button>
@@ -30,6 +30,7 @@
   </div>
   <div class="card-body">
 		<div class="card">
+		@can('edit-hapus-pegawai')
 			<div class="card-header">
 				<div class="form-group">
 					<form action="/pangkat/insert_view_pangkat" method="post" enctype="multipart/form-data">
@@ -46,7 +47,7 @@
 					</form>
 				</div>
 			</div>
-			
+			@endcan
 
 			<!-- /.card-header -->
 			<div class="card-body">
@@ -55,7 +56,9 @@
 					<tr>
 						<th style="text-align:center">TMT</th>
 						<th style="text-align:center">Nama Pangkat</th>
+						@can('edit-hapus-pegawai')
 						<th style="text-align:center" width="15%">Aksi</th>
+						@endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -63,11 +66,13 @@
 					<tr>
 						<td>{{ $data->TMT_PANGKAT }}</td>
 						<td>{{ $data->NAMA_PANGKAT }}</td>
+						@can('edit-hapus-pegawai')
 						<td>
 						<a href='/pangkat/hapus/{{ $data->ID_PANGKAT }}&{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
-						</td>             
+						</td>    
+						@endcan         
 					</tr>
 					@endforeach
 					</tbody>

@@ -2,11 +2,11 @@
 
 @section("page_title","Kenaikan Gaji")
 
-@section("title","Kenaikan Gaji")
+@section("title","Data Kenaikan Gaji")
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-<li class="breadcrumb-item"><a href="/pegawai">PEGAWAI</a></li>
+<li class="breadcrumb-item"><a href="/pegawai">Pegawai</a></li>
 <li class="breadcrumb-item active">Kenaikan Gaji</li> 
 @endsection
 
@@ -25,7 +25,7 @@
 <!-- Default box -->
 <div class="card">    
   <div class="card-header">
-	  <h3 class="card-title"> DATA KENAIKAN GAJI</h3>
+	  <h3 class="card-title"> Tambah Kenaikan Gaji</h3>
 	  <div class="card-tools">
 		  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
 			<i class="fas fa-minus"></i></button>
@@ -35,6 +35,7 @@
   </div>
   <div class="card-body">
 		<div class="card">
+		@can('edit-hapus-pegawai')
 			<div class="card-header">
 				<div class="form-group">
 					<form action="/kenaikan_gaji/insert_view_kenaikan_gaji" method="post" enctype="multipart/form-data">
@@ -60,7 +61,7 @@
 					</form>
 				</div>
 			</div>
-			
+			@endcan 
 
 			<!-- /.card-header -->
 			<div class="card-body">
@@ -73,7 +74,9 @@
 						<th style="text-align:center">Pangkat</th>
 						<th style="text-align:center">Golongan</th>
 						<th style="text-align:center">Masa Kerja</th>
+						@can('edit-hapus-pegawai')
 						<th style="text-align:center" width="15%">Aksi</th>
+						@endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -90,12 +93,13 @@
 						</td> 
 					<td>{{ $data->NAMA_GOLONGAN }}</td>
 					<td>{{ $data->MASA_KERJA }}</td>
-										
+					@can('edit-hapus-pegawai')					
 					<td>
 					<a href='/kenaikan_gaji/hapus/{{ $data->ID_KENAIKAN_GAJI }}&{{ $data->NIK_PEGAWAI }}'>
 					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 					</a>
-					</td>             
+					</td>  
+					@endcan           
 					</tr>
 					@endforeach
 					</tbody>

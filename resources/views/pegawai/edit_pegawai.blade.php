@@ -1,13 +1,13 @@
 @extends('layout.mainlayout')
 
-@section('page_title', 'Inspektorat || Edit Kepegawaian')
+@section('page_title', 'Inspektorat || Edit Pegawai')
 
-@section('title', 'Data Kepegawaian')
+@section('title', 'Data Pegawai')
 
 @section('breadcrumb')
 <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-<li class="breadcrumb-item"><a href="/pegawai">Kepegawaian</a></li>
-<li class="breadcrumb-item active">Update Data</li>
+<li class="breadcrumb-item"><a href="/pegawai">Pegawai</a></li>
+<li class="breadcrumb-item active">Update Pegawai</li>
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
 <!-- Default box -->
 <div class="card">
 	<div class="card-header">
-		<h3 class="card-title">Edit Data Pegawai</h3>
+		<h3 class="card-title">Edit Pegawai</h3>
 
 		<div class="card-tools">
 			<button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -30,16 +30,15 @@
 			<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
 
 			</select><br>
-			NIK Pegawai : <input type="text" class="form-control" name="NIK_PEGAWAI" value="{{$pegawai[0]->NIK_PEGAWAI}}" readonly><br>
-			Nama Pegawai : <input type="text" class="form-control" name="NAMA_PEGAWAI" value="{{$pegawai[0]->NAMA_PEGAWAI}}"><br>
+			NIK : <input type="text" class="form-control" name="NIK_PEGAWAI" value="{{$pegawai[0]->NIK_PEGAWAI}}" readonly><br>
+			Nama : <input type="text" class="form-control" name="NAMA_PEGAWAI" value="{{$pegawai[0]->NAMA_PEGAWAI}}"><br>
 			Alamat : <input type="text" class="form-control" name="ALAMAT_PEGAWAI" value="{{$pegawai[0]->ALAMAT_PEGAWAI}}"><br>
-			Tempat, Tanggal Lahir : <input type="text" class="form-control" name="TTL_PEGAWAI" value="{{$pegawai[0]->TTL_PEGAWAI}}"><br>
-			NIP Pegawai : <input type="text" class="form-control" name="NIP_PEGAWAI" value="{{$pegawai[0]->NIP_PEGAWAI}}"><br>
+			Tempat Tanggal Lahir : <input type="text" class="form-control" name="TTL_PEGAWAI" value="{{$pegawai[0]->TTL_PEGAWAI}}"><br>
+			NIP : <input type="text" class="form-control" name="NIP_PEGAWAI" value="{{$pegawai[0]->NIP_PEGAWAI}}"><br>
 			No. Kartu Pegawai : <input type="text" class="form-control" name="NO_KARTU_PEGAWAI" value="{{$pegawai[0]->NO_KARTU_PEGAWAI}}"><br>
 			No. Kartu Suami/istri : <input type="text" class="form-control" name="NO_KARTU_SUAMI_ISTRI" value="{{$pegawai[0]->NO_KARTU_SUAMI_ISTRI}}"><br>
-            Nomor Taspen : <input type="text" class="form-control" name="NO_TASPEN" value="{{$pegawai[0]->NO_TASPEN}}"><br>
-            Nomor Telepon : <input type="text" class="form-control" name="NO_HP" value="{{$pegawai[0]->NO_HP}}"><br>	
-            Keluarga : <input type="text" class="form-control" name="KELUARGA" value="{{$pegawai[0]->KELUARGA}}"><br>
+            No. Taspen : <input type="text" class="form-control" name="NO_TASPEN" value="{{$pegawai[0]->NO_TASPEN}}"><br>
+            No. Telepon : <input type="text" class="form-control" name="NO_HP" value="{{$pegawai[0]->NO_HP}}"><br>	
             Unit Kerja : <input type="text" class="form-control" name="UNIT_KERJA_PEGAWAI" value="{{$pegawai[0]->UNIT_KERJA_PEGAWAI}}"><br>
 
             
