@@ -61,7 +61,9 @@
 					<tr>
 						<th style="text-align:center">ID Jenis Pengawasan</th>
 						<th style="text-align:center">Nama Jenis Pengawasan</th>
+						@can('edit-hapus-user')
 						<th style="text-align:center" width="15%">Aksi</th>
+						@endcan 
 					</tr>
 					</thead>
 					<tbody>
@@ -70,15 +72,15 @@
 						<td>{{ $data->ID_PENGAWASAN }}</td>
 						<td>{{ $data->NAMA_PENGAWASAN }}</td>
 
-						<td>
 						@can('edit-hapus-user')
+						<td>
 						<a href='/jenis_pengawasan/edit_jenis_pengawasan/{{ $data->ID_PENGAWASAN }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a>
 						<button onclick="confirmDelete({{ $data->ID_PENGAWASAN }})" class="btn btn-danger">
 						<i class="fas fa-trash"></i> Hapus</button>
-						@endcan  
 						</td> 
+						@endcan  
 						</td>             
 					</tr>
 					@endforeach
