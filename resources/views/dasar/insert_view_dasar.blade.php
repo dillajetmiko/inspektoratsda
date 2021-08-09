@@ -30,6 +30,7 @@
   </div>
   <div class="card-body">
 		<div class="card">
+		@can('edit-hapus-spt')
 			<div class="card-header">
 				<div class="form-group">
 					<form action="/dasar/insert_view_dasar" method="post" enctype="multipart/form-data">
@@ -44,6 +45,7 @@
 					</form>
 				</div>
 			</div>
+		@endcan
 			
 
 			<!-- /.card-header -->
@@ -52,14 +54,16 @@
 					<thead>
 					<tr>
 						<th style="text-align:center">Uraian Dasar</th>
+						@can('edit-hapus-spt')
 						<th style="text-align:center" width="15%">Aksi</th>
+						@endcan
 					</tr>
 					</thead>
 					<tbody>
 					@foreach($dasar as $data)
 					<tr>
 						<td>{{ $data->uraian_dasar }}</td>
-						
+						@can('edit-hapus-spt')
 						<td>
 						<!-- <a href='/penugasan/edit_penugasan/{{ $data->id }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
@@ -67,7 +71,8 @@
 						<a href='/dasar/hapus/{{ $data->id }}&{{ $data->id_spt }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
-						</td>             
+						</td>   
+						@endcan          
 					</tr>
 					@endforeach
 					</tbody>
