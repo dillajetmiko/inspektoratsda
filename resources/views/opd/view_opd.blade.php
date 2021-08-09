@@ -61,7 +61,9 @@
 					<tr>
 						<th style="text-align:center">Kode OPD</th>
 						<th style="text-align:center">Nama OPD</th>
+						@can('edit-hapus-user')
 						<th style="text-align:center" width="15%">Aksi</th>
+						@endcan 
 					</tr>
 					</thead>
 					<tbody>
@@ -70,15 +72,15 @@
 						<td>{{ $data->KODE_OPD }}</td>
 						<td>{{ $data->NAMA_OPD }}</td>
 
-						<td>
 						@can('edit-hapus-user')
+						<td>
 						<a href='/opd/edit_opd/{{ $data->KODE_OPD }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a>
 						<button onclick="confirmDelete({{ $data->KODE_OPD }})" class="btn btn-danger">
 						<i class="fas fa-trash"></i> Hapus</button>
-						@endcan  
 						</td> 
+						@endcan  
 						</td>             
 					</tr>
 					@endforeach
