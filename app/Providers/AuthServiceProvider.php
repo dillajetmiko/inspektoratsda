@@ -104,5 +104,10 @@ class AuthServiceProvider extends ServiceProvider
             return ($user->id_role > 0);
         });
 
+        Gate::define('edit-hapus-rekomendasi', function (User $user) {
+            return in_array($user->id_role, [ADMIN_EVLAP,SUPERADMIN]);
+        });
+
+
     }
 }

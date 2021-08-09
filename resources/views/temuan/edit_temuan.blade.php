@@ -38,8 +38,13 @@
 			<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
 
 			id : <input type="text" class="form-control" name="id" value="{{ $temuan[0]->id }}" readonly><br>
-			Kode Temuan : <input type="text" class="form-control" name="ID_KATEGORI" value="{{ $temuan[0]->ID_KATEGORI }}"><br>
-
+			Kode Temuan :
+            <select class="form-control select2" name="KODE_KATEGORI">
+						@foreach ($id4 as $kategori)
+						<option value="{{ $kategori->KODE_KATEGORI}}">{{ $kategori->KODE_KATEGORI}}</option>
+						@endforeach
+						</select>
+						</select><br>   
             Nomor LHP : 
                 <select class="form-control select2" name="NOMOR_LHP">
                 @foreach ($id2 as $LHP)

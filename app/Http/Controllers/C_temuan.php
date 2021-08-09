@@ -21,6 +21,7 @@ class C_temuan extends Controller
         $temuan = DB::table('temuan')->get();
         $id = DB::table('opd')->get();
         $punya_opd = DB::table('punya_opd')->get();
+        $kategori_temuan = DB::table('kategori_temuan')->get();
         $rekomendasi = DB::table('rekomendasi')->leftJoin('status','status.KODE_STATUS','=','rekomendasi.ID_STATUS')->get();
         $data = array(
             'menu' => 'temuan',
@@ -28,6 +29,7 @@ class C_temuan extends Controller
             'temuan' => $temuan,
             'id' => $id,
             'punya_opd' => $punya_opd,
+            'kategori_temuan' => $kategori_temuan,
             'rekomendasi' => $rekomendasi,
             'years' => $years,
             'submenu' => ''
@@ -97,6 +99,7 @@ class C_temuan extends Controller
         $id = DB::table('opd')->get();
         $id2 = DB::table('lhp')->get();
         $id3 = DB::table('jenis_temuan')->get();
+        $id4 = DB::table('kategori_temuan')->get();
 
         $data = array(
             'menu' => 'temuan',
@@ -105,6 +108,7 @@ class C_temuan extends Controller
             'id' => $id,
             'id2' => $id2,
             'id3' => $id3,
+            'id4' => $id4,
             'submenu' => ''
         );
         return view('temuan/insert_temuan',$data);
@@ -134,6 +138,8 @@ class C_temuan extends Controller
         $id = DB::table('opd')->get();
         $id2 = DB::table('lhp')->get();
         $id3 = DB::table('jenis_temuan')->get();
+        $id4 = DB::table('kategori_temuan')->get();
+
     
         $data = array(
             'menu' => 'temuan',
@@ -142,6 +148,7 @@ class C_temuan extends Controller
             'id' => $id,
             'id2' => $id2,
             'id3' => $id3,
+            'id4' => $id4,
             'submenu' => ''
            
         );

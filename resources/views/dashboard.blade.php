@@ -27,25 +27,55 @@
 @can('show-menu')
 @can('tambah-lhp')
 <div class="container">
-	<div class="col-lg-4 col-6">
+
+<div class="col-lg-4 col-6">
+		<!-- small box -->
+		<div class="small-box bg-warning">
+			<div class="inner">
+				<h2>Form Kepegawaian</h2>
+
+			</div>
+			<div class="icon">
+				<i class="ion ion-person"></i>
+			</div>
+			<a href="/pegawai/insert_pegawai" class="small-box-footer">Input <i class="fas fa-arrow-circle-right"></i></a>
+		</div>
+	</div>
+
+	<div class="col-lg-3 col-5">
+		<!-- small box -->
+		<div class="small-box bg-danger">
+			<div class="inner">
+				<h2>Form SPT</h2>
+
+			</div>
+			<div class="icon">
+				<i class="ion ion-email"></i>
+			</div>
+			<a href="/lhp/insert_lhp" class="small-box-footer">Input <i class="fas fa-arrow-circle-right"></i></a>
+		</div>
+	</div>
+
+	<div class="col-lg-3 col-6">
 		<!-- small box -->
 		<div class="small-box bg-info">
 			<div class="inner">
-				<h3>Form LHP</h3>
+				<h2>Form LHP</h2>
 
 			</div>
 			<div class="icon">
 				<i class="ion ion-document-text"></i>
 			</div>
-			<a href="/lhp/insert_lhp" class="small-box-footer">Input <i class="fas fa-arrow-circle-right"></i></a>
+			<a href="/SPT/insert_spt" class="small-box-footer">Input <i class="fas fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
+
 	<!-- ./col -->
-	<div class="col-lg-4 col-6">
+	<div class="col-lg-3 col-6">
 		<!-- small box -->
 		<div class="small-box bg-success">
 			<div class="inner">
-				<h3>Form Temuan</sup></h3>
+				<h2>Form Temuan</sup></h2>
 
 			</div>
 			<div class="icon">
@@ -55,6 +85,9 @@
 		</div>
 	</div>
 	<!-- ./col -->
+
+	
+
 </div>
 @endcan
 @else
