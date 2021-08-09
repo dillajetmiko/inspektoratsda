@@ -25,7 +25,9 @@
 <!-- Default box -->
 <div class="card">    
   <div class="card-header">
+  @can('edit-hapus-pegawai')
 	  <h3 class="card-title"> Tambah Pendidikan</h3>
+	  @endcan
 	  <div class="card-tools">
 		  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
 			<i class="fas fa-minus"></i></button>
