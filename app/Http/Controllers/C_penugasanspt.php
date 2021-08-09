@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class C_penugasanspt extends Controller
 {
@@ -16,6 +17,7 @@ class C_penugasanspt extends Controller
         foreach (range($year, 2000) as $number) {
             array_push($years, $number);
         }
+        $nama = Auth::user()->name;
         $spt = DB::table('spt')->get();
         $penugasan = DB::table('penugasan')->get();
         $pegawai = DB::table('pegawai')->get();
@@ -23,6 +25,7 @@ class C_penugasanspt extends Controller
 
         $data = array(
             'menu' => 'penugasanspt',
+            'nama' => $nama,
             'spt' => $spt,
             'penugasan' => $penugasan,
             'pegawai' => $pegawai,
@@ -86,12 +89,14 @@ class C_penugasanspt extends Controller
         //     $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->where('KODE_OPD',$kode_opd)->whereYear('TANGGAL_TEMUAN', $tahun)->get();
         // }
 
+        $nama = Auth::user()->name;
         $penugasan = DB::table('penugasan')->get();
         $pegawai = DB::table('pegawai')->get();
         $jenis_pengawasan = DB::table('jenis_pengawasan')->get();
 
         $data = array(
             'menu' => 'penugasanspt',
+            'nama' => $nama,
             'spt' => $spt,
             'penugasan' => $penugasan,
             'pegawai' => $pegawai,
@@ -159,12 +164,14 @@ class C_penugasanspt extends Controller
         //     $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->where('KODE_OPD',$kode_opd)->whereYear('TANGGAL_TEMUAN', $tahun)->get();
         // }
 
+        $nama = Auth::user()->name;
         $penugasan = DB::table('penugasan')->get();
         $pegawai = DB::table('pegawai')->get();
         $jenis_pengawasan = DB::table('jenis_pengawasan')->get();
 
         $data = array(
             'menu' => 'penugasanspt',
+            'nama' => $nama,
             'spt' => $spt,
             'penugasan' => $penugasan,
             'pegawai' => $pegawai,

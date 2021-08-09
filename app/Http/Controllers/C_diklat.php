@@ -5,17 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class C_diklat extends Controller
 {
     //
     public function insertDiklat($NIK_PEGAWAI) 
     {
+        $nama = Auth::user()->name;
         $pegawai = DB::table('pegawai')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
         $diklat = DB::table('diklat')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
 
         $data = array(
             'menu' => 'pegawai',
+            'nama' => $nama,
             'pegawai' => $pegawai,
             'diklat' => $diklat,
             'submenu' => ''

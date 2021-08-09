@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class C_pegawai extends Controller
 {
     //
     public function index()
     {
+        $nama = Auth::user()->name;
         $pegawai = DB::table('pegawai')->get();
         $data = array(
             'menu' => 'pegawai',
+            'nama' => $nama,
             'pegawai' => $pegawai,
             'submenu' => ''
         );
@@ -23,9 +26,11 @@ class C_pegawai extends Controller
 
     public function insertPegawai()
     {
+        $nama = Auth::user()->name;
         $pegawai = DB::table('pegawai')->get();
         $data = array(
             'menu' => 'pegawai',
+            'nama' => $nama,
             'pegawai' => $pegawai,
             'submenu' => ''
         );
@@ -54,10 +59,12 @@ class C_pegawai extends Controller
 
     public function editPegawai($NIK_PEGAWAI) 
     {
+        $nama = Auth::user()->name;
         $pegawai = DB::table('pegawai')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
 
         $data = array(
             'menu' => 'pegawai',
+            'nama' => $nama,
             'pegawai' => $pegawai,
             'submenu' => ''
            

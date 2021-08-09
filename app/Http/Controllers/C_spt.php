@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class C_spt extends Controller
 {
@@ -12,15 +13,19 @@ class C_spt extends Controller
      //
      public function index()
      {
+        $nama = Auth::user()->name;
          $spt = DB::table('spt')->get();
          $penugasan = DB::table('penugasan')->get();
+         $dasar = DB::table('dasar')->get();
          $pegawai = DB::table('pegawai')->get();
          $jenis_pengawasan = DB::table('jenis_pengawasan')->get();
 
          $data = array(
              'menu' => 'spt',
+             'nama' => $nama,
              'spt' => $spt,
              'penugasan' => $penugasan,
+             'dasar' => $dasar,
              'pegawai' => $pegawai,
              'jenis_pengawasan' => $jenis_pengawasan,
              'submenu' => ''
@@ -54,12 +59,14 @@ class C_spt extends Controller
  
      public function insertSpt()
      {
+        $nama = Auth::user()->name;
          $spt = DB::table('spt')->get();
          $kepada = DB::table('isi_default')->where('id', 1)->get();
          $jenis_pengawasan = DB::table('jenis_pengawasan')->get();
 
          $data = array(
              'menu' => 'spt',
+             'nama' => $nama,
              'spt' => $spt,
              'kepada' => $kepada,
              'jenis_pengawasan' => $jenis_pengawasan,
@@ -106,11 +113,13 @@ class C_spt extends Controller
  
      public function editSpt($ID_SPT) 
      {
+        $nama = Auth::user()->name;
          $spt = DB::table('spt')->where('id', $ID_SPT)->get();
          $jenis_pengawasan = DB::table('jenis_pengawasan')->get();
  
          $data = array(
              'menu' => 'spt',
+             'nama' => $nama,
              'spt' => $spt,
              'jenis_pengawasan' => $jenis_pengawasan,
              'submenu' => ''
@@ -165,10 +174,12 @@ class C_spt extends Controller
 
      public function cetak() 
      {
+        $nama = Auth::user()->name;
          $spt = DB::table('spt')->get();
  
          $data = array(
              'menu' => 'spt',
+             'nama' => $nama,
              'spt' => $spt,
              'submenu' => ''
             

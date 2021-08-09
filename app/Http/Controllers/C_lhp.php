@@ -12,10 +12,12 @@ class C_lhp extends Controller
     //
     public function index()
     {
+        $nama = Auth::user()->name;
         $lhp = DB::table('lhp')->get();
         $id = DB::table('spt')->get();
         $data = array(
             'menu' => 'lhp',
+            'nama' => $nama,
             'lhp' => $lhp,
             'id' => $id,
             'submenu' => ''
@@ -49,11 +51,13 @@ class C_lhp extends Controller
 
     public function insertLHP()
     {
+        $nama = Auth::user()->name;
         $lhp = DB::table('lhp')->get();
         $id = DB::table('spt')->get();
 
         $data = array(
             'menu' => 'lhp',
+            'nama' => $nama,
             'lhp' => $lhp,
             'id' => $id,
             'submenu' => ''
@@ -93,11 +97,13 @@ class C_lhp extends Controller
 
     public function editLHP($NOMOR_LHP) 
     {
+        $nama = Auth::user()->name;
         $lhp = DB::table('lhp')->where('NOMOR_LHP', $NOMOR_LHP)->get();
         $id = DB::table('spt')->get();
         
         $data = array(
             'menu' => 'lhp',
+            'nama' => $nama,
             'lhp' => $lhp,
             'id' => $id,
             'submenu' => ''

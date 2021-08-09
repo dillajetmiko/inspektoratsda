@@ -3,10 +3,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('asset/dist/img/user8-128x128.jpg') }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('asset/dist/img/default-user-imge.jpeg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin</a>
+          <a href="#" class="d-block">{{$nama}}</a>
         </div>
       </div>
 
@@ -40,6 +40,51 @@
               <i class="nav-icon fas fa-user"></i>
               <p>
               User
+              </p>
+            </a>
+          </li>
+          @endcan
+
+          @can('show-user')
+          <li class="nav-item">
+          @if($menu == 'opd')
+            <a href="/opd" class="nav-link active">
+          @else
+            <a href="/opd" class="nav-link">
+          @endif
+              <i class="nav-icon fas fa-file"></i>
+              <p>
+              OPD
+              </p>
+            </a>
+          </li>
+          @endcan
+
+          @can('show-user')
+          <li class="nav-item">
+          @if($menu == 'tugas')
+            <a href="/tugas" class="nav-link active">
+          @else
+            <a href="/tugas" class="nav-link">
+          @endif
+              <i class="nav-icon fas fa-file"></i>
+              <p>
+              Tugas SPT
+              </p>
+            </a>
+          </li>
+          @endcan
+
+          @can('show-user')
+          <li class="nav-item">
+          @if($menu == 'jenis_pengawasan')
+            <a href="/jenis_pengawasan" class="nav-link active">
+          @else
+            <a href="/jenis_pengawasan" class="nav-link">
+          @endif
+              <i class="nav-icon fas fa-file"></i>
+              <p>
+              Jenis Pengawasan
               </p>
             </a>
           </li>

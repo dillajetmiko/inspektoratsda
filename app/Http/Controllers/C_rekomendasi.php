@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class C_rekomendasi extends Controller
 {
     public function insertRekomendasi($ID_TEMUAN) 
     {
+        $nama = Auth::user()->name;
         $temuan = DB::table('temuan')->where('id', $ID_TEMUAN)->get();
         $rekomendasi = DB::table('rekomendasi')->where('ID_TEMUAN', $ID_TEMUAN)->get();
         $punya_opd = DB::table('punya_opd')->get();
@@ -18,6 +20,7 @@ class C_rekomendasi extends Controller
 
         $data = array(
             'menu' => 'temuan',
+            'nama' => $nama,
             'temuan' => $temuan,
             'rekomendasi' => $rekomendasi,
             'status' => $status,
@@ -46,10 +49,12 @@ class C_rekomendasi extends Controller
 
     public function editrekomendasi($id)
     {
+        $nama = Auth::user()->name;
         $rekomendasi = DB::table('rekomendasi')->where('id', $id)->get();
         $status = DB::table('status')->get();
         $data = array(
             'menu' => 'temuan',
+            'nama' => $nama,
             'rekomendasi' => $rekomendasi,
             'status' => $status,
             'submenu' => ''

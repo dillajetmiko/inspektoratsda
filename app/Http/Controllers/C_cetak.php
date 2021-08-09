@@ -7,12 +7,14 @@ use Illuminate\Support\Facades\DB;
 
 use App\Exports\TemuanExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Auth;
 
 class C_cetak extends Controller
 {
     //
     public function index()
     {
+        $nama = Auth::user()->name;
         $cetak = [];
         $temuan = DB::table('temuan')->get();
         $lhp = DB::table('lhp')->get();
@@ -22,6 +24,7 @@ class C_cetak extends Controller
 
         $data = array(
             'menu' => 'cetak',
+            'nama' => $nama,
             'cetak' => $cetak,
             'lhp' => $lhp,
             'lhp2' => $lhp2,
@@ -35,7 +38,8 @@ class C_cetak extends Controller
 
     public function cari(Request $request)
 	{
-		// menangkap data pencarian
+		$nama = Auth::user()->name;
+        // menangkap data pencarian
 		$cari = $request->cari;
  
     		// mengambil data dari table pegawai sesuai pencarian data
@@ -48,6 +52,7 @@ class C_cetak extends Controller
 
         $data = array(
             'menu' => 'cetak',
+            'nama' => $nama,
             'cetak' => $cetak,
             'id' => $id,
             'lhp' => $lhp,
@@ -64,7 +69,8 @@ class C_cetak extends Controller
 
     public function export($NOMOR_LHP)
 	{
-		// menangkap data pencarian
+		$nama = Auth::user()->name;
+        // menangkap data pencarian
 		$cari = $NOMOR_LHP;
  
     		// mengambil data dari table pegawai sesuai pencarian data
@@ -76,6 +82,7 @@ class C_cetak extends Controller
 
         $data = array(
             'menu' => 'cetak',
+            'nama' => $nama,
             'cetak' => $cetak,
             'id' => $id,
             'lhp' => $lhp,
@@ -91,6 +98,7 @@ class C_cetak extends Controller
 
     public function export1()
     {
+        $nama = Auth::user()->name;
         $cetak = [];
         $temuan = DB::table('temuan')->get();
         $lhp = DB::table('lhp')->get();
@@ -99,6 +107,7 @@ class C_cetak extends Controller
 
         $data = array(
             'menu' => 'cetak',
+            'nama' => $nama,
             'cetak' => $cetak,
             'lhp' => $lhp,
             'lhp2' => $lhp2,

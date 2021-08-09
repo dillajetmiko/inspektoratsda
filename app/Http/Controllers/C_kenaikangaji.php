@@ -5,18 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class C_kenaikangaji extends Controller
 {
     //
     public function insertKenaikanGaji($NIK_PEGAWAI) 
     {
+        $nama = Auth::user()->name;
         $pegawai = DB::table('pegawai')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
         $kenaikan_gaji = DB::table('kenaikan_gaji')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
         $pangkat = DB::table('pangkat')->get();
 
         $data = array(
             'menu' => 'pegawai',
+            'nama' => $nama,
             'pegawai' => $pegawai,
             'kenaikan_gaji' => $kenaikan_gaji,
             'pangkat' => $pangkat,

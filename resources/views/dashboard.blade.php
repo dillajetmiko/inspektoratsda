@@ -25,7 +25,7 @@
 @section('content')
 <!-- Small boxes (Stat box) -->
 @can('show-menu')
-@can('show-lhp')
+@can('tambah-lhp')
 <div class="container">
 	<div class="col-lg-4 col-6">
 		<!-- small box -->

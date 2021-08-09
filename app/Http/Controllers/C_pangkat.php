@@ -5,18 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Auth;
 
 class C_pangkat extends Controller
 {
     //
     public function insertPangkat($NIK_PEGAWAI) 
     {
+        $nama = Auth::user()->name;
         $pegawai = DB::table('pegawai')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
         $pangkat = DB::table('pangkat')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
 
         $data = array(
             'menu' => 'pegawai',
+            'nama' => $nama,
             'pegawai' => $pegawai,
             'pangkat' => $pangkat,
             'submenu' => ''

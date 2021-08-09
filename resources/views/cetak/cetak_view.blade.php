@@ -36,19 +36,19 @@ table, th, td {
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 					<tr>		
-						<th colspan="2" scope="colgroup" style="text-align:center; border: 1px solid black">Temuan</th>
-						<th colspan="2" scope="colgroup" style="text-align:center; border: 1px solid black">Rekomendasi</th>
-						<th colspan="3" scope="colgroup" style="text-align:center; border: 1px solid black">Tindak Lanjut</th>
-						<th rowspan="2" scope="rowgroup" style="text-align:center; border: 1px solid black">Kerugian</th>
+						<th colspan="2" scope="colgroup" style="text-align:center; font-weight: bold; border: 1px solid black">Temuan</th>
+						<th colspan="2" scope="colgroup" style="text-align:center; font-weight: bold; border: 1px solid black">Rekomendasi</th>
+						<th colspan="3" scope="colgroup" style="text-align:center; font-weight: bold; border: 1px solid black">Tindak Lanjut</th>
+						<th rowspan="2" scope="rowgroup" style="text-align:center; font-weight: bold; border: 1px solid black">Kerugian</th>
 					</tr>
 					<tr>
-						<th style="text-align:center; border: 1px solid black">Kode</th>
-						<th style="text-align:center; border: 1px solid black; width: 25px">Uraian</th>
-						<th style="text-align:center; border: 1px solid black">Kode</th>
-						<th style="text-align:center; border: 1px solid black; width: 60px">Uraian</th>
-						<th style="text-align:center; border: 1px solid black; width: 11px">Tanggal</th>
-						<th style="text-align:center; border: 1px solid black; width: 40px">Uraian</th>
-						<th style="text-align:center; border: 1px solid black; width: 15px">status</th>
+						<th style="text-align:center; font-weight: bold; border: 1px solid black">Kode</th>
+						<th style="text-align:center; font-weight: bold; border: 1px solid black; width: 25px">Uraian</th>
+						<th style="text-align:center; font-weight: bold; border: 1px solid black">Kode</th>
+						<th style="text-align:center; font-weight: bold; border: 1px solid black; width: 60px">Uraian</th>
+						<th style="text-align:center; font-weight: bold; border: 1px solid black; width: 11px">Tanggal</th>
+						<th style="text-align:center; font-weight: bold; border: 1px solid black; width: 40px">Uraian</th>
+						<th style="text-align:center; font-weight: bold; border: 1px solid black; width: 15px">Status</th>
 					</tr>
 					</thead>
 					<tbody>		

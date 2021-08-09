@@ -49,7 +49,7 @@
 						<th style="text-align:center">ID SPT</th>
 						<th style="text-align:center">Nomor</th>
 						<th style="text-align:center">Tanggal SPT</th>
-						<!-- <th style="text-align:center">Dasar</th> -->
+						<th style="text-align:center">Dasar</th>
 						<th style="text-align:center">Jenis Pengawasan</th>
 						<th style="text-align:center">Uraian Penugasan</th>
 						<th style="text-align:center">Tim Pelaksana</th>
@@ -63,7 +63,16 @@
 						<td>{{ $data->id }}</td>
 						<td>{{ $data->NOMOR_SPT }}</td>
 						<td>{{ $data->TANGGAL_SPT }}</td>
-						<!-- <td>{{ $data->DASAR_SPT }}</td> -->
+						<td>
+						@foreach($dasar as $das)
+						@if ($das->id_spt === $data->id)
+							{{$das->uraian_dasar}}<br>
+						@endif
+						@endforeach
+						<a href='/dasar/insert_view_dasar/{{ $data->id }}'>
+                        Lihat Detail
+                        </a>
+						</td>
 						<td>
 						@foreach($jenis_pengawasan as $jenis)
 						@if ($jenis->ID_PENGAWASAN === $data->ID_PENGAWASAN)
@@ -86,7 +95,7 @@
 						@endif
 						@endforeach
 						<a href='/penugasan/insert_view_penugasan/{{ $data->id }}'>
-                        lihat penugasan
+                        Lihat Detail
                         </a>
 						</td>
                         <td>

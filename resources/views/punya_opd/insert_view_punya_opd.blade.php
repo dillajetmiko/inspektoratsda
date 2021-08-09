@@ -35,6 +35,7 @@
   </div>
   <div class="card-body">
 		<div class="card">
+		@can('edit-hapus-temuan')
 			<div class="card-header">
 				<div class="form-group">
 					<form action="/punya_opd/insert_view_punya_opd" method="post" enctype="multipart/form-data">
@@ -62,7 +63,7 @@
 					</form>
 				</div>
 			</div>
-			
+		@endcan
 
 			<!-- /.card-header -->
 			<div class="card-body">
@@ -74,7 +75,9 @@
 						<th style="text-align:center">Nama Pejabat</th>
 						<th style="text-align:center">Nama Jabatan</th>
 						<th style="text-align:center">NIP</th>
+						@can('edit-hapus-temuan')
 						<th style="text-align:center" width="15%">Aksi</th>
+						@endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -92,6 +95,7 @@
 						<td>{{ $data->NAMA_PEJABAT }}</td>
 						<td>{{ $data->JABATAN_PEJABAT }}</td>
 						<td>{{ $data->NIP_PEJABAT }}</td>
+						@can('edit-hapus-temuan')
 						<td>
 						<!-- <a href='/punya_opd/edit_punya_opd/{{ $data->ID_REKOMENDASI }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
@@ -99,7 +103,8 @@
 						<a href='/punya_opd/hapus/{{ $data->ID_REKOMENDASI }}&{{ $data->KODE_OPD}}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
-						</td>             
+						</td>  
+						@endcan           
 					</tr>
 					@endforeach
 					</tbody>

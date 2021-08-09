@@ -5,18 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class C_keluarga extends Controller
 {
         public function insertKeluarga($NIK_PEGAWAI) 
         {
-            
+            $nama = Auth::user()->name;
             $pegawai = DB::table('pegawai')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
             $keluarga = DB::table('keluarga')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
             $status = DB::table('status_keluarga')->get();
     
             $data = array(
                 'menu' => 'pegawai',
+                'nama' => $nama,
                 'pegawai' => $pegawai,
                 'keluarga' => $keluarga,
                 'status' => $status,

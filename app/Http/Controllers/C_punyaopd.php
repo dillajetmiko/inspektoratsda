@@ -5,18 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class C_punyaopd extends Controller
 {
     //
     public function insertOPD($id) 
     {
+        $nama = Auth::user()->name;
         $rekomendasi = DB::table('rekomendasi')->where('id', $id)->get();
         $punya_opd = DB::table('punya_opd')->where('ID_REKOMENDASI', $id)->get();
         $opd = DB::table('opd')->get();
 
         $data = array(
             'menu' => 'temuan',
+            'nama' => $nama,
             'rekomendasi' => $rekomendasi,
             'punya_opd' => $punya_opd,
             'opd' => $opd,

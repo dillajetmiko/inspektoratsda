@@ -99,9 +99,6 @@
 							@endforeach
 						@endif
 						@endforeach
-						<a href='/penugasan/insert_view_penugasan/{{ $data->id }}'>
-                        lihat penugasan
-                        </a>
 						</td>          
 					</tr>
 					@endforeach

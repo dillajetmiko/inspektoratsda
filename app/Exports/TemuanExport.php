@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
+use Illuminate\Support\Facades\Auth;
 
 class TemuanExport implements FromView
 {
@@ -16,6 +17,7 @@ class TemuanExport implements FromView
 
     public function view(): View
     {
+        $nama = Auth::user()->name;
         // $cetak = DB::table('temuan')->where('NOMOR_LHP',$this->lhp)->get();
         $cetak = DB::table('temuan')
                         ->leftJoin('rekomendasi', 'rekomendasi.ID_TEMUAN', '=', 'temuan.id')
@@ -39,6 +41,7 @@ class TemuanExport implements FromView
 
         $data = array(
             'menu' => 'cetak',
+            'nama' => $nama,
             'cetak' => $cetak,
             'id' => $id,
             'lhp' => $lhp,

@@ -35,7 +35,7 @@
   </div>
   <div class="card-body">
 		<div class="card">
-		@can('edit-hapus-rekomendasi')
+		@can('edit-hapus-temuan')
 			<div class="card-header">
 				<div class="form-group">
 					<form action="/rekomendasi/insert_view_rekomendasi" method="post" enctype="multipart/form-data">
@@ -59,7 +59,7 @@
 					</form>
 				</div>
 			</div>
-			@endcan
+		@endcan
 
 			<!-- /.card-header -->
 			<div class="card-body">
@@ -74,7 +74,7 @@
 						<th style="text-align:center">Tanggal Tindak Lanjut</th>
 						<th style="text-align:center">Hasil Telaah Tindak Lanjut</th>
 						<th style="text-align:center">OPD</th>
-						@can('edit-hapus-rekomendasi')
+						@can('edit-hapus-temuan')
 						<th style="text-align:center" width="15%">Aksi</th>
 						@endcan
 					</tr>
@@ -109,7 +109,7 @@
                         lihat opd
                         </a>
 						</td> 
-						@can('edit-hapus-rekomendasi')
+						@can('edit-hapus-temuan')
 						<td>
 						<a href='/rekomendasi/edit_rekomendasi/{{ $data->id }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>

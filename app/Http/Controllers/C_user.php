@@ -5,17 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class C_user extends Controller
 {
     //
     public function index()
     {
+        $nama = Auth::user()->name;
         $user = DB::table('users')->get();
         $role = DB::table('role')->get();
 
         $data = array(
             'menu' => 'user',
+            'nama' => $nama,
             'user' => $user,
             'role' => $role,
             'submenu' => ''
@@ -26,11 +29,13 @@ class C_user extends Controller
 
     public function insertUser()
     {
+        $nama = Auth::user()->name;
         $user = DB::table('users')->get();
         $role = DB::table('role')->get();
 
         $data = array(
             'menu' => 'user',
+            'nama' => $nama,
             'user' => $user,
             'role' => $role,
             'submenu' => ''
@@ -49,11 +54,13 @@ class C_user extends Controller
 
     public function editUser($NIP) 
     {
+        $nama = Auth::user()->name;
         $user = DB::table('users')->where('NIP', $NIP)->get();
         $role = DB::table('role')->get();
     
         $data = array(
             'menu' => 'user',
+            'nama' => $nama,
             'user' => $user,
             'role' => $role,
             'submenu' => ''          

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\C_lhp;
 use App\Http\Controllers\C_temuan;
@@ -23,6 +24,9 @@ use App\Http\Controllers\C_diklat;
 use App\Http\Controllers\C_kenaikangaji;
 use App\Http\Controllers\C_pendidikan;
 use App\Http\Controllers\C_jabatan;
+use App\Http\Controllers\C_opd;
+use App\Http\Controllers\C_tugas;
+use App\Http\Controllers\C_jenispengawasan;
 
 
 
@@ -41,9 +45,11 @@ use App\Http\Controllers\C_jabatan;
 */
 
 Route::get('/', function () {
-    
+    $nama = Auth::user()->name;
+
     $data = array(
         'menu' => 'dashboard',
+        'nama' => $nama,
         'submenu' => ''
     );
 
@@ -68,6 +74,27 @@ Route::get('/login1', [C_login::class, 'getLogin1']);
 Route::post('/postLogin1', 'C_login@postLogin1');
 
 Route::get('/dashboard', [C_dashboard::class, 'index'])->middleware('auth');
+
+Route::get('/opd', [C_opd::class, 'index'])->middleware('auth');
+Route::get('/opd/insert_opd', [C_opd::class, 'insertOPD'])->middleware('auth');
+Route::post('/opd/tambah_opd', [C_opd::class, 'tambahOPD'])->middleware('auth');
+Route::get('/opd/edit_opd/{KODE_OPD}', [C_opd::class, 'editOPD'])->middleware('auth');
+Route::post('/opd/update_opd', [C_opd::class, 'updateOPD'])->middleware('auth');
+Route::get('/opd/hapus/{KODE_OPD}', [C_opd::class, 'hapus'])->middleware('auth');
+
+Route::get('/tugas', [C_tugas::class, 'index'])->middleware('auth');
+Route::get('/tugas/insert_tugas', [C_tugas::class, 'insertTugas'])->middleware('auth');
+Route::post('/tugas/tambah_tugas', [C_tugas::class, 'tambahTugas'])->middleware('auth');
+Route::get('/tugas/edit_tugas/{ID_TUGAS}', [C_tugas::class, 'editTugas'])->middleware('auth');
+Route::post('/tugas/update_tugas', [C_tugas::class, 'updateTugas'])->middleware('auth');
+Route::get('/tugas/hapus/{ID_TUGAS}', [C_tugas::class, 'hapus'])->middleware('auth');
+
+Route::get('/jenis_pengawasan', [C_jenispengawasan::class, 'index'])->middleware('auth');
+Route::get('/jenis_pengawasan/insert_jenis_pengawasan', [C_jenispengawasan::class, 'insertJenispengawasan'])->middleware('auth');
+Route::post('/jenis_pengawasan/tambah_jenis_pengawasan', [C_jenispengawasan::class, 'tambahJenispengawasan'])->middleware('auth');
+Route::get('/jenis_pengawasan/edit_jenis_pengawasan/{KODE_jenis_pengawasan}', [C_jenispengawasan::class, 'editJenispengawasan'])->middleware('auth');
+Route::post('/jenis_pengawasan/update_jenis_pengawasan', [C_jenispengawasan::class, 'updateJenispengawasan'])->middleware('auth');
+Route::get('/jenis_pengawasan/hapus/{KODE_jenis_pengawasan}', [C_jenispengawasan::class, 'hapus'])->middleware('auth');
 
 Route::get('/lhp', [C_lhp::class, 'index'])->middleware('auth');
 Route::get('/lhp/insert_lhp', [C_lhp::class, 'insertLHP'])->middleware('auth');

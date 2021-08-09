@@ -17,12 +17,14 @@ class C_temuan extends Controller
         foreach (range($year, 2000) as $number) {
             array_push($years, $number);
         }
+        $nama = Auth::user()->name;
         $temuan = DB::table('temuan')->get();
         $id = DB::table('opd')->get();
         $punya_opd = DB::table('punya_opd')->get();
         $rekomendasi = DB::table('rekomendasi')->leftJoin('status','status.KODE_STATUS','=','rekomendasi.ID_STATUS')->get();
         $data = array(
             'menu' => 'temuan',
+            'nama' => $nama,
             'temuan' => $temuan,
             'id' => $id,
             'punya_opd' => $punya_opd,
@@ -68,11 +70,13 @@ class C_temuan extends Controller
         //     $temuan = DB::table('temuan')->where('KODE_JENIS_TEMUAN',$jenis)->where('KODE_OPD',$kode_opd)->whereYear('TANGGAL_TEMUAN', $tahun)->get();
         // }
 
+        $nama = Auth::user()->name;
         $id = DB::table('opd')->get();
-        $rekomendasi = DB::table('rekomendasi')->get();
+        $rekomendasi = DB::table('rekomendasi')->leftJoin('status','status.KODE_STATUS','=','rekomendasi.ID_STATUS')->get();
 
         $data = array(
             'menu' => 'temuan',
+            'nama' => $nama,
             'temuan' => $temuan,
             'id' => $id,
             // 'punya_opd' => $punya_opd,
@@ -88,6 +92,7 @@ class C_temuan extends Controller
 
     public function insertTemuan()
     {
+        $nama = Auth::user()->name;
         $temuan = DB::table('temuan')->get();
         $id = DB::table('opd')->get();
         $id2 = DB::table('lhp')->get();
@@ -95,6 +100,7 @@ class C_temuan extends Controller
 
         $data = array(
             'menu' => 'temuan',
+            'nama' => $nama,
             'temuan' => $temuan,
             'id' => $id,
             'id2' => $id2,
@@ -123,6 +129,7 @@ class C_temuan extends Controller
 
       public function editTemuan($id) 
     {
+        $nama = Auth::user()->name;
         $temuan = DB::table('temuan')->where('id', $id)->get();
         $id = DB::table('opd')->get();
         $id2 = DB::table('lhp')->get();
@@ -130,6 +137,7 @@ class C_temuan extends Controller
     
         $data = array(
             'menu' => 'temuan',
+            'nama' => $nama,
             'temuan' => $temuan,
             'id' => $id,
             'id2' => $id2,
