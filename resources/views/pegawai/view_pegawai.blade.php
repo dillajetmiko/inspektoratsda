@@ -133,7 +133,7 @@
 						<a href='/pegawai/edit_pegawai/{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a>
-						<button onclick="confirmDelete({{ $data->NIK_PEGAWAI }})" class="btn btn-danger">
+						<button onclick="confirmDelete('{{ $data->NIK_PEGAWAI }}')" class="btn btn-danger">
 						<i class="fas fa-trash"></i> Hapus</button>
 						@endcan           
 						 
@@ -183,7 +183,7 @@
 		</button>
       </div>
       <div class="modal-body">
-        Apakah anda yakin ingin mengahpus data ini?
+        Apakah anda yakin ingin menghapus data ini?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

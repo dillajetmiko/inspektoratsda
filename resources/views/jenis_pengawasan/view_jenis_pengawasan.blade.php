@@ -77,7 +77,7 @@
 						<a href='/jenis_pengawasan/edit_jenis_pengawasan/{{ $data->ID_PENGAWASAN }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a>
-						<button onclick="confirmDelete({{ $data->ID_PENGAWASAN }})" class="btn btn-danger">
+						<button onclick="confirmDelete('{{ $data->ID_PENGAWASAN }}')" class="btn btn-danger">
 						<i class="fas fa-trash"></i> Hapus</button>
 						</td> 
 						@endcan  
@@ -111,7 +111,7 @@
 		</button>
       </div>
       <div class="modal-body">
-        Apakah anda yakin ingin mengahpus data ini?
+        Apakah anda yakin ingin menghapus data ini?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

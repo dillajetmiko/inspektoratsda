@@ -151,10 +151,10 @@
 					<td><a href='/temuan/edit_temuan/{{ $data->id }}'>
 					<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 					</a>
-					<a href='/temuan/hapus/{{ $data->id }}'>
+					<!-- <a href='/temuan/hapus/{{ $data->id }}'>
 					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
-					</a>
-					<!-- <button onclick="confirmDelete({{ $data->id }})" class="btn btn-danger btn-sm"> Hapus</button> -->
+					</a> -->
+					<button onclick="confirmDelete('{{ $data->id }}')" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 					</td> 
 					@endcan
                      
@@ -191,10 +191,12 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Hapus Data</h5>
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
       </div>
       <div class="modal-body">
-        Apakah anda yakin ingin mengahpus data ini?
+        Apakah anda yakin ingin menghapus data ini?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

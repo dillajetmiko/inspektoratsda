@@ -114,7 +114,7 @@
 						<!-- <a href='/spt/hapus/{{ $data->id }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a> -->
-						<button onclick="confirmDelete({{ $data->id }})" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+						<button onclick="confirmDelete('{{ $data->id }}')" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						@endcan
 						</a>
 						<a href='/spt/generate-docx/{{ $data->id }}'>
@@ -161,7 +161,7 @@
 		</button>
       </div>
       <div class="modal-body">
-        Apakah anda yakin ingin mengahpus data ini?
+        Apakah anda yakin ingin menghapus data ini?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

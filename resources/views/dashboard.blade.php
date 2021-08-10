@@ -25,10 +25,10 @@
 @section('content')
 <!-- Small boxes (Stat box) -->
 @can('show-menu')
-@can('tambah-lhp')
-<div class="container">
 
-<div class="col-lg-4 col-6">
+<div class="container">
+	@can('tambah-pegawai')
+	<div class="col-lg-4 col-6">
 		<!-- small box -->
 		<div class="small-box bg-warning">
 			<div class="inner">
@@ -41,7 +41,9 @@
 			<a href="/pegawai/insert_pegawai" class="small-box-footer">Input <i class="fas fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
+	@endcan
 
+	@can('tambah-spt')
 	<div class="col-lg-3 col-5">
 		<!-- small box -->
 		<div class="small-box bg-danger">
@@ -55,7 +57,9 @@
 			<a href="/lhp/insert_lhp" class="small-box-footer">Input <i class="fas fa-arrow-circle-right"></i></a>
 		</div>
 	</div>
+	@endcan
 
+	@can('tambah-lhp')
 	<div class="col-lg-3 col-6">
 		<!-- small box -->
 		<div class="small-box bg-info">
@@ -85,11 +89,10 @@
 		</div>
 	</div>
 	<!-- ./col -->
-
-	
+	@endcan
 
 </div>
-@endcan
+
 @else
 anda belum punya role
 @endcan

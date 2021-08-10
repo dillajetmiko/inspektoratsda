@@ -20,11 +20,14 @@ class TemuanExport implements FromView
         $nama = Auth::user()->name;
         // $cetak = DB::table('temuan')->where('NOMOR_LHP',$this->lhp)->get();
         $cetak = DB::table('temuan')
+                        ->select('temuan.*', 'rekomendasi.*', 'rekomendasi.id as idrekom','temuan.id as idtemuan')
                         ->leftJoin('rekomendasi', 'rekomendasi.ID_TEMUAN', '=', 'temuan.id')
                         ->where('temuan.NOMOR_LHP',$this->lhp)->get();
-        $id = DB::table('opd')->get();
+        $opd = DB::table('opd')->get();
         $lhp = DB::table('lhp')->get();
-        $punya_opd = DB::table('punya_opd')->get();
+        $punya_opd = DB::table('punya_opd')
+                        ->leftJoin('rekomendasi', 'rekomendasi.id', '=', 'punya_opd.ID_REKOMENDASI')
+                        ->get();
         $lhp2 = DB::table('lhp')->where('NOMOR_LHP',$this->lhp)->get();
 
         $uraian='';
@@ -43,7 +46,7 @@ class TemuanExport implements FromView
             'menu' => 'cetak',
             'nama' => $nama,
             'cetak' => $cetak,
-            'id' => $id,
+            'opd' => $opd,
             'lhp' => $lhp,
             'lhp2' => $lhp2,
             'punya_opd' => $punya_opd,

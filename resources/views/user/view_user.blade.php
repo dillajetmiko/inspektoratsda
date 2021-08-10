@@ -76,7 +76,7 @@
 					<!-- <a href='/user/hapus/{{ $data->NIP }}'>
 					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 					</a> -->
-					<button onclick="confirmDelete({{ $data->NIP }})" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+					<button onclick="confirmDelete('{{ $data->NIP }}')" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 					</td>             
 					@endcan
 				</tr>
@@ -107,7 +107,7 @@
 		</button>
       </div>
       <div class="modal-body">
-        Apakah anda yakin ingin mengahpus data ini?
+        Apakah anda yakin ingin menghapus data ini?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
