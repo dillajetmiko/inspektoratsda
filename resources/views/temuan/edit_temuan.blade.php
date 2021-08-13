@@ -39,7 +39,7 @@
 
 			id : <input type="text" class="form-control" name="id" value="{{ $temuan[0]->id }}" readonly><br>
 			Kode Temuan :
-            <select class="form-control select2" name="KODE_KATEGORI">
+            <select class="form-control select2" name="ID_KATEGORI">
 						@foreach ($id4 as $kategori)
 						<option value="{{ $kategori->KODE_KATEGORI}}">{{ $kategori->KODE_KATEGORI}}</option>
 						@endforeach

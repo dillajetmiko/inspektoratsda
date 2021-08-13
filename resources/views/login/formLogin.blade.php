@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+body {
+  background-image: url("{{ asset('asset/dist/img/sda.png') }}");
+  background-repeat: no-repeat;
+  background-position: right top;
+  margin-right: 200px;
+  background-attachment: fixed;
+}
+</style>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Inspektorat | Log in</title>

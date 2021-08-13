@@ -35,11 +35,114 @@
   <div class="card-body">
 		<div class="card">
 			<div class="card-header">
-				@can('tambah-spt')
-				<a href="/spt/insert_spt">
-				<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data SPT</button>
-				</a>
-				@endcan
+				<div class="row">
+					<div class="col-md-9">
+						<div class="form-group">
+							<form action="/spt/cari" method="GET">
+							<!-- <input type="text" name="cari" placeholder="Cari Pegawai .." value="{{ old('cari') }}">
+							<input type="submit" value="CARI"> -->
+							<div class="input-group">
+								<div style="width: 30%">
+									<select class="form-control select2" name="jenis">
+										<option value="0">-Jenis Pengawasan-</option>
+										@foreach ($jenis_pengawasan as $jenis)
+										<option value="{{ $jenis->ID_PENGAWASAN}}">{{ $jenis->NAMA_PENGAWASAN}}</option>
+										@endforeach
+									</select>
+								</div>
+								<div style="width: 20%">
+									<select class="form-control select2" name="year">
+										<option value="0">-Pilih Tahun-</option>
+										@foreach ($years as $year)
+										<option value="{{ $year }}">{{ $year }}</option>
+										@endforeach
+									</select>
+								</div>
+								<div style="width: 20%">
+									<select class="form-control select2" name="bulan">
+										<option value="0">-Pilih Bulan-</option>
+										<option value="1">Januari</option>
+										<option value="2">Februari</option>
+										<option value="3">Maret</option>
+										<option value="4">April</option>
+										<option value="5">Mei</option>
+										<option value="6">Juni</option>
+										<option value="7">Juli</option>
+										<option value="8">Agustus</option>
+										<option value="9">September</option>
+										<option value="10">Oktober</option>
+										<option value="11">November</option>
+										<option value="12">Desember</option>
+									</select>
+								</div>
+								<!-- <div style="width: 30%">
+									<input type="date" class="form-control" name="tanggal"><br>
+								</div> -->
+								<div class="input-group-append">
+									<span><input type="submit" class="btn btn-default" value="CARI"></span>
+								</div>
+							</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-md-3">
+						@can('tambah-spt')
+						<a href="/spt/insert_spt">
+						<button type="button" class="btn btn-info float-right" style="float: right;"><i class="fas fa-plus"></i>  Tambah Data SPT</button>
+						</a>
+						@endcan
+					</div>
+					<div class="col-md-9">
+						<div class="form-group">
+							<form action="/spt/export" method="GET">
+							<!-- <input type="text" name="cari" placeholder="Cari Pegawai .." value="{{ old('cari') }}">
+							<input type="submit" value="CARI"> -->
+								<div class="input-group">
+									<div style="width: 30%">
+										<select class="form-control select2" name="jenis">
+											<option value="0">-Jenis Pengawasan-</option>
+											@foreach ($jenis_pengawasan as $jenis)
+											<option value="{{ $jenis->ID_PENGAWASAN}}">{{ $jenis->NAMA_PENGAWASAN}}</option>
+											@endforeach
+										</select>
+									</div>
+									<div style="width: 20%">
+										<select class="form-control select2" name="year">
+											<option value="0">-Pilih Tahun-</option>
+											@foreach ($years as $year)
+											<option value="{{ $year }}">{{ $year }}</option>
+											@endforeach
+										</select>
+									</div>
+									<div style="width: 20%">
+										<select class="form-control select2" name="bulan">
+											<option value="0">-Pilih Bulan-</option>
+											<option value="1">Januari</option>
+											<option value="2">Februari</option>
+											<option value="3">Maret</option>
+											<option value="4">April</option>
+											<option value="5">Mei</option>
+											<option value="6">Juni</option>
+											<option value="7">Juli</option>
+											<option value="8">Agustus</option>
+											<option value="9">September</option>
+											<option value="10">Oktober</option>
+											<option value="11">November</option>
+											<option value="12">Desember</option>
+										</select>
+									</div>
+									<!-- <div style="width: 30%">
+										<input type="date" class="form-control" name="tanggal"><br>
+									</div> -->
+									<div class="input-group-append">
+										<span><input type="submit" class="btn btn-default" value="EXPORT"></span>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body">
@@ -49,11 +152,14 @@
 						<th style="text-align:center">ID SPT</th>
 						<th style="text-align:center">Nomor</th>
 						<th style="text-align:center">Tanggal SPT</th>
+						<th style="text-align:center">Tanggal Mulai</th>
+						<th style="text-align:center">Tanggal Selesai</th>
 						<th style="text-align:center">Dasar</th>
 						<th style="text-align:center">Jenis Pengawasan</th>
 						<th style="text-align:center">Uraian Penugasan</th>
 						<th style="text-align:center">Tim Pelaksana</th>
                         <th style="text-align:center">Upload File</th>
+                        <th style="text-align:center">Keterangan</th>
 						<th style="text-align:center" width="15%">Aksi</th>
 					</tr>
 					</thead>
@@ -63,6 +169,8 @@
 						<td>{{ $data->id }}</td>
 						<td>{{ $data->NOMOR_SPT }}</td>
 						<td>{{ $data->TANGGAL_SPT }}</td>
+						<td>{{ $data->tgl_mulai }}</td>
+						<td>{{ $data->tgl_selesai }}</td>
 						<td>
 						@foreach($dasar as $das)
 						@if ($das->id_spt === $data->id)
@@ -106,6 +214,8 @@
 							<i class="fa fa-download"></i> Download
 						</a>
 						@endif
+						</td>
+						<td>{{ $data->keterangan }}</td>
 						<td>
 						@can('edit-hapus-spt')
 						<a href='/spt/edit_spt/{{ $data->id }}'>

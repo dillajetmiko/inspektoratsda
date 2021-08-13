@@ -15,7 +15,7 @@ class C_kenaikangaji extends Controller
         $nama = Auth::user()->name;
         $pegawai = DB::table('pegawai')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
         $kenaikan_gaji = DB::table('kenaikan_gaji')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
-        $pangkat = DB::table('pangkat')->get();
+        $pangkat = DB::table('pangkat')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
 
         $data = array(
             'menu' => 'pegawai',
@@ -36,8 +36,8 @@ class C_kenaikangaji extends Controller
             'TMT_KENAIKAN_GAJI' => $post->TMT_KENAIKAN_GAJI, 
             'NOMINAL_GAJI' => $post->NOMINAL_GAJI, 
             'ID_PANGKAT' => $post->ID_PANGKAT, 
-            'NAMA_GOLONGAN' => $post->NAMA_GOLONGAN, 
             'MASA_KERJA' => $post->MASA_KERJA, 
+            'MASA_KERJA_KESELURUHAN' => $post->MASA_KERJA_KESELURUHAN, 
             
         ]);
 

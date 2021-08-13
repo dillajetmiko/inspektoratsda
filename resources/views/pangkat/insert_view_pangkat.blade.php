@@ -40,7 +40,7 @@
 					NIK Pegawai : <input type="text" class="form-control" name="NIK_PEGAWAI" value="{{$pegawai[0]->NIK_PEGAWAI}}" readonly><br>
                     Nama Pegawai : <input type="text" class="form-control" name="NAMA_PEGAWAI" value="{{$pegawai[0]->NAMA_PEGAWAI}}" readonly><br>
                     TMT : <input type="date" class="form-control" name="TMT_PANGKAT"><br>
-                    Nama Pangkat : <input type="text" class="form-control" name="NAMA_PANGKAT"><br>
+                    Pangkat/Golongan Ruang : <input type="text" class="form-control" name="NAMA_PANGKAT"><br>
 					
                     <button type="submit" class="btn btn-primary">Simpan</button>
 					<a href='/diklat/insert_view_diklat/{{$pegawai[0]->NIK_PEGAWAI}}'>
@@ -57,7 +57,7 @@
 					<thead>
 					<tr>
 						<th style="text-align:center">TMT</th>
-						<th style="text-align:center">Nama Pangkat</th>
+						<th style="text-align:center">Pangkat/Golongan Ruang</th>
 						@can('edit-hapus-pegawai')
 						<th style="text-align:center" width="15%">Aksi</th>
 						@endcan

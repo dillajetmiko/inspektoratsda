@@ -39,6 +39,7 @@ table, th, td {
 						<th colspan="2" scope="colgroup" style="text-align:center; font-weight: bold; border: 1px solid black">Temuan</th>
 						<th colspan="2" scope="colgroup" style="text-align:center; font-weight: bold; border: 1px solid black">Rekomendasi</th>
 						<th colspan="3" scope="colgroup" style="text-align:center; font-weight: bold; border: 1px solid black">Tindak Lanjut</th>
+						<th rowspan="2" scope="rowgroup" style="text-align:center; font-weight: bold; border: 1px solid black; width: 30px">Hasil Telaah TL</th>
 						<th rowspan="2" scope="rowgroup" style="text-align:center; font-weight: bold; border: 1px solid black; width: 15px">OPD</th>
 						<th rowspan="2" scope="rowgroup" style="text-align:center; font-weight: bold; border: 1px solid black">Kerugian</th>
 					</tr>
@@ -69,6 +70,8 @@ table, th, td {
 						@elseif ($data->ID_STATUS == 3)
 						Sesuai Rekomendasi<br>
 						@endif
+						</td>
+						<td style="border: 1px solid black;">{{$data->HASIL_TELAAH_TINDAK_LANJUT}}<br></td>
 						<td style="border: 1px solid black;">
 						@foreach($punya_opd as $po)
 						@if ($po->ID_REKOMENDASI === $data->idrekom)

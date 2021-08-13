@@ -46,15 +46,15 @@
 					Nama Pegawai : <input type="text" class="form-control" name="NAMA_PEGAWAI" value="{{$pegawai[0]->NAMA_PEGAWAI}}" readonly><br>
 					TMT : <input type="date" class="form-control" name="TMT_KENAIKAN_GAJI"><br>
 					Nominal Gaji : <input type="text" class="form-control" name="NOMINAL_GAJI"><br>
-                    Pangkat : 
+                    Pangkat/Golongan Ruang : 
 						<select class="form-control select2" name="ID_PANGKAT">
 						@foreach ($pangkat as $kat)
 						<option value="{{ $kat->ID_PANGKAT}}">{{ $kat->NAMA_PANGKAT}}</option>
 						@endforeach
 						</select>
 						</select><br>
-					Golongan : <input type="text" class="form-control" name="NAMA_GOLONGAN"><br>
-					Masa Kerja : <input type="text" class="form-control" name="MASA_KERJA"><br>
+					Masa Kerja Golongan : <input type="text" class="form-control" name="MASA_KERJA"><br>
+					Masa Kerja Keseluruhan : <input type="text" class="form-control" name="MASA_KERJA_KESELURUHAN"><br>
 
 					<button type="submit" class="btn btn-primary">Simpan</button>
 					<a href='/pegawai'>
@@ -74,8 +74,8 @@
 						<th style="text-align:center">TMT</th>
 						<th style="text-align:center">Nominal Gaji</th>
 						<th style="text-align:center">Pangkat</th>
-						<th style="text-align:center">Golongan</th>
-						<th style="text-align:center">Masa Kerja</th>
+						<th style="text-align:center">Masa Kerja Golongan</th>
+						<th style="text-align:center">Masa Kerja Keseluruhan</th>
 						@can('edit-hapus-pegawai')
 						<th style="text-align:center" width="15%">Aksi</th>
 						@endcan
@@ -93,8 +93,8 @@
 						@endif
 						@endforeach
 						</td> 
-					<td>{{ $data->NAMA_GOLONGAN }}</td>
 					<td>{{ $data->MASA_KERJA }}</td>
+					<td>{{ $data->MASA_KERJA_KESELURUHAN }}</td>
 					@can('edit-hapus-pegawai')					
 					<td>
 					<a href='/kenaikan_gaji/hapus/{{ $data->ID_KENAIKAN_GAJI }}&{{ $data->NIK_PEGAWAI }}'>

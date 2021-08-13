@@ -148,6 +148,8 @@ Route::get('/spt/hapus/{ID_SPT}', [C_spt::class, 'hapus'])->middleware('auth');
 Route::get('/spt/cetak_spt', [C_spt::class, 'cetak'])->middleware('auth');
 Route::get('/spt/download/{ID_SPT}', [C_spt::class, 'download'])->name('file.download')->middleware('auth');
 Route::get('/spt/generate-docx/{ID_SPT}', [C_spt::class, 'generateDocx']);
+Route::get('/spt/cari', [C_spt::class, 'cari'])->middleware('auth');
+Route::get('/spt/export', [C_spt::class, 'export'])->middleware('auth');
 
 // Route::get('/penugasan', [C_penugasan::class, 'index'])->middleware('auth');
 Route::get('/penugasan/insert_view_penugasan/{ID_SPT}', [C_penugasan::class, 'insertPenugasan'])->middleware('auth');
