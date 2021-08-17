@@ -235,14 +235,6 @@
 					@endforeach
 					</tbody>
 					<tfoot>
-					<!-- <tr>
-					<th>NIS_NIP</th>
-					<th>nama_anggota</th>
-					<th>tahun_masuk</th>
-					<th>kelas</th>
-					<th>username_anggota</th>
-					<th>password_anggota</th>
-					</tr> -->
 					</tfoot>
 				</table>
 			</div>
