@@ -102,7 +102,14 @@ class C_user extends Controller
 
     public function hapus($NIP)
     {
-    	DB::table('users')->where('NIP',$NIP)->delete();
+    	
+        $delete=DB::table('users')->where('NIP',$NIP)->delete();
+    	if ($delete)
+        {
+            session()->flash('success', 'Data berhasil dihapus');
+        }else{
+            session()->flash('failed', 'Data gagal dihapus!');
+        }
 	    return redirect('/user');
     }
 
