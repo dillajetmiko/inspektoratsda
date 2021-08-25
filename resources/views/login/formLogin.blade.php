@@ -2,12 +2,14 @@
 <html>
 <head>
 <style>
-body {
-  background-image: url("{{ asset('asset/dist/img/sda.png') }}");
-  background-repeat: no-repeat;
-  background-position: right top;
-  margin-right: 200px;
-  background-attachment: fixed;
+.body {
+  background-color: #007bff;
+  background-image: url("img_tree.gif");
+}
+#wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
   <meta charset="utf-8">
@@ -27,15 +29,15 @@ body {
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-image: url({{ asset('asset/dist/bg.jpeg') }})">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Login</b> </a>
+    <!-- <a href="../../index2.html"> </a> -->
   </div>
   <!-- /.login-logo -->
   <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+    <div class="card-body login-card-body" style="background-color: #ccdcff">
+      <h2 style="text-align: center;">Login</h2><br>
 
                 @if ($name != '')
                 <div class="alert alert-danger" role="alert">
@@ -48,7 +50,7 @@ body {
         <div class="input-group mb-3">
           <input type="text" name="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
-            <div class="input-group-text">
+            <div class="input-group-text" style="background-color: #eaeaea">
               <span class="fas fa-envelope"></span>
             </div>
           </div>
@@ -56,23 +58,23 @@ body {
         <div class="input-group mb-3">
           <input type="password" name="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
-            <div class="input-group-text">
+            <div class="input-group-text" style="background-color: #eaeaea">
               <span class="fas fa-lock"></span>
             </div>
           </div>
-        </div>
+        </div><br>
         <div class="row">
-          <div class="col-8">
+          <!-- <div class="col-8">
             <div class="icheck-primary">
               <input type="checkbox" id="remember">
               <label for="remember">
                 Remember Me
               </label>
             </div>
-          </div>
+          </div> -->
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          <div id="wrapper" style="width:100%;">
+            <button type="submit" class="btn btn-primary btn-block" style="width:30%;">Login</button>
           </div>
           <!-- /.col -->
         </div>
