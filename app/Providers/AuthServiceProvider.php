@@ -81,7 +81,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('show-spt', function (User $user) {
-            return in_array($user->id_role, [ADMIN_PERENCANAAN,SUPERADMIN,USER]);
+            return in_array($user->id_role, [ADMIN_PERENCANAAN,SUPERADMIN,USER,ADMIN_EVLAP]);
         });
 
         Gate::define('edit-hapus-user', function (User $user) {

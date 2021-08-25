@@ -9,53 +9,262 @@ use Illuminate\Support\Facades\Auth;
 
 class C_spt extends Controller
 {
-    //
-     //
-     public function index()
-     {
-        $nama = Auth::user()->name;
-         $spt = DB::table('spt')->get();
-         $penugasan = DB::table('penugasan')->get();
-         $dasar = DB::table('dasar')->get();
-         $pegawai = DB::table('pegawai')->get();
-         $jenis_pengawasan = DB::table('jenis_pengawasan')->get();
+    public function index()
+    {
+        $years=[];
+        $year = date("Y");
 
-         $data = array(
-             'menu' => 'spt',
-             'nama' => $nama,
-             'spt' => $spt,
-             'penugasan' => $penugasan,
-             'dasar' => $dasar,
-             'pegawai' => $pegawai,
-             'jenis_pengawasan' => $jenis_pengawasan,
-             'submenu' => ''
-         );
+        foreach (range($year, 2000) as $number) {
+            array_push($years, $number);
+        }
+        $nama = Auth::user()->name;
+        $spt = DB::table('spt')->get();
+        $penugasan = DB::table('penugasan')->get();
+        $dasar = DB::table('dasar')->get();
+        $pegawai = DB::table('pegawai')->get();
+        $jenis_pengawasan = DB::table('jenis_pengawasan')->get();
+
+        $data = array(
+            'menu' => 'spt',
+            'nama' => $nama,
+            'spt' => $spt,
+            'penugasan' => $penugasan,
+            'dasar' => $dasar,
+            'pegawai' => $pegawai,
+            'jenis_pengawasan' => $jenis_pengawasan,
+            'years' => $years,
+            'submenu' => ''
+        );
+
+        return view('SPT/view_spt',$data);
+    }
+
+    public function cari(Request $request)
+	{
+		$years=[];
+        $year = date("Y");
+
+        foreach (range($year, 2000) as $number) {
+            array_push($years, $number);
+        }
+        // menangkap data pencarian
+		$jenis = $request->jenis;
+        $bulan = $request->bulan;
+        $tahun = $request->year;
+        $tanggal = $request->tanggal;
+
+        // $spt = DB::table('penugasan')
+        //                 ->leftJoin('spt', 'spt.id', '=', 'penugasan.id_spt')
+        //                 ->where('penugasan.NIK_PEGAWAI',$nik)
+        //                 ->whereYear('tgl_mulai', $tahun)
+        //                 ->whereMonth('tgl_mulai', $bulan)
+        //                 ->get();
+        // if($nik == 0){
+        //     $spt = DB::table('spt')
+        //                     ->where('tgl_mulai', '<=', $tanggal)
+        //                     ->where('tgl_selesai', '>=', $tanggal)
+        //                     ->get();
+        // }else{
+        //     $spt = DB::table('penugasan')
+        //                     ->leftJoin('spt', 'spt.id', '=', 'penugasan.id_spt')
+        //                     ->where('penugasan.NIK_PEGAWAI',$nik)
+        //                     ->where('tgl_mulai', '<=', $tanggal)
+        //                     ->where('tgl_selesai', '>=', $tanggal)
+        //                     ->get();
+        // }
+        // dd($spt);
+        // return;
+
+        // $tahun_mulai =  DB::table('spt')->whereYear('tgl_mulai', $tahun)->get();
+        // $tahun_selesai =  DB::table('spt')->whereYear('tgl_selesai', $tahun)->get();
+        // ->where('tgl_mulai', '<=', $tanggal)
+        // ->where('tgl_selesai', '>=', $tanggal)
+
+        // DB::table('spt')
+        //     ->whereYear('tgl_mulai', $tahun)
+        //     ->orWhere(function($query) {
+        //         $query->whereYear('tgl_selesai', $tahun);
+        //     })
+        //     ->get();
+
+        if ($bulan == 0 && $tahun == 0){
+            $spt = DB::table('spt')->where('ID_PENGAWASAN',$jenis)->get();
+        }elseif($jenis == 0 && $tahun == 0){
+            $spt = DB::table('spt')
+            ->whereMonth('tgl_mulai', $bulan)
+            ->orWhere(function($query) use ($bulan) {
+                $query->whereMonth('tgl_selesai', $bulan);
+            })
+            ->get();
+        }elseif($jenis == 0 && $bulan == 0){
+            // $spt = DB::table('spt')->whereYear('tgl_mulai', $tahun)->get();
+            $spt = DB::table('spt')
+            ->whereYear('tgl_mulai', $tahun)
+            ->orWhere(function($query) use ($tahun) {
+                $query->whereYear('tgl_selesai', $tahun);
+            })
+            ->get();
+        }elseif($jenis == 0){
+            $spt = DB::table('spt')
+            ->whereMonth('tgl_mulai', $bulan)
+            ->whereYear('tgl_mulai', $tahun)
+            ->orWhere(function($query) use ($bulan, $tahun) {
+                $query->whereMonth('tgl_selesai', $bulan)
+                        ->whereYear('tgl_selesai', $tahun);
+            })
+            ->get();
+        }elseif($bulan == 0){
+            $spt = DB::table('spt')->where('ID_PENGAWASAN',$jenis)
+            ->whereYear('tgl_mulai', $tahun)
+            ->orWhere(function($query) use ($tahun) {
+                $query->whereYear('tgl_selesai', $tahun);
+            })
+            ->get();
+        }elseif($tahun == 0){
+            $spt = DB::table('spt')->where('ID_PENGAWASAN',$jenis)
+            ->whereMonth('tgl_mulai', $bulan)
+            ->orWhere(function($query) use ($bulan) {
+                $query->whereMonth('tgl_selesai', $bulan);
+            })
+            ->get();
+        }else{
+            $spt = DB::table('spt')->where('ID_PENGAWASAN',$jenis)
+            ->whereMonth('tgl_mulai', $bulan)
+            ->whereYear('tgl_mulai', $tahun)
+            ->orWhere(function($query) use ($bulan, $tahun) {
+                $query->whereMonth('tgl_selesai', $bulan)
+                        ->whereYear('tgl_selesai', $tahun);
+            })
+            ->get();
+        }
+
+        // dd($spt);
+        // return;
+
+        $nama = Auth::user()->name;
+        $penugasan = DB::table('penugasan')->get();
+        $dasar = DB::table('dasar')->get();
+        $pegawai = DB::table('pegawai')->get();
+        $jenis_pengawasan = DB::table('jenis_pengawasan')->get();
+
+        $data = array(
+            'menu' => 'spt',
+            'nama' => $nama,
+            'spt' => $spt,
+            'penugasan' => $penugasan,
+            'dasar' => $dasar,
+            'pegawai' => $pegawai,
+            'jenis_pengawasan' => $jenis_pengawasan,
+            'years' => $years,
+            'tanggal' => $tanggal,
+            'submenu' => ''
+        );
  
-         return view('SPT/view_spt',$data);
-     }
+    		// mengirim data pegawai ke view index
+		return view('SPT/view_spt',$data);
  
-     public function downloadbackup($FILE_SPT)
-     {
-         $file = base64_decode($FILE_SPT);
-         $path=storage_path('app/'.$file);
-         return response()->download($path);
-     }
+	}
+
+    public function export(Request $request)
+	{
+		$years=[];
+        $year = date("Y");
+
+        foreach (range($year, 2000) as $number) {
+            array_push($years, $number);
+        }
+        // menangkap data pencarian
+		$jenis = $request->jenis;
+        $bulan = $request->bulan;
+        $tahun = $request->year;
+        $tanggal = $request->tanggal;
+
+        if ($bulan == 0 && $tahun == 0){
+            $spt = DB::table('spt')->where('ID_PENGAWASAN',$jenis)->get();
+        }elseif($jenis == 0 && $tahun == 0){
+            $spt = DB::table('spt')
+            ->whereMonth('tgl_mulai', $bulan)
+            ->orWhere(function($query) use ($bulan) {
+                $query->whereMonth('tgl_selesai', $bulan);
+            })
+            ->get();
+        }elseif($jenis == 0 && $bulan == 0){
+            // $spt = DB::table('spt')->whereYear('tgl_mulai', $tahun)->get();
+            $spt = DB::table('spt')
+            ->whereYear('tgl_mulai', $tahun)
+            ->orWhere(function($query) use ($tahun) {
+                $query->whereYear('tgl_selesai', $tahun);
+            })
+            ->get();
+        }elseif($jenis == 0){
+            $spt = DB::table('spt')
+            ->whereMonth('tgl_mulai', $bulan)
+            ->whereYear('tgl_mulai', $tahun)
+            ->orWhere(function($query) use ($bulan, $tahun) {
+                $query->whereMonth('tgl_selesai', $bulan)
+                        ->whereYear('tgl_selesai', $tahun);
+            })
+            ->get();
+        }elseif($bulan == 0){
+            $spt = DB::table('spt')->where('ID_PENGAWASAN',$jenis)
+            ->whereYear('tgl_mulai', $tahun)
+            ->orWhere(function($query) use ($tahun) {
+                $query->whereYear('tgl_selesai', $tahun);
+            })
+            ->get();
+        }elseif($tahun == 0){
+            $spt = DB::table('spt')->where('ID_PENGAWASAN',$jenis)
+            ->whereMonth('tgl_mulai', $bulan)
+            ->orWhere(function($query) use ($bulan) {
+                $query->whereMonth('tgl_selesai', $bulan);
+            })
+            ->get();
+        }else{
+            $spt = DB::table('spt')->where('ID_PENGAWASAN',$jenis)
+            ->whereMonth('tgl_mulai', $bulan)
+            ->whereYear('tgl_mulai', $tahun)
+            ->orWhere(function($query) use ($bulan, $tahun) {
+                $query->whereMonth('tgl_selesai', $bulan)
+                        ->whereYear('tgl_selesai', $tahun);
+            })
+            ->get();
+        }
+
+        // dd($spt);
+        // return;
+
+        $nama = Auth::user()->name;
+        $penugasan = DB::table('penugasan')->get();
+        $dasar = DB::table('dasar')->get();
+        $pegawai = DB::table('pegawai')->get();
+        $jenis_pengawasan = DB::table('jenis_pengawasan')->get();
+
+        $data = array(
+            'menu' => 'spt',
+            'nama' => $nama,
+            'spt' => $spt,
+            'penugasan' => $penugasan,
+            'dasar' => $dasar,
+            'pegawai' => $pegawai,
+            'jenis_pengawasan' => $jenis_pengawasan,
+            'years' => $years,
+            'tanggal' => $tanggal,
+            'submenu' => ''
+        );
  
-     public function download($ID_SPT)
-     {
-         $spt = DB::table('spt')->where('id', $ID_SPT)->get();
-         // dd($lhp);
-         // dd($lhp[0]);
-         // $file = base64_decode($FILE_SPT);
-         $path=storage_path('app/'.$spt[0]->FILE_SPT);
-         return response()->download($path);
-     }
+    		// mengirim data pegawai ke view index
+		return view('SPT/export',$data);
+	}
  
-     public function download1()
-     {
-         $path=storage_path('file.jpg');
-         return response()->download($path);
-     }
+    public function download($ID_SPT)
+    {
+        $spt = DB::table('spt')->where('id', $ID_SPT)->get();
+        // dd($lhp);
+        // dd($lhp[0]);
+        // $file = base64_decode($FILE_SPT);
+        $path=storage_path('app/'.$spt[0]->FILE_SPT);
+        return response()->download($path);
+    }
  
      public function insertSpt()
      {
@@ -104,7 +313,8 @@ class C_spt extends Controller
              'isi_jangka_waktu' => $post->isi_jangka_waktu,
              'tgl_mulai' => $post->tgl_mulai,
              'tgl_selesai' => $post->tgl_selesai,
-             'FILE_SPT' => $path
+             'FILE_SPT' => $path,
+             'keterangan' => $post->keterangan
           
          ]);
  
@@ -152,7 +362,8 @@ class C_spt extends Controller
                 'isi_jangka_waktu' => $post->isi_jangka_waktu,      
                 'tgl_mulai' => $post->tgl_mulai,      
                 'tgl_selesai' => $post->tgl_selesai,      
-                'FILE_SPT' => $path         
+                'FILE_SPT' => $path,
+                'keterangan' => $post->keterangan         
             ]);
         }else{
             DB::table('spt')->where('id', $post->ID_SPT)->update([
@@ -165,7 +376,8 @@ class C_spt extends Controller
                 'isi_kepada' => $post->kepada,    
                 'isi_jangka_waktu' => $post->isi_jangka_waktu,    
                 'tgl_mulai' => $post->tgl_mulai,    
-                'tgl_selesai' => $post->tgl_selesai,    
+                'tgl_selesai' => $post->tgl_selesai,
+                'keterangan' => $post->keterangan    
             ]);
         } 
  

@@ -12,6 +12,11 @@
 <!-- DataTables -->
 <link rel="stylesheet" href="{{asset ('asset/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{asset ('asset/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<!-- Select2 -->
+<link rel="stylesheet" href="{{asset ('asset/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset ('asset/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{asset ('asset/dist/css/adminlte.min.css')}}">
 @endsection
 
 @section('content')
@@ -91,6 +96,8 @@
 <script src="{{asset ('asset/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset ('asset/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset ('asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<!-- Select2 -->
+<script src="{{asset ('asset/plugins/select2/js/select2.full.min.js')}}"></script>
 
 <script>
   $(function () {
@@ -98,6 +105,10 @@
       "responsive": true,
       "autoWidth": false,
     });
+
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
   });
 </script>
 

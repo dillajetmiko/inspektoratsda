@@ -61,6 +61,8 @@
           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">File <span class="required">*</span></label>
             <input type='file' name='file' class="form-control">
        </div>
+       Keterangan: 
+        <textarea type="text" class="form-control" name="keterangan"></textarea><br>
         <br> 
 
         <button type="submit" class="btn btn-primary">Simpan</button>
