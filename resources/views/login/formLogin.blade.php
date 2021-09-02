@@ -36,8 +36,9 @@
   </div>
   <!-- /.login-logo -->
   <div class="card">
-    <div class="card-body login-card-body" style="background-color: #ccdcff">
-      <h2 style="text-align: center;">Login</h2><br>
+    <div class="card-body login-card-body" style="background-color: #7f728a " >
+    
+      <h2 style="text-align: center; color: white;">Login</h2><br>
 
                 @if ($name != '')
                 <div class="alert alert-danger" role="alert">
@@ -74,7 +75,9 @@
           </div> -->
           <!-- /.col -->
           <div id="wrapper" style="width:100%;">
-            <button type="submit" class="btn btn-primary btn-block" style="width:30%;">Login</button>
+            <!-- <button type="submit" class="btn btn-primary btn-block" style="width:30%;">Login</button> -->
+            <button type="submit" class="button" 
+              style="color: grey; background-color: #e1dce6; padding: 7px 45px; border-radius: 8px; border: none; font-weight:bold;">Login</button>
           </div>
           <!-- /.col -->
         </div>
