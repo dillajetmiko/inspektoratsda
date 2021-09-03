@@ -24,6 +24,7 @@
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 					<tr>
+						<th style="text-align:center; width: 25px">No.</th>
 						<th style="text-align:center; width: 25px">Nomor SPT</th>
 						<th style="text-align:center; width: 25px">Tim Pelaksana</th>
 						<th style="text-align:center; width: 25px">Uraian Penugasan</th>
@@ -33,16 +34,17 @@
 					<tbody>
 					@foreach($spt as $data)
 					<tr>
+						<td>{{ $no = $no + 1 }}</td>
 						<td>{{ $data->NOMOR_SPT }}</td>
 						<td>
 						@foreach($penugasan as $tugas)
 						@if ($tugas->id_spt === $data->id)
 							@foreach($pegawai as $peg)
 							@if ($peg->NIK_PEGAWAI === $tugas->NIK_PEGAWAI)
-							{{$peg->NAMA_PEGAWAI}}<br>
+							{{$peg->NAMA_PEGAWAI}}
 							@endif
 							@endforeach
-						@endif
+						@endif<br>
 						@endforeach
 						</td> 
 						<td>

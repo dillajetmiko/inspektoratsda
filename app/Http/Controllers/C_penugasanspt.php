@@ -168,6 +168,7 @@ class C_penugasanspt extends Controller
         $penugasan = DB::table('penugasan')->get();
         $pegawai = DB::table('pegawai')->get();
         $jenis_pengawasan = DB::table('jenis_pengawasan')->get();
+        $no = 0;
 
         $data = array(
             'menu' => 'penugasanspt',
@@ -177,6 +178,7 @@ class C_penugasanspt extends Controller
             'pegawai' => $pegawai,
             'jenis_pengawasan' => $jenis_pengawasan,
             'years' => $years,
+            'no' => $no,
             'submenu' => ''
         );
  

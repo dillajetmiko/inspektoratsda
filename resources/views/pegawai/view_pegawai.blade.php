@@ -143,11 +143,9 @@
 						<!-- <a href='/pegawai/hapus/{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a> -->
-						</a>
 						<a href='/pegawai/generate-docx/{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-secondary"><i class="fas fa-print"></i> Cetak</button>
 						</a>
-						</td> 
 						</td>             
 					</tr>
 					@endforeach

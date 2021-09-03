@@ -110,30 +110,36 @@ class C_spt extends Controller
             ->whereYear('tgl_mulai', $tahun)
             ->orWhere(function($query) use ($bulan, $tahun) {
                 $query->whereMonth('tgl_selesai', $bulan)
-                        ->whereYear('tgl_selesai', $tahun);
+                      ->whereYear('tgl_selesai', $tahun);
             })
             ->get();
         }elseif($bulan == 0){
-            $spt = DB::table('spt')->where('ID_PENGAWASAN',$jenis)
+            $spt = DB::table('spt')
+            ->where('ID_PENGAWASAN',$jenis)
             ->whereYear('tgl_mulai', $tahun)
-            ->orWhere(function($query) use ($tahun) {
-                $query->whereYear('tgl_selesai', $tahun);
+            ->orWhere(function($query) use ($jenis, $tahun) {
+                $query->where('ID_PENGAWASAN',$jenis)
+                      ->whereYear('tgl_selesai', $tahun);
             })
             ->get();
         }elseif($tahun == 0){
-            $spt = DB::table('spt')->where('ID_PENGAWASAN',$jenis)
+            $spt = DB::table('spt')
+            ->where('ID_PENGAWASAN',$jenis)
             ->whereMonth('tgl_mulai', $bulan)
-            ->orWhere(function($query) use ($bulan) {
-                $query->whereMonth('tgl_selesai', $bulan);
+            ->orWhere(function($query) use ($jenis, $bulan) {
+                $query->where('ID_PENGAWASAN',$jenis)
+                      ->whereMonth('tgl_selesai', $bulan);
             })
             ->get();
         }else{
-            $spt = DB::table('spt')->where('ID_PENGAWASAN',$jenis)
+            $spt = DB::table('spt')
+            ->where('ID_PENGAWASAN',$jenis)
             ->whereMonth('tgl_mulai', $bulan)
             ->whereYear('tgl_mulai', $tahun)
-            ->orWhere(function($query) use ($bulan, $tahun) {
-                $query->whereMonth('tgl_selesai', $bulan)
-                        ->whereYear('tgl_selesai', $tahun);
+            ->orWhere(function($query) use ($jenis, $bulan, $tahun) {
+                $query->where('ID_PENGAWASAN',$jenis)
+                      ->whereMonth('tgl_selesai', $bulan)
+                      ->whereYear('tgl_selesai', $tahun);
             })
             ->get();
         }
@@ -180,7 +186,8 @@ class C_spt extends Controller
         $tanggal = $request->tanggal;
 
         if ($bulan == 0 && $tahun == 0){
-            $spt = DB::table('spt')->where('ID_PENGAWASAN',$jenis)->get();
+            $spt = DB::table('spt')
+            ->where('ID_PENGAWASAN',$jenis)->get();
         }elseif($jenis == 0 && $tahun == 0){
             $spt = DB::table('spt')
             ->whereMonth('tgl_mulai', $bulan)
@@ -206,26 +213,32 @@ class C_spt extends Controller
             })
             ->get();
         }elseif($bulan == 0){
-            $spt = DB::table('spt')->where('ID_PENGAWASAN',$jenis)
+            $spt = DB::table('spt')
+            ->where('ID_PENGAWASAN',$jenis)
             ->whereYear('tgl_mulai', $tahun)
-            ->orWhere(function($query) use ($tahun) {
-                $query->whereYear('tgl_selesai', $tahun);
+            ->orWhere(function($query) use ($jenis, $tahun) {
+                $query->where('ID_PENGAWASAN',$jenis)
+                      ->whereYear('tgl_selesai', $tahun);
             })
             ->get();
         }elseif($tahun == 0){
-            $spt = DB::table('spt')->where('ID_PENGAWASAN',$jenis)
+            $spt = DB::table('spt')
+            ->where('ID_PENGAWASAN',$jenis)
             ->whereMonth('tgl_mulai', $bulan)
-            ->orWhere(function($query) use ($bulan) {
-                $query->whereMonth('tgl_selesai', $bulan);
+            ->orWhere(function($query) use ($jenis, $bulan) {
+                $query->where('ID_PENGAWASAN',$jenis)
+                      ->whereMonth('tgl_selesai', $bulan);
             })
             ->get();
         }else{
-            $spt = DB::table('spt')->where('ID_PENGAWASAN',$jenis)
+            $spt = DB::table('spt')
+            ->where('ID_PENGAWASAN',$jenis)
             ->whereMonth('tgl_mulai', $bulan)
             ->whereYear('tgl_mulai', $tahun)
-            ->orWhere(function($query) use ($bulan, $tahun) {
-                $query->whereMonth('tgl_selesai', $bulan)
-                        ->whereYear('tgl_selesai', $tahun);
+            ->orWhere(function($query) use ($jenis, $bulan, $tahun) {
+                $query->where('ID_PENGAWASAN',$jenis)
+                      ->whereMonth('tgl_selesai', $bulan)
+                      ->whereYear('tgl_selesai', $tahun);
             })
             ->get();
         }
@@ -238,6 +251,7 @@ class C_spt extends Controller
         $dasar = DB::table('dasar')->get();
         $pegawai = DB::table('pegawai')->get();
         $jenis_pengawasan = DB::table('jenis_pengawasan')->get();
+        $no = 0;
 
         $data = array(
             'menu' => 'spt',
@@ -249,6 +263,7 @@ class C_spt extends Controller
             'jenis_pengawasan' => $jenis_pengawasan,
             'years' => $years,
             'tanggal' => $tanggal,
+            'no' => $no,
             'submenu' => ''
         );
  

@@ -24,7 +24,8 @@
 				<table id="example1" class="table table-bordered table-striped">
 					<thead>
 					<tr>
-						<th style="text-align:center">Nomor</th>
+						<th style="text-align:center">No.</th>
+						<th style="text-align:center">Nomor SPT</th>
 						<th style="text-align:center">Tanggal mulai</th>
 						<th style="text-align:center">Tanggal selesai</th>
 						<th style="text-align:center">Jenis Pengawasan</th>
@@ -35,6 +36,7 @@
 					<tbody>
 					@foreach($spt as $data)
 					<tr>
+						<td>{{ $no = $no + 1 }}</td>
 						<td>{{ $data->NOMOR_SPT }}</td>
 						<td>{{ $data->tgl_mulai }}</td>
 						<td>{{ $data->tgl_selesai }}</td>
