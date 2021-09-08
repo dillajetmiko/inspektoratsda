@@ -110,7 +110,13 @@
 				@foreach($temuan as $data)
 				<tr>
 					<td>{{ $data->id }}</td>
-					<td>{{ $data->NOMOR_LHP }}</td>
+
+					@foreach($lhp as $LHP)
+					@if ($LHP->id === $data->ID_LHP)
+					<td>{{$LHP->NOMOR_LHP}}</td>
+					@endif
+					@endforeach 
+
 					<td>{{ $data->ID_KATEGORI }}</td>
 					<td>{{ $data->URAIAN_TEMUAN }}</td>	
 					<td>

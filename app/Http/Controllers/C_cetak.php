@@ -43,12 +43,12 @@ class C_cetak extends Controller
 		$cari = $request->cari;
  
     		// mengambil data dari table pegawai sesuai pencarian data
-		$cetak = DB::table('temuan')->where('NOMOR_LHP',$cari)->get();
+		$cetak = DB::table('temuan')->where('ID_LHP',$cari)->get();
         $id = DB::table('opd')->get();
         $lhp = DB::table('lhp')->get();
         $punya_opd = DB::table('punya_opd')->get();
         $rekomendasi = DB::table('rekomendasi')->get();
-        $lhp2 = DB::table('lhp')->where('NOMOR_LHP',$cari)->get();
+        $lhp2 = DB::table('lhp')->where('id',$cari)->get();
 
         $data = array(
             'menu' => 'cetak',
@@ -67,18 +67,18 @@ class C_cetak extends Controller
  
 	}
 
-    public function export($NOMOR_LHP)
+    public function export($id)
 	{
 		$nama = Auth::user()->name;
         // menangkap data pencarian
-		$cari = $NOMOR_LHP;
+		$cari = $id;
  
     		// mengambil data dari table pegawai sesuai pencarian data
-		$cetak = DB::table('temuan')->where('NOMOR_LHP',$cari)->get();
+		$cetak = DB::table('temuan')->where('ID_LHP',$cari)->get();
         $id = DB::table('opd')->get();
         $lhp = DB::table('lhp')->get();
         $punya_opd = DB::table('punya_opd')->get();
-        $lhp2 = DB::table('lhp')->where('NOMOR_LHP',$cari)->get();
+        $lhp2 = DB::table('lhp')->where('id',$cari)->get();
 
         $data = array(
             'menu' => 'cetak',
@@ -118,8 +118,8 @@ class C_cetak extends Controller
         return view('cetak/export',$data);
     }
 
-    public function exportExcel($NOMOR_LHP) 
+    public function exportExcel($id) 
     {
-        return Excel::download(new TemuanExport($NOMOR_LHP), 'temuan.xlsx');
+        return Excel::download(new TemuanExport($id), 'temuan.xlsx');
     }
 }

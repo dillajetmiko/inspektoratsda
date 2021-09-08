@@ -22,13 +22,13 @@ class TemuanExport implements FromView
         $cetak = DB::table('temuan')
                         ->select('temuan.*', 'rekomendasi.*', 'rekomendasi.id as idrekom','temuan.id as idtemuan')
                         ->leftJoin('rekomendasi', 'rekomendasi.ID_TEMUAN', '=', 'temuan.id')
-                        ->where('temuan.NOMOR_LHP',$this->lhp)->get();
+                        ->where('temuan.ID_LHP',$this->lhp)->get();
         $opd = DB::table('opd')->get();
         $lhp = DB::table('lhp')->get();
         $punya_opd = DB::table('punya_opd')
                         ->leftJoin('rekomendasi', 'rekomendasi.id', '=', 'punya_opd.ID_REKOMENDASI')
                         ->get();
-        $lhp2 = DB::table('lhp')->where('NOMOR_LHP',$this->lhp)->get();
+        $lhp2 = DB::table('lhp')->where('id',$this->lhp)->get();
 
         $uraian='';
         foreach($cetak as $value){

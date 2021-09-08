@@ -33,9 +33,9 @@ class C_lhp extends Controller
         return response()->download($path);
     }
 
-    public function download($NOMOR_LHP)
+    public function download($id)
     {
-        $lhp = DB::table('lhp')->where('NOMOR_LHP', $NOMOR_LHP)->get();
+        $lhp = DB::table('lhp')->where('id', $id)->get();
         // dd($lhp);
         // dd($lhp[0]);
         // $file = base64_decode($UPLOAD_FILE);
@@ -77,12 +77,12 @@ class C_lhp extends Controller
             $name = $post->file('file')->getClientOriginalName();
 
             // $path = $post->file('file')->store('public/files');  
-            $path = $post->file('file')->storeAs('public/files',$post->NOMOR_LHP.$name);  
+            $path = $post->file('file')->storeAs('public/files',$post->id.$name);  
         }else{
             $path = null;
         }
  
-        DB::table('lhp')->insert([
+        DB::table('lhp')->insertGetId([
             'NOMOR_LHP' => $post->NOMOR_LHP,
             'ID_SPT' => $post->ID_SPT,
             'NIP' => Auth::user()->NIP,
@@ -95,10 +95,10 @@ class C_lhp extends Controller
         return redirect('/lhp');
     }
 
-    public function editLHP($NOMOR_LHP) 
+    public function editLHP($id) 
     {
         $nama = Auth::user()->name;
-        $lhp = DB::table('lhp')->where('NOMOR_LHP', $NOMOR_LHP)->get();
+        $lhp = DB::table('lhp')->where('id', $id)->get();
         $id = DB::table('spt')->get();
         
         $data = array(
@@ -123,9 +123,9 @@ class C_lhp extends Controller
             $name = $post->file('file')->getClientOriginalName();
 
             // $path = $post->file('file')->store('public/files');  
-            $path = $post->file('file')->storeAs('public/files',$post->NOMOR_LHP.$name); 
+            $path = $post->file('file')->storeAs('public/files',$post->id.$name); 
             
-            DB::table('lhp')->where('NOMOR_LHP', $post->NOMOR_LHP)->update([
+            DB::table('lhp')->where('id', $post->id)->update([
                 'NOMOR_LHP' => $post->NOMOR_LHP,
                 'ID_SPT' => $post->ID_SPT,
                 'TANGGAL_LHP' => $post->TANGGAL_LHP,
@@ -134,7 +134,7 @@ class C_lhp extends Controller
                 'ANGGARAN' => $post->ANGGARAN,
             ]);
         }else{
-            DB::table('lhp')->where('NOMOR_LHP', $post->NOMOR_LHP)->update([
+            DB::table('lhp')->where('id', $post->id)->update([
                 'NOMOR_LHP' => $post->NOMOR_LHP,
                 'ID_SPT' => $post->ID_SPT,
                 'TANGGAL_LHP' => $post->TANGGAL_LHP,
@@ -147,9 +147,9 @@ class C_lhp extends Controller
         return redirect('/lhp');
     }
 
-    public function hapus($NOMOR_LHP)
+    public function hapus($id)
     {
-    	DB::table('lhp')->where('NOMOR_LHP',$NOMOR_LHP)->delete();
+    	DB::table('lhp')->where('id',$id)->delete();
 	    return redirect('/lhp');
     }
 }

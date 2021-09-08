@@ -75,20 +75,20 @@
 						@if ($data->UPLOAD_FILE == null)
 						Tidak ada file
 						@else
-						<a href="/filedownload/{{ $data->NOMOR_LHP }}" class='btn btn-ghost-info'>
+						<a href="/filedownload/{{ $data->id }}" class='btn btn-ghost-info'>
 							<i class="fa fa-download"></i> Download
 						</a>
 						@endif
 						</td>
 						@can('edit-hapus-lhp')
 						<td>
-						<a href='/lhp/edit_lhp/{{ $data->NOMOR_LHP }}'>
+						<a href='/lhp/edit_lhp/{{ $data->id }}'>
 						<button type="button" class="btn btn-primary"><i class="fas fa-edit"></i> Edit</button>
 						</a>
-						<!-- <a href='/lhp/hapus/{{ $data->NOMOR_LHP }}'>
+						<!-- <a href='/lhp/hapus/{{ $data->id }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a> -->
-						<button onclick="confirmDelete('{{ $data->NOMOR_LHP }}')" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+						<button onclick="confirmDelete('{{ $data->id }}')" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</td>  
 						@endcan           
 					</tr>

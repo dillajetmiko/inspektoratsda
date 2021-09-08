@@ -50,7 +50,7 @@
 									<select class="form-control select2" name="cari">
 									<option>-Pilih Judul-</option>
 									@foreach ($lhp as $no)
-									<option value="{{ $no->NOMOR_LHP}}">{{ $no->JUDUL_PEMERIKSAAN	}}</option>
+									<option value="{{ $no->id}}">{{ $no->JUDUL_PEMERIKSAAN	}}</option>
 									@endforeach
 									</select>
 									<br>
@@ -93,7 +93,12 @@
 					<tbody>		
 					@foreach($cetak as $data)
 					<tr>
-						<td>{{ $data->NOMOR_LHP }}</td>
+						@foreach($lhp as $LHP)
+						@if ($LHP->id === $data->ID_LHP)
+						<td>{{$LHP->NOMOR_LHP}}</td>
+						@endif
+						@endforeach 
+
 						<td>{{ $data->ID_KATEGORI }}</td>
 						<td>{{ $data->URAIAN_TEMUAN }}</td>
 						<td>
@@ -121,7 +126,7 @@
 		<!-- /.card -->
 
 		@foreach ($lhp2 as $export)
-		<a href="/cetak/export/{{ $export->NOMOR_LHP }}">
+		<a href="/cetak/export/{{ $export->id }}">
 				<button type="button" class="btn btn-info float-left" style="float: left;"><i class="fas fa-file-export"></i> Export </button>
 				</a>
 		@endforeach	

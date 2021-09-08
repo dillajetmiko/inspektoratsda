@@ -99,14 +99,14 @@ Route::get('/jenis_pengawasan/hapus/{KODE_jenis_pengawasan}', [C_jenispengawasan
 Route::get('/lhp', [C_lhp::class, 'index'])->middleware('auth');
 Route::get('/lhp/insert_lhp', [C_lhp::class, 'insertLHP'])->middleware('auth');
 Route::post('/lhp/tambah_lhp', [C_lhp::class, 'tambahLHP'])->middleware('auth');
-Route::get('/lhp/edit_lhp/{NOMOR_LHP}', [C_lhp::class, 'editLHP'])->middleware('auth');
+Route::get('/lhp/edit_lhp/{id}', [C_lhp::class, 'editLHP'])->middleware('auth');
 Route::post('/lhp/update_lhp', [C_lhp::class, 'updateLHP'])->middleware('auth');
-Route::get('/lhp/hapus/{NOMOR_LHP}', [C_lhp::class, 'hapus'])->middleware('auth');
+Route::get('/lhp/hapus/{id}', [C_lhp::class, 'hapus'])->middleware('auth');
 // Route::get('/filedownload', [C_lhp::class, 'download1'])->name('file.download');
 // Route::get('/filedownload/{UPLOAD_FILE}', [C_lhp::class, 'download'])->name('file.download');
 
 
-Route::get('/filedownload/{NOMOR_LHP}', [C_lhp::class, 'download'])->name('file.download')->middleware('auth');
+Route::get('/filedownload/{id}', [C_lhp::class, 'download'])->name('file.download')->middleware('auth');
 Route::get('/download/{UPLOAD_FILE}', [C_lhp::class, 'download'])->name('file.download')->middleware('auth');
 
 Route::get('/temuan', [C_temuan::class, 'index'])->middleware('auth');
@@ -127,7 +127,7 @@ Route::get('/user/hapus/{NIP}', [C_user::class, 'hapus'])->middleware('auth');
 Route::get('/cetak', [C_cetak::class, 'index'])->middleware('auth');
 Route::get('/cetak/cari',[C_cetak::class, 'cari'])->middleware('auth');
 // Route::get('/cetak/export/{NOMOR_LHP}', [C_cetak::class, 'export'])->middleware('auth');
-Route::get('/cetak/export/{NOMOR_LHP}', [C_cetak::class, 'exportExcel'])->middleware('auth');
+Route::get('/cetak/export/{id}', [C_cetak::class, 'exportExcel'])->middleware('auth');
 
 Route::get('/pegawai', [C_pegawai::class, 'index'])->middleware('auth');
 Route::get('/pegawai/insert_pegawai', [C_pegawai::class, 'insertPegawai'])->middleware('auth');

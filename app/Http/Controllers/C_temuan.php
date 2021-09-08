@@ -19,6 +19,7 @@ class C_temuan extends Controller
         }
         $nama = Auth::user()->name;
         $temuan = DB::table('temuan')->get();
+        $lhp = DB::table('lhp')->get();
         $id = DB::table('opd')->get();
         $punya_opd = DB::table('punya_opd')->get();
         $kategori_temuan = DB::table('kategori_temuan')->get();
@@ -27,6 +28,7 @@ class C_temuan extends Controller
             'menu' => 'temuan',
             'nama' => $nama,
             'temuan' => $temuan,
+            'lhp' => $lhp,
             'id' => $id,
             'punya_opd' => $punya_opd,
             'kategori_temuan' => $kategori_temuan,
@@ -120,7 +122,7 @@ class C_temuan extends Controller
         $id = DB::table('temuan')->insertGetId([
             'ID_KATEGORI' => $post->ID_KATEGORI,
             // 'NIP' => Auth::user()->NIP,
-            'NOMOR_LHP' => $post->NOMOR_LHP,
+            'ID_LHP' => $post->ID_LHP,
             'URAIAN_TEMUAN' => $post->URAIAN_TEMUAN,
             'KERUGIAN' => $post->KERUGIAN,
             'KODE_JENIS_TEMUAN' => $post->KODE_JENIS_TEMUAN,
@@ -160,7 +162,7 @@ class C_temuan extends Controller
         // update tabel anggota
         DB::table('temuan')->where('id', $post->id)->update([
             'ID_KATEGORI' => $post->ID_KATEGORI,
-            'NOMOR_LHP' => $post->NOMOR_LHP,
+            'ID_LHP' => $post->ID_LHP,
             'URAIAN_TEMUAN' => $post->URAIAN_TEMUAN,
             'KERUGIAN' => $post->KERUGIAN,
             'KODE_JENIS_TEMUAN' => $post->KODE_JENIS_TEMUAN,

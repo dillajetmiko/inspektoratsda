@@ -46,12 +46,12 @@
 						</select>
 						</select><br>   
             Nomor LHP : 
-                <select class="form-control select2" name="NOMOR_LHP">
+                <select class="form-control select2" name="ID_LHP">
                 @foreach ($id2 as $LHP)
-                @if ($LHP->NOMOR_LHP === $temuan[0]->NOMOR_LHP)
-                <option value="{{ $LHP->NOMOR_LHP}}" selected>{{ $LHP->NOMOR_LHP}}</option>
+                @if ($LHP->id === $temuan[0]->ID_LHP)
+                <option value="{{ $LHP->id}}" selected>{{ $LHP->NOMOR_LHP}}</option>
                 @else
-                <option value="{{ $LHP->NOMOR_LHP}}">{{ $LHP->NOMOR_LHP}}</option>
+                <option value="{{ $LHP->id}}">{{ $LHP->NOMOR_LHP}}</option>
                 @endif
                 @endforeach
                 </select>

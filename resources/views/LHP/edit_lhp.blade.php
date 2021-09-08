@@ -30,6 +30,7 @@
 			<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
 
 			</select><br>
+			<input type="text" class="form-control" name="id" value="{{$lhp[0]->id}}" hidden>
 			Nomor LHP : <input type="text" class="form-control" name="NOMOR_LHP" value="{{$lhp[0]->NOMOR_LHP}}" readonly><br>
 			Nomor SPT: 
                 <select class="form-control select2" name="ID_SPT">

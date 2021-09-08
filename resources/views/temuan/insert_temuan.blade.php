@@ -45,9 +45,9 @@
 						</select>
 						</select><br>      
         No LHP : 
-            <select class="form-control select2" name="NOMOR_LHP">
+            <select class="form-control select2" name="ID_LHP">
             @foreach ($id2 as $lhp)
-            <option value="{{ $lhp->NOMOR_LHP}}">{{ $lhp->NOMOR_LHP}}</option>
+            <option value="{{ $lhp->id}}">{{ $lhp->NOMOR_LHP}}</option>
             @endforeach
             </select>
             <br>
