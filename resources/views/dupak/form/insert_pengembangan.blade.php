@@ -1,24 +1,29 @@
 @extends("layout.mainlayout")
-@section("page_title","Inspektorat || Tambah Pegawai")
-@section("title","Data Pegawai")
+@section("page_title","Inspektorat || Pengembangan")
+@section("title","Pengembangan")
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-<li class="breadcrumb-item"><a href="/pegawai">Pegawai</a></li>
-<li class="breadcrumb-item active">Tambah Pegawai</li> 
+<li class="breadcrumb-item"><a href="/ppm">PPM</a></li>
+<li class="breadcrumb-item active">Pengembangan</li> 
 @endsection
 
 @section('custom_css')  
 <!-- DataTables -->
 <link rel="stylesheet" href="{{asset ('asset/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
 <link rel="stylesheet" href="{{asset ('asset/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<!-- Select2 -->
+<link rel="stylesheet" href="{{asset ('asset/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{asset ('asset/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+<!-- Theme style -->
+<link rel="stylesheet" href="{{asset ('asset/dist/css/adminlte.min.css')}}">
 @endsection
 
 @section('content')
  <!-- Default box -->
  <div class="card">    
     <div class="card-header">
-        <h3 class="card-title">Tambah Pegawai</h3>
+        <h3 class="card-title">Tambah Pengembangan</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -29,23 +34,21 @@
     </div>
     <div class="card-body">
     <!-- <h1>Tambah Data Temuan</h1> -->
-      <form action="/pegawai/tambah_pegawai" method="post" enctype="multipart/form-data">
+      <form action="/dupak/tambah_pengembangan" method="post" enctype="multipart/form-data">
         <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-        NIK : <input type="text" class="form-control" name="NIK_PEGAWAI"><br>
-        Nama : <input type="text" class="form-control" name="NAMA_PEGAWAI"><br>
-        Alamat : <input type="text" class="form-control" name="ALAMAT_PEGAWAI"><br>
-        Tempat Tanggal Lahir : <input type="text" class="form-control" name="TTL_PEGAWAI"><br>
-        Jenis Kelamin :
-        <select class="form-control selectize" name="JENIS_KELAMIN">
-          <option value="Laki-laki">Laki-laki</option>
-          <option value="Perempuan">Perempuan</option>
-        </select><br>
-        NIP : <input type="text" class="form-control" name="NIP_PEGAWAI"><br>
-        No. kartu Pegawai : <input type="text" class="form-control" name="NO_KARTU_PEGAWAI"><br>
-        No. kartu Suami/Istri : <input type="text" class="form-control" name="NO_KARTU_SUAMI_ISTRI"><br>
-        No. Taspen : <input type="text" class="form-control" name="NO_TASPEN"><br>
-        No. Telepon : <input type="text" class="form-control" name="NO_HP"><br>
-        Unit Kerja : <input type="text" class="form-control" name="UNIT_KERJA_PEGAWAI"><br>
+        <input type="text" class="form-control" name="id_ppm" value="{{$ppm[0]->id}}" hidden>
+        Pegawai :
+        <select class="form-control select2" name="NIK_PEGAWAI">
+        @foreach ($pegawai as $peg)
+        <option value="{{ $peg->NIK_PEGAWAI}}">{{ $peg->NAMA_PEGAWAI}}</option>
+        @endforeach
+        </select>
+        <br>
+        Peran: <input type="text" class="form-control" name="peran"><br>
+        Satuan AK: <input type="text" class="form-control" name="satuan_ak"><br>
+        Jumlah Jam : <input type="text" class="form-control" name="jumlah_jam"><br>
+        Efektif : <input type="text" class="form-control" name="efektif"><br>
+        Lembur : <input type="text" class="form-control" name="lembur"><br>
         <br> 
         <button type="submit" class="btn btn-primary">Simpan</button>
 
@@ -69,6 +72,8 @@
 <script src="{{asset ('asset/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
 <script src="{{asset ('asset/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{asset ('asset/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<!-- Select2 -->
+<script src="{{asset ('asset/plugins/select2/js/select2.full.min.js')}}"></script>
 
 <script>
   $(function () {
@@ -76,6 +81,10 @@
       "responsive": true,
       "autoWidth": false,
     });
+
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
   });
 </script>
 

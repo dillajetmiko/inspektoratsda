@@ -15,12 +15,14 @@ class C_diklat extends Controller
         $nama = Auth::user()->name;
         $pegawai = DB::table('pegawai')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
         $diklat = DB::table('diklat')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
+        $jenis = DB::table('dupak_angka_kredit')->get();
 
         $data = array(
             'menu' => 'pegawai',
             'nama' => $nama,
             'pegawai' => $pegawai,
             'diklat' => $diklat,
+            'jenis' => $jenis,
             'submenu' => ''
            
         );
@@ -49,6 +51,8 @@ class C_diklat extends Controller
             'NAMA_DIKLAT' => $post->NAMA_DIKLAT, 
             'PENYELENGGARA_DIKLAT' => $post->PENYELENGGARA_DIKLAT, 
             'UPLOAD_SERTIFIKAT_DIKLAT' => $path, 
+            'id_angka_kredit' => $post->jenis, 
+            'lama_jam' => $post->jumlah_jam, 
             
         ]);
 

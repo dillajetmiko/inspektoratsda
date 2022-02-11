@@ -42,6 +42,14 @@
                     Tanggal Diklat : <input type="date" class="form-control" name="TANGGAL_DIKLAT"><br>
                     Nama Diklat : <input type="text" class="form-control" name="NAMA_DIKLAT"><br>
 					Penyelenggara Diklat : <input type="text" class="form-control" name="PENYELENGGARA_DIKLAT"><br>
+					Jenis : 
+						<select class="form-control select2" name="jenis">
+						@foreach ($jenis as $jn)
+						<option value="{{ $jn->id}}">{{ $jn->nama_jenis}}</option>
+						@endforeach
+						</select>
+						<br>
+					Jumlah Jam : <input type="text" class="form-control" name="jumlah_jam"><br>
                     Upload Sertifikat : 
                     <div class="form-group">
                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> File <span class="required">*</span></label>
@@ -98,6 +106,9 @@
 						<a href='/diklat/hapus/{{ $data->ID_DIKLAT }}&{{ $data->NIK_PEGAWAI }}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
+						<!-- <a href='/dupak/diklat/{{ $data->ID_DIKLAT }}'>
+						<button type="button" class="btn btn-warning">Diklat</button>
+						</a> -->
 						</td>  
 						@endcan           
 					</tr>

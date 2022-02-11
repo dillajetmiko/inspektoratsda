@@ -1,13 +1,13 @@
 @extends("layout.mainlayout")
 
-@section("page_title","Pendidikan")
+@section("page_title","Peserta")
 
-@section("title","Data Pendidikan")
+@section("title","PESERTA")
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-<li class="breadcrumb-item"><a href="/pegawai">Pegawai</a></li>
-<li class="breadcrumb-item active">Pendidikan</li> 
+<li class="breadcrumb-item"><a href="/ppm">PPM</a></li>
+<li class="breadcrumb-item active">Peserta</li> 
 @endsection
 
 @section('custom_css')
@@ -25,9 +25,7 @@
 <!-- Default box -->
 <div class="card">    
   <div class="card-header">
-  @can('edit-hapus-pegawai')
-	  <h3 class="card-title"> Tambah Pendidikan</h3>
-	  @endcan
+	  <h3 class="card-title"> DATA PESERTA</h3>
 	  <div class="card-tools">
 		  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
 			<i class="fas fa-minus"></i></button>
@@ -37,32 +35,29 @@
   </div>
   <div class="card-body">
 		<div class="card">
-		@can('edit-hapus-pegawai')
+		@can('edit-hapus-spt')
 			<div class="card-header">
 				<div class="form-group">
-					<form action="/pendidikan/insert_view_pendidikan" method="post" enctype="multipart/form-data">
+					<form action="/ppm_detail/insert_view_peserta" method="post" enctype="multipart/form-data">
 					<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-					NIK Pegawai : <input type="text" class="form-control" name="NIK_PEGAWAI" value="{{$pegawai[0]->NIK_PEGAWAI}}" readonly><br>
-					Nama Pegawai : <input type="text" class="form-control" name="NAMA_PEGAWAI" value="{{$pegawai[0]->NAMA_PEGAWAI}}" readonly><br>
-					Tahun Pendidikan : <input type="year" class="form-control" name="TAHUN_PENDIDIKAN"><br>
-					Strata Pendidikan : <input type="text" class="form-control" name="STRATA_PENDIDIKAN"><br>
-					Instansi Pendidikan : <input type="text" class="form-control" name="INSTANSI_PENDIDIKAN"><br>
-					Jenis : 
-						<select class="form-control select2" name="jenis">
-						@foreach ($jenis as $jn)
-						<option value="{{ $jn->id}}">{{ $jn->nama_jenis}}</option>
+					ID PPM : <input type="text" class="form-control" name="id_ppm" value="{{$ppm[0]->id}}" readonly><br>
+					Nama Pegawai : 
+						<select class="form-control select2" name="NIK_PEGAWAI">
+						@foreach ($pegawai as $peg)
+						<option value="{{ $peg->NIK_PEGAWAI}}">{{ $peg->NAMA_PEGAWAI}}</option>
 						@endforeach
 						</select>
 						<br>
+					Peran : <input type="text" class="form-control" name="peran"><br>
 		
 					<button type="submit" class="btn btn-primary">Simpan</button>
-					<a href='/jabatan/insert_view_jabatan/{{$pegawai[0]->NIK_PEGAWAI}}'>
+					<a href='/ppm'>
 					<button type="button" class="btn btn-info">Selesai</button>
 					</a>
 					</form>
 				</div>
 			</div>
-			@endcan	
+			@endcan
 
 			<!-- /.card-header -->
 			<div class="card-body">
@@ -70,27 +65,37 @@
 					<thead>
 					<tr>
 						<!-- <th style="text-align:center">ID SPT</th> -->
-						<th style="text-align:center">Tahun Pendidikan</th>
-						<th style="text-align:center">Strata Pendidikan</th>
-						<th style="text-align:center">Instansi Pendidikan</th>
-						@can('edit-hapus-pegawai')
+						<th style="text-align:center">Nama Pegawai</th>
+						<th style="text-align:center">Peran</th>
+						@can('edit-hapus-spt')
 						<th style="text-align:center" width="15%">Aksi</th>
 						@endcan
 					</tr>
 					</thead>
 					<tbody>
-					@foreach($pendidikan as $data)
+					@foreach($detail_ppm as $data)
 					<tr>
-					<td>{{ $data->TAHUN_PENDIDIKAN }}</td>
-					<td>{{ $data->STRATA_PENDIDIKAN }}</td>
-					<td>{{ $data->INSTANSI_PENDIDIKAN }}</td>
-					@can('edit-hapus-pegawai')
-					<td>
-					<a href='/pendidikan/hapus/{{ $data->ID_PENDIDIKAN }}&{{ $data->NIK_PEGAWAI }}'>
-					<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
-					</a>
-					</td>  
-					@endcan           
+						<!-- <td>{{ $data->id }}</td> -->
+						<td>
+						@foreach($pegawai as $datapeg)
+						@if ($datapeg->NIK_PEGAWAI == $data->pegawai_id)
+						{{$datapeg->NAMA_PEGAWAI}}
+						@endif
+						@endforeach
+						</td> 
+						<td>{{ $data->peran }}</td>
+						@can('edit-hapus-spt')
+						<td>
+						
+						<a href='/detail_ppm/hapus/{{ $data->id }}&{{ $data->ppm_id}}'>
+						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
+						</a>
+						<!-- Button trigger modal -->
+						<!-- <button type="button" onclick="pengawasan('{{ $data->id }}')" class="btn btn-warning" data-toggle="modal" data-target="#dupakpengawasan">
+							Pengawasan
+						</button> -->
+						</td> 
+						@endcan
 					</tr>
 					@endforeach
 					</tbody>
@@ -109,6 +114,33 @@
   <!-- /.card-footer-->
 </div>
 <!-- /.card -->
+
+<!-- Modal Pengawasan-->
+<div class="modal fade bd-example-modal-lg" id="dupakpengawasan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<form id="pengawasan" method="post" enctype="multipart/form-data">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Tambah</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					
+						<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
+						Satuan AK: <input type="text" class="form-control" name="NIP_PEGAWAI"><br>
+						Jumlah Jam : <input type="text" class="form-control" name="NO_KARTU_PEGAWAI"><br>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Simpan</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
 @endsection
 
 
@@ -123,14 +155,15 @@
 
 <script>
   $(function () {
-	$("#example1").DataTable({
-	  "responsive": true,
-	  "autoWidth": false,
-	});
-	
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+
     //Initialize Select2 Elements
     $('.select2').select2()
 
   });
 </script>
+
 @endsection

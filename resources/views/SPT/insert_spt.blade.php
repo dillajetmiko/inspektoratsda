@@ -58,10 +58,11 @@
         <textarea type="text" class="form-control" name="kepada">{{$kepada[0]->isi_kepada}}</textarea><br>
         FILE SPT:
         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">File <span class="required">*</span></label>
+          <!-- <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">File <span class="required">*</span></label> -->
             <input type='file' name='file' class="form-control">
-       </div>
-       Keterangan: 
+        </div>
+        Jumlah Jam : <input type="text" class="form-control" name="jumlah_jam"><br>
+        Keterangan: 
         <textarea type="text" class="form-control" name="keterangan"></textarea><br>
         <br> 
 

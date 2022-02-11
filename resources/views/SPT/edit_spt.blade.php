@@ -62,7 +62,7 @@
 			<textarea type="text" class="form-control" name="kepada">{{$spt[0]->isi_kepada}}</textarea><br>
 			File SPT :
             <div class="form-group">
-				<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">File <span class="required">*</span></label>
+				<!-- <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">File <span class="required">*</span></label> -->
 					<input type='file' name='file' class="form-control">
 			</div>
 			Keterangan: 

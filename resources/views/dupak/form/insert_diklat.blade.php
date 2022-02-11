@@ -1,11 +1,11 @@
 @extends("layout.mainlayout")
-@section("page_title","Inspektorat || Tambah Pegawai")
-@section("title","Data Pegawai")
+@section("page_title","Inspektorat || Diklat")
+@section("title","Diklat")
 
 @section("breadcrumb")
 <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
 <li class="breadcrumb-item"><a href="/pegawai">Pegawai</a></li>
-<li class="breadcrumb-item active">Tambah Pegawai</li> 
+<li class="breadcrumb-item active">Diklat</li> 
 @endsection
 
 @section('custom_css')  
@@ -18,7 +18,7 @@
  <!-- Default box -->
  <div class="card">    
     <div class="card-header">
-        <h3 class="card-title">Tambah Pegawai</h3>
+        <h3 class="card-title">Tambah Diklat</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -29,23 +29,15 @@
     </div>
     <div class="card-body">
     <!-- <h1>Tambah Data Temuan</h1> -->
-      <form action="/pegawai/tambah_pegawai" method="post" enctype="multipart/form-data">
+      <form action="/dupak/tambah_diklat" method="post" enctype="multipart/form-data">
         <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
-        NIK : <input type="text" class="form-control" name="NIK_PEGAWAI"><br>
-        Nama : <input type="text" class="form-control" name="NAMA_PEGAWAI"><br>
-        Alamat : <input type="text" class="form-control" name="ALAMAT_PEGAWAI"><br>
-        Tempat Tanggal Lahir : <input type="text" class="form-control" name="TTL_PEGAWAI"><br>
-        Jenis Kelamin :
-        <select class="form-control selectize" name="JENIS_KELAMIN">
-          <option value="Laki-laki">Laki-laki</option>
-          <option value="Perempuan">Perempuan</option>
-        </select><br>
-        NIP : <input type="text" class="form-control" name="NIP_PEGAWAI"><br>
-        No. kartu Pegawai : <input type="text" class="form-control" name="NO_KARTU_PEGAWAI"><br>
-        No. kartu Suami/Istri : <input type="text" class="form-control" name="NO_KARTU_SUAMI_ISTRI"><br>
-        No. Taspen : <input type="text" class="form-control" name="NO_TASPEN"><br>
-        No. Telepon : <input type="text" class="form-control" name="NO_HP"><br>
-        Unit Kerja : <input type="text" class="form-control" name="UNIT_KERJA_PEGAWAI"><br>
+        <input type="text" class="form-control" name="id_diklat" value="{{$diklat[0]->ID_DIKLAT}}" hidden>
+        <input type="text" class="form-control" name="NIK_PEGAWAI" value="{{$diklat[0]->NIK_PEGAWAI}}" hidden>
+        Satuan AK: <input type="text" class="form-control" name="satuan_ak"><br>
+        Jumlah Jam : <input type="text" class="form-control" name="jumlah_jam"><br>
+        Efektif : <input type="text" class="form-control" name="efektif"><br>
+        Lembur : <input type="text" class="form-control" name="lembur"><br>
+        Keterangan : <input type="text" class="form-control" name="keterangan"><br>
         <br> 
         <button type="submit" class="btn btn-primary">Simpan</button>
 

@@ -75,6 +75,7 @@ class C_lhp extends Controller
             ]); 
 
             $name = $post->file('file')->getClientOriginalName();
+            // $name = bcrypt($name);
 
             // $path = $post->file('file')->store('public/files');  
             $path = $post->file('file')->storeAs('public/files',$post->id.$name);  

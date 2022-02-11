@@ -27,6 +27,8 @@ use App\Http\Controllers\C_jabatan;
 use App\Http\Controllers\C_opd;
 use App\Http\Controllers\C_tugas;
 use App\Http\Controllers\C_jenispengawasan;
+use App\Http\Controllers\C_dupak;
+use App\Http\Controllers\C_ppm;
 
 
 
@@ -57,7 +59,7 @@ Route::get('/', function () {
 })->middleware('auth');
 
 Route::get('/login', [C_login::class, 'getLogin'])->name('login');
-Route::post('/postlogin', [C_login::class, 'postLogin']);
+// Route::post('/postlogin', [C_login::class, 'postLogin']);
 Route::post('/loginSubmit', [C_register::class, 'authenticate']);
 // Route::post('/postLogin', 'C_login@postLogin');
 
@@ -237,3 +239,28 @@ Route::post('/kenaikan_gaji/insert_view_kenaikan_gaji', [C_kenaikangaji::class, 
 Route::get('/kenaikan_gaji/edit_kenaikan_gaji/{NIK_PEGAWAI}', [C_kenaikangaji::class, 'editKenaikanGaji'])->middleware('auth');
 Route::post('/kenaikan_gaji/update_kenaikan_gaji', [C_kenaikangaji::class, 'updateKenaikanGaji'])->middleware('auth');
 Route::get('/kenaikan_gaji/hapus/{ID_KENAIKAN_GAJI}&{NIK_PEGAWAI}', [C_kenaikangaji::class, 'hapus'])->middleware('auth');
+
+Route::get('/dupak', [C_dupak::class, 'index'])->middleware('auth');
+Route::get('/dupak/cari', [C_dupak::class, 'cari'])->middleware('auth');
+Route::get('/dupak/pengawasan/{id}', [C_dupak::class, 'pengawasan'])->middleware('auth');
+Route::get('/dupak/pendidikan', [C_dupak::class, 'pendidikan'])->middleware('auth');
+Route::get('/dupak/penunjang', [C_dupak::class, 'penunjang'])->middleware('auth');
+Route::get('/dupak/pengembangan/{id}', [C_dupak::class, 'pengembangan'])->middleware('auth');
+Route::get('/dupak/diklat/{id}', [C_dupak::class, 'diklat'])->middleware('auth');
+Route::post('/dupak/tambah_pengawasan', [C_dupak::class, 'tambahPengawasan'])->middleware('auth');
+Route::post('/dupak/tambah_pendidikan', [C_dupak::class, 'tambahPendidikan'])->middleware('auth');
+Route::post('/dupak/tambah_penunjang', [C_dupak::class, 'tambahPenunjang'])->middleware('auth');
+Route::post('/dupak/tambah_pengembangan', [C_dupak::class, 'tambahPengembangan'])->middleware('auth');
+Route::post('/dupak/tambah_diklat', [C_dupak::class, 'tambahDiklat'])->middleware('auth');
+Route::post('/dupak/tambah_dupak', [C_dupak::class, 'tambahDupak'])->middleware('auth');
+
+
+Route::get('/ppm', [C_ppm::class, 'index'])->middleware('auth');
+Route::get('/ppm/insert_ppm', [C_ppm::class, 'insertPPM'])->middleware('auth');
+Route::post('/ppm/tambah_ppm', [C_ppm::class, 'tambahPPM'])->middleware('auth');
+
+Route::get('/ppm_detail/insert_view_peserta/{id_ppm}', [C_ppm::class, 'insertPeserta'])->middleware('auth');
+Route::post('/ppm_detail/insert_view_peserta', [C_ppm::class, 'tambahPeserta'])->middleware('auth');
+Route::get('/detail_ppm/hapus/{id}&{id_ppm}', [C_ppm::class, 'hapus'])->middleware('auth');
+
+

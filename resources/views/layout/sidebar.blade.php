@@ -178,6 +178,36 @@
           </li>
           @endcan
 
+          <!-- @can('show-cetak') -->
+          <li class="nav-item">
+          @if($menu == 'dupak')
+            <a href="/dupak" class="nav-link active">
+          @else
+            <a href="/dupak" class="nav-link">
+          @endif
+              <i class="nav-icon fas fa-print"></i>
+              <p>
+              Dupak
+              </p>
+            </a>
+          </li>
+          <!-- @endcan -->
+
+          <!-- @can('show-cetak') -->
+          <li class="nav-item">
+          @if($menu == 'ppm')
+            <a href="/ppm" class="nav-link active">
+          @else
+            <a href="/ppm" class="nav-link">
+          @endif
+              <i class="nav-icon fas fa-print"></i>
+              <p>
+              ppm
+              </p>
+            </a>
+          </li>
+          <!-- @endcan -->
+
           <!-- @can('update-role')
           <li class="nav-item">
             <a href="/validasi" class="nav-link">

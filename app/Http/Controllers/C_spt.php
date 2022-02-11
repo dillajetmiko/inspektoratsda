@@ -329,7 +329,8 @@ class C_spt extends Controller
              'tgl_mulai' => $post->tgl_mulai,
              'tgl_selesai' => $post->tgl_selesai,
              'FILE_SPT' => $path,
-             'keterangan' => $post->keterangan
+             'keterangan' => $post->keterangan,
+             'lama_jam' => $post->jumlah_jam
           
          ]);
  

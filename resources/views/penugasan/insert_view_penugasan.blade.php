@@ -105,6 +105,13 @@
 						<a href='/penugasan/hapus/{{ $data->id }}&{{ $data->id_spt}}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
+						<!-- <a href='/dupak/pengawasan/{{ $data->id }}'>
+						<button type="button" class="btn btn-warning">Pengawasan</button>
+						</a> -->
+						<!-- Button trigger modal -->
+						<!-- <button type="button" onclick="pengawasan('{{ $data->id }}')" class="btn btn-warning" data-toggle="modal" data-target="#dupakpengawasan">
+							Pengawasan
+						</button> -->
 						</td> 
 						@endcan
 					</tr>
@@ -126,25 +133,32 @@
 </div>
 <!-- /.card -->
 
-<!-- <div class="modal fade" id="deletePenugasan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Hapus Data</h5>
-        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Apakah anda yakin ingin mengahpus data ini?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-		<a id="deleteLink">
-		<button type="button" class="btn btn-danger">Hapus</button>
-		</a>
+<!-- Modal Pengawasan-->
+<div class="modal fade bd-example-modal-lg" id="dupakpengawasan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<form id="pengawasan" method="post" enctype="multipart/form-data">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Tambah</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					
+						<input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>">
+						Satuan AK: <input type="text" class="form-control" name="NIP_PEGAWAI"><br>
+						Jumlah Jam : <input type="text" class="form-control" name="NO_KARTU_PEGAWAI"><br>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Simpan</button>
+				</div>
+			</div>
+		</form>
 	</div>
-    </div>
-  </div>
-</div> -->
+</div>
 @endsection
 
 

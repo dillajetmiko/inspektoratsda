@@ -76,6 +76,7 @@ class C_temuan extends Controller
 
         $nama = Auth::user()->name;
         $id = DB::table('opd')->get();
+        $lhp = DB::table('lhp')->get();
         $rekomendasi = DB::table('rekomendasi')->leftJoin('status','status.KODE_STATUS','=','rekomendasi.ID_STATUS')->get();
 
         $data = array(
@@ -83,6 +84,7 @@ class C_temuan extends Controller
             'nama' => $nama,
             'temuan' => $temuan,
             'id' => $id,
+            'lhp' => $lhp,
             // 'punya_opd' => $punya_opd,
             'rekomendasi' => $rekomendasi,
             'years' => $years,

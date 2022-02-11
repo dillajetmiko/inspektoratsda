@@ -34,19 +34,6 @@
 			Nama : <input type="text" class="form-control" name="NAMA_PEGAWAI" value="{{$pegawai[0]->NAMA_PEGAWAI}}"><br>
 			Alamat : <input type="text" class="form-control" name="ALAMAT_PEGAWAI" value="{{$pegawai[0]->ALAMAT_PEGAWAI}}"><br>
 			Tempat Tanggal Lahir : <input type="text" class="form-control" name="TTL_PEGAWAI" value="{{$pegawai[0]->TTL_PEGAWAI}}"><br>
-			Jenis Kelamin :
-			<select class="form-control selectize" name="JENIS_KELAMIN">
-				@if ($pegawai[0]->JENIS_KELAMIN == "Laki-laki")
-				<option value="Laki-laki" selected>Laki-laki</option>
-				<option value="Perempuan">Perempuan</option>
-				@elseif ($pegawai[0]->JENIS_KELAMIN == "Perempuan")
-				<option value="Laki-laki">Laki-laki</option>
-				<option value="Perempuan" selected>Perempuan</option>
-				@else
-				<option value="Laki-laki">Laki-laki</option>
-				<option value="Perempuan">Perempuan</option>
-				@endif
-			</select><br>
 			NIP : <input type="text" class="form-control" name="NIP_PEGAWAI" value="{{$pegawai[0]->NIP_PEGAWAI}}"><br>
 			No. Kartu Pegawai : <input type="text" class="form-control" name="NO_KARTU_PEGAWAI" value="{{$pegawai[0]->NO_KARTU_PEGAWAI}}"><br>
 			No. Kartu Suami/istri : <input type="text" class="form-control" name="NO_KARTU_SUAMI_ISTRI" value="{{$pegawai[0]->NO_KARTU_SUAMI_ISTRI}}"><br>

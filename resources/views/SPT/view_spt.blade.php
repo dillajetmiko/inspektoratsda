@@ -253,6 +253,8 @@
   <!-- /.card-footer-->
 </div>
 <!-- /.card -->
+
+<!-- Modal Hapus-->
 <div class="modal fade" id="deleteSPT" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -269,7 +271,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 		<a id="deleteLink">
 		<button type="button" class="btn btn-danger">Hapus</button>
-						</a>
+		</a>
 	</div>
     </div>
   </div>

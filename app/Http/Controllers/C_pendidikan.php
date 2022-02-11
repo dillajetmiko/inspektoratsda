@@ -14,12 +14,14 @@ class C_pendidikan extends Controller
             $nama = Auth::user()->name;
             $pegawai = DB::table('pegawai')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
             $pendidikan = DB::table('pendidikan')->where('NIK_PEGAWAI', $NIK_PEGAWAI)->get();
+            $jenis = DB::table('dupak_angka_kredit')->get();
     
             $data = array(
                 'menu' => 'pegawai',
                 'nama' => $nama,
                 'pegawai' => $pegawai,
                 'pendidikan' => $pendidikan,
+                'jenis' => $jenis,
                 'submenu' => ''
                
             );
@@ -33,6 +35,8 @@ class C_pendidikan extends Controller
                 'TAHUN_PENDIDIKAN' => $post->TAHUN_PENDIDIKAN,
                 'STRATA_PENDIDIKAN' => $post->STRATA_PENDIDIKAN,        
                 'INSTANSI_PENDIDIKAN' => $post->INSTANSI_PENDIDIKAN,        
+                'INSTANSI_PENDIDIKAN' => $post->INSTANSI_PENDIDIKAN,
+                'id_angka_kredit' => $post->jenis,        
             ]);
     
             return redirect('/pendidikan/insert_view_pendidikan/'.$post->NIK_PEGAWAI);
