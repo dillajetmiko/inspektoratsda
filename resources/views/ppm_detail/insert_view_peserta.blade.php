@@ -87,7 +87,7 @@
 						@can('edit-hapus-spt')
 						<td>
 						
-						<a href='/detail_ppm/hapus/{{ $data->id }}&{{ $data->ppm_id}}'>
+						<a href='/ppm_detail/hapus/{{ $data->id }}&{{ $data->ppm_id}}'>
 						<button type="button" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</button>
 						</a>
 						<!-- Button trigger modal -->

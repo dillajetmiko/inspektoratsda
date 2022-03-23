@@ -45,7 +45,6 @@
 						<th style="text-align:center">No Laporan</th>
 						<th style="text-align:center">Nomor SPT</th> 
 						<th style="text-align:center">PKPT</th> 
-						<th style="text-align:center">NIP Admin</th>
 						<th style="text-align:center">Tanggal Laporan</th>
 						<th style="text-align:center">Judul Pemeriksaan</th>
 						<th style="text-align:center">Anggaran</th>
@@ -67,7 +66,6 @@
 						@endif
 						@endforeach 
 						
-						<td>{{ $data->NIP }}</td>
 						<td>{{ $data->TANGGAL_LHP }}</td>
 						<td>{{ $data->JUDUL_PEMERIKSAAN }}</td>
 						<td>{{ $data->ANGGARAN }}</td>

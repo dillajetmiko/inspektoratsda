@@ -27,8 +27,10 @@ use App\Http\Controllers\C_jabatan;
 use App\Http\Controllers\C_opd;
 use App\Http\Controllers\C_tugas;
 use App\Http\Controllers\C_jenispengawasan;
+use App\Http\Controllers\C_kategoritemuan;
 use App\Http\Controllers\C_dupak;
 use App\Http\Controllers\C_ppm;
+use App\Http\Controllers\C_generatepdf;
 
 
 
@@ -97,6 +99,13 @@ Route::post('/jenis_pengawasan/tambah_jenis_pengawasan', [C_jenispengawasan::cla
 Route::get('/jenis_pengawasan/edit_jenis_pengawasan/{KODE_jenis_pengawasan}', [C_jenispengawasan::class, 'editJenispengawasan'])->middleware('auth');
 Route::post('/jenis_pengawasan/update_jenis_pengawasan', [C_jenispengawasan::class, 'updateJenispengawasan'])->middleware('auth');
 Route::get('/jenis_pengawasan/hapus/{KODE_jenis_pengawasan}', [C_jenispengawasan::class, 'hapus'])->middleware('auth');
+
+Route::get('/kategori_temuan', [C_kategoritemuan::class, 'index'])->middleware('auth');
+Route::get('/kategori_temuan/insert_kategori_temuan', [C_kategoritemuan::class, 'insertKategoriTemuan'])->middleware('auth');
+Route::post('/kategori_temuan/tambah_kategori_temuan', [C_kategoritemuan::class, 'tambahKategoriTemuan'])->middleware('auth');
+Route::get('/kategori_temuan/edit_kategori_temuan/{KODE_kategori_temuan}', [C_kategoritemuan::class, 'editKategoriTemuan'])->middleware('auth');
+Route::post('/kategori_temuan/update_kategori_temuan', [C_kategoritemuan::class, 'updateKategoriTemuan'])->middleware('auth');
+Route::get('/kategori_temuan/hapus/{KODE_kategori_temuan}', [C_kategoritemuan::class, 'hapus'])->middleware('auth');
 
 Route::get('/lhp', [C_lhp::class, 'index'])->middleware('auth');
 Route::get('/lhp/insert_lhp', [C_lhp::class, 'insertLHP'])->middleware('auth');
@@ -254,13 +263,18 @@ Route::post('/dupak/tambah_pengembangan', [C_dupak::class, 'tambahPengembangan']
 Route::post('/dupak/tambah_diklat', [C_dupak::class, 'tambahDiklat'])->middleware('auth');
 Route::post('/dupak/tambah_dupak', [C_dupak::class, 'tambahDupak'])->middleware('auth');
 
+Route::get('/dupak/cetak-lak', [C_generatepdf::class, 'cetakLAK'])->middleware('auth');
+Route::get('/dupak/cetak-ak', [C_generatepdf::class, 'cetakAK'])->middleware('auth');
 
 Route::get('/ppm', [C_ppm::class, 'index'])->middleware('auth');
 Route::get('/ppm/insert_ppm', [C_ppm::class, 'insertPPM'])->middleware('auth');
 Route::post('/ppm/tambah_ppm', [C_ppm::class, 'tambahPPM'])->middleware('auth');
+Route::get('/ppm/edit_ppm/{id}', [C_ppm::class, 'editPPM'])->middleware('auth');
+Route::post('/ppm/update_ppm', [C_ppm::class, 'updatePPM'])->middleware('auth');
+Route::get('/ppm/hapus/{id}', [C_ppm::class, 'hapus'])->middleware('auth');
 
 Route::get('/ppm_detail/insert_view_peserta/{id_ppm}', [C_ppm::class, 'insertPeserta'])->middleware('auth');
 Route::post('/ppm_detail/insert_view_peserta', [C_ppm::class, 'tambahPeserta'])->middleware('auth');
-Route::get('/detail_ppm/hapus/{id}&{id_ppm}', [C_ppm::class, 'hapus'])->middleware('auth');
+Route::get('/ppm_detail/hapus/{id}&{id_ppm}', [C_ppm::class, 'hapusPeserta'])->middleware('auth');
 
 

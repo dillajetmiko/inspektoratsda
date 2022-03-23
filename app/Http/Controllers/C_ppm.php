@@ -52,13 +52,58 @@ class C_ppm extends Controller
             'kegiatan' => $post->kegiatan,
             'tgl_mulai' => $post->tgl_mulai,
             'id_angka_kredit' => $post->jenis_ppm,
-            'lama_jam' => $post->jumlah_jam,
+            'lama_jam' => $post->lama_jam,
             
         ]);
 
         // return redirect('/ppm');
         return redirect('/ppm_detail/insert_view_peserta/'.$id);
     }
+
+    public function editPPM($ID_PPM) 
+    {
+        $nama = Auth::user()->name;
+        $ppm = DB::table('dupak_ppm')->where('id', $ID_PPM)->get();
+        $jenis = DB::table('dupak_angka_kredit')->get();
+
+        $data = array(
+            'menu' => 'ppm',
+            'nama' => $nama,
+            'ppm' => $ppm,
+            'jenis' => $jenis,
+            'submenu' => ''
+           
+        );
+        return view('ppm/edit_ppm',$data);
+    }
+
+    public function updatePPM(Request $post)
+    {
+        DB::table('dupak_ppm')->where('id', $post->id)->update([     
+            'kegiatan' => $post->kegiatan,
+            'tgl_mulai' => $post->tgl_mulai,
+            'id_angka_kredit' => $post->jenis_ppm,
+            'lama_jam' => $post->lama_jam,
+        ]);
+
+        return redirect('/ppm');
+    }
+
+    public function hapus($id)
+    {
+        DB::table('dupak_detail_ppm')->where('ppm_id',$id)->delete();
+        $delete=DB::table('dupak_ppm')->where('id',$id)->delete();
+    	if ($delete)
+        {
+            session()->flash('success', 'Data berhasil dihapus');
+        }else{
+            session()->flash('failed', 'Data gagal dihapus!');
+        }
+        
+	    return redirect('/ppm');
+    }
+
+
     
 
     public function insertPeserta($id_ppm) 
@@ -91,7 +136,7 @@ class C_ppm extends Controller
         return redirect('/ppm_detail/insert_view_peserta/'.$post->id_ppm);
     }
 
-    public function hapus($id,$id_ppm)
+    public function hapusPeserta($id,$id_ppm)
     {
         // menghapus data detail_peminjaman berdasarkan id yang dipilih
         DB::table('dupak_detail_ppm')->where('id',$id)->delete();

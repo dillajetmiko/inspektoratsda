@@ -20,7 +20,7 @@ class C_temuan extends Controller
         $nama = Auth::user()->name;
         $temuan = DB::table('temuan')->get();
         $lhp = DB::table('lhp')->get();
-        $id = DB::table('opd')->get();
+        $opd = DB::table('opd')->get();
         $punya_opd = DB::table('punya_opd')->get();
         $kategori_temuan = DB::table('kategori_temuan')->get();
         $rekomendasi = DB::table('rekomendasi')->leftJoin('status','status.KODE_STATUS','=','rekomendasi.ID_STATUS')->get();
@@ -29,7 +29,7 @@ class C_temuan extends Controller
             'nama' => $nama,
             'temuan' => $temuan,
             'lhp' => $lhp,
-            'id' => $id,
+            'opd' => $opd,
             'punya_opd' => $punya_opd,
             'kategori_temuan' => $kategori_temuan,
             'rekomendasi' => $rekomendasi,

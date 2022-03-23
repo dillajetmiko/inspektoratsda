@@ -53,8 +53,8 @@
 								<!-- <div style="width: 42%">
 									<select class="form-control select2" name="KODE_OPD">
 										<option value="0">-Pilih OPD-</option>
-										@foreach ($id as $opd)
-										<option value="{{ $opd->KODE_OPD}}">{{ $opd->NAMA_OPD}}</option>
+										@foreach ($opd as $pp)
+										<option value="{{ $pp->KODE_OPD}}">{{ $pp->NAMA_OPD}}</option>
 										@endforeach
 									</select>
 								</div>
@@ -103,7 +103,7 @@
 					<th style="text-align:center">Kode</th>
 					<th style="text-align:center">Uraian</th>
 					<th style="text-align:center">Kode/Uraian</th>
-					<th style="text-align:center">Tanggal/Uraian/Status</th>
+					<th style="text-align:center">Tanggal/Uraian/Status/OPD</th>
 				</tr>
 				</thead>
 				<tbody>		
@@ -142,6 +142,17 @@
 								<td>{{$rekom->TANGGAL_TINDAK_LANJUT}}</td>
 								<td>{{$rekom->URAIAN_TINDAK_LANJUT}}<br></td>
 								<td>{{$rekom->STATUS}}<br></td>
+								<td>
+								@foreach($punya_opd as $po)
+								@if ($po->ID_REKOMENDASI === $rekom->id)
+									@foreach($opd as $o)
+									@if ($o->KODE_OPD === $po->KODE_OPD)
+									{{$o->NAMA_OPD}}<br>
+									@endif
+									@endforeach
+								@endif
+								@endforeach
+								<br></td>
 							</tr>
 							@endif
 							@endforeach

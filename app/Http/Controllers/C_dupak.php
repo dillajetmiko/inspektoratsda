@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use DateTime;
+use PDF;
 
 class C_dupak extends Controller
 {
@@ -20,6 +21,11 @@ class C_dupak extends Controller
         $dupak->lama_pengawasan = 0;
         $dupak->lama_pengembangan = 0;
         $dupak->lama_penunjang = 0;
+        $dupak->baru_pendidikan = 0;
+        $dupak->baru_diklat = 0;
+        $dupak->baru_pengawasan = 0;
+        $dupak->baru_pengembangan = 0;
+        $dupak->baru_penunjang = 0;
         $jmlunsurutama = 0;
         $jmlak = 0;
         $jmltotal = 0;
@@ -34,6 +40,7 @@ class C_dupak extends Controller
         $pegselect = DB::table('pegawai')->get();
         $pangkat = DB::table('pangkat')->get();
         $jabatan = DB::table('jabatan')->get();
+        $pendidikanpeg = DB::table('pendidikan')->get();
         $pengawasan = [];
         $diklat = [];
         $pengembangan = [];
@@ -76,6 +83,7 @@ class C_dupak extends Controller
             'pegselect' => $pegselect,
             'pangkat' => $pangkat,
             'jabatan' => $jabatan,
+            'pendidikanpeg' => $pendidikanpeg,
             'pengawasan' => $pengawasan,
             'diklat' => $diklat,
             'pengembangan' => $pengembangan,
@@ -156,16 +164,30 @@ class C_dupak extends Controller
         $semester = $request->semester;
         $pegawai = DB::table('pegawai')->get();
         // $dupak = DB::table('dupak')->where('semester', $semester)->where('tahun', $request->tahun)->where('NIK_PEGAWAI', $request->NIK_PEGAWAI)->get();
-        $dup = DB::table('dupak')->get();
+        $dup = DB::table('dupak')->first();
         $jmlunsurutama = 0;
         $jmlak = 0;
         $jmltotal = 0;
         if(isset($dup)){
             $dupak = DB::table('dupak')->where('semester', $semester)->where('tahun', $request->tahun)->where('NIK_PEGAWAI', $request->NIK_PEGAWAI)->first();
             if(isset($dupak)){
-            $jmlunsurutama = $dupak->lama_diklat + $dupak->lama_pengawasan + $dupak->lama_pengembangan;
-            $jmlak = $dupak->lama_diklat + $dupak->lama_pengawasan + $dupak->lama_pengembangan + $dupak->lama_penunjang;
-            $jmltotal = $dupak->lama_pendidikan + $dupak->lama_diklat + $dupak->lama_pengawasan + $dupak->lama_pengembangan + $dupak->lama_penunjang;}
+                $jmlunsurutama = $dupak->lama_diklat + $dupak->lama_pengawasan + $dupak->lama_pengembangan;
+                $jmlak = $dupak->lama_diklat + $dupak->lama_pengawasan + $dupak->lama_pengembangan + $dupak->lama_penunjang;
+                $jmltotal = $dupak->lama_pendidikan + $dupak->lama_diklat + $dupak->lama_pengawasan + $dupak->lama_pengembangan + $dupak->lama_penunjang;
+
+                $totalpendidikan = $dupak->lama_pendidikan + $dupak->baru_pendidikan;
+                $totaldiklat = $dupak->lama_diklat + $dupak->baru_diklat;
+                $totalpengawasan = $dupak->lama_pengawasan + $dupak->baru_pengawasan;
+                $totalpengembangan = $dupak->lama_pengembangan + $dupak->baru_pengembangan;
+                $totalpenunjang = $dupak->lama_penunjang + $dupak->baru_penunjang;
+            } else {
+                $totalpendidikan = 0;
+                $totaldiklat = 0;
+                $totalpengawasan = 0;
+                $totalpengembangan = 0;
+                $totalpenunjang = 0;
+            }
+            
         } else {
             $dupak = new \stdClass;
             $dupak->lama_pendidikan = 0;
@@ -173,7 +195,49 @@ class C_dupak extends Controller
             $dupak->lama_pengawasan = 0;
             $dupak->lama_pengembangan = 0;
             $dupak->lama_penunjang = 0;
+            $dupak->baru_pendidikan = 0;
+            $dupak->baru_diklat = 0;
+            $dupak->baru_pengawasan = 0;
+            $dupak->baru_pengembangan = 0;
+            $dupak->baru_penunjang = 0;
+            $totalpendidikan = 0;
+            $totaldiklat = 0;
+            $totalpengawasan = 0;
+            $totalpengembangan = 0;
+            $totalpenunjang = 0;
         }
+        // $duppendidikanlalu = 0;
+        $dupakada = DB::table('dupak')->where('NIK_PEGAWAI', $request->NIK_PEGAWAI)->first();
+        if(isset($dupakada)){
+            $semlalu = 2 / $semester;
+            if($semester == 1){
+                $tahunlalu = $request->tahun - 1;
+            } else {
+                $tahunlalu = $request->tahun;
+            }
+            $duplalu = DB::table('dupak')->where('semester', $semlalu)->where('tahun', $tahunlalu)->where('NIK_PEGAWAI', $request->NIK_PEGAWAI)->first();
+            if(isset($duplalu)){
+                $duppendidikanlalu = $duplalu->lama_pendidikan + $duplalu->baru_pendidikan;
+                $dupdiklatlalu = $duplalu->lama_diklat + $duplalu->baru_diklat;
+                $duppengawasanlalu = $duplalu->lama_pengawasan + $duplalu->baru_pengawasan;
+                $duppengembanganlalu = $duplalu->lama_pengembangan + $duplalu->baru_pengembangan;
+                $duppenunjanglalu = $duplalu->lama_penunjang + $duplalu->baru_penunjang;
+            } else {
+                $duppendidikanlalu = 0;
+                $dupdiklatlalu = 0;
+                $duppengawasanlalu = 0;
+                $duppengembanganlalu = 0;
+                $duppenunjanglalu = 0;
+            }
+
+        } else {
+            $duppendidikanlalu = 0;
+            $dupdiklatlalu = 0;
+            $duppengawasanlalu = 0;
+            $duppengembanganlalu = 0;
+            $duppenunjanglalu = 0;
+        }
+
         $pegawaidupak = DB::table('pegawai')->where('NIK_PEGAWAI', $request->NIK_PEGAWAI)->get();
         $pegselect = DB::table('pegawai')->where('NIK_PEGAWAI', $request->NIK_PEGAWAI)->get();
         $pangkat = DB::table('pangkat')->where('NIK_PEGAWAI', $request->NIK_PEGAWAI)->latest('TMT_PANGKAT')->get();
@@ -199,7 +263,9 @@ class C_dupak extends Controller
         $jmlpengawasan = 0;
         $jmljampengawasan = 0;
         $lamapengawasan = array();
+        // $jmlakpengawasan = array();
         foreach($pengawasan as $value){
+            // array_push( $jmlakpengawasan, $value->angka_kredit * $value->lama_jam);
             $jmlpengawasan = $jmlpengawasan + $value->angka_kredit * $value->lama_jam;
             $jmljampengawasan = $jmljampengawasan + $value->lama_jam;
             $tgl1 = new DateTime($value->tgl_mulai);
@@ -245,12 +311,6 @@ class C_dupak extends Controller
             $jmlpendidikan = $jmlpendidikan + $value->angka_kredit;
         }
 
-        $totalpendidikan = $dupak->lama_pendidikan + $dupak->baru_pendidikan;
-        $totaldiklat = $dupak->lama_diklat + $dupak->baru_diklat;
-        $totalpengawasan = $dupak->lama_pengawasan + $dupak->baru_pengawasan;
-        $totalpengembangan = $dupak->lama_pengembangan + $dupak->baru_pengembangan;
-        $totalpenunjang = $dupak->lama_penunjang + $dupak->baru_penunjang;
-
 
         // var_dump($pangkat);
         $data = array(
@@ -264,6 +324,11 @@ class C_dupak extends Controller
             'jmlunsurutama' => $jmlunsurutama,
             'jmlak' => $jmlak,
             'jmltotal' => $jmltotal,
+            'duppendidikanlalu' => $duppendidikanlalu,
+            'dupdiklatlalu' => $dupdiklatlalu,
+            'duppengawasanlalu' => $duppengawasanlalu,
+            'duppengembanganlalu' => $duppengembanganlalu,
+            'duppenunjanglalu' => $duppenunjanglalu,
             'pegawaidupak' => $pegawaidupak,
             'pegselect' => $pegselect,
             'pangkat' => $pangkat,
@@ -274,6 +339,7 @@ class C_dupak extends Controller
             'pengembangan' => $pengembangan,
             'pendidikan' => $pendidikan,
             'penunjang' => $penunjang,
+            // 'jmlakpengawasan' => $jmlakpengawasan,
             'jmlpengawasan' => $jmlpengawasan,
             'jmljampengawasan' => $jmljampengawasan,
             'lamapengawasan' => $lamapengawasan,

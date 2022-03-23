@@ -61,7 +61,7 @@
 		</form>
 	</div>
 	<div class="m-4">
-		<a href="#">
+		<a href="/dupak/cetak-ak">
 			<button type="button" class="btn btn-info float-right" style="float: right;">Print AK</button>
 		</a>
 	</div>
@@ -520,6 +520,10 @@
 								<td></td>
 							</tr>
 						</table>
+						<!-- <button type="submit" class="btn btn-primary">Simpan</button> -->
+						<a href='/dupak/cetak-lak'>
+						<button type="button" class="btn btn-secondary"><i class="fas fa-print"></i> Cetak</button>
+						</a>
 					</div>
 
 					<div class="tab-pane fade" id="dupak-dupak" role="tabpanel" aria-labelledby="dupak-dupak-tab">
@@ -573,7 +577,7 @@
 							<tr>
 								<td>5.</td>
 								<td colspan="2">Pendidikan yang telah<br/>diperhitungkan angka kreditnya</td>
-								<td>pendidikan</td>
+								<td>{{$pendidikanpeg[0]->STRATA_PENDIDIKAN}}</td>
 							</tr>
 							<tr>
 								<td>6.</td>
@@ -628,7 +632,7 @@
 							<tr style="font-weight: bold;">
 								<td style="text-align: center">I</td>
 								<td>PENDIDIKAN SEKOLAH</td>
-								<td><input type="text" class="form-control" name="lama_pendidikan" value="{{ isset($dupak->lama_pendidikan) ? $dupak->lama_pendidikan : '' }}"></td>
+								<td><input type="text" class="form-control" name="lama_pendidikan" value="{{ isset($dupak->lama_pendidikan) ? $dupak->lama_pendidikan : $duppendidikanlalu }}"></td>
 								<td><input type="text" class="form-control" name="baru_pendidikan" value="{{ $jmlpendidikan }}" readonly></td>
 								<td>{{$totalpendidikan}}</td>
 								<td></td>
@@ -658,7 +662,7 @@
 							<tr>
 								<td></td>
 								<td style="padding-left:20px;">a. Pendidikan</td>
-								<td><input type="text" class="form-control" name="lama_diklat" value="{{ isset($dupak->lama_diklat) ? $dupak->lama_diklat : '' }}"></td>
+								<td><input type="text" class="form-control" name="lama_diklat" value="{{ isset($dupak->lama_diklat) ? $dupak->lama_diklat : $dupdiklatlalu }}"></td>
 								<td><input type="text" class="form-control" name="baru_diklat" value="{{ $jmldiklat }}" readonly></td>
 								<td>{{$totaldiklat}}</td>
 								<td></td>
@@ -668,7 +672,7 @@
 							<tr>
 								<td></td>
 								<td style="padding-left:20px;">b. Pengawasan</td>
-								<td><input type="text" class="form-control" name="lama_pengawasan" value="{{ isset($dupak->lama_pengawasan) ? $dupak->lama_pengawasan : '' }}"></td>
+								<td><input type="text" class="form-control" name="lama_pengawasan" value="{{ isset($dupak->lama_pengawasan) ? $dupak->lama_pengawasan : $duppengawasanlalu }}"></td>
 								<td><input type="text" class="form-control" name="baru_pengawasan" value="{{ $jmlpengawasan }}" readonly></td>
 								<td>{{$totalpengawasan}}</td>
 								<td></td>
@@ -678,7 +682,7 @@
 							<tr>
 								<td></td>
 								<td style="padding-left:20px;">c. Pengembangan Profesi</td>
-								<td><input type="text" class="form-control" name="lama_pengembangan" value="{{ isset($dupak->lama_pengembangan) ? $dupak->lama_pengembangan : '' }}"></td>
+								<td><input type="text" class="form-control" name="lama_pengembangan" value="{{ isset($dupak->lama_pengembangan) ? $dupak->lama_pengembangan : $duppengembanganlalu }}"></td>
 								<td><input type="text" class="form-control" name="baru_pengembangan" value="{{ $jmlpengembangan }}" readonly></td>
 								<td>{{$totalpengembangan}}</td>
 								<td></td>
@@ -698,7 +702,7 @@
 							<tr style="font-weight: bold;">
 								<td style="text-align: right">B.</td>
 								<td>UNSUR PENUNJANG</td>
-								<td><input type="text" class="form-control" name="lama_penunjang" value="{{ isset($dupak->lama_penunjang) ? $dupak->lama_penunjang : '' }}"></td>
+								<td><input type="text" class="form-control" name="lama_penunjang" value="{{ isset($dupak->lama_penunjang) ? $dupak->lama_penunjang : $duppenunjanglalu }}"></td>
 								<td><input type="text" class="form-control" name="baru_penunjang" value="{{ $jmlpenunjang }}" readonly></td>
 								<td>{{$totalpenunjang}}</td>
 								<td></td>
@@ -782,7 +786,7 @@
 							<tr>
 								<td>5.</td>
 								<td>Pendidikan tertinggi</td>
-								<td>pendidikan</td>
+								<td>{{$pendidikanpeg[0]->STRATA_PENDIDIKAN}}</td>
 							</tr>
 							<tr>
 								<td>6.</td>
@@ -824,9 +828,9 @@
 							<tr style="font-weight: bold;text-align: center">
 								<td>I</td>
 								<td>PENDIDIKAN SEKOLAH</td>
-								<td></td>
-								<td>0</td>
-								<td></td>
+								<td>{{ isset($dupak->lama_pendidikan) ? $dupak->lama_pendidikan : '' }}</td>
+								<td>{{ isset($dupak->baru_pendidikan) ? $dupak->baru_pendidikan : '' }}</td>
+								<td>{{$totalpendidikan}}</td>
 								<td></td>
 							</tr>
 							<tr style="font-weight: bold;">
@@ -848,56 +852,56 @@
 							<tr>
 								<td></td>
 								<td style="padding-left:20px;">a. Pendidikan</td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>{{ isset($dupak->lama_diklat) ? $dupak->lama_diklat : '' }}</td>
+								<td>{{ isset($dupak->baru_diklat) ? $dupak->baru_diklat : '' }}</td>
+								<td>{{$totaldiklat}}</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td></td>
 								<td style="padding-left:20px;">b. Pengawasan</td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>{{ isset($dupak->lama_pengawasan) ? $dupak->lama_pengawasan : '' }}</td>
+								<td>{{ isset($dupak->baru_pengawasan) ? $dupak->baru_pengawasan : '' }}</td>
+								<td>{{$totalpengawasan}}</td>
 								<td></td>
 							</tr>
 							<tr>
 								<td></td>
 								<td style="padding-left:20px;">c. Pengembangan Profesi</td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>{{ isset($dupak->lama_pengembangan) ? $dupak->lama_pengembangan : '' }}</td>
+								<td>{{ isset($dupak->baru_pengembangan) ? $dupak->baru_pengembangan : '' }}</td>
+								<td>{{$totalpengembangan}}</td>
 								<td></td>
 							</tr>
 							<tr style="font-weight: bold;">
 								<td></td>
 								<td style="text-align:right;">JUMLAH</td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>{{ isset($dupak) ? $dupak->lama_diklat + $dupak->lama_pengawasan + $dupak->lama_pengembangan : '' }}</td>
+								<td>{{ isset($dupak) ? $dupak->baru_diklat + $dupak->baru_pengawasan + $dupak->baru_pengembangan : '' }}</td>
+								<td>{{ $totaldiklat + $totalpengawasan + $totalpengembangan }}</td>
 								<td></td>
 							</tr>
 							<tr style="font-weight: bold;">
 								<td style="text-align: right">B.</td>
 								<td>UNSUR PENUNJANG</td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>{{ isset($dupak->lama_penunjang) ? $dupak->lama_penunjang : '' }}</td>
+								<td>{{ isset($dupak->baru_penunjang) ? $dupak->baru_penunjang : '' }}</td>
+								<td>{{$totalpenunjang}}</td>
 								<td></td>
 							</tr>
 							<tr style="font-weight: bold;">
 								<td style="text-align: right"></td>
 								<td>JUMLAH AK PENJENJANGAN</td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>{{ isset($dupak) ? $dupak->lama_diklat + $dupak->lama_pengawasan + $dupak->lama_pengembangan + $dupak->lama_penunjang : '' }}</td>
+								<td>{{ isset($dupak) ? $dupak->baru_diklat + $dupak->baru_pengawasan + $dupak->baru_pengembangan + $dupak->baru_penunjang : '' }}</td>
+								<td>{{ $totaldiklat + $totalpengawasan + $totalpengembangan + $totalpenunjang }}</td>
 								<td></td>
 							</tr>
 							<tr style="font-weight: bold;">
 								<td colspan="2">JUMLAH (I+II)</td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>{{ isset($dupak) ? $dupak->lama_pendidikan + $dupak->lama_diklat + $dupak->lama_pengawasan + $dupak->lama_pengembangan + $dupak->lama_penunjang : '' }}</td>
+								<td>{{ isset($dupak) ? $dupak->baru_pendidikan + $dupak->baru_diklat + $dupak->baru_pengawasan + $dupak->baru_pengembangan + $dupak->baru_penunjang : '' }}</td>
+								<td>{{ $totalpendidikan + $totaldiklat + $totalpengawasan + $totalpengembangan + $totalpenunjang }}</td>
 								<td></td>
 							</tr>
 							<tr>
@@ -926,11 +930,11 @@
 <script src="{{asset ('asset/plugins/select2/js/select2.full.min.js')}}"></script>
 
 <script>
-  $(function () {
+	$(function () {
 
 	//Initialize Select2 Elements
 	$('.select2').select2()
 
-  });
+	});
 </script>
 @endsection

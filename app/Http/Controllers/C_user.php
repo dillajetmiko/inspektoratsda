@@ -30,14 +30,10 @@ class C_user extends Controller
     public function insertUser()
     {
         $nama = Auth::user()->name;
-        $user = DB::table('users')->get();
-        $role = DB::table('role')->get();
 
         $data = array(
             'menu' => 'user',
             'nama' => $nama,
-            'user' => $user,
-            'role' => $role,
             'submenu' => ''
         );
 

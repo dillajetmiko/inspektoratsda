@@ -90,6 +90,21 @@
           </li>
           @endcan
 
+          @can('show-user')
+          <li class="nav-item">
+          @if($menu == 'kategori_temuan')
+            <a href="/kategori_temuan" class="nav-link active">
+          @else
+            <a href="/kategori_temuan" class="nav-link">
+          @endif
+              <i class="nav-icon fas fa-file"></i>
+              <p>
+              Kategori Temuan
+              </p>
+            </a>
+          </li>
+          @endcan
+
           @can('show-pegawai')
           <li class="nav-item">
           @if($menu == 'pegawai')
